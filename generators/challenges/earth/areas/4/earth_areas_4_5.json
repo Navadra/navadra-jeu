@@ -1,0 +1,31 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Ce demi-cercle a une aire arrondie de {area} cm².<br>Quelle est la longueur de son rayon ?<br>Rappel : π ≈ 3",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{choice1} cm" },
+      { "determined": false, "choice": "{choice2} cm" },
+	  { "determined": false, "choice": "{choice3} cm" },
+	  { "determined": false, "choice": "{choice4} cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"absB": { "type": "number", "value": "absA + randomInt(3,10)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["absB","ordA"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["2absA - absB","ordA"], "visible": false },
+	"seg1": { "type": "segment", "expression": "BC" },
+	"arc1": { "type": "arc", "expression": "ABC", "labelDisplay": "center", "labelType": "radius" },
+	"radius": { "type": "number", "value": "absB-absA" },
+	"area": { "type": "number", "value": "round(radius*radius*pi/2,1)" },
+	"choice1": { "type": "number", "value": "radius" },
+	"choice2": { "type": "number", "value": "round(radius*2)" },
+	"choice3": { "type": "number", "value": "round(radius/2)" },
+	"choice4": { "type": "number", "value": "round(radius*4)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un demi-cercle :<br><br><span class='g'>aire = π x R² /2 (ou π = 3,14… et R est le rayon du cercle).<br><br></span>Comme π vaut environ 3, on peut diviser son aire par 3 puis la multiplier par 2 pour obtenir une estimation du rayon au carré. Il suffit ensuite de trouver le nombre qui multiplié par lui-même donne ce résultat.<br><br><span class='i'>Ex : si l'aire du cercle vaut environ 127 cm, on sait que 3x40 = 120 donc 127/3 ≈ 42. Puis 42x2 = 84. Or le nombre qui multiplié par lui-même donne un nombre proche de 84 est 9 (9x9 = 81). Le rayon vaudra donc 9 cm.</span></span>"
+}

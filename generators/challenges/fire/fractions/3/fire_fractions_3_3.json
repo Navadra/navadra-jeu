@@ -1,0 +1,20 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Par quel nombre faut-il simplifier la fraction {numerator2}/{denominator2} pour obtenir une fraction irréductible ?<br>{input1}",
+  "answer": [
+	  "factor"
+  ],
+  "criteria": [
+	  "{input1} == factor"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,10)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"factor": { "type": "number", "value": "randomInt(2,10)" },
+	"numerator2": { "type": "number", "value": "numerator1*factor" },
+	"denominator2": { "type": "number", "value": "denominator1*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour simplifier une fraction essaie de trouver <span class='g'>un diviseur commun </span>au <span class='g'>numérateur</span> et au <span class='g'>dénominateur</span> en commençant par 10 puis 9 puis 8, etc.<br><br><span class='i'>Ex : On veut simplifier la fraction 56/49.<br>10 n'est pas un diviseur de 56 ni de 49.<br>9 n'est pas un diviseur de 56 ni de 49.<br>8 est un diviseur de 56 (8x7=56) mais pas de 49.<br>7 est un diviseur de 56 (7x8=56) et de 49 (7x7=49) donc on peut simplifier la fraction en divisant le numérateur et dénominateur par 7.<br>Bref, <span class='g'>56/49 = 8/7</span>. On ne peut pas continuer à simplifier la fraction, 8/7 est donc le résultat final.</span></span>"
+}

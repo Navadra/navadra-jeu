@@ -1,0 +1,29 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Quelle est la longueur de [AC] en <span class='g'>{unit}</span> ?<br>{input1} <span class='g'>{unit}</span>",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "round(x,5)"
+  ],
+   "criteria": [
+	  "{input1} == round(x,5)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"A": { "type": "point", "value": ["random(-12,-8)","random(-3,3)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(8,12)","random(-3,3)"], "labelDisplay": "top" },
+	"length1": { "type": "number", "value": "randomInt(6,9)", "labelDisplay": "top" },
+	"circle1": { "type": "circle", "expression": "radius(B,length1)", "labelDisplay": "center", "labelType": "radius"},
+	"line1": { "type": "line", "expression": "AB", "visible": false },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "precision": 1 },
+	"C": { "type": "point", "expression": "intersection(circle1,line1,2)", "labelDisplay": "bottom" },
+	"lengths": { "type": "array", "expression": ["mm", "cm", "dm", "m"] },
+	"rand": { "type": "number", "value": "pickRandom([1, 3])" },
+	"unit": { "type": "string", "value": "lengths[rand]" },
+	"x": { "type": "number", "value": "(round(seg1Length) - length1)*10^(2-rand)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu connais la longueur AB et le rayon du cercle de centre B (appelons le R).<br><br>Pour calculer AC, il suffit donc de calculer AB - R puis penser à <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

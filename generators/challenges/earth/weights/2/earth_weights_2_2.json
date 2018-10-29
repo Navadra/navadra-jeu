@@ -1,0 +1,23 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Eleïa découvre une ruche et s’arrête pour l’observer.<br>Elle compte {x} abeilles qui y rentrent et {y} qui en sortent.<br>Sachant qu'une abeille a une masse de {z} {baseLength}, de combien la masse de la ruche a-t-elle augmentée <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span><br><span class='i'>Elle est forte pour réussir à garder le compte avec de si petites bestioles !</span>",
+  "answer": [
+	  "round((x-y)*z*10^(basePower-convertedPower),6)"
+  ],
+   "criteria": [
+	  "{input1} == round((x-y)*z*10^(basePower-convertedPower),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["mg", "cg", "dg", "g"] },
+	"basePower": { "type": "number", "value": "1" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "4" },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(5,10)" },
+	"y": { "type": "number", "value": "randomInt(1,9)", "conditions": ["y<x"] },
+	"z": { "type": "number", "value": "pickRandom([1,10])*randomInt(2,10)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te faut procéder en 3 étapes :<br><br>1° : <span class='g'>calculer combien d'abeilles en plus il y a </span>maintenant dans la ruche (« abeilles rentrées » - « abeilles sorties »)<br>2° : <span class='g'>multiplier ce nombre par le poids d'une abeille</span><br>3° : <span class='g'>convertir le résultat dans l'unité désirée</span></span>"
+}

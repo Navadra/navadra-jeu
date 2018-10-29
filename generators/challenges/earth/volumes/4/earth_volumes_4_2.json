@@ -1,0 +1,27 @@
+{
+  "timer": 65000,
+  "type": 3,
+  "question": "Sélectionne 2 volumes qui sont égaux.",
+  "answer": [
+	  { "determined": true, "choice": "{x} {xUnit}" },
+      { "determined": true, "choice": "{y} {yUnit}" },
+	  { "determined": false, "choice": "{w} {wUnit}" },
+	  { "determined": false, "choice": "{z} {zUnit}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL", "dL", "L", "daL", "hL", "m3"] },
+	"basePower": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "pickRandom([1,2,4,7])" , "conditions": ["convertedPower!=basePower", "abs(convertedPower-basePower)<=3"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "round(random(2, 100))" },
+	"xUnit": { "type": "number", "value": "lengths[basePower]" },
+	"y": { "type": "number", "value": "round(x*(10^basePower)/(10^convertedPower),4)" },
+	"yUnit": { "type": "number", "value": "lengths[convertedPower]" },
+	"w": { "type": "number", "value": "round(x*10^(pickRandom([-1,1])),6)" },
+	"wUnit": { "type": "number", "value": "lengths[basePower]" },
+	"z": { "type": "number", "value": "round(y*10^(pickRandom([-2,2])),6)" },
+	"zUnit": { "type": "number", "value": "lengths[convertedPower]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

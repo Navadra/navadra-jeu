@@ -1,0 +1,17 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "La puissance de l’un de tes sorts de dégâts est augmentée de {x}%.<br>Si ton sort infligeait normalement {y} dégâts, combien de dégâts infligerait-il <span class='g'>au total</span> ?<br>{input1}",
+  "answer": [
+	  "y+x*y/100"
+  ],
+   "criteria": [
+	  "{input1} == round(y+x*y/100)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(1,4)" },
+	"y": { "type": "number", "value": "60*randomInt(1,6)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que ton sort infligeait normalement 300 dégâts et que sa puissance soit augmentée de 30%.<br>Pour calculer facilement des « pourcentages ronds » d'un total, <span class='g'>tu peux commencer par calculer 10% de ce nombre </span>(il suffit de diviser par 10).<br>Ainsi 10% de 300 dégâts = 300/10 = 30.<br><br><span class='g'>Il te suffit maintenant de multiplier 30 par 3 pour obtenir 30% </span>: 30x3 = 90.<br>Ton sort infligerait donc <span class='g'>90 dégâts en plus donc en tout 390 </span>(300+90) <span class='g'>dégâts</span>.</span>"
+}

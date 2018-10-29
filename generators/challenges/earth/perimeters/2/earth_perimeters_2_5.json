@@ -1,0 +1,26 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Quel est le périmètre de ce cercle ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{choice1} x π  cm" },
+      { "determined": false, "choice": "{choice2} x π  cm" },
+	  { "determined": false, "choice": "{choice3} x π  cm " },
+	  { "determined": false, "choice": "{choice4} x π cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"radius1": { "type": "number", "value": "random(3,10)" },
+	"circle1": { "type": "circle", "expression": "radius(A,radius1)", "labelDisplay": "center", "labelType": "radius" },
+	"choice1": { "type": "number", "value": "2*circle1Radius" },
+	"choice2": { "type": "number", "value": "circle1Radius" },
+	"choice3": { "type": "number", "value": "circle1Radius^2" },
+	"choice4": { "type": "number", "value": "round(circle1Radius*4.5)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'un cercle se calcule à l'aide de cette formule :<br><br>Périmètre =  2 x π x R (ou π = 3,14… et R est le rayon du cercle).</span><br><br><span class='i'>Ex : si le rayon mesure 8 cm alors le périmètre sera égal à 16 x π cm.</span></span>"
+}

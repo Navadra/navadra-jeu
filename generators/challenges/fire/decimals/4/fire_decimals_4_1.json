@@ -1,0 +1,27 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Encadre {y} {power} : <br>{input1} < {y} < {input2}",
+  "answer": [
+	  "floor(y * x)/x",
+	  "(floor(y * x) + 1)/x"
+  ],
+  "criteria": [
+	  "{input1} == floor(y * x)/x",
+	  "{input2} == (floor(y * x) + 1)/x"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(1, 10)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)" },
+	"c": { "type": "number", "value": "randomInt(1, 10)" },
+	"d": { "type": "number", "value": "randomInt(1, 10)" },
+	"pos": { "type": "number", "value": "randomInt(1, 4)" },
+	"powers_number": { "type": "array", "value": [1, 10, 100] },
+	"powers_string": { "type": "array", "expression": ["à l' unité", "au dixième", "au centième"] },
+	"x": { "type": "number", "value": "powers_number[pos]" },
+	"power": { "type": "string", "value":"powers_string[pos]" },
+	"y": { "type": "number", "value":"round(a + b/10 + c/100 + d/1000, 3)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour encadrer un nombre au dixième, il faut trouver le nombre <span class='g'>plus petit le plus proche </span>qui n'a <span class='g'>pas de centièmes</span> et le nombre <span class='g'>plus grand le plus proche </span>qui n'a <span class='g'>pas de centièmes</span>.<br><br><span class='i'>Ex avec 1,485 encadré au dixième :<br>Le nombre plus petit sans centièmes le plus proche est 1,4 (1,485 > 1,4)<br>Le nombre plus grand sans centièmes le plus proche est 1,5 (1,5 > 1,485).</span><br><br>Il suffit d'appliquer un <span class='g'>raisonnement similaire </span>pour les <span class='g'>unités</span> et les <span class='g'>centièmes</span>.<br><span class='i'>Ex d'encadrement à l'unité de 3,548 : 3 < 3,548 < 4<br>Ex d'encadrement au centième de 3,548 : 3,54 < 3,548 < 3,55</span></span>"
+}

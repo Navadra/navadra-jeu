@@ -1,0 +1,30 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "La droite (d) est-elle un axe de symétrie du triangle ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "typeTriangle == \"equiTriangle\" or typeTriangle == \"isoRightAngleTriangle\"", "choice": "Oui" },
+      { "if": "typeTriangle == \"triangle\" or typeTriangle == \"rightAngleTriangle\" or typeTriangle == \"isoTriangle\"", "choice": "Non" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-5)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(5,6)","random(5,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,0)","random(-8,-6)"], "labelDisplay": "bottom" },
+	"possibilities": { "type": "array", "expression": ["triangle", "equiTriangle", "isoTriangle", "rightAngleTriangle", "isoRightAngleTriangle"] },
+	"rand": { "type": "number", "value": "randomInt(1,6)" },
+	"typeTriangle": { "type": "string", "value": "possibilities[rand]" },
+	"figure": { "type": "possibilities[rand]", "expression": "ABC" },
+	"line1": { "type": "segment", "expression": "AB", "labelDisplay": "right", "labelType": "length" },
+	"line2": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length" },
+	"line3": { "type": "segment", "expression": "BC", "labelDisplay": "bottom", "labelType": "length" },
+	"angle1": { "type": "angle", "expression": "CAB", "labelDisplay": true, "labelType": "value" },
+	"angle2": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value" },
+	"angle3": { "type": "angle", "expression": "BCA", "labelDisplay": true, "labelType": "value" },
+	"D": { "type": "point", "expression": "middle(AC)", "visible": false },
+	"d": { "type": "line", "expression": "BD", "labelDisplay": "top", "color": "red" }
+  },
+	"hint" : "<img class='ib mg2 l60 md2' src='/webroot/img/challenges/symmetriesHint3.png' /><span class='l35 ib align_middle'><span class='g'>Deux figures sont symétriques par rapport à une droite (d) si en « pliant la feuille » suivant la droite (d) les deux figures se superposent.<br><br></span>Les exemples ci-contre montrent les différents axes de symétrie en fonction de la nature du triangle.</span>"
+}

@@ -1,0 +1,31 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Ce triangle isocèle en C a un périmètre de {perimeter} cm.<br>Quelle est la longueur du côté AB ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(6.5,7)" },
+	"absA": { "type": "number", "value": "random(-6,-2)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(4,6)" },
+	"absB": { "type": "number", "value": "random(1,6)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "visible": false },
+	"ordC": { "type": "number", "value": "random(-6,-4)" },
+	"absC": { "type": "number", "value": "random(-2,2)" },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "isoTriangle", "expression": "ABC" },
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length", "color": "blue" },
+	"perimeter": { "type": "number", "value": "seg1Length+seg2Length*2" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br>Dans le cas d'un triangle isocèle, comme 2 de ses côtés sont égaux, il suffit de connaître son périmètre et la longueur d'un de ses côtés pour en déduire la longueur des autres côtés.<br><br><span class='i'>Ex : si le périmètre vaut 20 cm et qu'un de ses côtés (disons la base) mesure 6 cm, on sait que les 2 autres côtés sont égaux et qu'ensemble ils mesurent 14 cm (20 – 6).<br><br>On en déduit donc que les 2 autres côtés mesurent chacun 7 cm (14/2).</span></span>"
+}

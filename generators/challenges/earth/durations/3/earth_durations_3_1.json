@@ -1,0 +1,20 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Garddoch met {x} minutes pour faire le tour d'un bosquet en courant.<br>Il fait {y} tours de ce bosquet.<br>Au total, combien de temps a-t-il couru ?<br>{input1} h {input2} min<br><span class='i'>Dommage pour lui, il n'a réalisé qu'à la fin que le bosquet était infesté de monstres.</span>",
+  "answer": [
+	  "hour",
+	  "min"
+  ],
+   "criteria": [
+	  "{input1}*60 + {input2} == hour*60 + min"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(1,6)" },
+	"y": { "type": "number", "value": "randomInt(2,4)" },
+	"min": { "type": "number", "value": "mod(x*y, 60)" },
+	"hour": { "type": "number", "value": "floor(x*y/60)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit de <span class='g'>multiplier le nombre de tours du bosquet </span>par <span class='g'>le temps mis pour faire un tour </span>pour connaitre la durée totale passée à courir puis de <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

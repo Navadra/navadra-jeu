@@ -1,0 +1,26 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Comment s'appelle l'angle en rouge ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "possibilities[random] == \"CAB\"", "choice": "CÂB" },
+      { "if": "possibilities[random] == \"DAB\"", "choice": "DÂB" },
+	  { "if": "possibilities[random] == \"DAC\"", "choice": "DÂC" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-10,-5)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["randomInt(0,8)","randomInt(6,9)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["randomInt(5,16)","randomInt(-1,2)"], "labelDisplay": "top" },
+	"D": { "type": "point", "value": ["randomInt(10,16)","randomInt(-8,-6)"], "labelDisplay": "top" },
+	"d1": { "type": "line", "expression": "AB" },
+	"d2": { "type": "line", "expression": "AC" },
+	"d3": { "type": "line", "expression": "AD" },
+	"possibilities": { "type": "array", "expression": ["CAB", "DAB", "DAC"] },
+	"random": { "type": "number", "value": "randomInt(1,4)" },
+	"angle": { "type": "angle", "value": "possibilities[random]", "color": "red"}
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint1.png' /><span class='mh2 mg2 l95 ib'>Le nom d'un angle s'écrit en utilisant dans l'ordre :<br><span class='g'>Un point d'un côté de l'angle</span><br><span class='g'>Le point au sommet de l'angle</span><br><span class='g'>Un point de l'autre côté de l'angle</span><br><br><span class='i'>Ainsi dans l'exemple ci-dessus, l'angle en rouge peut s'écrire au choix : DÂE, DÂC, BÂE, BÂC, EÂD, EÂB, CÂD ou CÂB.</span></span>"
+}

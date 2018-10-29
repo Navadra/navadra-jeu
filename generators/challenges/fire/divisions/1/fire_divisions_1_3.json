@@ -1,0 +1,17 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "Quel est le produit de {a} par {b} ?<br>{input1}",
+  "answer": [
+	  "a*b"
+  ],
+  "criteria": [
+	  "{input1} == a*b"
+  ],
+  "type_answer": "single",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)"}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le produit d'un nombre par un autre est tout simplement <span class='g'>le résultat de la multiplication entre ces 2 nombres</span>.<br><span class='i'>Ex : Le produit de 9 par 6 est égal à 9x6 = <span class='g'>54</span>.</span></span>"
+}

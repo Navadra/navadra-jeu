@@ -1,0 +1,20 @@
+{
+  "timer": 55000,
+  "type": 3,
+  "question": "Une meute de {wolves} loups composée de {males} mâles, {females} femelles et quelques louveteaux se déplace pendant {days} jours en traquant {boars} sangliers.<br>De quelle(s) donnée(s) a-t-on besoin pour calculer le nombre de louveteaux ?",
+  "answer": [
+	{ "determined": true, "choice": "{wolves}" },
+    { "determined": true, "choice": "{males}" },
+    { "determined": true, "choice": "{females}" },
+	{ "determined": false, "choice": "{days}" },
+	{ "determined": false, "choice": "{boars}" }
+  ],
+  "var": {
+    "wolves": { "type": "number", "value": "randomInt(25,30)" },
+	"males": { "type": "number", "value": "randomInt(8,14)" },
+	"females": { "type": "number", "value": "randomInt(8,16)", "conditions": ["females!=males", "females+males<wolves"] },
+	"days": { "type": "number", "value": "randomInt(1,6)" },
+	"boars": { "type": "number", "value": "randomInt(2,5)", "conditions": ["boars!=days"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour calculer le nombre de louveteaux, il te faut soustraire le <span class='g'>nombre de mâles</span> et de <span class='g'>femelles</span> au <span class='g'>nombre total de loups </span>!</span>"
+}

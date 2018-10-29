@@ -1,0 +1,22 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "{x} x {y} est plus proche de ... .",
+  "answer": [
+    { "if": "abs(x * y - a) == min(abs(x * y - a), abs(x * y - b), abs(x * y - c), abs(x * y - d))", "choice": "{a}" },
+    { "if": "abs(x * y - b) == min(abs(x * y - a), abs(x * y - b), abs(x * y - c), abs(x * y - d))", "choice": "{b}" },
+    { "if": "abs(x * y - c) == min(abs(x * y - a), abs(x * y - b), abs(x * y - c), abs(x * y - d))", "choice": "{c}" },
+	{ "if": "abs(x * y - d) == min(abs(x * y - a), abs(x * y - b), abs(x * y - c), abs(x * y - d))", "choice": "{d}" }
+  ],
+  "var": {
+	"op": { "type": "operator", "value": "pickRandom([\"+\",\"-\"])" },
+	"x": { "type": "number", "value": "randomInt(100, 1000)" },
+    "y": { "type": "number", "value": "randomInt(3, 10)" },
+	"z": { "type": "number", "value": "randomInt(11, 20)" },
+    "a": { "type": "number", "value":"x * y {op} z" },
+	"b": { "type": "number", "value":"x * y {op} 30*z" },
+	"c": { "type": "number", "value":"x * y {op} 40*z" },
+	"d": { "type": "number", "value":"x * y {op} 50*z" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour calculer le produit de grands nombre : arrondis-les !</span><br><span class='i'>Ex : 664 x 9 peut s'arrondir à 700 et 9 et le résultat sera donc proche de 700 x 9.<br>Souviens-toi, 7 x 9 = 63 donc 700 x 9 = 6 300 (on rajoute 2 zéros).<br>Vu que 664 est inférieur à 700, le résultat sera donc <span class='g'>inférieur à 6 300</span>.</span></span>"
+}

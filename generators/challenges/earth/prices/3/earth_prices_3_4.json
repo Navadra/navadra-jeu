@@ -1,0 +1,19 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "Cette après-midi, Enzo a acheté {x} kg de pommes et {y} kg d’oranges.<br>Les pommes coûtaient {z} €/kg et les oranges {w} €/kg.<br>Combien a-t-il dépensé ?<br>{input1} €<br><span class='i'>Palpitante la vie d'Enzo...</span>",
+  "answer": [
+	  "x*z+y*w"
+  ],
+   "criteria": [
+	  "{input1} == x*z+y*w"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([1,2,3,4])" },
+	"y": { "type": "number", "value": "pickRandom([1,2,3,4])", "conditions": ["y!=x"] },
+	"z": { "type": "number", "value": "pickRandom([2,3,4,5])" },
+	"w": { "type": "number", "value": "pickRandom([2,3,4,5])", "conditions": ["w!=z"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, procède en 3 étapes :<br><br>1° : <span class='g'>calcule le prix des pommes en multipliant leur poids par leur prix </span>(ex : si Enzo a acheté 3 kg de pommes à 5€/kg, elles ont coûté : 3 x 5 = 15€).<br><br>2° : <span class='g'>calcule le prix des oranges en multipliant leur poids par leur prix </span>(ex : si Enzo a acheté 4 kg d'oranges à 4€/kg, elles ont coûté : 4 x 4 = 16€).<br><br>3° : <span class='g'>additionne les 2 montants obtenus </span>(ex : 15 + 16 = 31€).</span>"
+}

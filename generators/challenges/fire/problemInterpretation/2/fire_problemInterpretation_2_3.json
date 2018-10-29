@@ -1,0 +1,20 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Un coureur des vents adulte mesure {height} m de haut et pèse {weight} kg.<br>Il est capable de parcourir {distance1} km en {hour}h {minutes}.<br>Quelle est la question qui nécessite un calcul pour répondre ?",
+  "answer": [
+	  { "determined": true, "choice": "En combien de temps un coureur des vents parcourera {distance2} km ?" },
+	  { "determined": false, "choice": "Quelle distance peut parcourir un coureur des vents ?" },
+	  { "determined": false, "choice": "Quel est le poids d’un coureur des vents adulte ?" },
+	  { "determined": false, "choice": "Combien mesure un coureur des vents adulte ?" }
+  ],
+  "var": {
+	"height": { "type": "number", "value": "round(random(1.5,3),1)" },
+	"weight": { "type": "number", "value": "randomInt(50,70)" },
+	"distance1": { "type": "number", "value": "randomInt(20,31)" },
+	"distance2": { "type": "number", "value": "randomInt(20,31)", "conditions": ["abs(distance2-distance1)>2"] },
+	"hour": { "type": "number", "value": "1" },
+	"minutes": { "type": "number", "value": "randomInt(10,31)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si tu fais attention, tu te rends compte que la seule donnée qui ne figure pas dans l'énoncé est « <span class='g'>en combien de temps un coureur des vents parcourra la distance indiquée</span> ».</span>"
+}

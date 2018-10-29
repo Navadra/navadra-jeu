@@ -1,0 +1,44 @@
+{
+  "timer": 65000,
+  "type": 5,
+  "question": "Déplace les points D, E et F pour que les droites (d1), (d2) et (d3) soient les 3 médiatrices du triangle ABC.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "bisector(AB,MD)",
+	  "bisector(AC,NE)",
+	  "bisector(BC,OF)"
+  ],
+  "criteria": [
+	  "abs(angle1Value - 90) < 4",
+	  "abs(angle2Value - 90) < 4",
+	  "abs(angle3Value - 90) < 4"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(6,8)","random(4,5.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(2,4)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "triangle", "expression": "ABC" },
+	"side1": { "type": "line", "expression": "AB", "visible": false },
+	"side2": { "type": "line", "expression": "AC", "visible": false },
+	"side3": { "type": "line", "expression": "BC", "visible": false },
+	"bisector1": { "type": "line", "expression": "bisector(AB)", "visible": false },
+	"bisector2": { "type": "line", "expression": "bisector(AC)", "visible": false },
+	"bisector3": { "type": "line", "expression": "bisector(BC)", "visible": false },
+	"M": { "type": "point", "expression": "intersection(bisector1,side1)", "visible": false },
+	"N": { "type": "point", "expression": "intersection(bisector2,side2)", "visible": false },
+	"O": { "type": "point", "expression": "intersection(bisector3,side3)", "visible": false },
+	"D": { "type": "point", "value": ["random(-10,-8)","random(-4,-2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"E": { "type": "point", "value": [-13,"random(-4,-6)"], "labelDisplay": "top", "color": "blue", "fixed": false },
+	"F": { "type": "point", "value": [-13,"random(6,8)"], "labelDisplay": "top", "color": "green", "fixed": false },
+	"d1": { "type": "line", "expression": "MD", "labelDisplay": "top"},
+	"d2": { "type": "line", "expression": "NE", "labelDisplay": "top"},
+	"d3": { "type": "line", "expression": "OF", "labelDisplay": "top"},
+	"angle1": { "type": "angle", "expression": "DMB", "color": "red", "radius": 1, "labelDisplay": true },
+	"angle2": { "type": "angle", "expression": "ANE", "color": "blue", "radius": 1, "labelDisplay": true },
+	"angle3": { "type": "angle", "expression": "FOC", "color": "green", "radius": 1, "labelDisplay": true }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La médiatrice d'un segment est perpendiculaire à ce dernier et le coupe en son milieu.</span></span>"
+}

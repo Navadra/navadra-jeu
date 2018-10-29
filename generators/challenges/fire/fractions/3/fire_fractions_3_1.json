@@ -1,0 +1,22 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Simplifie la fraction {numerator2}/{denominator2} sachant que {factor} est un diviseur de {numerator2} et de {denominator2}.<br>{input1}{fraction}{input2}",
+  "answer": [
+	  "numerator1",
+	  "denominator1"
+  ],
+  "criteria": [
+	  "{input1} == numerator1",
+	  "{input2} == denominator1"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,10)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"factor": { "type": "number", "value": "randomInt(2,10)" },
+	"numerator2": { "type": "number", "value": "numerator1*factor" },
+	"denominator2": { "type": "number", "value": "denominator1*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour simplifier une fraction, il te suffit de <span class='g'>diviser le numérateur et le dénominateur par un même nombre</span>.<br><br><span class='i'>Ex : pour simplifier par 5 la fraction 40/45, procède en 2 étapes :<br>40 / 5 = <span class='g'>8</span><br>45 / 5 = <span class='g'>9</span><br>La fraction simplifiée est <span class='g'>8/9</span>.</span></span>"
+}

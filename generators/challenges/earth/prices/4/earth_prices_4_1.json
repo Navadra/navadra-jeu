@@ -1,0 +1,18 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "Marine joue à un jeu à la télé.<br>Elle a déjà gagné {x} € et on lui propose de rejouer pour gagner {y} fois plus.<br>En revanche, si elle perd, elle gagnera {z} fois moins.<br>Quel est l’écart entre la somme que Marine recevra en cas de victoire et celle qu’elle recevra en cas de défaite ?<br>{input1} €<br><span class='i'>À ce prix là, vaut mieux pas se planter !</span>",
+  "answer": [
+	  "x*y - x/z"
+  ],
+   "criteria": [
+	  "{input1} == x*y - x/z"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "1000*pickRandom([1,2,3,4,5])" },
+	"y": { "type": "number", "value": "pickRandom([2,3,4,5])" },
+	"z": { "type": "number", "value": "pickRandom([2,4,5,10])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, procède en 3 étapes :<br><br>1° : <span class='g'>calcule combien Marine peut gagner si elle gagne </span>(ex : si Marine a gagné 3 000€ et qu'elle peut gagner 3 fois plus, elle gagnerait 3 x 3 000 = 9 000€).<br><br>2° : <span class='g'>calcule combien Marine peut gagner si elle perd </span>(ex : si Marine a gagné 3 000€ et qu'en perdant elle gagnerait 4 fois moins, elle gagnerait 3 000 / 4 = 750 €).<br><br>3° : <span class='g'>effectue la différence entre les 2 montants </span>(ex : 9 000 – 750 = 8 250).</span>"
+}

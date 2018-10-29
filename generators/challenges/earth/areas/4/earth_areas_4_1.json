@@ -1,0 +1,29 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Ce carré a une aire de {area} cm².<br>Quelle est la longueur d'un de ses côtés ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(6,7)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD"},
+	"seg1": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length", "visible": false },
+	"area": { "type": "number", "value": "seg1Length*seg1Length" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un carré :<br><br><span class='g'>aire = côté x côté</span><br><br>Il suffit donc de trouver un nombre qui, multiplié par lui-même donne l'aire donnée.<br><br><span class='i'>Ex : si l'aire est égale à 49 cm², on sait que 7x7 = 49 donc les côtés du carré seront égaux à 7 cm.</span></span>"
+}

@@ -1,0 +1,30 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Quel point est à l’intersection des droites (d1) et (d2) ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "A intersection(d1,d2)", "choice": "A" },
+      { "if": "B intersection(d1,d2)", "choice": "B" },
+	  { "if": "C intersection(d1,d2)", "choice": "C" },
+	  { "if": "D intersection(d1,d2)", "choice": "D" },
+	  { "if": "E intersection(d1,d2)", "choice": "E" },
+	  { "if": "F intersection(d1,d2)", "choice": "F" }
+  ],
+  "var": {
+	"d1": { "type": "line", "value": ["random(-0.2,0.2)","random(4,6)"], "labelDisplay": "top" },
+	"d2": { "type": "line", "value": ["random(-2,-1)","random(-3,-1)"], "labelDisplay": "top" },
+	"d3": { "type": "line", "value": ["random(1,2)","randomInt(1,3)"], "labelDisplay": "top" },
+	"possibilities": { "type": "array", "expression": ["intersection(d1,d2)", "intersection(d1,d3)", "intersection(d2,d3)"] },
+	"order": { "type": "array", "value": ["randomInt(1,4)", "randomInt(1,4)", "randomInt(1,4)"], "conditions": "different(order)" },
+	"D": { "type": "point", "value": "possibilities[order[1]]", "labelDisplay": "top" },
+	"E": { "type": "point", "value": "possibilities[order[2]]", "labelDisplay": "top" },
+	"F": { "type": "point", "value": "possibilities[order[3]]", "labelDisplay": "top" },
+	"A": { "type": "point", "value": ["random(-10,10)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(D,E,F)" },
+	"B": { "type": "point", "value": ["random(-10,10)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(D,E,F,A)"  },
+	"C": { "type": "point", "value": ["random(-10,10)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(D,E,F,A,B)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'><span class='g'>L'intersection de deux droites correspond au point où elles se coupent.</span><br>Attention<span class='g'>, deux droites parallèles </span>ne se coupent jamais, elles <span class='g'>n'ont donc pas d'intersection.</span></span>"
+}

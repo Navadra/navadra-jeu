@@ -1,0 +1,17 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x} x □ = {y}<br>Combien vaut □ ?<br>{input1}",
+  "answer": [
+	  "y/x"
+  ],
+   "criteria": [
+	  "{input1} == y/x"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(1,10)" },
+    "y": { "type": "number", "value": "x*randomInt(1,10)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le symbole □ dans une équation avec des « x », tu peux faire passer les nombres de <span class='g'>l'autre côté du signe '=' en divisant</span>.<br><br><span class='i'>Ex : 7 x □ = 35 est équivalent à<br>□ = 35 / 7 (le 7 a changé de côté, on divise donc 35 par 7)<br><span class='g'>□ = 5</span></span></span>"
+}

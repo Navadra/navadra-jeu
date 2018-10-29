@@ -1,0 +1,15 @@
+{
+  "timer": 65000,
+  "type": 2,
+  "question": "Greymund rencontre 2 bébés.<br>Le premier, Léo, a {x} mois tandis que le deuxième, Léa, a {y} ans<br>Qui est le plus âgé des deux ?<br><span class='i'>Je pense qu'il se souvient davantage du vomi sur son tee-shirt que de la réponse à la question.</span>",
+  "answer": [
+	  { "if": "x > y*12", "choice": "Léo" },
+      { "if": "x < y*12", "choice": "Léa" },
+	  { "if": "x == y*12", "choice": "Égalité" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "6*randomInt(1,5)" },
+	"y": { "type": "number", "value": "round(random(0.5,2),1)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

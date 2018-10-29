@@ -1,0 +1,27 @@
+{
+  "timer": 45000,
+  "type": 4,
+  "question": "Cet {slot1} BÂC a pour {slot2} les {slot3} [AB) et [AC).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "(l') angle",
+	  "côté(s)",
+	  "demi-droite(s)",
+	  "sommet(s)",
+	  "segment(s)",
+	  "droite(s)",
+	  "point(s)"
+
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-10,-2)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["randomInt(0,8)","randomInt(2,6)"], "labelDisplay": "top", "conditions": "far(A)" },
+	"C": { "type": "point", "value": ["randomInt(10,16)","randomInt(-8,-5)"], "labelDisplay": "top", "conditions": "far(A,B)" },
+	"d1": { "type": "line", "expression": "AB" },
+	"d2": { "type": "line", "expression": "AC" },
+	"angle": { "type": "angle", "expression": "CAB",  "color": "red"}
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/anglesHint2.png' /><span class='mh2 mg2 l95 ib'>Utilise l'exemple ci-dessus pour ne plus te tromper entre <span class='g'>sommet</span>, <span class='g'>angle</span>, <span class='g'>demi-droites</span> et <span class='g'>côtés</span>.</span>"
+}

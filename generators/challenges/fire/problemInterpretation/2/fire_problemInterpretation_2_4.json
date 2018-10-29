@@ -1,0 +1,19 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Tu observes un aigle voler à {altitude} m au dessus du sol à {hour}h {minutes} puis s’en aller.<br>{duration} min plus tard il passe près de toi mais disparaît en {seconds} secondes.<br>Quelle est la question qui nécessite un calcul pour répondre ?",
+  "answer": [
+	  { "determined": false, "choice": "Combien de temps l’aigle est resté près de toi ?" },
+	  { "determined": true, "choice": "Quelle heure était-il quand tu as vu l’aigle pour la seconde fois ?" },
+	  { "determined": false, "choice": "Combien de fois l’aigle est passé ?" },
+	  { "determined": false, "choice": "A quelle altitude maximale l'aigle  a-t-il volé ?" }
+  ],
+  "var": {
+	"altitude": { "type": "number", "value": "randomInt(10,30)" },
+	"hour": { "type": "number", "value": "randomInt(7,20)" },
+	"minutes": { "type": "number", "value": "randomInt(10,60)", "conditions": ["minutes!=altitude"] },
+	"duration": { "type": "number", "value": "randomInt(5,31)", "conditions": ["duration!=minutes", "duration!=altitude"] },
+	"seconds": { "type": "number", "value": "randomInt(10,60)", "conditions": ["seconds!=duration", "seconds!=minutes", "seconds!=altitude"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si tu fais attention, tu te rends compte que la seule donnée qui ne figure pas dans l'énoncé est « <span class='g'>l'heure qu'il était quand l'aigle est passé pour la seconde fois</span> ».</span>"
+}

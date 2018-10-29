@@ -1,0 +1,27 @@
+{
+  "timer": 80000,
+  "type": 2,
+  "question": "Ce cercle a un périmètre arrondi de {perimeter} cm.<br>Quelle est la longueur de son rayon ?<br>Rappel : π ≈ 3",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{choice1} cm" },
+      { "determined": false, "choice": "{choice2} cm" },
+	  { "determined": false, "choice": "{choice3} cm" },
+	  { "determined": false, "choice": "{choice4} cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"radius1": { "type": "number", "value": "randomInt(3,10)" },
+	"circle1": { "type": "circle", "expression": "radius(A,radius1)" },
+	"perimeter": { "type": "number", "value": "round(2*radius1*pi,1)" },
+	"choice1": { "type": "number", "value": "round(radius1)" },
+	"choice2": { "type": "number", "value": "round(radius1*2)" },
+	"choice3": { "type": "number", "value": "round(radius1/2)" },
+	"choice4": { "type": "number", "value": "round(radius1*4)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br><span class='g'>Le périmètre d'un cercle se calcule à l'aide de cette formule :<br><br>Périmètre =  2 x π x R (ou π = 3,14… et R est le rayon du cercle) donc</span><br><br><span class='g'>R = Périmètre / (2 x π)</span><br><br>Ex : si le périmètre du cercle vaut environ 50 cm, on sait que son rayon sera égal au périmètre divisé par 2 x π.<br>Comme π vaut environ 3, on peut diviser son périmètre par 6 pour avoir une estimation du rayon. Comme 6 x 8 = 48, on sait donc que son rayon sera proche de 8 cm.</span>"
+}

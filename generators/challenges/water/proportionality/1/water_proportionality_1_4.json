@@ -1,0 +1,19 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "En {x} h, une Brute des plaines parcourt {y} km, quelle distance aura-t-elle parcouru en {z} h ?<br>{input1} <span class='g'>km</span>",
+  "answer": [
+	  "y*factor"
+  ],
+   "criteria": [
+	  "{input1} == y*factor"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"y": { "type": "number", "value": "randomInt(4,7)*x", "conditions": ["y!=x"] },
+	"factor": { "type": "number", "value": "pickRandom([2,4])" },
+	"z": { "type": "number", "value": "x*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons qu'en 2 h, une Brute des plaines parcourt <span class='g'>4 km </span>et qu'on souhaite savoir la distance qu'elle aura parcouru en 8 h.<br><br>On peut remarquer que 8 h, c'est <span class='g'>4 fois plus long </span>que 2 h (2x4 = 8) donc elle aura parcouru <span class='g'>4 fois plus de distance</span> soit 4x4 = <span class='g'>16 km</span>.</span>"
+}

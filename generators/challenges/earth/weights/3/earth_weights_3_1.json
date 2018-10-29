@@ -1,0 +1,33 @@
+{
+  "timer": 55000,
+  "type": 4,
+  "question": "Classe les masses suivantes de la plus grande à la plus petite.<br>{slot1} ≥ {slot2} ≥ {slot3}",
+  "answer": [
+	  "{x} {unitX}",
+	  "{y} {unitY}",
+	  "{z} {unitZ}"
+  ],
+  "var": {
+	"kilograms": { "type": "number", "value": "pickRandom([0.0002, 0.005, 0.009, 0.011, 0.0015])" },
+	"grams": { "type": "number", "value": "pickRandom([1, 4, 7, 10, 13, 16])" },
+	"milligrams": { "type": "number", "value": "pickRandom([3000, 60000, 8000, 120000, 14000])" },
+	"choices": { "type": "array", "value": ["kilograms","grams","milligrams"] },
+	"choicesString": { "type": "array", "expression": ["kg","g","mg"] },
+	"gramsConverted": { "type": "number", "value": "grams/1000" },
+	"milligramsConverted": { "type": "number", "value": "milligrams/1000000" },
+	"choicesBis": { "type": "array", "value": ["kilograms","gramsConverted","milligramsConverted"] },
+	"max1": { "type": "number", "value": "max(choicesBis)" },
+	"min1": { "type": "number", "value": "min(choicesBis)" },
+	"int1": { "type": "number", "value": "pickRandom(choicesBis)", "conditions": ["int1!=max1","int1!=min1"] },
+	"indexX": { "type": "number", "value": "indexOf(choicesBis,max1) +1" },
+	"x": { "type": "number", "value": "choices[indexX]" },
+	"unitX": { "type": "string", "value": "choicesString[indexX]" },
+	"indexY": { "type": "number", "value": "indexOf(choicesBis,int1) +1" },
+	"y": { "type": "number", "value": "choices[indexY]" },
+	"unitY": { "type": "string", "value": "choicesString[indexY]" },
+	"indexZ": { "type": "number", "value": "indexOf(choicesBis,min1) +1" },
+	"z": { "type": "number", "value": "choices[indexZ]" },
+	"unitZ": { "type": "string", "value": "choicesString[indexZ]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

@@ -1,0 +1,15 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Lors de ton dernier combat, ton premier sort a infligé {damages1} dégâts à un monstre qui avait {life1} points de vie.<br>Quelle donnée te manque pour savoir si tu as gagné le combat ?",
+  "answer": [
+	  { "determined": false, "choice": "les points de vie de départ du monstre" },
+	  { "determined": true, "choice": "la somme des dégâts de tes autres sorts" },
+	  { "determined": false, "choice": "les dégâts infligés par ton premier sort" }
+  ],
+  "var": {
+	"damages1": { "type": "number", "value": "randomInt(50,400)" },
+	"life1": { "type": "number", "value": "randomInt(5000,10000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>L'énoncé te donne le <span class='g'>nombre de dégâts infligés par ton premier coup </span>et le <span class='g'>nombre total de points de vie du monstre</span>, quelle dernière donnée te manque-t-il pour répondre à la question ?</span>"
+}

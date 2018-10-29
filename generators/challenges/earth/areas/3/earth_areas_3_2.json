@@ -1,0 +1,38 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "ABCD est un carré tandis qu'AEFD est un rectangle.<br>Quelle est l'aire de la zone en rouge ?<br>{input1} cm²",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "area"
+  ],
+   "criteria": [
+	  "{input1} == area"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) >= 6", "round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"E": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"absF": { "type": "number", "value": "random(6,7)" },
+	"ordF": { "type": "number", "value": "random(0,5)", "conditions": ["abs(sqrt((ordB-ordF)^2 + (absB-absF)^2) - sqrt((ordB-ordA)^2 + (absB-absA)^2)) >= 1"] },
+	"F": { "type": "point", "value": ["absF","ordF"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(2,3)"], "labelDisplay": "bottom" },
+	"rectangle1": { "type": "rectangle", "expression": "AEFD"},
+	"circle1": { "type": "circle", "expression": "radius(A,D)", "visible": false },
+	"line1": { "type": "line", "expression": "AE", "visible": false },
+	"B": { "type": "point", "expression": "intersection(circle1,line1,1)", "labelDisplay": "top" },
+	"C": { "type": "point", "expression": "middle(DF)", "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD"},
+	"quadri1": { "type": "quadrilateral", "expression": "BEFC", "color": "red"},
+	"seg1": { "type": "segment", "expression": "DF", "labelDisplay": "bottom", "labelType":"length" },
+	"seg2": { "type": "segment", "expression": "AD", "labelDisplay": "left", "labelType":"length" },
+	"area": { "type": "number", "value": "abs(seg1Length*seg2Length - seg2Length*seg2Length)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour calculer l'aire de la zone en rouge, il faut procéder en 3 étapes :</span><br><br><span class='g'>1° : calculer l'aire du rectangle</span><br><span class='i'>Ex : si un côté du rectangle vaut 7 cm et que le côté consécutif vaut 9 cm, alors son aire vaut 9x7 = 63 cm².</span><br><br><span class='g'>2° : calculer l'aire du carré</span><br><span class='i'>Ex : si les côtés du carré mesurent 7 cm alors son aire vaut 7x7 = 49 cm².</span><br><br><span class='g'>3° : faire la différence de ces aires</span><br><span class='i'>Ex : on soustrait l'aire du carré à celle du rectangle (63 – 49) et on obtient l'aire de la zone en rouge soit 14 cm².</span></span>"
+}

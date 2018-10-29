@@ -1,0 +1,22 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "Trouve un nombre compris entre {x} et {y}.<br>{input1}",
+  "answer": [
+	  "d"
+  ],
+  "criteria": [
+	  "{input1} > x",
+	  "{input1} < y"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(10, 50)" },
+    "b": { "type": "number", "value": "round(random(0, 0.449),3)" },
+	"c": { "type": "number", "value": "round(random(0.551, 1),3)" },
+	"d": { "type": "number", "value": "round(random(a+b+0.001, a+c-0.001),3)" },
+	"x": { "type": "number", "value": "round(a + b, 5)" },
+	"y": { "type": "number", "value": "round(a + c, 5)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver un nombre compris entre 2 nombres, <span class='g'>commence par trouver le premier chiffre différent entre ces nombres puis choisi un chiffre entre ceux là</span>.<br><span class='i'>Ex : 43,362 et 43,968.<br>Les chiffres des dizaines (4) et des unités (3) de ces 2 nombres sont identiques.<br>Par contre le chiffre des dixièmes du 1° (3) est différent de celui du 2° (9).<br>Prenons un chiffre entre 3 et 9 : 5 par exemple.<br>On vient de trouver un nombre (<span class='g'>43,5</span>) compris entre 43,362 et 43,968 !</span></span>"
+}

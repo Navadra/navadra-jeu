@@ -1,0 +1,38 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Quelle est la fraction <span class='g'>(simplifiée ou non)</span> de ce tableau qui est coloriée ?<br>{input1}{fraction}{input2}",
+  "view": {
+  	  "geometry": [0, "Ymax", "Xmax", 0],
+	  "grid": true
+  },
+  "answer": [
+	  "numerator",
+	  "denominator"
+  ],
+  "criteria": [
+	  "{input1}/max(1,{input2}) == numerator/denominator"
+  ],
+  "type_answer": "single",
+  "var": {
+	"Ymax": { "type": "number", "value": "randomInt(2, 4)"},
+	"Xmax": { "type": "number", "value": "2*Ymax"},
+	"Y": { "type": "number", "value": "randomInt(1, Ymax)" },
+	"X": { "type": "number", "value": "randomInt(1, Xmax)" },
+	"A": { "type": "point", "value": [0,"Y"] },
+	"B": { "type": "point", "value": ["X","Y"] },
+	"C": { "type": "point", "value": ["X",0] },
+	"D": { "type": "point", "value": [0,0] },
+	"E": { "type": "point", "value": [0,"Ymax"], "visible": false },
+	"F": { "type": "point", "value": ["Xmax","Ymax"], "visible": false },
+	"G": { "type": "point", "value": ["Xmax",0], "visible": false },
+	"H": { "type": "point", "value": [0,0], "visible": false },
+	"squareUser": { "type": "quadrilateral", "expression": "ABCD", "color": "red" },
+	"square1": { "type": "quadrilateral", "expression": "ABCD", "visible": false, "labelDisplay": "top", "labelType": "area"},
+	"squareMax": { "type": "quadrilateral", "expression": "EFGH", "visible": false, "labelDisplay": "top", "labelType": "area"},
+	"gcdFrac": { "type": "number", "value": "gcd(square1Area, squareMaxArea)" },
+	"numerator": { "type": "number", "value": "square1Area/gcdFrac" },
+	"denominator": { "type": "number", "value": "squareMaxArea/gcdFrac" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour déterminer la fraction d'un quadrillage qui est coloriée, commence par <span class='g'>compter combien de cases possède le quadrillage</span>. Pour aller plus vite, tu peux multiplier le nombre de lignes par le nombre de colonnes.<br><span class='i'>Ex : un quadrillage qui a 3 lignes et 4 colonnes possède donc 3x4 = 12 cases.</span><br><br>Il te suffit ensuite de <span class='g'>compter le nombre de cases coloriées </span>et de <span class='g'>simplifier la fraction si c'est possible</span>.<br><span class='i'>Ex : s'il y a 2 cases coloriées dans un quadrillage de 12 cases on a donc 2/12 qui est colorié ce qui peut se simplifier en <span class='g'>1/6 </span>(en divisant par 2 le numérateur et le dénominateur).</span></span>"
+}

@@ -1,0 +1,16 @@
+{
+  "timer": 25000,
+  "type": 2,
+  "question": "{numerator1}/{denominator1} x {factor} ... {factor}",
+  "answer": [
+    { "if": "numerator1 < denominator1", "choice": " &lt; " },
+    { "if": "numerator1 == denominator1", "choice": " = " },
+    { "if": "numerator1 > denominator1", "choice": " &gt; " }
+  ],
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(20,50)"},
+	"denominator1": { "type": "number", "value": "randomInt(20,50)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"factor": { "type": "number", "value": "randomInt(100,1000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si on multiplie un nombre par une fraction, le résultat sera <span class='g'>plus grand que le nombre </span>si la fraction est <span class='g'>supérieure à 1 </span>et <span class='g'>plus petit</span> si la fraction est <span class='g'>inférieure à 1</span>.<br><br><span class='i'>Ex : pour comparer 40/39 x 968 et 968 on remarque que :<br>40 est plus grand que 39<br>Donc 40/39 est plus grand que 1.<br>Le résultat obtenu est donc plus grand que le nombre de départ (968).</span></span>"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "navadra",
+  "version": "1.0.0",
+  "homepage": "http://jeu.navadra.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://jrevault@bitbucket.org/navadra/navadra.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-scp2": "^0.2.0",
+    "gulp-ssh": "^0.6.0"
+  }
+}

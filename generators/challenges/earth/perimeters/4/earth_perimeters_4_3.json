@@ -1,0 +1,30 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "ABC et BCD sont des triangles isocèles-rectangles.<br>Quel est le périmètre de cette figure ?<br>Rappel : seuls les contours de la figure comptent !<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "2*seg1Length + 2*seg2Length"
+  ],
+   "criteria": [
+	  "{input1} == 2*seg1Length + 2*seg2Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(0,4)","random(3,5)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "isoRightAngleTriangle", "expression": "ABC" },
+	"circle1": { "type": "circle", "expression": "radius(C,B)", "visible": false },
+	"line1": { "type": "line", "expression": "perpendicular(BC,C)", "visible": false },
+	"D": { "type": "point", "expression": "intersection(circle1,line1,1)", "labelDisplay": "bottom" },
+	"triangle2": { "type": "triangle", "expression": "BCD" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "DCB", "color": "red", "radius": 1 },
+	"seg1": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length", "color": "blue" },
+	"seg2": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length", "color": "blue" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/perimetersHint2.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés mais attention : seuls les contours de la figure comptent !</span><br><br>Dans le cas de cette figure composée de 2 triangles isocèles-rectangles, AB, BC et CD sont égaux tandis que AC et BD sont égaux.<br><br>Il ne reste maintenant plus qu'à additionner les côtés extérieurs (les côtés en rouge) pour déterminer son périmètre.<br><br>Dans cet exemple, le périmètre vaut donc 11 + 8 + 8 + 11 = 38 cm.</span>"
+}

@@ -1,0 +1,31 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Combien de bonnes réponses Taealle a-t-elle eu au défi n°{x} ?<br>{input1}",
+  "view": {
+  	  "diagram": "spider",
+	  "title": "Nombre de bonnes réponses par défi pour Taealle"
+  },
+  "answer": [
+	  "answer"
+  ],
+   "criteria": [
+	  "{input1} == answer"
+  ],
+  "type_answer": "single",
+  "var": {
+	"serieValues": { "type": "array", "value": [1,2,4] },
+	"serie1": { "type": "array", "value": "shuffle(serieValues)" },
+	"serie1Name": { "type": "string", "expression": "Bonnes réponses de Taealle" },
+	"challenge1": { "type": "string", "expression": "défi n°1" },
+	"challenge2": { "type": "string", "expression": "défi n°2" },
+	"challenge3": { "type": "string", "expression": "défi n°3" },
+	"legend": { "type": "array", "value": ["challenge1", "challenge2", "challenge3"] },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "radar", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "pointPlacement": "on", "showTooltip": false },
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"answer": { "type": "number", "value": "serie1[x]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/radarsHint1.png' /><span class='mh2 mg2 l95 ib'>Sur ce type de représentation en radar, <span class='g'>plus les points sont éloignés du centre de la figure, plus leur valeur est élevée</span>.<br>Pour <span class='g'>connaitre précisément leur valeur</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br><span class='i'>Ainsi, sur cet exemple Taealle a eu 2 bonnes réponses au défi n°1, 1 bonne réponse au défi n°2 et 4 bonnes réponses au défi n°3.<br>Elle a donc eu le plus de bonnes réponses au défi n°3 et le moins de bonnes réponses au défi n°2.</span></span>"
+}

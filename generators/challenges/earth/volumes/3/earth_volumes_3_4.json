@@ -1,0 +1,31 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Haleham souhaite trouver un récipient adapté pour stocker les {x} {unitX} de sang de monstre qu'il a soigneusement récolté.<br>Il a le choix entre 3 récipients, lequel lui conseilles-tu ?<br><span class='i'>Le sang de monstre, c'est pas un truc de rigolo, il sera sûrement très énervé s'il en perdait une seule goutte !</span>",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths)", "choice": "{a} {unitA}" },
+      { "if": "b*10^baseB == max(allLengths)", "choice": "{b} {unitB}" },
+	  { "if": "c*10^baseC == max(allLengths)", "choice": "{c} {unitC}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL", "dL", "L"] },
+	"baseA": { "type": "number", "value": "pickRandom([1,2,4])" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "10*randomInt(3,10)" },
+	"baseB": { "type": "number", "value": "pickRandom([1,2,4])", "conditions": ["baseB!=baseA"] },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"b": { "type": "number", "value": "10*randomInt(3,10)", "conditions": ["b!=a"] },
+	"baseC": { "type": "number", "value": "pickRandom([1,2,4])", "conditions": ["baseC!=baseB", "baseC!=baseA"] },
+	"unitC": { "type": "string", "value": "lengths[baseC]" },
+	"c": { "type": "number", "value": "10*randomInt(3,10)", "conditions": ["c!=a","c!=b"] },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB", "c*10^baseC"] },
+	"allNumbers": { "type": "array", "value": ["a", "b", "c"] },
+	"allUnits": { "type": "array", "value": ["unitA", "unitB", "unitC"] },
+	"maxLength": { "type": "number", "value": "max(allLengths)" },
+	"index": { "type": "number", "value": "indexOf(allLengths,maxLength) + 1" },
+	"xMax": { "type": "number", "value": "allNumbers[index]" },
+	"x": { "type": "number", "value": "randomInt(1,xMax)", "conditions": ["x>xMax-10"] },
+	"unitX": { "type": "number", "value": "allUnits[index]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, le seul moyen de recueillir tout le sang de monstre <span class='g'>avec un seul récipient </span>et de choisir <span class='g'>un récipient ayant un plus gros volume que le volume de sang à recueillir</span>. </span>"
+}

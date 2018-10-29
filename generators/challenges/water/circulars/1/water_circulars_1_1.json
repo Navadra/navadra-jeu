@@ -1,0 +1,31 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "En quelle année ces monstres se sont-ils fait combattre ?<br>{input1}",
+  "view": {
+  	  "diagram": "pies",
+	  "title": "Répartition des monstres combattus par une équipe de {x} joueurs pour la saison de {season}."
+  },
+  "answer": [
+	  "year"
+  ],
+   "criteria": [
+	  "{input1} == year"
+  ],
+  "type_answer": "single",
+  "var": {
+	"legend": { "type": "array", "expression": ["Vautours", "Vipères", "Cobras", "Gavials"] },
+	"serie1": { "type": "array", "value": ["randomInt(5,21)","randomInt(5,21)","randomInt(5,21)","randomInt(5,21)"] },
+	"x": { "type": "number", "value": "randomInt(2,6)" },
+	"seasons": { "type": "array", "expression": ["Janvier 2016", "Février 2016", "Mars 2016", "Avril 2016", "Mai 2016", "Juin 2015", "Juillet 2015", "Août 2015", "Septembre 2015", "Octobre 2015", "Novembre 2015", "Décembre 2015"] },
+	"years": { "type": "array", "expression": [2016, 2016, 2016, 2016, 2016, 2015, 2015, 2015, 2015, 2015, 2015, 2015] },
+	"rand": { "type": "string", "value": "randomInt(1,13)" },
+	"season": { "type": "string", "value": "seasons[rand]" },
+	"year": { "type": "string", "value": "years[rand]" },
+	"serie1Name": { "type": "array", "expression": "% des monstres" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": {"type": "options", "expression": "circulars", "colorByPoint": true, "showLegend": true }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/circularsHint1.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme circulaire, <span class='g'>chaque portion colorée du diagramme représente la proportion d'un type de monstre parmi les monstres combattus en une saison.</span><br><br>Comme tu peux le voir, <span class='g'>la somme des pourcentages fait 100% </span>montrant qu'on représente toujours toutes les catégories. <br><br><span class='i'>Si on te demande le type de monstre représentant 17% des monstres combattus, il te suffit de lire chacune des légendes et tu pourras ainsi déterminer que, dans ce cas, ce sont les vipères.</span></span>"
+}

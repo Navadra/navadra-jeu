@@ -1,0 +1,24 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "ABC est un triangle {chosenType}. Peut-on déterminer la mesure des angles AĈB et BÂC ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "Oui" },
+      { "determined": false, "choice": "Il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,6)","random(4,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["isocèle en C", "isocèle-rectangle en B"] },
+	"typeEng": { "type": "array", "expression": ["isoTriangle", "isoRightAngleTriangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABC" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 2, "labelDisplay": true, "labelType": "value" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle isocèle comme isocèle-rectangle, deux angles sont égaux mais pas le troisième.</span><br><br>Comme on sait que la somme des angles d'un triangle fait 180°, que 2 angles sont égaux et que l'on connait la mesure d'un des angles on peut déterminer la longueur des angles restants !<br><br><span class='i'>Ex dans un triangle isocèle : l'angle ABC mesure 51°, on sait que l'angle BÂC vaut également 51° ce qui permet de calculer AĈB = 180 – 51 – 51 = 180 – 102 = 78°<br><br>Ex dans un triangle isocèle-rectangle : l'angle ABC mesure 90°, on sait que les angle BÂC et AĈB sont égaux.<br>BÂC + AĈB + 90 = 180, comme BÂC et AĈB sont égaux :<br>2 x BÂC + 90 = 180, soit<br>2 x BÂC = 90 donc<br>BÂC = AĈB = 45°</span></span>"
+}

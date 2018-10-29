@@ -1,0 +1,22 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Un ours fait {x} fois le tour de son territoire qui fait {y} {baseLength} de périmètre.<br>Combien a-t-il parcouru <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span><br><span class='i'>Et oui, ça n'a pas grand chose à faire un ours...</span>",
+  "answer": [
+	  "round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["m", "dam", "hm", "km"] },
+	"basePower": { "type": "number", "value": "4" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "1" , "conditions": ["convertedPower!=basePower"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(3,10)" },
+	"y": { "type": "number", "value": "randomInt(2,10)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit de <span class='g'>multiplier le nombre de tour effectués </span>par l'ours <span class='g'>par le périmètre </span>de son territoire pour connaitre la distance parcourue puis de <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

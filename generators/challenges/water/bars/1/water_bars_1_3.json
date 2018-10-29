@@ -1,0 +1,28 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Quel est le numéro du jour où {x} monstres ont été tués ?<br>{input1}",
+  "view": {
+  	  "diagram": "bars",
+	  "title": "Nombre de monstres tués par jour sur Navadra"
+  },
+   "answer": [
+	  "index"
+  ],
+   "criteria": [
+	  "{input1} == index"
+  ],
+  "type_answer": "single",
+  "var": {
+	"serieValues": { "type": "array", "value": ["10","20","30","40","50","60","70","80","90","100"] },
+	"serie1": { "type": "array", "value": "shuffle(serieValues)" },
+	"x": { "type": "number", "value": "pickRandom(serie1)" },
+	"index": { "type": "number", "value": "indexOf(serie1,x) + 1" },
+	"legend": { "type": "array", "expression": ["1°jour", "2°jour", "3°jour", "4°jour", "5°jour", "6°jour", "7°jour", "8°jour", "9°jour", "10°jour"] },
+	"serie1Name": { "type": "array", "expression": " " },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "bars", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "type_diagram": "column", "evaluate": false, "showLegend": false, "showTooltip": false }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/barsHint1.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme, <span class='g'>chaque barre représente un nombre de monstres tués un jour donné</span>.<br>Pour <span class='g'>connaitre le nombre de monstres tués un jour donné</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><span class='i'>Ainsi, sur cet exemple, le 9° jour, il y a eu 10 monstres tués.</span><br><br>Si à l'inverse, on cherche à <span class='g'>connaître quel jour il y a eu 35 monstres tués</span>, on <span class='g'>trace une ligne imaginaire sur la graduation verticale correspondant à 35 monstres tués </span>et on détermine à quel jour cela correspond.<br><span class='i'>Ainsi, c'est le 4° jour qu'il y a eu 35 monstres tués.</span></span>"
+}

@@ -1,0 +1,25 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Le rayon du cercle <span class='bleu g'>bleu</span> est <span class='g'>2</span> fois plus grand que celui du cercle <span class='rouge g'>rouge</span>.<br>L'aire du cercle <span class='bleu g'>bleu</span> est combien de fois plus grande que celle du cercle <span class='rouge g'>rouge</span> ?<br>{input1}",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "4"
+  ],
+   "criteria": [
+	  "{input1} == 4"
+  ],
+  "var": {
+	"A": { "type": "point", "value": [-10,0], "labelDisplay": "top" },
+	"B": { "type": "point", "value": [-15,0], "labelDisplay": "top" },
+	"circle1": { "type": "circle", "expression": "radius(A,B)", "color": "red"},
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "bottom", "labelType": "length", "precision": 1 },
+	"C": { "type": "point", "value": [8,0], "labelDisplay": "top" },
+	"D": { "type": "point", "value": [18,0], "labelDisplay": "top" },
+	"circle2": { "type": "circle", "expression": "radius(C,D)", "color": "blue"},
+	"seg2": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length", "precision": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br><span class='g'>Si on multiplie par 2 le rayon d'un cercle, son aire sera elle multipliée par 4.</span><br><br><span class='i'>Ex : si un cercle a un rayon de 3 cm son aire sera égale à π x 3 x 3 ≈ 27 cm².<br><br>Si on multiplie par 2 son rayon, sa nouvelle aire sera égale à π x 6 x 6 ≈ 108 cm².</span></span>"
+}

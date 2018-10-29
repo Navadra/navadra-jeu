@@ -1,0 +1,33 @@
+{
+  "timer": 50000,
+  "type": 5,
+  "question": "Déplace le point B pour que {targetString} soit égale à {length} cm (tolérance 0,1 cm).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "segmentLength(target,{length})"
+  ],
+  "criteria": [
+	  "abs(targetLength - {length}) < 0.2"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-2,2)","random(4,5.5)"], "labelDisplay": "top", "color": "red", "fixed": false},
+	"C": { "type": "point", "value": ["random(-5.5,-2.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(2.5,5.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"E": { "type": "point", "value": ["random(6,8)","random(6,7)"], "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "precision": 0.1 },
+	"segment2": { "type": "segment", "expression": "CB", "labelDisplay": "left", "labelType": "length", "precision": 0.1 },
+	"segment3": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length", "precision": 0.1 },
+	"segment4": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length", "precision": 0.1 },
+	"segment5": { "type": "segment", "expression": "DB", "labelDisplay": "right", "labelType": "length", "precision": 0.1 },
+	"segment6": { "type": "segment", "expression": "EB", "labelDisplay": "top", "labelType": "length", "precision": 0.1 },
+	"segment7": { "type": "segment", "expression": "DE", "labelDisplay": "right", "labelType": "length", "precision": 0.1 },
+	"length": { "type": "number", "value": "randomInt(4,9)" },
+	"targetString": { "type": "string", "value": "pickRandom([\"AB\",\"CB\",\"DB\",\"EB\"])" },
+	"target": { "type": "segment", "value": "targetString",  "labelDisplay": "right", "labelType": "length", "precision": 0.1, "visible":false}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pas de piège dans ce cas-là, à toi d'identifier les 2 points d'intérêt et à déplacer B pour attendre la longueur demandée.</span></span>"
+}

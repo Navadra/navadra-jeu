@@ -1,0 +1,36 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "La droite (d) est une ... du triangle ABC.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "hauteur" },
+      { "determined": true, "choice": "médiatrice" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(8,15)","random(1,3)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-8,-6)","random(-7,-4)"], "labelDisplay": "right" },
+	"E": { "type": "point", "expression": "middle(BC)", "labelDisplay": "bottom" },
+	"F": { "type": "point", "expression": "middle(AC)", "labelDisplay": "left" },
+	"G": { "type": "point", "expression": "middle(AB)", "labelDisplay": "top" },
+	"d1": { "type": "line", "expression": "BC", "visible": false},
+	"d2": { "type": "line", "expression": "AC", "visible": false},
+	"d3": { "type": "line", "expression": "AB", "visible": false},
+	"bisectors": { "type": "array", "expression": ["perpendicular(BC,E)", "perpendicular(AC,F)", "perpendicular(AB,G)"] },
+	"halfside1": { "type": "array", "expression": ["BE", "AF", "AG"] },
+	"halfside2": { "type": "array", "expression": ["CE", "CF", "BG"] },
+	"angles": { "type": "array", "expression": ["d,d1", "d,d2", "d,d3"] },
+	"rand": { "type": "number", "value": "randomInt(1,4)" },
+	"d": { "type": "line", "value": "bisectors[rand]", "labelDisplay": "top" },
+	"angle1": { "type": "angle", "value": "angles[rand]", "color": "red", "radius": 1 },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "BC" },
+	"segment3": { "type": "segment", "expression": "AC" },
+	"segment4": { "type": "segment", "value": "halfside1[rand]", "labelDisplay": "bottom", "labelType": "length" },
+	"segment5": { "type": "segment", "value": "halfside2[rand]", "labelDisplay": "bottom", "labelType": "length" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La hauteur d'un segment dans un triangle est perpendiculaire à ce segment et passe par son sommet opposé.</span><br><br><span class='g'>La médiatrice d'un segment est perpendiculaire à ce dernier et le coupe en son milieu.</span></span>"
+}

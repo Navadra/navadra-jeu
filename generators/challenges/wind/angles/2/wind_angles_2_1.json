@@ -1,0 +1,25 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "À vue d’œil, l’angle en bleu est … ? ",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "possibilities[random] == \"acuteTriangle\"", "choice": "aigu" },
+      { "if": "possibilities[random] == \"obtuseTriangle\"", "choice": "obtus" },
+	  { "if": "possibilities[random] == \"rightAngleTriangle\"", "choice": "droit" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(8,10)","random(-7,-5)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["0","random(4,7)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["10","random(4,7)"], "labelDisplay": "top" },
+	"possibilities": { "type": "array", "expression": ["acuteTriangle", "obtuseTriangle", "rightAngleTriangle"] },
+	"random": { "type": "number", "value": "randomInt(1,4)" },
+	"triangle1": { "type": "possibilities[random]", "expression": "ABC" },
+	"angle1": { "type": "angle", "expression": "BAC", "color": "red"},
+	"angle2": { "type": "angle", "expression": "CBA", "color": "blue"},
+	"angle3": { "type": "angle", "expression": "ACB", "color": "green"}
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/anglesHint3.png' /><span class='mh2 mg2 l95 ib'>Un angle <span class='g'>obtus</span> mesure <span class='g'>plus de 90° </span>(<span class='i'>en bleu sur l'exemple</span>).<br><br>Un angle <span class='g'>droit</span> mesure <span class='g'>exactement 90°.</span><br><br>Un angle <span class='g'>aigu</span> mesure <span class='g'>moins de 90°</span><span class='i'>(en rouge sur l'exemple).<span class='g'></span></span></span>"
+}

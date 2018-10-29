@@ -1,0 +1,36 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Quelle est la couleur de l'angle {chosenAngle} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "possibilities[random] == \"AEC\"", "choice": "rouge" },
+      { "if": "possibilities[random] == \"BEA\"", "choice": "bleu" },
+	  { "if": "possibilities[random] == \"CEB\"", "choice": "vert" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-2,2)","random(-7,-5)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-10,-5)","random(4,7)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(5,10)","random(4,7)"], "labelDisplay": "top" },
+	"l1": { "type": "line", "expression": "AB" },
+	"l2": { "type": "line", "expression": "AC" },
+	"l3": { "type": "line", "expression": "BC" },
+	"bisector1": { "type": "line", "expression": "bisector(AB)", "visible": false },
+	"bisector2": { "type": "line", "expression": "bisector(BC)", "visible": false },
+	"bisector3": { "type": "line", "expression": "bisector(AC)", "visible": false },
+	"E": { "type": "point", "expression": "intersection(bisector1,bisector2)", "labelDisplay": "top" },
+	"l4": { "type": "halfline", "expression": "EA" },
+	"l5": { "type": "halfline", "expression": "EC" },
+	"l6": { "type": "halfline", "expression": "EB" },
+	"angle1": { "type": "angle", "expression": "AEC", "color": "red"},
+	"angle2": { "type": "angle", "expression": "BEA", "color": "blue"},
+	"angle3": { "type": "angle", "expression": "CEB", "color": "green"},
+	"possibilities": { "type": "array", "expression": ["AEC", "BEA", "CEB"] },
+	"possibilitiesAccent": { "type": "array", "expression": ["CÊA", "AÊB", "BÊC"] },
+	"random": { "type": "number", "value": "randomInt(1,4)" },
+	"chosenAngle": { "type": "string", "value": "possibilitiesAccent[random]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint1.png' /><span class='mh2 mg2 l95 ib'>Le nom d'un angle s'écrit en utilisant dans l'ordre :<br><span class='g'>Un point d'un côté de l'angle</span><br><span class='g'>Le point au sommet de l'angle</span><br><span class='g'>Un point de l'autre côté de l'angle</span><br><br><span class='i'>Ainsi dans l'exemple ci-dessus, l'angle en rouge peut s'écrire au choix : DÂE, DÂC, BÂE, BÂC, EÂD, EÂB, CÂD ou CÂB.</span></span>"
+}

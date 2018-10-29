@@ -1,0 +1,19 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Tom est YouTubeur et il a eu {x} vues le mois dernier ce qui lui a rapporté {y} €.<br>Combien gagnerait-il s’il avait {z} vues le mois prochain ?<br>{input1} €<br><span class='i'>C'est un autre aventurier qui m'a posé la question, mais je n'ai toujours pas compris en quoi consistait le métier...</span>",
+  "answer": [
+	  "y*z/x"
+  ],
+   "criteria": [
+	  "{input1} == y*z/x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10000*pickRandom([1,2,3,4,5])" },
+	"factor": { "type": "number", "value": "pickRandom([0.5,1,2])" },
+	"y": { "type": "number", "value": "x*factor/1000" },
+	"z": { "type": "number", "value": "pickRandom([x*2,x*3,x*4,x*5,x*10])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, raisonne avec la <span class='g'>proportionnalité</span>.<br><br>Par exemple, si 30 000 vues ont rapporté 15€ à Tom et que le mois suivant il a 150 000 vues, tu peux remarquer que 150 000 c'est 5 fois plus que 30 000. Donc s'il a 5 fois plus de vues il gagnera 5 fois plus d'argent soit 5 x 15 = 5 x 10 + 5 x 5 = 75€.</span>"
+}

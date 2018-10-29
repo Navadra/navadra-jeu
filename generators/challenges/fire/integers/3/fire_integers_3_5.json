@@ -1,0 +1,19 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "({w} - {x} + {y}) x {z} = ...<br>{input1}",
+  "answer": [
+	  "(w - x + y)*z"
+  ],
+   "criteria": [
+	  "{input1} == (w - x + y)*z"
+  ],
+  "type_answer": "single",
+  "var": {
+    "w": { "type": "number", "value": "randomInt(1,10)" },
+    "x": { "type": "number", "value": "randomInt(1,10)" },
+	"y": { "type": "number", "value": "randomInt(1,10)", "conditions": ["w+y>x", "w-x+y<10"]  },
+	"z": { "type": "number", "value": "randomInt(1,10)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour calculer des opérations complexes, essaie de les simplifier avant.</span><br><span class='i'>Ex : (4 - 6 + 3) x 6 peut se réordonner en<br>(4 + 3 – 6) x 6 soit<br>(7 – 6) x 6 donc<br>1 x 6 = <span class='g'>6</span></span></span>"
+}

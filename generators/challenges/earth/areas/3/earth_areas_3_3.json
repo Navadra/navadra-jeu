@@ -1,0 +1,30 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "ABC et BCD sont des triangles isocèles-rectangles.<br>Quelle est l'aire de cette figure ?<br>{input1} cm²",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length*seg1Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length*seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(0,4)","random(3,5)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "isoRightAngleTriangle", "expression": "ABC" },
+	"circle1": { "type": "circle", "expression": "radius(C,B)", "visible": false },
+	"line1": { "type": "line", "expression": "perpendicular(BC,C)", "visible": false },
+	"D": { "type": "point", "expression": "intersection(circle1,line1,1)", "labelDisplay": "bottom" },
+	"triangle2": { "type": "triangle", "expression": "BCD" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "DCB", "color": "red", "radius": 1 },
+	"seg1": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length", "color": "blue" },
+	"seg2": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length", "color": "blue" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/areasHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Pour calculer l'aire de de ces triangles isocèles-rectangles, </span>tu pourrais t'amuser à calculer l'aire de chaque triangle à l'aide de la formule aire = base x hauteur / 2 (la hauteur d'un côté de l'angle droit étant confondue avec le côté adjacent) mais <span class='g'>il y a une astuce pour aller plus vite </span>!<br><br>Tu peux remarquer qu'en déplaçant un des triangles, on peut obtenir un carré (voir exemple ci-contre) puisque les côtés extérieurs des triangles mesurent la même longueur.<br><br><span class='g'>Bref, ici, il te suffit d'appliquer la formule de l'aire d'un carré : aire = côté x côté.</span><br><br><span class='i'>Dans cet exemple l'aire de la figure vaut donc 6x6 = 36 cm².</span></span>"
+}

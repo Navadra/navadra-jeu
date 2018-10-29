@@ -1,0 +1,19 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "Mélissa part acheter des boissons pour une grosse fête avec un billet de {x} €.<br>Elle a le choix entre des boissons bien chimiques à {y} € l'unité et du jus d’orange à {z} € l'unité.<br>Elle veut acheter {w} bouteilles de boissons bien chimiques.<br>Combien de bouteilles de jus d’orange peut-elle acheter avec la monnaie restante ?<br>{input1} bouteille(s)<br><span class='i'>C'est bon ça les boissons \"bien chimiques\" ?</span>",
+  "answer": [
+	  "floor((x-w*y)/z)"
+  ],
+   "criteria": [
+	  "{input1} == floor((x-w*y)/z)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([10,20])" },
+	"y": { "type": "number", "value": "pickRandom([2,3,4])" },
+	"z": { "type": "number", "value": "pickRandom([2,3,4])", "conditions": ["z!=y"] },
+	"w": { "type": "number", "value": "pickRandom([2,4,5,10,20])", "conditions": ["w*y<x"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, procède en 3 étapes :<br><br>1° : <span class='g'>calcule combien vont coûter les boissons bien chimiques </span>(ex : si elle veut acheter 2 bouteilles à 3€ l'unité, cela lui coûtera 6€).<br><br>2° : <span class='g'>calcule combien il lui reste pour acheter du jus d'orange </span>(ex : si elle avait un billet de 20€ alors il lui restera 20-6 = 14€).<br><br>3° : <span class='g'>divise le montant restant par le prix d'une bouteille de jus d'orange </span>(ex : si le jus d'orange coûte 2€ pièce : 14 / 2 = 7 bouteilles).</span>"
+}

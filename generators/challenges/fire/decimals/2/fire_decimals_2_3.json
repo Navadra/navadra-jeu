@@ -1,0 +1,16 @@
+{
+  "timer": 25000,
+  "type": 2,
+  "question": "{x} ... {y}",
+  "answer": [
+    { "if": "x < y", "choice": " &lt; " },
+    { "if": "x == y", "choice": " = " },
+    { "if": "x > y", "choice": " &gt; " }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(10, 51)" },
+	"x": { "type": "number", "value": "a + round(random(0, 1), 2)", "conditions": ["round(x,2)!=round(x,1)"] },
+    "y": { "type": "number", "value": "a + round(random(0, 1), 2)", "conditions": ["round(y,2)!=round(y,1)"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour comparer 2 nombres décimaux, on <span class='g'>compare ses chiffres de la gauche vers la droite</span>.<br><span class='i'>Ex : 23,02 et 23,28<br>Le chiffre le plus à gauche des 2 nombres est « 2 » : égalité<br>Le chiffre suivant vaut « 3 » pour les 2 nombres : égalité<br>Le chiffre suivant est « 0 » pour le 1° nombre et « 2 » pour le 2° nombre : <span class='g'>le 2° nombre (23,28) est plus grand !</span><br>Il n'y a même pas besoin de comparer les deux derniers chiffres…</span></span>"
+}

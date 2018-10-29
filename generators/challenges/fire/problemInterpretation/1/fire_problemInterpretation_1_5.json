@@ -1,0 +1,14 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Tu commences un combat en infligeant {damages1} dégâts à un monstre.<br>Quelle donnée te manque-t-il pour savoir combien de points de vie il reste au monstre ?",
+  "answer": [
+	  { "determined": true, "choice": "les points de vie de départ du monstre" },
+	  { "determined": false, "choice": "le nombre de dégâts de tes prochains sorts" },
+	  { "determined": false, "choice": "ton nombre de points de vie" }
+  ],
+  "var": {
+	"damages1": { "type": "number", "value": "randomInt(50,400)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>L'énoncé te donne le <span class='g'>nombre de dégâts infligés par ton premier coup</span>, quelle dernière donnée te manque-t-il pour répondre à la question ?</span>"
+}

@@ -1,0 +1,23 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "{numerator1}/{denominator1} x {factor} = ?<br><span class='p0 g'>La fraction doit être irréductible.<span><br>{input1}{fraction}{input2}",
+  "answer": [
+	  "numerator2",
+	  "denominator2"
+  ],
+  "criteria": [
+	  "{input1} == numerator2",
+	  "{input2} == denominator2"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,6)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,6)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"factor": { "type": "number", "value": "randomInt(2,6)", "conditions": ["factor != denominator1"] },
+	"fraction1": { "type": "number", "value": "fraction(numerator1*factor,denominator1)" },
+	"numerator2": { "type": "number", "value": "fraction1.n" },
+	"denominator2": { "type": "number", "value": "fraction1.d" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour multiplier une fraction</span> <span class='g'>par un nombre</span> <span class='g'>on ne multiplie que le numérateur</span> (si on multiplie aussi le dénominateur, on obtient la même fraction donc la multiplication n'aurait aucun effet).<br><br><span class='i'>Ex : Pour multiplier 7/3 par 9, on ne multiplie que 7 par 9. Mais avant de multiplier, on vérifie qu'on ne peut pas faire de simplification avec le dénominateur.<br>Dans cet exemple 9 et un multiple de 3 (dénominateur) donc on peut simplifier par 3 le multiplicateur (9/3=3) et le dénominateur (3/3=1).<br>On obtient donc 7/1 x 3 = 7x3 = <span class='g'>21</span></span></span>"
+}

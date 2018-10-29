@@ -1,0 +1,34 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "La droite (d) est-elle un axe de symétrie du quadrilatère ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "typeQuadri == \"square\" or typeQuadri == \"rectangle\"", "choice": "Oui" },
+      { "if": "typeQuadri == \"quadrilateral\" or typeQuadri == \"parallelogram\" or typeQuadri == \"lozenge\"", "choice": "Non" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(5,7)","random(6,7)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(5,7)","random(-2,0)"], "labelDisplay": "right" },
+	"D": { "type": "point", "value": ["random(-7,-5)","random(-2,0)"], "labelDisplay": "left" },
+	"possibilities": { "type": "array", "expression": ["quadrilateral", "parallelogram", "square", "rectangle", "lozenge"] },
+	"rand": { "type": "number", "value": "randomInt(2,3)" },
+	"typeQuadri": { "type": "string", "value": "possibilities[rand]" },
+	"figure": { "type": "possibilities[rand]", "expression": "ABCD" },
+	"line1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length" },
+	"line2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"line3": { "type": "segment", "expression": "DC", "labelDisplay": "bottom", "labelType": "length" },
+	"line4": { "type": "segment", "expression": "DA", "labelDisplay": "left", "labelType": "length" },
+	"angle1": { "type": "angle", "expression": "DAB", "labelDisplay": true, "labelType": "value" },
+	"angle2": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value" },
+	"angle3": { "type": "angle", "expression": "BCD", "labelDisplay": true, "labelType": "value" },
+	"angle4": { "type": "angle", "expression": "CDA", "labelDisplay": true, "labelType": "value" },
+	"E": { "type": "point", "expression": "middle(AB)", "visible": false },
+	"F": { "type": "point", "expression": "middle(CD)", "visible": false },
+	"d": { "type": "line", "expression": "EF", "labelDisplay": "top", "color": "red" }
+  },
+	"hint" : "<img class='ib mg2 l60 md2' src='/webroot/img/challenges/symmetriesHint4.png' /><span class='l35 ib align_middle'><span class='g'><span class='g'>Deux figures sont symétriques par rapport à une droite (d) si en « pliant la feuille » suivant la droite (d) les deux figures se superposent.<br><br></span>Les exemples ci-contre montrent les différents axes de symétrie en fonction de la nature du quadrilatère.</span>"
+}

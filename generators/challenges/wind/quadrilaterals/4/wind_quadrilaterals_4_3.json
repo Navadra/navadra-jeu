@@ -1,0 +1,27 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. Les droites (AC) et (BD) sont ...",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "parallèles" },
+      { "if": "chosenType == \"carré\"", "choice": "perpendiculaires" },
+	  { "if": "chosenType == \"rectangle\"", "choice": "ni parallèles ni perpendiculaires" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-9,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(5,9)","random(6,7)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(5,9)","random(0,2)"], "labelDisplay": "right" },
+	"D": { "type": "point", "value": ["random(-9,-5)","random(0,2)"], "labelDisplay": "left" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["carré", "rectangle"] },
+	"typeEng": { "type": "array", "expression": ["square", "rectangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC"},
+	"diag2": { "type": "line", "expression": "BD"}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un carré, les diagonales se coupent à angle droit tandis que ce n'est pas le cas dans un rectangle.</span><br><br>Ainsi, les droites (AC) et (BD) sont perpendiculaires seulement si ABCD est un carré sinon elle ne sont ni perpendiculaires ni parallèles.</span>"
+}

@@ -1,0 +1,22 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "La piscine dans le jardin de Claire peut contenir {a} {unitA} d’eau.<br>La baignoire de Timothée peut contenir elle {b} {unitB} d'eau.<br>Qu'est ce qui demande le plus d’eau à remplir : la piscine de Claire ou {c} baignoires de Timothée ?<br><span class='i'>Honnêtement, Timothée aura beau remplir autant de fois qu'il veut sa baignoire, je préférerais toujours nager dans la piscine de Claire !</span>",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths) and c*b*10^baseB != max(allLengths)", "choice": "La piscine de Claire" },
+      { "if": "a*10^baseA != max(allLengths) and c*b*10^baseB == max(allLengths)", "choice": "Les {c} baignoires de Timothée" },
+	  { "if": "a*10^baseA == max(allLengths) and c*b*10^baseB == max(allLengths)", "choice": "Égalité" }
+  ],
+  "var": {
+	"volumes": { "type": "array", "expression": ["L", "daL", "hL", "m3"] },
+	"baseA": { "type": "number", "value": "4" },
+	"a": { "type": "number", "value": "5*randomInt(3,6)" },
+	"unitA": { "type": "string", "value": "volumes[baseA]" },
+	"baseB": { "type": "number", "value": "1" },
+	"b": { "type": "number", "value": "50*randomInt(3,6)" },
+	"c": { "type": "number", "value": "pickRandom([50,100,200])" },
+	"unitB": { "type": "string", "value": "volumes[baseB]" },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "c*b*10^baseB"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

@@ -1,0 +1,44 @@
+{
+  "timer": 70000,
+  "type": 1,
+  "question": "Combien mesure l'angle {angleString} ?<br>{input1}°",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "180-{angleComplement}Value"
+  ],
+   "criteria": [
+	  "abs({input1} - (180-{angleComplement}Value)) < 2"
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-17,-13)","random(6,8)"], "labelDisplay": "right" },
+	"B": { "type": "point", "value": ["random(13,17)","random(6,8)"], "labelDisplay": "left" },
+	"C": { "type": "point", "value": ["random(13,17)","random(-6,-8)"], "labelDisplay": "left" },
+	"D": { "type": "point", "value": ["random(-13,-17)","random(-6,-8)"], "labelDisplay": "left" },
+	"line1": { "type": "line", "expression": "AB" },
+	"line2": { "type": "line", "expression": "BC" },
+	"line3": { "type": "line", "expression": "CD" },
+	"line4": { "type": "line", "expression": "DA" },
+	"line5": { "type": "line", "expression": "DB" },
+	"E": { "type": "point", "value": "middle(DC)", "labelDisplay": "bottom" },
+	"line6": { "type": "line", "expression": "AE" },
+	"F": { "type": "point", "value": "intersection(line5,line6)", "labelDisplay": "bottom" },
+	"G": { "type": "point", "value": "middle(AB)", "labelDisplay": "top" },
+	"line7": { "type": "line", "expression": "GC" },
+	"angle1": { "type": "angle", "expression": "CEF", "labelDisplay": true, "radius": 2 },
+	"angle2": { "type": "angle", "expression": "FED", "labelDisplay": true, "labelType": "value", "radius": 3 },
+	"angle3": { "type": "angle", "expression": "CGB", "labelDisplay": true, "radius": 3 },
+	"angle4": { "type": "angle", "expression": "AGC", "labelDisplay": true, "labelType": "value", "radius": 2 },
+	"angle5": { "type": "angle", "expression": "BFA", "labelDisplay": true, "radius": 2 },
+	"angle6": { "type": "angle", "expression": "AFD", "labelDisplay": true, "labelType": "value", "radius": 3 },
+	"possibilities": { "type": "array", "expression": ["CEF", "CGB", "BFA"] },
+	"angles": { "type": "array", "expression": ["angle1", "angle3", "angle5"] },
+	"complement": { "type": "array", "expression": ["angle2", "angle4", "angle6"] },
+	"random": { "type": "number", "value": "randomInt(1,4)" },
+	"angleFocus": { "type": "string", "value": "angles[random]" },
+	"angleString": { "type": "string", "value": "possibilities[random]" },
+	"angleComplement": { "type": "string", "value": "complement[random]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint5.png' /><span class='mh2 mg2 l95 ib'><span class='g'>L'angle formé par une seule droite mesure 180°.</span><br><br><span class='i'>Ainsi, dans l'exemple, en connaissant la valeur de l'angle AFB, on peut en déduire la valeur de l'angle BFA :<br>Angle BFA = 180 – 64 = 116°</span></span>"
+}

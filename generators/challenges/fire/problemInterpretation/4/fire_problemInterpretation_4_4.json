@@ -1,0 +1,18 @@
+{
+  "timer": 75000,
+  "type": 3,
+  "question": "En moyenne ton sort favori inflige {damages1} dégâts.<br>Si tu le combines avec un autre de tes sorts, il peut infliger {damages2} dégâts.<br>Si tu le combines avec {otherSpells} autres sorts, il peut alors infliger {factor} fois plus que le montant précédent.<br>De quelle(s) donnée(s) a-t-on besoin pour calculer le maximum de dégâts que peut infliger ton sort ?",
+  "answer": [
+	{ "determined": false, "choice": "{damages1}" },
+    { "determined": true, "choice": "{damages2}" },
+    { "determined": false, "choice": "{otherSpells}" },
+	{ "determined": true, "choice": "{factor}" }
+  ],
+  "var": {
+    "damages1": { "type": "number", "value": "randomInt(100,300)" },
+	"damages2": { "type": "number", "value": "randomInt(200,400)", "conditions": ["damages2>damages1"] },
+	"otherSpells": { "type": "number", "value": "randomInt(2,5)" },
+	"factor": { "type": "number", "value": "randomInt(2,6)", "conditions": ["factor!=otherSpells"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour savoir combien ton sort peut infliger de dégâts, il te faut connaître le fameux « <span class='g'>montant précédent</span> » ainsi que le <span class='g'>facteur multiplicatif</span>.</span>"
+}

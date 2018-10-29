@@ -1,0 +1,23 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Quelle est la relation entre (d1) et la parallèle à (d2) passant par A ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "parallèles" },
+      { "determined": true, "choice": "perpendiculaires" }
+  ],
+  "var": {
+	"d1": { "type": "line", "value": ["random(2,3)","random(-5,-3)"], "labelDisplay": "top" },
+	"E": { "type": "point", "value": ["0","random(-5,-3)"], "visible": false },
+	"d2": { "type": "line", "value": "perpendicular(d1,E)", "labelDisplay": "bottom" },
+	"d3": { "type": "line", "value": ["random(-0.2,0.2)","random(4,6)"], "labelDisplay": "bottom" },
+	"angle1": { "type": "angle", "expression": "d2,d1",  "radius": 1, "color": "red" },
+	"A": { "type": "point", "value": ["random(-5,5)","random(4,7)"], "labelDisplay": "top", "conditions": "far(d1)" },
+	"B": { "type": "point", "value": ["random(-5,5)","random(-7,7)"], "labelDisplay": "top", "conditions": "far(d1,A)" },
+	"C": { "type": "point", "value": ["random(-5,5)","random(-7,7)"], "labelDisplay": "top", "conditions": "far(d1,A,B)" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint4.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Deux droites sont perpendiculaires si elles se coupent à angle droit </span>(symbolisé par un carré à leur intersection).<br><br><span class='g'>Deux droites sont parallèles si elles ne se coupent jamais </span>(même si on prolongeait le dessin à l'infini).<br><br><span class='g'>Si deux droites sont parallèles, toute droite perpendiculaire à l'une est aussi perpendiculaire à l'autre.</span><br><span class='i'>Ex : sur ce dessin, la droite en rouge est parallèle à (d2) or (d1) est perpendiculaire à (d2). (d1) est donc également perpendiculaire à la droite en rouge.</span></span>"
+}

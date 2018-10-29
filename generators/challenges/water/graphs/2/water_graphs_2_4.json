@@ -1,0 +1,25 @@
+{
+  "timer": 55000,
+  "type": 5,
+  "question": "Place le point A aux coordonnées ({x} ; {y}).",
+  "view": {
+  	  "geometry": [-2, 1, 2, -1],
+	  "grid": false,
+	  "axis": true
+  },
+  "answer": [
+	  "placePoint(A,D)"
+  ],
+  "criteria": [
+	  "abs(segment1Length) < 0.1"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "round(random(-1.8,1.9),1)", "conditions": ["x > 0.2 or x < -0.2"] },
+	"y": { "type": "number", "value": "round(random(-0.8,0.8),1)", "conditions": ["y > 0.2 or y < -0.2"] },
+	"A": { "type": "point", "value": [0,0], "labelDisplay": "top", "color": "red", "fixed": false },
+	"D": { "type": "point", "value": ["x","y"], "labelDisplay": "top", "visible": false },
+	"segment1": { "type": "segment", "expression": "AD", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/graphsHint1.png' /><span class='mg2 l95 ib'><span class='g'>L'axe des abscisses est l'axe horizontal </span>(en bleu) tandis que <span class='g'>l'axe des ordonnées est l'axe vertical </span>(en rouge).<br>On appelle <span class='g'>coordonnées d'un point le couple « abscisses-ordonnées » de ce point</span>.<br><br><span class='i'>Ex :<br>le point A a pour abscisse 1,6.<br>Le point A a pour ordonnée 0.<br>Les coordonnées de A sont (1,6 ; 0).</span></span>"
+}

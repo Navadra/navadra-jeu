@@ -1,0 +1,18 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Complète la phrase : \"Trace … cercle de diamètre [OA].\"",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "un" },
+      { "determined": true, "choice": "le" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-11,-5)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"O": { "type": "point", "value": ["randomInt(5,11)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"x": { "type": "number", "value": "randomInt(10,19)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Il y a un seul de cercle de diamètre [OA].<br><br></span><span class='i'>Son centre sera le milieu du segment [OA].</span></span>"
+}

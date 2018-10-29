@@ -1,0 +1,22 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Une fourmi part de sa fourmilière et parcourt {a} {unitA} en ligne droite avant de trouver à manger.<br>Elle ramène sa prise en direction de la fourmilière et fait une pause au bout de {b} {unitB}.<br>Combien lui reste-t-il a parcourir <span class='g'>en {unitA}</span> pour rejoindre la fourmilière ?<br>{input1} <span class='g'>{unitA}</span><br><span class='i'>Elle ne pouvait pas manger sa prise sur place comme tout le monde ?</span>",
+  "answer": [
+	  "round(a - b*10^(baseB-baseA),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(a - b*10^(baseB-baseA),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["cm", "dm", "m"] },
+	"baseA": { "type": "number", "value": "randomInt(2, 4)" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "randomInt(2,21)" },
+	"baseB": { "type": "number", "value": "randomInt(1, 4)", "conditions": ["baseB<baseA"] },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit d'effectuer le calcul suivant : <span class='g'>« distance aller » - « distance de retour parcourue ».</span><br><br>Il ne te reste ensuite plus qu'à <span class='g'>convertir le résultat dans l'unité désirée.</span></span>"
+}

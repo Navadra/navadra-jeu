@@ -1,0 +1,71 @@
+{
+    "name": "JSXGraph",
+    "description": "Interactive geometry, plotting, visualization",
+    "homepage": "http://jsxgraph.org",
+    "version": "0.99.4",
+
+    "maintainers": [{
+        "name": "Alfred Wassermann",
+        "email": "Alfred.Wassermann@uni-bayreuth.de"
+    }, {
+        "name": "Michael Gerhaeuser",
+        "email": "michael.gerhaeuser@gmail.com"
+    }],
+    "contributors": [
+        "Matthias Ehmann",
+        "Carsten Miller",
+        "Rinat Shigapov",
+        "Bianca Valentin",
+        "Heiko Vogel",
+        "Peter Wilfahrt"
+    ],
+
+    "bugs": {
+        "url": "http://github.com/jsxgraph/jsxgraph/issues"
+    },
+
+    "directories": {
+        "lib": "src"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jsxgraph/jsxgraph.git"
+    },
+
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://opensource.org/licenses/MIT"
+    }, {
+        "type": "LGPL-3.0",
+        "url": "http://opensource.org/licenses/LGPL-3.0"
+    }],
+
+    "dependencies": {
+    },
+    "optionalDependencies": {
+        "canvas": "1.0.x"
+    },
+    "devDependencies": {
+        "uglify-js": "2.4.x",
+        "requirejs": "2.1.x",
+        "almond": "0.3.x",
+        "jsdoc2": "2.4.x",
+        "jshint": "2.7.x",
+        "jslint": "0.9.x",
+        "jstestdriver": "1.0.x",
+        "intern": "3.0.x",
+        "sinon": "1.14.x"
+    },
+    "engines": {
+        "node": ">= 0.6.0"
+    },
+
+    "scripts": {
+        "buildCore": "./node_modules/requirejs/bin/r.js -o build/core.build.json",
+        "buildCompressor": "./node_modules/requirejs/bin/r.js -o build/compressor.build.json",
+        "test": "make tests"
+    },
+
+    "private": true
+}

@@ -1,0 +1,38 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Cite 1 point qui n'appartient pas à {expression} : {input1}.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "I.name"
+  ],
+   "criteria": [
+	  "!{input1} belongsTo d4"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"d1": { "type": "line", "value": ["random(-0.5,0.5)","random(-2,3)"], "labelDisplay": "top" },
+	"A": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top" },
+	"B": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A)" },
+	"d2": { "type": "segment", "expression": "AB", "visible": false },
+	"d3": { "type": "halfline", "expression": "AB", "visible": false },
+	"C": { "type": "point", "expression": "belongsTo(d2)", "labelDisplay": "top" },
+	"D": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"E": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A,B,C,D)" },
+	"F": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A,B,C,D,E)" },
+	"G": { "type": "point", "value": ["random(-19,19)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(d1)" },
+	"H": { "type": "point", "value": ["random(-19,19)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(d1,G)" },
+	"I": { "type": "point", "value": ["random(-19,19)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(d1,G,H)" },
+	"J": { "type": "point", "value": ["random(-19,19)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(d1,G,I)" },
+	"K": { "type": "point", "value": ["random(-19,19)","random(-8,8)"], "labelDisplay": "top", "conditions": "far(d1,G,I,J)" },
+	"possibilities": { "type": "array", "expression": ["line", "segment", "halfline"] },
+	"lineNames": { "type": "array", "expression": ["d1", "d2", "d3"] },
+	"lineNames2": { "type": "array", "expression": ["(AB)", "[AB]", "[AB)"] },
+	"rand": { "type": "number", "value": "randomInt(1,4)" },
+	"d4": { "type": "possibilities[rand]", "value": "lineNames[rand]", "visible": false },
+	"expression": { "type": "string", "value": "lineNames2[rand]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint2.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Trois points sont alignés si on peut tracer une droite passant par les 3 points.<br><br></span><span class='i'>Ainsi sur cet exemple :<br>A, C et D sont alignés.<br>E, B et F ne sont pas alignés.</span></span>"
+}

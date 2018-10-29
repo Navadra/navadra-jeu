@@ -1,0 +1,16 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Un de tes sorts inflige normalement 10 dégâts.<br>Ce tour-ci, il inflige {x}% de ses dégâts.<br>Combien de dégâts inflige-t-il ce tour-ci ?<br>{input1}",
+  "answer": [
+	  "x/10"
+  ],
+   "criteria": [
+	  "{input1} == x/10"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(1,19)", "conditions": ["abs(x-100)>10"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Un pourcentage peut aussi s'écrire sous forme de fraction avec 100 au dénominateur</span>.<br><span class='i'>Ex : 58% = 58/100.</span><br><br>Donc si on <span class='g'>multiplie par</span>, mettons <span class='g'>150%</span>, cela revient à <span class='g'>multiplier par 150/100</span>.<br>Si ton sort infligeait 10 dégâts à la base, il infligera donc 150/100 x 10 = <span class='g'>15 dégâts</span> !</span>"
+}

@@ -1,0 +1,18 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "Quel est le quotient de {c} par {a} ?<br>{input1}",
+  "answer": [
+	  "b"
+  ],
+  "criteria": [
+	  "{input1} == b"
+  ],
+  "type_answer": "single",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,6)"},
+	"b": { "type": "number", "value": "randomInt(2,6)"},
+	"c": { "type": "number", "value": "a*b"}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le quotient d'un nombre par un autre est tout simplement <span class='g'>le résultat de la division entre ces 2 nombres</span>.<br><span class='i'>Ex : Le quotient de 35 par 7 est égal à 35/7 = <span class='g'>5</span>.</span></span>"
+}

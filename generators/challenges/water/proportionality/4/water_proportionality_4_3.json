@@ -1,0 +1,16 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "Dans une salade de fruits pour {x} personnes Haleham met {y} bananes et {z} pommes.<br>Si finalement {a} personnes ne mangent pas, peut-on appliquer la proportionnalité pour savoir combien de pommes en trop Haleham a-t-il découpé ?",
+  "answer": [
+	  { "determined": true, "choice": "Oui" },
+	  { "determined": false, "choice": "Non" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(4,10)" },
+	"y": { "type": "number", "value": "randomInt(5,12)" },
+	"z": { "type": "number", "value": "randomInt(5,12)" },
+	"a": { "type": "number", "value": "randomInt(1,4)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Sauf indication contraire dans l'énoncé, <span class='g'>on peut considérer que chaque personne mange la même quantité de fruits</span>.<br><br>Ainsi si, par exemple, <span class='g'>la moitié des personnes ne mangent finalement pas</span>, il <span class='g'>devrait rester la moitié des fruits </span>!</span>"
+}

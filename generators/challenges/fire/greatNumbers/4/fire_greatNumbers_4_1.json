@@ -1,0 +1,30 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Encadre {y} {power} : <br>{input1} < {y} < {input2}",
+  "answer": [
+	  "floor(y/x) * x",
+	  "(floor(y/x) + 1) * x"
+  ],
+  "criteria": [
+	  "{input1} == floor(y/x) * x",
+	  "{input2} == (floor(y/x) + 1) * x"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(1, 10)" },
+	"b": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["c!=a", "c!=b"] },
+	"d": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["d!=a","d!=b","d!=c"] },
+	"e": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["e!=a","e!=b","e!=c","e!=d"] },
+	"f": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["f!=a","f!=b","f!=c","f!=d","f!=e"] },
+	"g": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["g!=a","g!=b","g!=c","g!=d","g!=e","g!=f"] },
+	"y": { "type": "number", "value": "a + b*10 + c*100 + d*1000 + e*10000 + f*100000+ g*1000000" },
+	"powers_string": { "type": "array", "expression": ["à la dizaine", "à la centaine", "au millier", "à la dizaine de milliers", "à la centaine de milliers", "au million"] },
+	"pos": { "type": "number", "value": "randomInt(1, 7)" },
+	"powers_number": { "type": "array", "value": [10, 100, 1000, 10000, 100000, 1000000] },
+	"x": { "type": "number", "value": "powers_number[pos]" },
+	"power": { "type": "string", "value":"powers_string[pos]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour encadrer un nombre à la centaine, il faut trouver le nombre <span class='g'>plus petit le plus proche </span>dont les <span class='g'>dizaines et les unités valent 0 </span>et le nombre <span class='g'>plus grand le plus proche </span>dont les <span class='g'>dizaines et les unités valent 0</span>.<br><br><span class='i'>Ex avec 2 136 875 encadré à la centaine :<br>Le nombre plus petit le plus proche dont les dizaines et unités valent 0 est 2 136 800 (2 136 875 > 2 136 800)<br>Le nombre plus grand le plus proche dont les dizaines et unités valent 0 est 2 136 900 (2 136 900 > 2 136 875)</span><br>Il suffit d'appliquer un <span class='g'>raisonnement similaire </span>pour les <span class='g'>dizaines</span>, les milliers, les centaines de milliers, etc.<br><span class='i'>Ex d'encadrement à la dizaine de milliers de 2 136 875 : 2 130 000 < 2 136 875 < 2 140 000<br>Ex d'encadrement au million de 2 136 875 : 2 000 000 < 2 136 875 < 3 000 000</span></span>"
+}

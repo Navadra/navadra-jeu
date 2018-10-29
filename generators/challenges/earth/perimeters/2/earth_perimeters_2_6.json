@@ -1,0 +1,31 @@
+{
+  "timer": 60000,
+  "type": 2,
+  "question": "Quel est le périmètre de ce demi-cercle ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "{choice1} x π + {complement} cm" },
+      { "determined": true, "choice": "{choice2} x π + {complement} cm" },
+	  { "determined": false, "choice": "{choice3} x π + {complement} cm" },
+	  { "determined": false, "choice": "{choice4} x π + {complement} cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"absB": { "type": "number", "value": "absA + randomInt(3,10)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["absB","ordA"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["2absA - absB","ordA"], "visible": false },
+	"seg1": { "type": "segment", "expression": "AC" },
+	"radius": { "type": "segment", "expression": "AB", "labelDisplay" : "bottom", "labelType": "length" },
+	"arc1": { "type": "arc", "expression": "ABC", "labelDisplay": "center", "labelType": "radius" },
+	"choice1": { "type": "number", "value": "2*radiusLength" },
+	"choice2": { "type": "number", "value": "radiusLength" },
+	"choice3": { "type": "number", "value": "radiusLength^2" },
+	"choice4": { "type": "number", "value": "round(radiusLength*4.5)" },
+	"complement": { "type": "number", "value": "2*radiusLength" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'un demi-cercle se calcule à l'aide de cette formule :<br><br>Périmètre =  π x R + 2 x R (ou π = 3,14… et R est le rayon du cercle).</span><br><br><span class='i'>Ex : si le rayon mesure 5 cm alors le périmètre sera égal à 5 x π + 10 cm.</span></span>"
+}

@@ -1,0 +1,32 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Ce rectangle a une aire de {area} cm².<br>Quelle est la longueur du côté AB ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "left", "labelType": "length", "visible": false },
+	"ordC": { "type": "number", "value": "random(5,-4)" },
+	"absC": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) <= 10", "round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) != seg1Length"] },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"rectangle1": { "type": "rectangle", "expression": "ABCD" },
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"area": { "type": "number", "value": "seg1Length*seg2Length" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un rectangle :<br><br><span class='g'>aire = côté x côtéConsécutif</span><br><br>Un des côtés du rectangle est donné, il suffit donc de trouver le nombre par lequel multiplier ce côté pour obtenir l'aire.<br><br><span class='i'>Ex : si l'aire est égale à 70 cm² et qu'un des côtés est égal à 7cm, on sait que 7x10 = 70 donc que la longueur du côté consécutif vaut 10 cm.</span></span>"
+}

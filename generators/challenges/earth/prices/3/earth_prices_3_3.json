@@ -1,0 +1,20 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "Chloé va acheter le petit déjeuner pour sa famille à la boulangerie avec un billet de {x} €.<br>Elle achète {y} croissants et une baguette à {z} €. On lui rend {w} € en monnaie.<br>Combien coûte un croissant ?<br>{input1} €<br><span class='i'>La famille de Chloé avait oublié de lui préciser que la baguette devait revenir intacte.</span>",
+  "answer": [
+	  "answer"
+  ],
+   "criteria": [
+	  "{input1} == answer"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([5,10])" },
+	"answer": { "type": "number", "value": "pickRandom([0.8,0.9,1])" },
+	"y": { "type": "number", "value": "pickRandom([2,3,4,5])", "conditions": ["answer*y + 1.2 < x"] },
+	"z": { "type": "number", "value": "pickRandom([0.8,0.9,1,1.1,1.2])" },
+	"w": { "type": "number", "value": "round(x - y*answer - z,1)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, procède en 3 étapes :<br><br>1° : <span class='g'>ajoute le prix de la baguette au montant qui lui a été rendu </span>(ex : si la baguette coûte 0,8€ et qu'on lui a rendu 2,6€, tu obtiens 3,4€).<br><br>2° : <span class='g'>calcule combien il manque pour atteindre la valeur de son billet </span>(ex : si elle avait un billet de 5€ alors les croissants coûtaient 5-3,4 = 1,6€).<br><br>3° : <span class='g'>divise par le nombre de croissants pour obtenir le prix d'un croissant </span>(ex : 1,6 / 2 = 0,8€).</span>"
+}

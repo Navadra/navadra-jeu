@@ -1,0 +1,18 @@
+{
+  "timer": 50000,
+  "type": 1,
+  "question": "Dans un groupe de monstres, il y a {x}% de sangliers, {y}% de brutes des plaines et le reste n’est composé que de coureurs des plaines.<br>Quel est le pourcentage de coureurs des plaines ?<br>{input1}",
+  "answer": [
+	  "z"
+  ],
+   "criteria": [
+	  "{input1} == z "
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(1,9)" },
+	"y": { "type": "number", "value": "10*randomInt(1,9)", "conditions": ["y+x<100"] },
+	"z": { "type": "number", "value": "100-x-y" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Les pourcentages permettent de ramener une quantité à 100 (« pour cent ») pour pouvoir notamment comparer des groupes de tailles différentes.<br>Ainsi, si on divise un groupe en plusieurs sous-groupes différents et qu'on calcule le pourcentage de chaque sous-groupe par rapport au groupe initial, <span class='g'>la somme des pourcentages fera toujours 100</span>.<br><br>Ex : Si dans un groupe de monstres, il y a 30% de monstre1, 25% de monstre2 et le reste n'est composé que de monstre3 alors tu sais qu'il y a 100-30-25 = 100-55 = <span class='g'>45% de monstre3</span>.</span>"
+}

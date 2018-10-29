@@ -1,0 +1,20 @@
+{
+  "timer": 55000,
+  "type": 3,
+  "question": "Un petit massif de {trees} arbres est situé à {distance} km du Village, à côté de lui {youngShoots} jeunes pousses qui ont entre {age1} et {age2} ans.<br>De quelle(s) donnée(s) a-t-on besoin pour calculer le nombre total d’arbres et de pousses ?",
+  "answer": [
+	{ "determined": false, "choice": "{age1}" },
+    { "determined": false, "choice": "{age2}" },
+    { "determined": true, "choice": "{trees}" },
+	{ "determined": false, "choice": "{distance}" },
+	{ "determined": true, "choice": "{youngShoots}" }
+  ],
+  "var": {
+    "trees": { "type": "number", "value": "randomInt(15,30)" },
+	"distance": { "type": "number", "value": "randomInt(6,50)", "conditions": ["distance!=trees"] },
+	"youngShoots": { "type": "number", "value": "randomInt(10,20)", "conditions": ["youngShoots!=distance", "youngShoots!=trees"] },
+	"age1": { "type": "number", "value": "randomInt(1,3)" },
+	"age2": { "type": "number", "value": "randomInt(3,6)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour calculer le nombre total d'arbres et de jeunes pousses, il te faut juste le <span class='g'>nombre d'arbres </span>et le <span class='g'>nombre de jeunes pousses </span>!</span>"
+}

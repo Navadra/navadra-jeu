@@ -1,0 +1,17 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Comment peut-on calculer {x}% d’un nombre ?",
+  "answer": [
+	  { "determined": true, "choice": "Multiplier le nombre par {y}" },
+	  { "determined": false, "choice": "Diviser le nombre par {y}" },
+	  { "determined": false, "choice": "Multiplier le nombre par {x}" },
+	  { "determined": false, "choice": "Diviser le nombre par {x}" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(2,10)" },
+	"y": { "type": "number", "value": "x/100" }
+
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Un pourcentage peut aussi s'écrire sous forme de fraction avec 100 au dénominateur</span>.<br><span class='i'>Ex : 58% = 58/100 = 0,58 (on décale la virgule 2 fois vers la gauche).</span><br><br>Donc pour calculer, mettons 30% d'un nombre, il suffit de <span class='g'>multiplier ce nombre par 0,3</span>.</span>"
+}

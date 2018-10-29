@@ -1,0 +1,33 @@
+{
+  "timer": 65000,
+  "type": 2,
+  "question": "Quelle est la plus petite durée ?",
+  "answer": [
+	  { "if": "hour1 == x", "choice": "{hour1} h" },
+      { "if": "minutes1 == x", "choice": "{minutes1} min" },
+	  { "if": "seconds1 == x", "choice": "{seconds1} s" },
+	  { "if": "hour2 == x", "choice": "{hour2} h" },
+	  { "if": "minutes2 == x", "choice": "{minutes2} min" },
+	  { "if": "seconds2 == x", "choice": "{seconds2} s" }
+  ],
+  "var": {
+	"hour1": { "type": "number", "value": "pickRandom([0.5, 1.5, 3, 4, 6])" },
+	"minutes1": { "type": "number", "value": "pickRandom([20, 40, 80, 140, 300, 500])" },
+	"seconds1": { "type": "number", "value": "pickRandom([1000, 3600, 7200, 15000])" },
+	"hour2": { "type": "number", "value": "pickRandom([0.5, 1.5, 3, 4, 6])", "conditions": ["hour2!=hour1"] },
+	"minutes2": { "type": "number", "value": "pickRandom([20, 40, 80, 140, 300, 500])", "conditions": ["minutes2!=minutes1"] },
+	"seconds2": { "type": "number", "value": "pickRandom([1000, 3600, 7200, 15000])", "conditions": ["seconds2!=seconds1"] },
+	"choices": { "type": "array", "value": ["hour1","minutes1","seconds1","hour2","minutes2","seconds2"] },
+	"choicesString": { "type": "array", "expression": ["h","min","s","h","min","s"] },
+	"minutes1Converted": { "type": "number", "value": "minutes1/60" },
+	"seconds1Converted": { "type": "number", "value": "seconds1/3600" },
+	"minutes2Converted": { "type": "number", "value": "minutes2/60" },
+	"seconds2Converted": { "type": "number", "value": "seconds2/3600" },
+	"choicesBis": { "type": "array", "value": ["hour1","minutes1Converted","seconds1Converted","hour2","minutes2Converted","seconds2Converted"] },
+	"selected": { "type": "number", "value": "min(choicesBis)" },
+	"indexX": { "type": "number", "value": "indexOf(choicesBis,selected) +1" },
+	"x": { "type": "number", "value": "choices[indexX]" },
+	"unitX": { "type": "string", "value": "choicesString[indexX]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

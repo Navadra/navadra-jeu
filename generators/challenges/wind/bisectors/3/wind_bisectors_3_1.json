@@ -1,0 +1,33 @@
+{
+  "timer": 75000,
+  "type": 5,
+  "question": "Déplace les points D et E pour que la droite (DE) soit la hauteur du segment [BC].",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(D,F)",
+	  "placePoint(E,A)"
+  ],
+  "criteria": [
+	  "abs(angle1Value - 90) < 2",
+	  "A belongsTo altitude1"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(6,8)","random(4,5.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(2,4)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "precision":0.1},
+	"segment2": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length", "precision":0.1},
+	"segment3": { "type": "segment", "expression": "BC" },
+	"D": { "type": "glider", "expression": "BC", "labelDisplay": "bottom", "color": "red", "fixed": false },
+	"E": { "type": "point", "value": ["random(-6,-4)","random(0,2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"d1": { "type": "line", "expression": "BC", "visible": false },
+	"d2": { "type": "line", "expression": "perpendicular(BC,A)", "visible": false },
+	"F": { "type": "point", "expression": "intersection(d1,d2)", "visible": false },
+	"altitude1": { "type": "line", "expression": "DE", "labelDisplay": false, "color": "red"},
+	"angle1": { "type": "angle", "expression": "EDC",  "color": "red", "labelDisplay": true, "labelType": "value", "precision":1}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La hauteur d'un segment dans un triangle est perpendiculaire à ce segment et passe par son sommet opposé.</span></span>"
+}

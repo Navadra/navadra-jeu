@@ -1,0 +1,70 @@
+<html>
+<head>
+   <title>JSXGraph example</title>
+   <link rel="stylesheet" type="text/css" href="../distrib/jsxgraph.css" />
+   <script type="text/javascript" src="../distrib/prototype.js"></script>
+   <script type="text/javascript" src="../src/loadjsxgraph.js"></script>
+</head>
+<body>
+
+<h1>Optimizing a fenced area</h1>
+      
+      <!-- Die beiden Zeichenflaechen, schoen nebeneinander angeordnet in einer Tabelle -->
+      <table border="0">
+        <tr><td>
+            <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+        </td><td>
+            <div id="box2" class="jxgbox" style="width:500px; height:500px;"></div>
+        </td></tr>
+      </table>
+      
+      <!-- Die Tabelle mit den Werten -->
+      
+      <table style="border: 0px solid black; text-align: center" width="500px">
+ 	    <tr><th style="border: 1px solid black" width="100px">Length of fence</th><th style="border: 1px solid black" width="100px">Length of side a</th><th style="border: 1px solid black" width="100px">Length of side b</th><th style="border: 1px solid black" width="100px">Area of rectangle</th></tr>
+ 	    <tr><td id="print_fencelength">1</td><td id="print_sidelength1">2,5</td><td id="print_sidelength2">2</td><td id="print_area">3</td></tr>
+      </table>
+
+      <script type="text/javascript">
+        /* <![CDATA[ */
+
+        board = JXG.JSXGraph.initBoard('box', {originX: 250, originY: 250, unitX: 100, unitY: 100});
+        b1p1 = board.createElement('point', [-2,0],{name: 'A'});
+		b1p2 = board.createElement('point', [1,0],{visible: false});
+		b1l1 = board.createElement('line', [b1p1, b1p2], {straightFirst: false, straightLast: true, visible: false}); //Tr�gerhalbgerade
+		b1p3 = board.createElement('point', [2, 0], {slideObject: b1l1, name: 'B'}); //variabler Umfang
+		b1p4 = board.createElement('midpoint', [b1p1,b1p3], {name: 'M'}); //halber Umfang
+		b1l2 = board.createElement('line', [b1p1, b1p4], {straightFirst: false, straightLast: false});  //Strecke halber Umfang
+		b1p5 = board.createElement('point', [-1, 0], {slideObject: b1l2, labelcolor:['#aaaaaa',null]}); //ver�nderbare Seite
+		b1l3 = board.createElement('perpendicular', [b1l1,b1p5],{strokeColor:['#ff0000',null]}); //Senkrechte durch variablen Eckpunkt
+		b1c1 = board.createElement('circle', [b1p5,b1p4],{}); //Kreis zum Abtragen der zweiten Seitenl�nge
+		b1p6 = board.createElement('point',[board.intersectionFunc(b1c1,b1l3,1)], {style:8});  // Schnittpunkt des Kreises mit der Sekrechten
+		b1l4 = board.createElement('perpendicular', [b1l3,b1p6],{strokeColor:['#ff0000',null]}); //Senkrechte durch variablen Eckpunkt
+		b1l5 = board.createElement('perpendicular', [b1l1,b1p1],{strokeColor:['#ff0000',null]}); //Senkrechte durch festen Eckpunkt
+
+
+		b1p7 = board.createElement('point',[board.intersectionFunc(b1l4,b1l5,0)], {style:8}); 
+		b1pol1 = board.createElement('polygon',[b1p1,b1p5,b1p6,b1p7], {}); 
+
+		 
+        board2 = JXG.JSXGraph.initBoard('box2', {originX: 100, originY: 300, unitX: 100, unitY: 100});
+        b2p1 = board2.createElement('point', [function(){ return b1p1.Dist(b1p5); }, function() { return b1p1.Dist(b1p5)*b1p5.Dist(b1p4); }], {fixed: true, trace: true, strokeColor: '#ff0000', name: 'S'});
+        b2axisx = board2.createElement('axis', [[0,0], [1,0]], {});
+        b2axisy = board2.createElement('axis', [[0,0], [0,1]], {});
+        
+        board.addChild(board2);
+		//defining the hook
+		function print_table() {
+			$('print_fencelength').innerHTML = Math.round(b1p1.Dist(b1p3),2);
+        	$('print_sidelength1').innerHTML = Math.round(b1p1.Dist(b1p5),2);
+        	$('print_sidelength2').innerHTML = Math.round(b1p4.Dist(b1p5),2);
+        	$('print_area').innerHTML = Math.round(b1p1.Dist(b1p5) * b1p4.Dist(b1p5),2);
+			
+			
+        }
+		//registering the hook
+        print_table_id = board.addHook(print_table);
+
+    </script>
+</body>
+</html>

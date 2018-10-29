@@ -1,0 +1,31 @@
+{
+  "timer": 65000,
+  "type": 5,
+  "question": "Il y a {nbPlayers1} joueurs de l’élément {element1} sur Navadra et {coeff} fois plus de l’élément {element2}.<br>Redimensionne les barres (à 5 près) pour que le diagramme traduise cette situation.",
+  "view": {
+  	  "diagram": "bars",
+	  "title": "Nombre de joueurs par élément sur Navadra"
+  },
+  "answer": [
+	  "barDiagram(Joueurs,{element1},{nbPlayers1})",
+	  "barDiagram(Joueurs,{element2},{nbPlayers2})"
+  ],
+  "criteria": [
+	  "barDiagram(Joueurs,{element1},{nbPlayers1})",
+	  "barDiagram(Joueurs,{element2},{nbPlayers2})"
+  ],
+  "var": {
+	"serie1": { "type": "array", "value": ["10*randomInt(6,13)","10*randomInt(6,13)","10*randomInt(6,13)","10*randomInt(6,13)"], "conditions": "different(serie1)" },
+	"legend": { "type": "array", "expression": ["Feu", "Eau", "Vent", "Terre"] },
+	"element1": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])" },
+	"element2": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])", "conditions": ["element2!=element1"] },
+	"nbPlayers1": { "type": "number", "value": "10*randomInt(2,4)" },
+	"coeff": { "type": "number", "value": "randomInt(2,6)" },
+	"nbPlayers2": { "type": "number", "value": "coeff*nbPlayers1" },
+	"serie1Name": { "type": "array", "expression": "Joueurs" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "bars", "draggableX": false, "draggableY": true, "dragMinY": 0, "minPointLength": 1, "type_diagram": "column", "evaluate": false, "showLegend": false }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/barsHint3.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme, <span class='g'>les barres représentent le nombre de joueur de chaque élément sur Navadra</span>.<br>Pour <span class='g'>connaitre le nombre de joueur d'un élément</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br><span class='i'>Si on te demande de redimensionner les barres pour représenter 30 joueurs de l'élément Eau et 4 fois plus de l'élément Feu, procède en 2 étapes :<br>1° : redimensionne la barre de l'Eau à 30.<br>2° : calcule combien fait 30x4 (120) puis redimensionne la barre du Feu.</span></span>"
+}

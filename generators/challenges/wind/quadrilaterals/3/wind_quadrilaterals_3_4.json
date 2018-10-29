@@ -1,0 +1,27 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. Les droites (AB) et (AC) sont ... .",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "parallèles" },
+      { "determined": false, "choice": "perpendiculaires" },
+	  { "determined": true, "choice": "ni parallèles ni perpendiculaires" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(4,5)","random(4,5)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(1.5,2.5)","random(0,2)"], "labelDisplay": "top" },
+	"D": { "type": "point", "value": ["random(-9,-5)","random(0,2)"], "labelDisplay": "top" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["losange", "parallélogramme quelconque"]  },
+	"typeEng": { "type": "array", "expression": ["lozenge", "parallelogram"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"quadri1": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC" },
+	"diag2": { "type": "line", "expression": "BD" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un losange comme dans un parallélogramme quelconque, un côté n'est jamais ni perpendiculaire ni parallèle à une diagonale.</span><br><br>Ainsi, les droites (AB) et (AC) ne sont ni perpendiculaires ni parallèles dans tous les cas.</span>"
+}

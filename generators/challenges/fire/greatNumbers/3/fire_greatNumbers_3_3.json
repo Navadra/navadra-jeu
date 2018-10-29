@@ -1,0 +1,30 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "{a} x {rand1} + {b} x {rand2} + {c} x {rand3} ... {x} {powerString4} {y} {powerString5} {z} {powerString6}",
+  "answer": [
+    { "if": "a*rand1+b*rand2+c*rand3 < sumRightTerm", "choice": " &lt; " },
+    { "if": "a*rand1+b*rand2+c*rand3 == sumRightTerm", "choice": " = " },
+    { "if": "a*rand1+b*rand2+c*rand3 > sumRightTerm", "choice": " &gt; " }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(1, 10)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=a", "c!=b"] },
+	"rand1": { "type": "number", "value": "pow(10,randomInt(5,7))" },
+	"rand2": { "type": "number", "value": "pow(10,randomInt(3,5))"  },
+	"rand3": { "type": "number", "value": "pow(10,randomInt(1,3))"  },
+	"x": { "type": "number", "value": "randomInt(1, 10)" },
+	"y": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["y!=x"] },
+	"z": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["z!=y", "z!=x"] },
+	"power": { "type": "array", "expression": ["unités", "dizaines", "centaines", "milliers", "dizaines de milliers", "centaines de milliers", "millions"] },
+	"rand4": { "type": "number", "value": "randomInt(6,8)" },
+	"rand5": { "type": "number", "value": "randomInt(4,6)"  },
+	"rand6": { "type": "number", "value": "randomInt(2,4)"  },
+	"powerString4": { "type": "string", "value": "power[rand4]" },
+	"powerString5": { "type": "string", "value": "power[rand5]" },
+	"powerString6": { "type": "string", "value": "power[rand6]" },
+	"sumRightTerm" : { "type": "number", "value": "x*pow(10,rand4-1)+y*pow(10,rand5-1)+z*pow(10,rand6-1)"  }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le chiffre le <span class='g'>plus à droite </span>est celui des <span class='g'>unités</span> (ex : dans 378 529 le chiffre des unités est 9). S'il y a <span class='g'>une virgule</span>, c'est le chiffre juste à <span class='g'>gauche de la virgule </span>(ex : dans 524,67 le chiffre des unités est 4).<br>Le chiffre à gauche de celui des unités est celui des <span class='g'>dizaines</span>.<br>Le chiffre à gauche de celui des dizaines est celui des <span class='g'>centaines</span>.<br>Le chiffre à gauche de celui des centaines est celui des <span class='g'>milliers</span>.<br>Le chiffre à gauche de celui des milliers est celui des <span class='g'>dizaines de milliers</span>.<br>Le chiffre à gauche de celui des dizaines de milliers est celui des <span class='g'>centaines de milliers</span>.<br>Le chiffre à gauche de celui des centaines de milliers est celui des <span class='g'>millions</span>.</span>"
+}

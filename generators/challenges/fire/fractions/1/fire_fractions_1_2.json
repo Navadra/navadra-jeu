@@ -1,0 +1,29 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "AC = □ x AB.<br>Remplace □ par une fraction pour exprimer la relation entre la longueur du segment [AC] et celle du segment [AB].<br>{input1}{fraction}{input2}",
+  "view": {
+  	  "geometry": [-0.1, 0.3, 1.1, -0.3],
+	  "grid": true,
+	  "axis": true
+  },
+  "answer": [
+	  "numerator",
+	  "denominator"
+  ],
+  "criteria": [
+	  "{input1} == numerator",
+	  "{input2} == denominator"
+  ],
+  "type_answer": "single",
+  "var": {
+	"denominator": { "type": "number", "value": "randomInt(2,9)" },
+	"numerator": { "type": "number", "value": "randomInt(2,9)", "conditions": ["gcd(numerator,denominator)==1", "numerator <= denominator + 1"]},
+	"A": { "type": "point", "value": [0,0], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["denominator/10",0], "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "bottom", "labelType": "length", "precision": 0.01},
+	"C": { "type": "point", "value": ["numerator/10",0], "labelDisplay": "top" },
+	"segment2": { "type": "segment", "expression": "AC", "labelDisplay": "top", "labelType": "length", "precision": 0.01}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour déterminer la relation entre la longueur de 2 segments, procède en 3 étapes :<br><br>1° : détermine la <span class='g'>longueur du premier segment </span><span class='i'>(ex: le segment [AB] mesure 8 cm)</span><br>2° : détermine la <span class='g'>longueur du deuxième segment </span><span class='i'>(ex: le segment [AC] mesure 4 cm)</span><br>3° : exprime maintenant la relation entre les 2 longueurs sous une de ses formes :<br><span class='g'>AC = AC/AB x AB </span><span class='i'>(ex: AC = 4/8 x AB qui se simplifie en AC = 1/2 x AB)</span><br><span class='g'>AB = AB/AC x AC</span><span class='i'> (ex: AB = 8/4 x AC qui se simplifie en AB = 2 x AC)</span></span>"
+}

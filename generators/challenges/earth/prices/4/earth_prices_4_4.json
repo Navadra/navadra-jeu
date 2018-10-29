@@ -1,0 +1,20 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "Mélissa a acheté des boissons pour une fête avec un billet de {x} €.<br>Elle a acheté {y} boissons bien chimiques à {z} € l’unité et {w} jus d’orange.<br>Sachant qu’il ne lui restait plus de monnaie, quel était le prix à l’unité du jus d’orange ?<br>{input1} € l'unité<br><span class='i'>Sinon, elle peut aussi regarder son ticket de caisse...</span>",
+  "answer": [
+	  "v"
+  ],
+   "criteria": [
+	  "{input1} == v"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([10,20])" },
+	"y": { "type": "number", "value": "pickRandom([2,3,4])" },
+	"z": { "type": "number", "value": "pickRandom([2,3,4])", "conditions": ["z*y<x"] },
+	"w": { "type": "number", "value": "randomInt(1,x-z*y+1)", "conditions": ["floor((x-z*y)/w)==(x-z*y)/w", "(x-z*y)/w < 5"] },
+	"v": { "type": "number", "value": "(x-z*y)/w" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, procède en 3 étapes :<br><br>1° : <span class='g'>calcule combien ont coûté les boissons bien chimiques </span>(ex : si elle a acheté 4 bouteilles à 2€ l'unité, cela lui a coûté 8€).<br><br>2° : <span class='g'>calcule combien il lui restait pour acheter du jus d'orange </span>(ex : si elle avait un billet de 10€ alors il lui restait 10-8 = 2€).<br><br>3° : <span class='g'>divise le montant restant par le nombre de jus d'orange acheté </span>(ex : si elle a acheté 1 jus d'orange alors l'unité coûtait 2€).</span>"
+}

@@ -1,0 +1,27 @@
+{
+  "timer": 35000,
+  "type": 3,
+  "question": "Peux-tu citer les couleurs du/des angle(s) {angleType} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "angleType == \"aigu(s)\"", "choice": "rouge" },
+      { "if": "(triangleType == \"obtuseTriangle\" and angleType == \"obtus\") or (triangleType == \"acuteTriangle\" and angleType == \"aigu(s)\")", "choice": "bleu" },
+	  { "if": "(triangleType == \"obtuseTriangle\" and angleType == \"aigu(s)\") or (triangleType == \"acuteTriangle\" and angleType == \"obtus\")", "choice": "vert" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(8,10)","random(-7,-5)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["0","random(4,7)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["10","random(4,7)"], "labelDisplay": "top" },
+	"possibilities": { "type": "array", "expression": ["acuteTriangle", "obtuseTriangle"] },
+	"random": { "type": "number", "value": "randomInt(1,3)" },
+	"triangleType": { "type": "string", "value": "possibilities[random]" },
+	"triangle1": { "type": "possibilities[random]", "expression": "ABC" },
+	"angleType": { "type": "string", "value": "pickRandom([\"aigu(s)\", \"obtus\"])" },
+	"angle1": { "type": "angle", "expression": "BAC", "color": "red"},
+	"angle2": { "type": "angle", "expression": "CBA", "color": "blue"},
+	"angle3": { "type": "angle", "expression": "ACB", "color": "green"}
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/anglesHint3.png' /><span class='mh2 mg2 l95 ib'>Un angle <span class='g'>obtus</span> mesure <span class='g'>plus de 90° </span>(<span class='i'>en bleu sur l'exemple</span>).<br><br>Un angle <span class='g'>droit</span> mesure <span class='g'>exactement 90°.</span><br><br>Un angle <span class='g'>aigu</span> mesure <span class='g'>moins de 90°</span><span class='i'>(en rouge sur l'exemple).<span class='g'></span></span></span>"
+}

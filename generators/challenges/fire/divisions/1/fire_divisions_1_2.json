@@ -1,0 +1,26 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Quel est le {choice} de cette division ?<br>{input1}",
+  "view": {
+  	   "euclideanDivision": "(d,a,b,c)"
+  },
+  "answer": [
+	  "numbers[rand]"
+  ],
+  "criteria": [
+	  "{input1} == numbers[rand]"
+  ],
+  "type_answer": "single",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,15)"},
+	"b": { "type": "number", "value": "randomInt(2,15)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"numbers": { "type": "string", "expression": ["{d}", "{a}", "{b}", "{c}"] },
+	"possibilities": { "type": "array", "expression": ["dividende", "diviseur", "quotient", "reste"] },
+	"rand": { "type": "number", "value": "randomInt(1,5)" },
+	"choice": { "type": "array", "value": "possibilities[rand]" }
+  },
+	"hint" : "<img class='mg2 ib l10' src='/webroot/img/challenges/divisionsHint1.png'/><span class='ib mg2 l85 align_middle'>Pour te souvenir de la position des différents termes tu peux utiliser ce <span class='g'>moyen mnémotechnique </span>:<br>Le « <span class='g'>diviseur</span> » <span class='g'>divise</span> donc c'est lui qu'on place en <span class='g'>haut à droite</span>.<br>Le « <span class='g'>quo</span>tient » est sur le « <span class='g'>cô</span>té » de la division.<br>Le « <span class='g'>reste</span> », est celui qui <span class='g'>reste à la fin </span>donc tout « <span class='g'>en bas</span> » de la division.<br>Il ne te reste plus qu'à placer le « <span class='g'>dividende</span> » à la seule <span class='g'>place restante </span>: en haut à gauche.<br>A toi de jouer !</span>"
+}

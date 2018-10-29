@@ -1,0 +1,33 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "{x} {powerString1}, {y} {powerString2}, {z} {powerString3} ... {w}",
+  "answer": [
+    { "if": "possibilitiesPower[rand1]+possibilitiesPower[rand2]+possibilitiesPower[rand3] < w", "choice": " &lt; " },
+    { "if": "possibilitiesPower[rand1]+possibilitiesPower[rand2]+possibilitiesPower[rand3] == w", "choice": " = " },
+    { "if": "possibilitiesPower[rand1]+possibilitiesPower[rand2]+possibilitiesPower[rand3] > w", "choice": " &gt; " }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(0, 10)" },
+	"b": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["c!=a", "c!=b"] },
+	"d": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["d!=a","d!=b","d!=c"] },
+	"e": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["e!=a","e!=b","e!=c","e!=d"] },
+	"f": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["f!=a","f!=b","f!=c","f!=d","f!=e"] },
+	"g": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["g!=a","g!=b","g!=c","g!=d","g!=e","g!=f"] },
+	"power": { "type": "array", "expression": ["unités", "dizaines", "centaines", "milliers", "dizaines de milliers", "centaines de milliers", "millions"] },
+	"possibilities": { "type": "array", "value": ["a", "b", "c", "d", "e", "f", "g"] },
+	"possibilitiesPower": { "type": "array", "value": ["a", "b*10", "c*100", "d*1000", "e*10000", "f*100000", "g*1000000"] },
+	"rand1": { "type": "number", "value": "randomInt(6,8)" },
+	"rand2": { "type": "number", "value": "randomInt(4,6)"  },
+	"rand3": { "type": "number", "value": "randomInt(1,4)" },
+	"x": { "type": "number", "value": "possibilities[rand1]" },
+	"y": { "type": "number", "value": "possibilities[rand2]" },
+	"z": { "type": "number", "value": "possibilities[rand3]" },
+	"powerString1": { "type": "string", "value": "power[rand1]" },
+	"powerString2": { "type": "string", "value": "power[rand2]" },
+	"powerString3": { "type": "string", "value": "power[rand3]" },
+	"w": { "type": "number", "value": "randomInt(100000,10000000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour déterminer un nombre écrit sous forme de multiple de 10, il te suffit d'utiliser l'astuce suivante :<br>Un chiffre multiplié par <span class='g'>dix</span> deviendra le chiffre des <span class='g'>diz</span>aines.<br>Un chiffre multiplié par <span class='g'>cent</span> deviendra le chiffre des <span class='g'>cent</span>aines.<br>Un chiffre multiplié par <span class='g'>mille</span> deviendra le chiffre des <span class='g'>mill</span>iers.<br>Un chiffre multiplié par <span class='g'>dix-mille</span> (10 000) deviendra le chiffre des <span class='g'>diz</span>aines de <span class='g'>mill</span>iers.<br>Un chiffre multiplié par <span class='g'>cent-mille </span>(100 000) deviendra le chiffre des <span class='g'>cent</span>aines de <span class='g'>mill</span>iers.<br>Un chiffre multiplié par un<span class='g'> million</span> deviendra le chiffre des <span class='g'>millions</span>.</span>"
+}

@@ -1,0 +1,17 @@
+{
+  "timer": 25000,
+  "type": 1,
+  "question": "{x} / {power} = {input1}",
+  "answer": [
+	  "x/power"
+  ],
+  "criteria": [
+	  "{input1} == x/power"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(100000, 10000000)" },
+	"power": { "type": "array", "value": "pickRandom([10, 100, 1000])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Diviser</span> un nombre par <span class='g'>10</span> ou <span class='g'>100</span> ou <span class='g'>1 000</span> revient à <span class='g'>décaler la virgule de ce nombre vers la gauche autant de fois qu'il y a de zéros dans le diviseur</span>.<br><br><span class='i'>5 243 / 10 => 10 n'a qu'un seul « 0 », on décale donc <span class='g'>une</span> fois la virgule vers la gauche et 5 243 devient <span class='g'>524,3</span><br>5 243 / 100 => 100 a deux « 0 », on décale donc <span class='g'>deux</span> fois la virgule vers la gauche et 5 243 devient <span class='g'>52,43</span><br>5 243 / 1 000 => 1 000 a trois « 0 », on décale donc <span class='g'>trois</span> fois la virgule vers la gauche et 5 243 devient <span class='g'>5,243</span></span></span>"
+}

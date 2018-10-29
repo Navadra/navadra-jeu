@@ -1,0 +1,21 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x} {baseLength} = {input1} {convertedLength}",
+  "answer": [
+	  "round(x*(10^basePower)/(10^convertedPower),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(x*(10^basePower)/(10^convertedPower),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["mm", "cm", "dm", "m", "dam", "hm", "km"] },
+	"basePower": { "type": "number", "value": "pickRandom([1, 2, 3, 4, 7])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "pickRandom([1, 2, 3, 4, 7])" , "conditions": ["convertedPower!=basePower", "abs(basePower-convertedPower)<4"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "round(random(2, 100),2)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

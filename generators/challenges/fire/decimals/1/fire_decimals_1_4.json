@@ -1,0 +1,27 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Trouve un nombre dont le chiffre des {powerString1} vaut {a} et le chiffre des {powerString2} vaut {b}.<br>{input1}",
+  "answer": [
+	  "x"
+  ],
+   "criteria": [
+	  "mod(floor( round( {input1} *pow(10,rand1-1), 2 ) ),10) == a",
+		"mod(floor( round( {input1} *pow(10,rand2-1), 2 ) ),10) == b"
+  ],
+  "type_answer": "multiple",
+  "var": {
+		"power": { "type": "array", "expression": ["unités", "dixièmes", "centièmes", "millièmes"] },
+		"rand1": { "type": "number", "value": "randomInt(1,5)" },
+		"powerString1": { "type": "string", "value": "power[rand1]" },
+		"rand2": { "type": "number", "value": "randomInt(1,5)", "conditions": ["rand2!=rand1"] },
+		"powerString2": { "type": "string", "value": "power[rand2]" },
+		"rand3": { "type": "number", "value": "randomInt(1,5)", "conditions": ["rand3!=rand1", "rand3!=rand2"] },
+		"powerString3": { "type": "string", "value": "power[rand3]" },
+		"a": { "type": "number", "value": "randomInt(1, 10)" },
+		"b": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["b!=a"] },
+		"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=a", "c!=b"] },
+		"x": { "type": "number", "value": "round(a/pow(10,rand1-1) + b/pow(10,rand2-1) + c/pow(10,rand3-1), 3)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le <span class='g'>1° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>dixièmes</span> ».<br>Le <span class='g'>2° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>centièmes</span> ».<br>Le <span class='g'>3° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>millièmes</span> ».<br><span class='i'>Ex : 590,185<br>Le chiffre des dixièmes est 1<br>Le chiffre des centièmes est 8<br>Le chiffre des millièmes est 5</span></span>"
+}

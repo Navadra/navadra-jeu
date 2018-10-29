@@ -1,0 +1,23 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "Le segment [AB] est ...",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "un côté consécutif au côté [AB]" },
+	  { "determined": true, "choice": "le côté opposé au côté [DC]" },
+	  { "determined": false, "choice": "une diagonale du quadrilatère" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-12,-4)","random(4,8)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(4,12)","random(4,8)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(4,12)","random(-8,-4)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-12,-4)","random(-8,-4)"], "labelDisplay": "bottom" },
+	"quadri": { "type": "quadrilateral", "expression": "ABCD" },
+	"diag1": { "type": "segment", "expression": "AC" },
+	"diag2": { "type": "segment", "expression": "BD" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/quadrilateralsHint1.png' /><span class='mh2 mg2 l95 ib'>Utilise l'exemple ci-contre pour ne plus te tromper entre <span class='g'>côté opposé</span>, <span class='g'>côté consécutif</span>, <span class='g'>sommet opposé </span>et <span class='g'>diagonale</span> d'un quadrilatère.</span>"
+}

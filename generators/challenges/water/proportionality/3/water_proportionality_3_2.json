@@ -1,0 +1,27 @@
+{
+  "timer": 50000,
+  "type": 1,
+  "question": "Quelle valeur faut-il noter dans le cercle ?<br>{input1}",
+  "view": {
+      "table": true,
+	  "tableTitle": "Distance parcourue par un Lynx en fonction du temps",
+	  "circleProportionality": [1, "top"]
+  },
+  "answer": [
+	  "circle"
+  ],
+   "criteria": [
+	  "{input1} == circle"
+  ],
+  "type_answer": "single",
+  "var": {
+	"coeff": { "type": "number", "value": "0.003" },
+	"circle": { "type": "number", "value": "randomInt(2, 6)" },
+	"x": { "type": "number", "value": "randomInt(2, 10)*100" },
+	"column1": { "type": "array", "value": ["x", " "] },
+	"column2": { "type": "array", "value": ["x*circle", "round(x*circle*coeff, 0)"] },
+	"column3": { "type": "array", "value": [" ", "round(x*circle*circle*coeff, 0)"] },
+    "table": { "type": "table", "value": ["column1", "column2", "column3"], "rowheads": ["Distance (en m)", "Durée (en min)"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>La valeur à noter dans le cercle correspond à <span class='g'>la valeur par laquelle il faut multiplier le 1° nombre pour obtenir le 2° nombre</span>.<br><br>Ne te laisse pas impressionner par les nombres avec des « 0 » derrière, <span class='g'>tu peux oublier les « 0 » pour trouver cette valeur.</span><br><span class='i'>Ex : Trouver la valeur pour passer de 900 à 4 500.<br>Enlève les deux « 0 » de chaque nombre et tu obtiens 9 et 45.<br>Tu sais qu'il faut multiplier 9 par 5 pour obtenir 45 (9x5 = 45).<br>La valeur que tu cherches est donc <span class='g'>5</span>.</span></span>"
+}

@@ -1,0 +1,27 @@
+{
+  "timer": 35000,
+  "type": 5,
+  "question": "Déplace le point A pour que A, B et C soient alignés (à-peu-près).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(A,E)"
+  ],
+  "criteria": [
+	  "A belongsTo d1"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"B": { "type": "point", "value": ["randomInt(-10,10)","randomInt(-7,8)"], "labelDisplay": "top"  },
+	"C": { "type": "point", "value": ["randomInt(-10,10)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(B)" },
+	"d1": { "type": "line", "expression": "BC", "labelDisplay": "center" },
+	"d2": { "type": "line", "value": ["randomInt(-5,-2)","randomInt(-5,6)"], "labelDisplay": "center" },
+	"d3": { "type": "line", "value": ["-1","randomInt(-10,0)"], "labelDisplay": "center" },
+	"d4": { "type": "line", "value": ["1","randomInt(1,11)"], "labelDisplay": "center" },
+	"A": { "type": "point", "value": ["randomInt(-10,10)","randomInt(-7,8)"], "labelDisplay": "top", "color": "red", "fixed": false, "conditions": "far(d1)" },
+	"D": { "type": "point", "value": ["randomInt(-10,10)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"E": { "type": "point", "expression": "middle(BC)", "visible": false }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint2.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Trois points sont alignés si on peut tracer une droite passant par les 3 points.<br><br></span><span class='i'>Ainsi sur cet exemple :<br>A, C et D sont alignés.<br>E, B et F ne sont pas alignés.</span></span>"
+}

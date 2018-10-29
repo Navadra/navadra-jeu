@@ -1,0 +1,24 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Les droites (d1) et (d2) sont parallèles, quelle est la relation entre les droites (d2) et (d3) ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "parallèles" },
+      { "determined": true, "choice": "perpendiculaires" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A)" },
+	"C": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B)" },
+	"D": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"d1": { "type": "line", "value": ["randomInt(2,5)","randomInt(-5,6)"], "labelDisplay": "top" },
+	"d2": { "type": "line", "value": "parallel(d1,*)", "labelDisplay": "top", "conditions": "far(d1)" },
+	"d3": { "type": "line", "value": "perpendicular(d1,*)", "labelDisplay": "right" },
+	"angle1": { "type": "angle", "expression": "d3,d1",  "radius": 1, "color": "red" },
+	"d4": { "type": "line", "value": [0.4,"randomInt(0,8)"], "labelDisplay": "right" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint4.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Si deux droites sont parallèles, toute droite perpendiculaire à l'une est aussi perpendiculaire à l'autre.</span><br><span class='i'>Ex : sur ce dessin, la droite en rouge est parallèle à (d2) or (d1) est perpendiculaire à (d2). (d1) est donc également perpendiculaire à la droite en rouge.</span></span>"
+}

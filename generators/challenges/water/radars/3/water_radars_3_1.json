@@ -1,0 +1,43 @@
+{
+  "timer": 65000,
+  "type": 4,
+  "question": "Greymund a appris des sorts de chaque élément.<br>Classe les éléments du plus présent dans les sorts de Greymund au moins présent.<br>{slot1} > {slot2} > {slot3} > {slot4}",
+  "view": {
+  	  "diagram": "spider",
+	  "title": "Nombre de sorts par élément"
+  },
+  "answer": [
+	  "{answer1}",
+	  "{answer2}",
+	  "{answer3}",
+	  "{answer4}"
+  ],
+  "var": {
+	"serieValues": { "type": "array", "value": [1,2,3,4] },
+	"serie1": { "type": "array", "value": "shuffle(serieValues)" },
+	"serie1Name": { "type": "string", "expression": "Sorts de Greymund" },
+	"element1": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])" },
+	"element2": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])", "conditions": ["element2!=element1"] },
+	"element3": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])", "conditions": ["element3!=element1","element3!=element2"] },
+	"element4": { "type": "string", "value": "pickRandom([\"Feu\",\"Eau\",\"Vent\",\"Terre\"])", "conditions": ["element4!=element1","element4!=element2","element4!=element3"] },
+	"legend": { "type": "array", "value": ["element1", "element2", "element3", "element4"] },
+	"value1": { "type": "number", "value": "max(serie1)" },
+	"value4": { "type": "number", "value": "min(serie1)" },
+	"value2Temp": { "type": "number", "value": "pickRandom(serie1)", "conditions": ["value2Temp!=value1","value2Temp!=value4"]  },
+	"value3Temp": { "type": "number", "value": "pickRandom(serie1)", "conditions": ["value3Temp!=value1","value3Temp!=value4","value3Temp!=value2Temp"]  },
+	"value2": { "type": "number", "value": "max(value2Temp,value3Temp)" },
+	"value3": { "type": "number", "value": "min(value2Temp,value3Temp)" },
+	"position1": { "type": "string", "value": "indexOf(serie1,value1)" },
+	"position2": { "type": "string", "value": "indexOf(serie1,value2)" },
+	"position3": { "type": "string", "value": "indexOf(serie1,value3)" },
+	"position4": { "type": "string", "value": "indexOf(serie1,value4)" },
+	"answer1": { "type": "string", "value": "legend[position1+1]" },
+	"answer2": { "type": "string", "value": "legend[position2+1]" },
+	"answer3": { "type": "string", "value": "legend[position3+1]" },
+	"answer4": { "type": "string", "value": "legend[position4+1]" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "radar", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "pointPlacement": "on" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/radarsHint3.png' /><span class='mh2 mg2 l95 ib'>Sur ce type de représentation en radar, <span class='g'>plus les points sont éloignés du centre de la figure, plus leur valeur est élevée</span>.<br>Pour <span class='g'>connaitre précisément leur valeur</span>, il faut regarder les graduations<span class='g'> de l'axe vertical</span>.<br><br><span class='i'>Ainsi, sur cet exemple Greymund a dans l'ordre :<br>Plus de sorts de Feu (4) puis de Terre (3) puis de Vent (2) puis d'Eau (1).</span></span>"
+}

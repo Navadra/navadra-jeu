@@ -1,0 +1,36 @@
+{
+  "timer": 65000,
+  "type": 2,
+  "question": "Quelle est la plus petite masse ?",
+  "answer": [
+	  { "if": "a*10^baseA == min(allLengths)", "choice": "{a} {unitA}" },
+      { "if": "b*10^baseB == min(allLengths)", "choice": "{b} {unitB}" },
+	  { "if": "c*10^baseC == min(allLengths)", "choice": "{c} {unitC}" },
+	  { "if": "d*10^baseD == min(allLengths)", "choice": "{d} {unitD}" },
+	  { "if": "e*10^baseE == min(allLengths)", "choice": "{e} {unitE}" },
+	  { "if": "f*10^baseF == min(allLengths)", "choice": "{f} {unitF}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["mg", "cg", "dg", "g", "dag", "hg", "kg", "undefined", "q", "t"] },
+	"baseA": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)" },
+	"baseB": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"b": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)", "conditions": ["b*10^baseB!=a*10^baseA"] },
+	"baseC": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitC": { "type": "string", "value": "lengths[baseC]" },
+	"c": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)", "conditions": ["c*10^baseC!=a*10^baseA","c!=b*10^baseB"] },
+	"baseD": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitD": { "type": "string", "value": "lengths[baseD]" },
+	"d": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)", "conditions": ["d*10^baseD!=a*10^baseA","d!=b*10^baseB","d!=c*10^baseC"] },
+	"baseE": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitE": { "type": "string", "value": "lengths[baseE]" },
+	"e": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)", "conditions": ["e*10^baseE!=a*10^baseA","e*10^baseE!=b*10^baseB","e*10^baseE!=c*10^baseC","e*10^baseE!=d*10^baseD"] },
+	"baseF": { "type": "number", "value": "pickRandom([1, 4, 7, 10])" },
+	"unitF": { "type": "string", "value": "lengths[baseF]" },
+	"f": { "type": "number", "value": "round(pickRandom([0.001,1,1000])*randomInt(2,10),4)", "conditions": ["f*10^baseF!=a*10^baseA","f*10^baseF!=b*10^baseB","f*10^baseF!=c*10^baseC","f*10^baseF!=d*10^baseD","f*10^baseF!=e*10^baseE"] },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB", "c*10^baseC", "d*10^baseD", "e*10^baseE", "f*10^baseF"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

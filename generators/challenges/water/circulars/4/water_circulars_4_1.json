@@ -1,0 +1,31 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Combien y-a-t-il de catégories différentes ?<br>{input1}",
+  "view": {
+  	  "diagram": "pies",
+	  "title": "Répartition des joueurs par niveau sur Navadra."
+  },
+  "answer": [
+	  "5"
+  ],
+   "criteria": [
+	  "{input1} == 5"
+  ],
+  "type_answer": "single",
+  "var": {
+	"legend": { "type": "array", "expression": ["niveaux 1 à 10", "niveaux 11 à 20", "niveaux 21 à 30", "niveaux 31 à 40", "niveaux 41 à 50"] },
+	"serie1": { "type": "array", "value": ["randomInt(100,300)","randomInt(300,800)","randomInt(500,1000)","randomInt(300,800)","randomInt(100,200)"] },
+	"total": { "type": "number", "value": "sum(serie1)" },
+	"serie1Sum": { "type": "array", "value": ["round(serie1[1]/total*100,0)","round((serie1[1]+serie1[2])/total*100,0)","round((serie1[1]+serie1[2]+serie1[3])/total*100,0)","round((serie1[1]+serie1[2]+serie1[3]+serie1[4])/total*100,0)","1"] },
+	"levels": { "type": "array", "value": ["10", "20", "30", "40", "50"] },
+	"random": { "type": "number", "value": "randomInt(1,6)" },
+	"level": { "type": "number", "value": "levels[random]" },
+	"sumLevel": { "type": "number", "value": "serie1Sum[random]" },
+	"serie1Name": { "type": "array", "expression": "% des joueurs" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": {"type": "options", "expression": "circulars", "colorByPoint": true }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/circularsHint4.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme circulaire, <span class='g'>chaque portion colorée du diagramme représente la proportion de joueurs d'une tranche de niveau donnée sur Navadra.</span><br><br><span class='i'>Si on te demande par exemple quel est le pourcentage des joueurs qui ont un niveau compris entre 11 et 40 tu devras additionner les portions concernées :<br>Les joueurs ayant un niveau allant de 11 à 20 (20%) plus les joueurs ayant un niveau de 21 à 30 (30%) plus les joueurs ayant un niveau de 31 à 40 (30%).<br>Les joueurs ayant un niveau compris entre 11 et 40 représentent donc 20+30+30 = 70% des joueurs.</span></span>"
+}

@@ -1,0 +1,21 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Dans un groupe de {x} aventuriers, il y a {y}% qui sont de l’élément {element1}.<br>Parmi ceux-ci il y a {z}% de {sex1}.<br>Combien y a-t-il de {sex1} de l’élément {element1} ?<br>{input1}",
+  "answer": [
+	  "w"
+  ],
+   "criteria": [
+	  "{input1} == w "
+  ],
+  "type_answer": "single",
+  "var": {
+	"w": { "type": "number", "value": "randomInt(1,11)" },
+	"z": { "type": "number", "value": "10*randomInt(1,5)", "conditions": ["w*100/z == floor(w*100/z)"] },
+	"y": { "type": "number", "value": "10*randomInt(1,5)", "conditions": ["w*100/z*100/y == floor(w*100/z*100/y)"] },
+	"x": { "type": "number", "value": "w*100/z*100/y" },
+	"element1": { "type": "string", "value": "pickRandom([\"Feu\", \"Eau\", \"Vent\", \"Terre\"])" },
+	"sex1": { "type": "string", "value": "pickRandom([\"garçons\", \"filles\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Dans cet exercice, il te faudra appliquer successivement 2 pourcentages.<br><br>Ex : Si dans un groupe de 50 aventuriers, il y a 40% qui sont de l'élément Terre tu sais qu'il y a donc 50 x 0,4 = <span class='g'>20 aventuriers de l'élément Terre</span>.<br>Si parmi ceux-ci il y a 40% de garçons alors tu sais qu'il y a 20 x 0,4 = <span class='g'>8 garçons de l'élément Terre</span>.</span>"
+}

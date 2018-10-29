@@ -1,0 +1,32 @@
+{
+  "timer": 40000,
+  "type": 5,
+  "question": "Déplace le point B pour qu'il corresponde au symétrique de A par rapport à (d) sachant que les 2 cercles ont le même rayon.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(B,C)"
+  ],
+  "criteria": [
+	  "B belongsTo circle1",
+	  "B belongsTo circle2"
+  ],
+  "type_answer": "single",
+  "var": {
+	"M": { "type": "point", "value": ["random(1,3)","random(2,4)"], "labelDisplay": "left" },
+	"N": { "type": "point", "value": ["random(-2,-0)","random(-4,-2)"], "labelDisplay": "left" },
+	"r": { "type": "number", "value": "round(random(5,7),1)" },
+	"d": { "type": "line", "expression": "MN", "labelDisplay": "top" },
+	"circle1": { "type": "circle", "expression": "radius(M,{r})" },
+	"circle2": { "type": "circle", "expression": "radius(N,{r})" },
+	"A": { "type": "point", "expression": "intersection(circle1,circle2,1)", "labelDisplay": "left" },
+	"d1": { "type": "line", "expression": "AM", "visible": false},
+	"d2": { "type": "line", "expression": "AN", "visible": false},
+	"B": { "type": "point", "value": [18,7], "labelDisplay": "left", "color": "red", "fixed": false },
+	"C": { "type": "point", "expression": "intersection(circle1,circle2,2)", "visible": false },
+	"D": { "type": "point", "expression": "intersection(circle1,d1,1)", "visible": false },
+	"E": { "type": "point", "expression": "intersection(circle2,d2,1)", "visible": false }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/symmetriesHint2.png' /><span class='mh2 mg2 l95 ib'>L'énoncé précise que les 2 cercles ont le même rayon. <span class='g'>Ainsi tout point situé à l'intersection de ces cercles est à égale distance de M et de N.</span><br><br>Donc en plaçant B sur le point rouge dans l'exemple ci-contre, M et N seront tous les 2 à égale distance de A et B. <span class='g'>La droite (d) sera donc la médiatrice de [AB].</span><br><br>Par conséquent, la droite (d) coupera [AB] en son milieu et sera perpendiculaire à [AB].<br><span class='g'>Le point B sera donc bien le symétrique de A par rapport à (d).</span></span>"
+}

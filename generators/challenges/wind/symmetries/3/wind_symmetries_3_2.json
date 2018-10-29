@@ -1,0 +1,43 @@
+{
+  "timer": 55000,
+  "type": 5,
+  "question": "Déplace les points M et N pour que le segment MN soit le symétrique de [AB] par la droite (d).",
+  "view": {
+  	  "geometry": [-6, 3, 6, -3],
+	  "grid": true
+  },
+  "answer": [
+	  "placePoint(M,E)",
+	  "placePoint(N,F)"
+  ],
+  "criteria": [
+	  "abs(segment1bisLength - segment2bisLength) < 1",
+	  "segment3Length < 0.5 or segment4Length < 0.5",
+	  "segment5Length < 0.5 or segment6Length < 0.5"
+  ],
+  "type_answer": "single",
+  "var": {
+	"W": { "type": "point", "value": [0,0], "visible": false },
+	"X": { "type": "point", "value": [0,1], "visible": false },
+	"d": { "type": "line", "expression": "WX", "labelDisplay": "top", "color": "red" },
+	"x1": { "type": "number", "value": "randomInt(-5,0)" },
+	"y1": { "type": "number", "value": "randomInt(-2,3)" },
+	"x2": { "type": "number", "value": "randomInt(1,6)" },
+	"y2": { "type": "number", "value": "randomInt(-2,3)", "conditions": ["y2!=y1"] },
+	"A": { "type": "point", "value": ["x1","y1"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["x2","y2"], "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment1bis": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 },
+	"M": { "type": "point", "value": [1,1], "labelDisplay": "top", "fixed": false, "color": "red", "snapToGrid": true },
+	"N": { "type": "point", "value": [4,-1], "labelDisplay": "top", "fixed": false, "color": "red", "snapToGrid": true },
+	"segment2": { "type": "segment", "expression": "MN" },
+	"segment2bis": { "type": "segment", "expression": "MN", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 },
+	"E": { "type": "point", "value": ["-x1","y1"], "visible": false },
+	"F": { "type": "point", "value": ["-x2","y2"], "visible": false },
+	"segment3": { "type": "segment", "expression": "ME", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 },
+	"segment4": { "type": "segment", "expression": "MF", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 },
+	"segment5": { "type": "segment", "expression": "NE", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 },
+	"segment6": { "type": "segment", "expression": "NF", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/symmetriesHint1.png' /><span class='mh2 mg2 l95 ib'>Pour tracer le symétrique d'un point A par rapport à un axe (d) on procède en <span class='g'>2 étapes </span>:<br><br><span class='g'>1° : tracer (d1), la droite perpendiculaire à (d) passant par A</span><br><span class='g'>2° : reporter la distance entre A et (d) de « l'autre côté » de l'axe de symétrie le long de (d1)<br><br></span>Pour tracer le symétrique d'un segment ou d'une figure par rapport à un axe, <span class='g'>il suffit de tracer un à un le symétrique de ses extrémités ou de ses sommets par rapport à l'axe.</span></span>"
+}

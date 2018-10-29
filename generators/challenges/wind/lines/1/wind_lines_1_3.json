@@ -1,0 +1,29 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Cite 3 points qui sont alignés : {input1}, {input2} et {input3}.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "C.name",
+	  "F.name",
+	  "B.name"
+  ],
+   "criteria": [
+	  "aligned({input1},{input2},{input3})"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-19,-10)","random(2,8)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(10,19)","random(2,8)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(-5,5)","random(-8,-2)"], "labelDisplay": "top" },
+	"AB": { "type": "line", "expression": "AB" },
+	"BC": { "type": "line", "expression": "BC" },
+	"AC": { "type": "line", "expression": "AC" },
+	"D": { "type": "point", "expression": "belongsTo(AC)", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"E": { "type": "point", "expression": "belongsTo(AB)", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"F": { "type": "point", "expression": "belongsTo(BC)", "labelDisplay": "top", "conditions": "far(A,B,C)" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint2.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Trois points sont alignés si on peut tracer une droite passant par les 3 points.<br><br></span><span class='i'>Ainsi sur cet exemple :<br>A, C et D sont alignés.<br>E, B et F ne sont pas alignés.</span></span>"
+}

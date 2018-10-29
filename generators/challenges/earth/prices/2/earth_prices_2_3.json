@@ -1,0 +1,17 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Antoine s'apprête à acheter {y} g de fromage à {x} €/kg.<br>Combien va lui coûter le fromage ?<br>{input1} €<br><span class='i'>Il avait bien calculé le montant à l'avance mais le client devant lui a pris le dernier morceau. Dommage...</span>",
+  "answer": [
+	  "x*y/1000"
+  ],
+   "criteria": [
+	  "{input1} == x*y/1000"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([10,15,20,25])" },
+	"y": { "type": "number", "value": "pickRandom([100,200,250,500])", "conditions": ["x!=15 or y != 250", "x!=25 or y != 250"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, <span class='g'>identifie combien fait le morceau de fromage en fraction d'un kilo.</span><br><br>Par exemple, si le morceau de fromage pèse 200g, c'est aussi 1/5 d'un kilo (200x5 = 1 000g).<br><br>Ainsi, le prix du morceau sera 5 fois moins cher que son prix au kilo. Donc si le prix au kilo est 10€/kg alors le prix du morceau sera égal à 2€.</span>"
+}

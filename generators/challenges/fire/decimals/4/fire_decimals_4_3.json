@@ -1,0 +1,17 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "{x} x {a} = {input1}",
+  "answer": [
+	  "round(x*a, 5)"
+  ],
+  "criteria": [
+	  "{input1} == round(x*a, 5)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "round(random(5, 1000), 1)", "conditions": ["floor(x)!=x"] },
+	"a": { "type": "number", "value": "pow(10, randomInt(-3, 0))" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Multiplier un nombre par <span class='g'>0,1</span> ou <span class='g'>0,01</span> ou <span class='g'>0,001</span> revient à <span class='g'>décaler la virgule de ce nombre vers la gauche autant de fois qu'il y a de zéros dans le multiplicateur</span>.<br><br><span class='i'>641,5 x 0,1 => 0,1 n'a qu'un seul « 0 », on décale donc <span class='g'>une</span> fois la virgule vers la gauche et 641,5 devient <span class='g'>64,15</span><br>641,5 x 0,01 => 0,01 a deux « 0 », on décale donc <span class='g'>deux</span> fois la virgule vers la gauche et 641,5 devient <span class='g'>6,415</span><br>641,5 x 0,001 => 0,001 a trois « 0 », on décale donc <span class='g'>trois</span> fois la virgule vers la gauche et 641,5 devient <span class='g'>0,6415</span></span></span>"
+}

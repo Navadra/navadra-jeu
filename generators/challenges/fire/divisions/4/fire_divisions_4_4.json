@@ -1,0 +1,20 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Tu achètes {a} sorts qui coûtent chacun {b} Pyrs {element}. A la fin, il te reste {c} Pyrs.<br>Combien avais-tu de Pyrs au départ ?<br>{input1}",
+  "answer": [
+	  "d"
+  ],
+  "criteria": [
+	  "{input1} == d"
+  ],
+  "type_answer": "single",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"element": { "type": "string", "value": "pickRandom([\"de Feu\",\"d'Eau\",\"de Vent\",\"de Terre\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Cet énoncé ne te fait pas penser à un calcul de <span class='g'>dividende</span> ?<br><br>Identifie le diviseur, le quotient et le reste et utilise la formule que tu as apprise dans les niveaux précédents.</span>"
+}

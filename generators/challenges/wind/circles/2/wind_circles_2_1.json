@@ -1,0 +1,33 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "… est un des points d’intersection entre le cercle de centre A de rayon AD et la droite (CE).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "A" },
+      { "determined": false, "choice": "B" },
+	  { "determined": false, "choice": "C" },
+	  { "determined": false, "choice": "D" },
+	  { "determined": false, "choice": "E" },
+	  { "determined": false, "choice": "F" },
+	  { "determined": true, "choice": "G" },
+	  { "determined": false, "choice": "H" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": [-5,-1], "labelDisplay": "top" },
+	"D": { "type": "point", "value": [-9,6.5], "labelDisplay": "top" },
+	"circle1": { "type": "circle", "expression": "radius(A,D)" },
+	"B": { "type": "point", "value": [5,-1], "labelDisplay": "top" },
+	"E": { "type": "point", "value": [9,6.5], "labelDisplay": "top" },
+	"circle2": { "type": "circle", "expression": "radius(B,E)" },
+	"C": { "type": "point", "value": ["random(-1.5,1.5)","random(-1.5,1.5)"], "labelDisplay": "top" },
+	"d1": { "type": "line", "expression": "DC" },
+	"d2": { "type": "line", "expression": "EC" },
+	"F": { "type": "point", "expression": "intersection(circle2,d1,1)", "labelDisplay": "top" },
+	"G": { "type": "point", "expression": "intersection(circle1,d2,2)", "labelDisplay": "top" },
+	"H": { "type": "point", "expression": "intersection(circle1,circle2,1)", "labelDisplay": "top" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/circlesHint3.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Il y a 2 points d'intersection entre le cercle de centre A et de rayon AD et la droite (CE).<br><br></span>Ces points sont représentés en <span class='g jaune'>jaune</span> sur l'exemple. Parmi ceux-ci, seul un des deux a un nom : <span class='g'>G</span>.</span>"
+}

@@ -1,0 +1,44 @@
+{
+  "timer": 65000,
+  "type": 5,
+  "question": "Déplace les points D, E et F pour que les droites (d1), (d2) et (d3) soient les 3 hauteurs du triangle ABC.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "altitude(AB,MD,C)",
+	  "altitude(AC,NE,B)",
+	  "altitude(BC,OF,A)"
+  ],
+  "criteria": [
+	  "C belongsTo d1",
+	  "B belongsTo d2",
+	  "A belongsTo d3"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(6,8)","random(4,5.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(2,4)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "triangle", "expression": "ABC" },
+	"side1": { "type": "line", "expression": "AB", "visible": false },
+	"side2": { "type": "line", "expression": "AC", "visible": false },
+	"side3": { "type": "line", "expression": "BC", "visible": false },
+	"altitude1": { "type": "line", "expression": "altitude(AB,C)", "visible": false },
+	"altitude2": { "type": "line", "expression": "altitude(AC,B))", "visible": false },
+	"altitude3": { "type": "line", "expression": "altitude(BC,A)", "visible": false },
+	"M": { "type": "point", "expression": "intersection(altitude1,side1)", "visible": false },
+	"N": { "type": "point", "expression": "intersection(altitude2,side2)", "visible": false },
+	"O": { "type": "point", "expression": "intersection(altitude3,side3)", "visible": false },
+	"D": { "type": "point", "value": ["random(-10,-8)","random(-4,-2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"E": { "type": "point", "value": ["random(13,13)","random(4,6)"], "labelDisplay": "top", "color": "blue", "fixed": false },
+	"F": { "type": "point", "value": ["random(-13,-13)","random(6,8)"], "labelDisplay": "top", "color": "green", "fixed": false },
+	"d1": { "type": "line", "expression": "MD", "labelDisplay": "top"},
+	"d2": { "type": "line", "expression": "NE", "labelDisplay": "top"},
+	"d3": { "type": "line", "expression": "OF", "labelDisplay": "top"},
+	"angle1": { "type": "angle", "expression": "d1,side1", "color": "red", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "side2,d2", "color": "blue", "radius": 1 },
+	"angle3": { "type": "angle", "expression": "d3,side3", "color": "green", "radius": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La hauteur d'un segment dans un triangle est perpendiculaire à ce segment et passe par son sommet opposé.</span></span>"
+}

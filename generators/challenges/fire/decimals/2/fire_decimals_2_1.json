@@ -1,0 +1,16 @@
+{
+  "timer": 25000,
+  "type": 1,
+  "question": "Quel est le nombre entier qui précède {x} ?<br>{input1}",
+  "answer": [
+	  "floor(x)"
+  ],
+  "criteria": [
+	  "{input1} == floor(x)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "round(random(10, 50), 2)", "conditions": ["floor(x)!=x"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le nombre entier qui <span class='g'>précède</span> un nombre décimal est le plus proche <span class='g'>nombre sans virgule </span>qui lui est<span class='g'> inférieur</span>.<br><span class='i'>Ex : 14,59<br>Le premier nombre sans virgule inférieur à 14,59 est tout simplement <span class='g'>14</span>.</span></span>"
+}

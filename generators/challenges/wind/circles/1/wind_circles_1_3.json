@@ -1,0 +1,23 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Le segment [OB] est … du cercle.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "le milieu" },
+      { "determined": false, "choice": "le centre" },
+	  { "determined": true, "choice": "un rayon" },
+	  { "determined": false, "choice": "un diamètre" },
+	  { "determined": false, "choice": "une extrémité" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-5)","random(-2,3)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(5,8)","random(-2,3)"], "labelDisplay": "top" },
+	"O": { "type": "point", "expression": "middle(AB)", "labelDisplay": "top" },
+	"C": { "type": "circle", "expression": "diameter(AB)" },
+	"d1": { "type": "segment", "expression": "AB" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/circlesHint1.png' /><span class='mh2 mg2 l95 ib'>Utilise l'exemple ci-contre pour ne plus te tromper entre <span class='g'>rayon</span>, <span class='g'>diamètre</span>, <span class='g'>extrémités</span>, <span class='g'>milieu d'un segment </span>et <span class='g'>centre d'un cercle</span>.</span>"
+}

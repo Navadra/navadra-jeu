@@ -1,0 +1,24 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "ABC est un triangle {chosenType}. Peut-on déterminer la mesure des angles AĈB et BÂC ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "chosenType == \"équilatéral\"", "choice": "Oui" },
+      { "if": "chosenType == \"rectangle\"", "choice": "Il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,6)","random(4,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["équilatéral", "rectangle"] },
+	"typeEng": { "type": "array", "expression": ["equiTriangle", "rightAngleTriangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABC" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 2, "labelDisplay": true, "labelType": "value" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle équilatéral, les angles sont tous égaux (à 60°) tandis que dans un triangle rectangle, un angle mesure 90° mais les autres peuvent varier.</span><br><br>Ainsi, tous les angles sont égaux à 60° dans un triangle équilatéral tandis qu'on ne peut pas déterminer la mesure des angles restant dans le cas d'un triangle rectangle.</span>"
+}

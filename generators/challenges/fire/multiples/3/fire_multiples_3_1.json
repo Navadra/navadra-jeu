@@ -1,0 +1,14 @@
+{
+  "timer": 25000,
+  "type": 2,
+  "question": "{b} est-il divisible par {a} ?",
+  "answer": [
+    { "if": "b/a == floor(b/a)", "choice": "oui" },
+	{ "if": "b/a != floor(b/a)", "choice": "non" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "pickRandom([5, 9])" },
+	"b": { "type": "number", "value": "randomInt(1000, 10000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour qu'un nombre soit <span class='g'>divisible par 5</span>, il doit se <span class='g'>terminer par 0 ou 5</span>.<br><span class='i'>Ex : 42<span class='g'>5</span> est divisible par 5 mais 42<span class='g'>3</span> n'est pas divisible par 5.</span><br><br>Pour qu'un nombre soit <span class='g'>divisible par 9</span>, <span class='g'>la somme de ses chiffres doit être un multiple de 9</span>.<br><span class='i'>Ex1 : 738  => 7 + 3 + 8 = 18. 18 est un multiple de 9 (9x2 = 18) donc 738 est un multiple de 9.<br>Ex2 : 546  => 5 + 4 + 6 = 15. 15 n'est pas un multiple de 9 donc 546 n'est pas un multiple de 9.</span></span>"
+}

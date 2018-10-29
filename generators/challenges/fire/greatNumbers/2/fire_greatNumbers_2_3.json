@@ -1,0 +1,21 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "{x} {powerString} x {factor} = {input1}",
+  "answer": [
+	  "x*powerNumber*factor"
+  ],
+  "criteria": [
+	  "{input1} == x*powerNumber*factor"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2, 10)" },
+	"power": { "type": "array", "expression": ["unités", "dizaines", "centaines", "milliers"] },
+	"rand": { "type": "number", "value": "randomInt(1,5)" },
+	"powerNumber": { "type": "array", "value": "pow(10,rand-1)" },
+	"powerString": { "type": "string", "value": "power[rand]" },
+	"factor": { "type": "array", "value": "pickRandom([10, 100, 1000])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Multiplier</span> un nombre par <span class='g'>10</span> ou <span class='g'>100</span> ou <span class='g'>1 000</span> revient à <span class='g'>décaler la virgule de ce nombre vers la droite autant de fois qu'il y a de zéros dans le multiplicateur</span>.<br><br><span class='i'>5 243 x 10 => 10 n'a qu'un seul « 0 », on décale donc <span class='g'>une</span> fois la virgule vers la droite et 5 243 devient <span class='g'>52 430</span><br>5 243 x 100 => 100 a deux « 0 », on décale donc <span class='g'>deux</span> fois la virgule vers la droite et 5 243 devient <span class='g'>524 300</span><br>5 243 x 1 000 => 1 000 a trois « 0 », on décale donc <span class='g'>trois</span> fois la virgule vers la droite et 5 243 devient <span class='g'>5 243 000</span></span></span>"
+}

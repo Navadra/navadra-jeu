@@ -1,0 +1,16 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Haleham et Sayeya ont commencé leur aventure sur Navadra en même temps.<br>Haleham est passé niveau {x} en {y} jours tandis que Sayeya est passé niveau {x} en {z} semaines.<br>Qui est passé niveau {x} le premier ?<br><span class='i'>Je te laisse deviner la tête du \"vainqueur\" quand il a réalisé que le classement était basé sur le Prestige et non pas sur le niveau...</span>",
+  "answer": [
+	  { "if": "y/7 < z", "choice": "Haleham" },
+      { "if": "y/7 > z", "choice": "Sayeya" },
+	  { "if": "y/7 == z", "choice": "Égalité" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(10,30)" },
+	"y": { "type": "number", "value": "randomInt(14,64)" },
+	"z": { "type": "number", "value": "randomInt( max(2,y/7 - 2) , min(9,y/7 + 2) )" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

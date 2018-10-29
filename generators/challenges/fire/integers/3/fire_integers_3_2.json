@@ -1,0 +1,22 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "{x} - {y} est plus proche de ... .",
+  "answer": [
+    { "if": "abs(x - y - a) == min(abs(x - y - a), abs(x - y - b), abs(x - y - c), abs(x - y - d))", "choice": "{a}" },
+    { "if": "abs(x - y - b) == min(abs(x - y - a), abs(x - y - b), abs(x - y - c), abs(x - y - d))", "choice": "{b}" },
+    { "if": "abs(x - y - c) == min(abs(x - y - a), abs(x - y - b), abs(x - y - c), abs(x - y - d))", "choice": "{c}" },
+	{ "if": "abs(x - y - d) == min(abs(x - y - a), abs(x - y - b), abs(x - y - c), abs(x - y - d))", "choice": "{d}" }
+  ],
+  "var": {
+	"op": { "type": "operator", "value": "pickRandom([\"+\",\"-\"])" },
+	"x": { "type": "number", "value": "randomInt(2001, 10000)" },
+    "y": { "type": "number", "value": "randomInt(1001, 10000)", "conditions": ["x>y"] },
+	"z": { "type": "number", "value": "randomInt(11, 20)" },
+    "a": { "type": "number", "value":"x - y {op} z" },
+	"b": { "type": "number", "value":"x - y {op} 30*z" },
+	"c": { "type": "number", "value":"x - y {op} 40*z" },
+	"d": { "type": "number", "value":"x - y {op} 50*z" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour calculer la somme ou la différence de grands nombres, arrondis-les !</span><br><span class='i'>Ex : 5 182 - 2 960 peut s'arrondir à 5 200 et 3 000 et le résultat sera donc proche de<br>5 200 – 3 000 = <span class='g'>2 200</span>.</span></span>"
+}

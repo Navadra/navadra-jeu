@@ -1,0 +1,18 @@
+{
+  "timer": 25000,
+  "type": 1,
+  "question": "Combien fait la somme de ces 3 chiffres : {x} | {y} | {z} ?<br>{input1}",
+  "answer": [
+	  "x + y + z"
+  ],
+   "criteria": [
+	  "{input1} == x + y + z"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(1,10)" },
+    "y": { "type": "number", "value": "randomInt(1,10)" },
+    "z": { "type": "number", "value": "randomInt(1,10)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La somme de plusieurs nombre revient à additionner tous ces nombres.<br></span><span class='i'>Ex : La somme de 7 | 8 | 5 est égale à :<br>7 + 8 + 5 = 15 + 5 = 20</span></span>"
+}

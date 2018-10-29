@@ -1,0 +1,26 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Quel est le jour où Ebbister a combattu pour la première fois {x} monstres ?<br>{input1}",
+  "view": {
+  	  "geometry": [-1, 5, 11, -0.5],
+	  "grid": false,
+	  "axis": true,
+	  "tableTitle": "Evolution du nombre de monstres combattus par Ebbister sur 10 jours."
+  },
+  "answer": [
+	  "dayNumber"
+  ],
+   "criteria": [
+	  "{input1} == dayNumber"
+  ],
+  "type_answer": "single",
+  "var": {
+	"abscissas" : {"type" : "array", "value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+	"ordonates": { "type": "array", "value": [0, "randomInt(1,2)","randomInt(1,3)","randomInt(1,3)","randomInt(1,3)","randomInt(1,4)","randomInt(1,4)","randomInt(1,4)","randomInt(1,5)","randomInt(1,5)","randomInt(1,6)"] },
+	"curve1": { "type": "curve", "value": ["abscissas", "ordonates"] },
+	"x": { "type": "number", "value": "max(pickRandom(ordonates),pickRandom(ordonates),pickRandom(ordonates),pickRandom(ordonates),pickRandom(ordonates))" },
+	"dayNumber": { "type": "number", "value": "indexOf(ordonates,x)" }
+  },
+	"hint" : "<img class='ib l70 mg15 md15' src='/webroot/img/challenges/graphsHint2.png' /><span class='mh2 mg2 l95 ib'>Ce graphique permet de connaitre <span class='g'>le nombre de monstres combattus par Ebbister chaque jour pendant 10 jours</span>.<br><span class='g'>Le nombre de monstres est représenté sur l'axe des ordonnées </span>(axe vertical).<br><span class='g'>Le nombre de jours sur l'axe des abscisses </span>(axe horizontal).<br><br><span class='i'>Ex : Si on cherche le jour ou Ebbister a combattu 2 monstres pour la première fois, il faut commencer par tracer une ligne dans sa tête au niveau de l'axe des ordonnées au niveau du chiffre 2 (ligne rouge sur l'image).<br>On regarde ensuite à quels endroits cette ligne coupe la courbe dessinée. Dans cet exemple, en 3 points : le 2° jour, le 4° jour et le 5° jour.<br>Pour répondre à la question, la première fois ou Ebbister a combattu 2 monstres c'est donc le 2° jour.</span></span>"
+}

@@ -1,0 +1,21 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "On divise {d} par {a}.<br>Quel est le quotient de la division ?",
+  "answer": [
+	  { "determined": true, "choice": "{b}" },
+	  { "determined": false, "choice": "{e}" },
+	  { "determined": false, "choice": "{f}" },
+	  { "determined": false, "choice": "{g}" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(50,100)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"e": { "type": "number", "value": "b + pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["e>0"] },
+	"f": { "type": "number", "value": "b + pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["f>0", "f!=e"] },
+	"g": { "type": "number", "value": "b + pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["g>0", "g!=f", "g!=e"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le <span class='g'>quotient d'une division, </span>trouve le <span class='g'>multiple du diviseur </span>tout juste <span class='g'>inférieur au dividende</span>. Si les nombres sont trop grands, commence par les simplifier.<br><br><span class='i'>Exemple : pour la division de 391 par 67, commence par arrondir ces nombres à 400 et 70.<br>Le multiple de 70 tout juste inférieur à 400 est 350 (car 7x5 = 35 donc 70x5 = 350).<br>Par combien faut-il multiplier 70 pour obtenir 350 ? Par <span class='g'>5 </span>! Le résultat exact doit donc <span class='g'>être proche de 5</span>.</span></span>"
+}

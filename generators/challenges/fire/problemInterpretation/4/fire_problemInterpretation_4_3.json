@@ -1,0 +1,19 @@
+{
+  "timer": 55000,
+  "type": 3,
+  "question": "Les ours du territoire Shakor peuvent atteindre une masse de {weight} kg.<br>Chaque jour, ils parcourent {distance} km à la recherche de nourriture sur les {numerator}/{denominator} de l’île.<br>À sa naissance, un ourson pèse {factor} fois moins que ses parents.<br>De quelle(s) donnée(s) a-t-on besoin pour savoir combien pèse un ourson ?",
+  "answer": [
+	{ "determined": true, "choice": "{weight}" },
+    { "determined": false, "choice": "{distance}" },
+    { "determined": false, "choice": "{numerator}/{denominator}" },
+	{ "determined": true, "choice": "{factor}" }
+  ],
+  "var": {
+    "weight": { "type": "number", "value": "randomInt(300,500)" },
+	"distance": { "type": "number", "value": "randomInt(10,25)" },
+	"numerator": { "type": "number", "value": "randomInt(2,9)" },
+	"denominator": { "type": "number", "value": "randomInt(2,10)", "conditions": ["denominator>numerator", "gcd(numerator,denominator) ==1"] },
+	"factor": { "type": "number", "value": "randomInt(700,1000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour savoir combien pèse un ourson, il te suffit de connaître le <span class='g'>poids d'un ours adulte</span> et <span class='g'>combien de fois moins </span>pèse un ourson !</span>"
+}

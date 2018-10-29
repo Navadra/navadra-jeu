@@ -1,0 +1,32 @@
+{
+  "timer": 55000,
+  "type": 5,
+  "question": "Clique sur la barre des filles le mois où il y a eu en moyenne plus de filles connectées simultanément que de garçons.",
+  "view": {
+  	  "diagram": "bars",
+	  "title": "Moyennes mensuelles du nombre de garçons et de filles connectés simultanément sur Navadra."
+  },
+  "answer": [
+	  "highlightDiagram(2,index)"
+  ],
+  "criteria": [
+	  "clickDiagram(2,index)"
+  ],
+  "var": {
+	 "serie2": { "type": "array", "value": ["20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)","20*randomInt(5,40)"], "conditions": "different(serie2)" },
+	"serie2Name": { "type": "array", "expression": "Filles" },
+	"possibilities": { "type": "array", "value": [20,50,70,90,-50,80,10,30,40,60,100,0] },
+	"order": { "type": "array", "value": ["pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)","pickRandom(possibilities)"], "conditions": "different(order)" },
+	"serie1": { "type": "array", "value": ["serie2[1]+order[1]","serie2[2]+order[2]","serie2[3]+order[3]","serie2[4]+order[4]","serie2[5]+order[5]","serie2[6]+order[6]","serie2[7]+order[7]","serie2[8]+order[8]","serie2[9]+order[9]","serie2[10]+order[10]","serie2[11]+order[11]","serie2[12]+order[12]"] },
+	"serie1Name": { "type": "array", "expression": "Garçons" },
+	"legend": { "type": "array", "expression": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"] },
+	"sexes": { "type": "array", "expression": ["garçons", "filles"] },
+	"difference": { "type": "array", "value": "serie1-serie2" },
+	"x": { "type": "number", "value": "min(difference)" },
+	"index": { "type": "number", "value": "indexOf(difference,x) + 1" },
+	"series": { "type": "table", "value": ["serie1","serie2"] },
+	"seriesName": { "type": "table", "value": ["serie1Name","serie2Name"] },
+	"seriesOption": { "type": "options", "expression": "bars", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "type_diagram": "column", "evaluate": false, "showTooltip": true }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/barsHint4.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme, <span class='g'>les barres représentent le nombre de garçons et de filles qui se sont connectés simultanément par mois</span>.<br>Pour <span class='g'>connaitre le nombre de garçons ou de filles connectées simultanément un mois donné</span>, il faut se focaliser sur une couleur (bleu pour les garçons, orange pour les filles) puis regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br><span class='i'>Si on te demande le mois où il y a eu en moyenne plus de garçons connectés simultanément que de filles, il te suffit de comparer les barres bleues et oranges de chaque mois et de trouver le mois pour lequel la barre bleue est plus grande que la barre orange.<br>Ici, c'est au mois de Décembre où il y a eu plus de garçons connectés simultanément que de filles.</span></span>"
+}

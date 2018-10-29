@@ -1,0 +1,49 @@
+{
+  "timer": 50000,
+  "type": 5,
+  "question": "Déplace le point B pour que l'angle {targetAngleUser} soit égal à {valueAngle}° (tolérance de 1° sur les angles).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "{typeTriangle}({targetAngleUser})"
+  ],
+  "criteria": [
+	  "abs({targetAngle}Value - valueAngle) < 2"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-2,2)","random(4,5.5)"], "labelDisplay": "top", "color": "red", "fixed": false},
+	"C": { "type": "point", "value": ["random(-5.5,-2.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(2.5,5.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"E": { "type": "point", "value": ["random(6,8)","random(6,7)"], "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "CB" },
+	"segment3": { "type": "segment", "expression": "AC" },
+	"segment4": { "type": "segment", "expression": "CD" },
+	"segment5": { "type": "segment", "expression": "DB" },
+	"segment6": { "type": "segment", "expression": "EB" },
+	"segment7": { "type": "segment", "expression": "DE" },
+	"angle1": { "type": "angle", "expression": "CAB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "BCA", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle3": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle4": { "type": "angle", "expression": "DCB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle5": { "type": "angle", "expression": "CBD", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle6": { "type": "angle", "expression": "BDC", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle7": { "type": "angle", "expression": "DBE", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle8": { "type": "angle", "expression": "BED", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle9": { "type": "angle", "expression": "EDB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"possibleAnglesUser": { "type": "array", "expression": ["BAC", "BCA", "ABC", "DCB", "DBC", "CDB", "EBD", "BED", "EDB"] },
+	"possibleAngles": { "type": "array", "expression": ["angle1", "angle2", "angle3", "angle4", "angle5", "angle6", "angle7", "angle8", "angle9"] },
+	"rand1": { "type": "number", "value": "randomInt(1,10)" },
+	"targetAngleUser": { "type": "string", "value": "possibleAnglesUser[rand1]" },
+	"targetAngle": { "type": "string", "value": "possibleAngles[rand1]" },
+	"possibleValues": { "type": "array", "expression": ["60", "90"] },
+	"correspondingTriangles": { "type": "array", "expression": ["equiTriangle", "rightAngleTriangle"] },
+	"rand2": { "type": "number", "value": "randomInt(1,3)" },
+	"valueAngle": { "type": "number", "value": "possibleValues[rand2]" },
+	"typeTriangle": { "type": "string", "value": "correspondingTriangles[rand2]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pas de piège dans ce cas-là, à toi d'identifier l'angle d'intérêt et de déplacer B pour que l'angle atteigne la valeur demandée.</span></span>"
+}

@@ -1,0 +1,16 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "{x} + □ = {y}.<br>Quelle opération faire pour trouver □ ?",
+  "answer": [
+    { "determined": true, "choice": "{y} - {x}" },
+    { "determined": false, "choice": "{x} - {y}" },
+    { "determined": false, "choice": "{x} + {y}" },
+	{ "determined": false, "choice": "{x} x {y}" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(1001, 10000)" },
+    "y": { "type": "number", "value": "randomInt(1001, 10000)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le symbole □ dans une équation avec des « + » et des « - », tu peux faire passer les nombres de <span class='g'>l'autre côté du signe '=' en changeant leur signe</span>.<br><br><span class='i'>Ex1 : 14 + □ = 17 est équivalent à<br>□ = 17 – 14 (le 14 a changé de côté, il a donc changé de +14 à -14)<br><span class='g'>□ = 3</span><br><br>Ex2 : 18 - □ = 6 est équivalent à<br>18 = 6 + □ (le □ a changé de côté, il a donc changé de -□ à +□)<br>18 - 6 = □ (le 6 a changé de côté, il a donc changé de +6 à -6)<br><span class='g'>□ = 12</span></span></span>"
+}

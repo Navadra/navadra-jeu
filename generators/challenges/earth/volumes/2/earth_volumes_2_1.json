@@ -1,0 +1,22 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Maxime met {x} fois {y} {baseLength} d'eau dans un récipient.<br>Quel est le volume total d’eau dans ce récipient <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span><br><span class='i'>On raconte que c'est quelqu'un qui en avait marre de se poser ce genre de question qui a inventé les verres doseurs.</span>",
+  "answer": [
+	  "round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL", "dL", "L"] },
+	"basePower": { "type": "number", "value": "pickRandom([1,2,4])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "pickRandom([1,2,4])" , "conditions": ["convertedPower!=basePower"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(3,10)" },
+	"y": { "type": "number", "value": "randomInt(2,10)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit de <span class='g'>multiplier le nombre de doses d'eau </span>par <span class='g'>le volume d'une dose </span>pour connaitre le volume total d'eau dans le récipient puis de <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

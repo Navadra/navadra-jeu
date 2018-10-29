@@ -1,0 +1,26 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Quelle est l'aire de ce cercle ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "{choice1} x π  cm²" },
+      { "determined": false, "choice": "{choice2} x π  cm²" },
+	  { "determined": true, "choice": "{choice3} x π  cm²" },
+	  { "determined": false, "choice": "{choice4} x π cm²" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"radius1": { "type": "number", "value": "random(3,10)" },
+	"circle1": { "type": "circle", "expression": "radius(A,radius1)", "labelDisplay": "center", "labelType": "radius" },
+	"choice1": { "type": "number", "value": "2*circle1Radius" },
+	"choice2": { "type": "number", "value": "circle1Radius" },
+	"choice3": { "type": "number", "value": "circle1Radius^2" },
+	"choice4": { "type": "number", "value": "round(circle1Radius*4.5)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br><span class='g'>L'aire d'un cercle se calcule à l'aide de cette formule :<br><br>Aire = π x R² (ou π = 3,14… et R est le rayon du cercle).</span><br><br><span class='i'>Ex : si le rayon mesure 9 cm alors l'aire sera égale à 81 x π cm².</span></span>"
+}

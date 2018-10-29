@@ -1,0 +1,33 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Quel est le périmètre de ce rectangle ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "(seg1Length+seg2Length)*2"
+  ],
+   "criteria": [
+	  "{input1} == (seg1Length+seg2Length)*2"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-5,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,5)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "left", "labelType": "length" },
+	"ordC": { "type": "number", "value": "random(5,-4)" },
+	"absC": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) <= 10", "round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) != seg1Length"] },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"rectangle1": { "type": "rectangle", "expression": "ABCD", "labelDisplay": "center", "labelType": "perimeter", "visible": false},
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"seg3": { "type": "segment", "expression": "CD" },
+	"seg4": { "type": "segment", "expression": "DA" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br>Dans le cas d'un rectangle, comme ses côtés opposés sont égaux, il suffit de connaître la longueur de 2 côtés opposés et ensuite appliquer le calcul suivant :<br><br>Périmètre = 2 x côté1 + 2 x côté2</span>"
+}

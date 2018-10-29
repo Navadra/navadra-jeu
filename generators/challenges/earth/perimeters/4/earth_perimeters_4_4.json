@@ -1,0 +1,33 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "ABCD est un carré.<br>Quel est le périmètre (arrondi) de cette figure ?<br>Rappel : seuls les contours de la figure comptent et π ≈ 3.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{perimeter} cm" },
+      { "determined": false, "choice": "{choice2} cm" },
+	  { "determined": false, "choice": "{choice3} cm" },
+	  { "determined": false, "choice": "{choice4} cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) >= 6", "round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10", "mod(round(sqrt((ordB-ordA)^2 + (absB-absA)^2)),2) == 0"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(6,7)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD"},
+	"E": { "type": "point", "expression": "middle(BC)", "display": false },
+	"arc1": { "type": "arc", "expression": "ECB" },
+	"seg1": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length" },
+	"perimeter": { "type": "number", "value": "round(3*seg1Length + 0.5*seg1Length*pi)" },
+	"choice2": { "type": "number", "value": "round(2*seg1Length + 0.5*seg1Length*pi)" },
+	"choice3": { "type": "number", "value": "round(4*seg1Length + 0.5*seg1Length*pi)" },
+	"choice4": { "type": "number", "value": "round(3*seg1Length + seg1Length*pi)" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/perimetersHint3.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés mais attention : seuls les contours de la figure comptent !</span><br><br>Dans le cas de cette figure composée d'un carré et d'un demi cercle, AB, AD BC et DC sont tous égaux à 6 cm.<br><br>Le périmètre du demi-cercle <span class='g'>sans sa base </span>vaut lui la moitié de celui d'un cercle soit π x R ≈ 3 x R.<br><br>Comme BC mesure 6 cm, on sait que le rayon du demi-cercle vaut 2 fois moins soit 3 cm. On en déduit le périmètre du demi-cercle qui est environ égal à 9 cm.<br><br>Finalement le périmètre de la figure vaut donc environ 6 + 6 + 6 + 9 = 27 cm.</span>"
+}

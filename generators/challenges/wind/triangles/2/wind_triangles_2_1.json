@@ -1,0 +1,59 @@
+{
+  "timer": 75000,
+  "type": 5,
+  "question": "Déplace le point B pour faire de {targetTriangle2} un triangle {chosenTypeFr} (tolérance de 3° sur les angles).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(B,F)"
+  ],
+  "criteria": [
+	  "(chosenTypeEng != \"equiTriangle\") or ( (abs({targetAngle1}Value - 60) < 4) and (abs({targetAngle2}Value - 60) < 4) and (abs({targetAngle3}Value - 60) < 4) )",
+	  "(chosenTypeEng != \"isoTriangle\") or ( (abs({targetAngle1}Value - {targetAngle2}Value) < 4) or (abs({targetAngle1}Value - {targetAngle3}Value) < 4) or (abs({targetAngle2}Value - {targetAngle3}Value) < 4) )",
+	  "(chosenTypeEng != \"rightAngleTriangle\") or ( (abs({targetAngle1}Value - 90) < 4) or (abs({targetAngle2}Value - 90) < 4) or (abs({targetAngle3}Value - 90) < 4) )"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-2,2)","random(6,8)"], "labelDisplay": "top", "color": "red", "fixed": false},
+	"C": { "type": "point", "value": ["random(-5.5,-2.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(2.5,5.5)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"E": { "type": "point", "value": ["random(6,8)","random(6,7)"], "labelDisplay": "top" },
+	"F": { "type": "point", "value": ["random(-2,2)","random(4,5.5)"], "visible": false },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "CB" },
+	"segment3": { "type": "segment", "expression": "AC" },
+	"segment4": { "type": "segment", "expression": "CD" },
+	"segment5": { "type": "segment", "expression": "DB" },
+	"segment6": { "type": "segment", "expression": "EB" },
+	"segment7": { "type": "segment", "expression": "DE" },
+	"angle1": { "type": "angle", "expression": "CAB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "BCA", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle3": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle4": { "type": "angle", "expression": "DCB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle5": { "type": "angle", "expression": "CBD", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle6": { "type": "angle", "expression": "BDC", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle7": { "type": "angle", "expression": "DBE", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle8": { "type": "angle", "expression": "BED", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"angle9": { "type": "angle", "expression": "EDB", "labelDisplay": true, "labelType": "value", "radius": 1 },
+	"possibleTriangles": { "type": "array", "expression": ["AFC", "DCF", "EFD"] },
+	"possibleTriangles2": { "type": "array", "expression": ["ABC", "DCB", "EBD"] },
+	"possibleAngle1": { "type": "array", "expression": ["angle1", "angle4", "angle7"] },
+	"possibleAngle2": { "type": "array", "expression": ["angle2", "angle5", "angle8"] },
+	"possibleAngle3": { "type": "array", "expression": ["angle3", "angle6", "angle9"] },
+	"rand1": { "type": "number", "value": "randomInt(1,4)" },
+	"targetTriangle": { "type": "string", "value": "possibleTriangles[rand1]" },
+	"targetTriangle2": { "type": "string", "value": "possibleTriangles2[rand1]" },
+	"targetAngle1": { "type": "string", "value": "possibleAngle1[rand1]" },
+	"targetAngle2": { "type": "string", "value": "possibleAngle2[rand1]" },
+	"targetAngle3": { "type": "string", "value": "possibleAngle3[rand1]" },
+	"possibleTypesEng": { "type": "array", "expression": ["isoTriangle", "equiTriangle", "rightAngleTriangle"] },
+	"possibleTypesFr": { "type": "array", "expression": ["isocèle", "équilatéral", "rectangle"] },
+	"rand2": { "type": "number", "value": "randomInt(1,4)" },
+	"chosenTypeEng": { "type": "string", "value": "possibleTypesEng[rand2]" },
+	"chosenTypeFr": { "type": "string", "value": "possibleTypesFr[rand2]" },
+	"triangleAnswer": { "type": "chosenTypeEng", "expression": "{targetTriangle}", "visible": false }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle isocèle-rectangle, 2 côtés sont de même longueur et l'angle formé par ces côtés est un angle droit.</span><br><br><span class='g'>Dans un triangle équilatéral, les 3 côtés sont de même longueur.</span><br><br><span class='g'>Dans un triangle isocèle, 2 côtés sont de même longueur.</span><br><br><span class='g'>Dans un triangle rectangle, un des angles est un angle droit.</span></span>"
+}

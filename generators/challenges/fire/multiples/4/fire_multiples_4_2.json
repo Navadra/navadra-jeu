@@ -1,0 +1,22 @@
+{
+  "timer": 50000,
+  "type": 1,
+  "question": "Quel est le multiple de {a} et de {b} compris entre {x} et {y} ?<br>{input1}",
+  "answer": [
+	  "a*b*c"
+  ],
+  "criteria": [
+	  "{input1} == a*b*c"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "pickRandom([2, 3])" },
+	"b": { "type": "number", "value": "pickRandom([5, 9])", "conditions": ["gcd(a,b)==1"] },
+	"c": { "type": "number", "value": "randomInt(11, 40)", "conditions": ["b*a*c<1000"] },
+	"d": { "type": "number", "value": "randomInt(1, a*b)" },
+	"e": { "type": "number", "value": "randomInt(1, a*b)" },
+	"x": { "type": "number", "value": "a*b*c-d" },
+	"y": { "type": "number", "value": "a*b*c+e" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour qu'un nombre soit <span class='g'>divisible par 2</span>, il doit se <span class='g'>terminer par 0, 2, 4, 6 ou 8</span>.<br><span class='i'>Ex : 35<span class='g'>8</span> est divisible par 2 mais 35<span class='g'>9</span> n'est pas divisible par 2.</span><br><br>Pour qu'un nombre soit <span class='g'>divisible par 3</span>, <span class='g'>la somme de ses chiffres doit être un multiple de 3</span>.<br><span class='i'>Ex1 : 174  => 1 + 7 + 4 = 12. 12 est un multiple de 3 (3x4 = 12) donc 174 est un multiple de 3.<br>Ex2 : 287  => 2 + 8 + 7 = 17. 17 n'est pas un multiple de 3 donc 287 n'est pas un multiple de 3.</span><br><br>Pour qu'un nombre soit <span class='g'>divisible par 5</span>, il doit se <span class='g'>terminer par 0 ou 5</span>.<br><span class='i'>Ex : 42<span class='g'>5</span> est divisible par 5 mais 42<span class='g'>3</span> n'est pas divisible par 5.</span><br><br>Pour qu'un nombre soit <span class='g'>divisible par 9</span>, <span class='g'>la somme de ses chiffres doit être un multiple de 9</span>.<br><span class='i'>Ex1 : 738  => 7 + 3 + 8 = 18. 18 est un multiple de 9 (9x2 = 18) donc 738 est un multiple de 9.<br>Ex2 : 546  => 5 + 4 + 6 = 15. 15 n'est pas un multiple de 9 donc 546 n'est pas un multiple de 9.</span></span>"
+}

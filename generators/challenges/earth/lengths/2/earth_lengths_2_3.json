@@ -1,0 +1,21 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Si Haleham marche {a} {unitA} et que Dwensa marche {b} {unitB}, qui a parcouru le plus de distance ?<br>",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB != max(allLengths)", "choice": "Haleham" },
+      { "if": "a*10^baseA != max(allLengths) and b*10^baseB == max(allLengths)", "choice": "Dwensa" },
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB == max(allLengths)", "choice": "Égalité" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["m", "dam", "hm", "km"] },
+	"a": { "type": "number", "value": "pickRandom([100, 1000, 10000])*randomInt(1,10)" },
+	"baseA": { "type": "number", "value": "1" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"b": { "type": "number", "value": "randomInt(1,10)" },
+	"baseB": { "type": "number", "value": "4", "conditions": ["baseB>=1"] },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

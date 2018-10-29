@@ -1,0 +1,26 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "ABC est un triangle {chosenType}. Peut-on déterminer la longueur de {segment2} (sans utiliser de théorème) ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "(segment2 == \"[AB]\" and chosenType == \"isocèle-rectangle en B\") or (segment2 == \"[AC]\" and chosenType == \"isocèle en C\")", "choice": "Oui" },
+      { "if": "(segment2 == \"[AC]\" and chosenType == \"isocèle-rectangle en B\") or (segment2 == \"[AB]\" and chosenType == \"isocèle en C\")", "choice": "Il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,6)","random(4,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["isocèle en C", "isocèle-rectangle en B"] },
+	"typeEng": { "type": "array", "expression": ["isoTriangle", "isoRightAngleTriangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABC" },
+	"segment1": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"segment2": { "type": "string", "value": "pickRandom([\"[AC]\",\"[AB]\"])" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle isocèle comme isocèle-rectangle, deux côtés sont égaux mais pas le troisième.</span><br>Ainsi si la longueur de [BC] est fournie, on peut déterminer sans calcul qu'un seul des deux autres côtés.</span>"
+}

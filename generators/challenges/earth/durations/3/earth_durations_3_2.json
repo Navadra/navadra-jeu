@@ -1,0 +1,20 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Taealle met {x} secondes pour lancer un sort.<br>Au cours d'un combat elle lance {y} sorts.<br>Au total, combien de temps a-t-elle passé à invoquer des sorts dans ce combat ?<br>{input1} min {input2} s<br><span class='i'>Elle se débrouillait bien jusqu'à ce qu'elle cherche elle aussi à trouver la réponse à cette question en plein combat...</span>",
+  "answer": [
+	  "min",
+	  "sec"
+  ],
+   "criteria": [
+		"{input1}*60 + {input2} == min*60 + sec"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "10*randomInt(1,6)" },
+	"y": { "type": "number", "value": "randomInt(2,4)" },
+	"sec": { "type": "number", "value": "mod(x*y, 60)" },
+	"min": { "type": "number", "value": "floor(x*y/60)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit de <span class='g'>multiplier le nombre de sorts lancés </span>par <span class='g'>le temps nécessaire pour lancer un sort </span>pour connaitre la durée totale passée à lancer des sorts puis de <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

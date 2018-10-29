@@ -1,0 +1,27 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "Quel est le chiffre des {powerString} de {x} ?<br>{input1}",
+  "answer": [
+	  "possibilities[rand]"
+  ],
+   "criteria": [
+	  "{input1} == possibilities[rand]"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(0, 10)" },
+	"b": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["c!=a", "c!=b"] },
+	"d": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["d!=a","d!=b","d!=c"] },
+	"e": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["e!=a","e!=b","e!=c","e!=d"] },
+	"f": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["f!=a","f!=b","f!=c","f!=d","f!=e"] },
+	"g": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["g!=a","g!=b","g!=c","g!=d","g!=e","g!=f"] },
+	"x": { "type": "number", "value": "a + b*10 + c*100 + d*1000 + e*10000 + f*100000+ g*1000000" },
+	"power": { "type": "array", "expression": ["unités", "dizaines", "centaines", "milliers", "dizaines de milliers", "centaines de milliers", "millions"] },
+	"possibilities": { "type": "array", "value": ["a", "b", "c", "d", "e", "f", "g"] },
+	"rand": { "type": "number", "value": "randomInt(1,8)" },
+	"powerString": { "type": "string", "value": "power[rand]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Voici les noms des différents chiffres d'un nombre en fonction de leur position.<br><br><span class='i'>Ex avec le nombre 6 890 524 :<br>Le chiffre le <span class='g'>plus à droite </span>est celui des <span class='g'>unités</span> (4 dans l'exemple). S'il y a <span class='g'>une virgule</span>, c'est le chiffre juste à <span class='g'>gauche de la virgule </span>(ex : dans 524,67 le chiffre des unités est 4).<br>Le chiffre à gauche de celui des unités est celui des <span class='g'>dizaines</span> (2 dans l'exemple).<br>Le chiffre à gauche de celui des dizaines est celui des <span class='g'>centaines</span> (5 dans l'exemple).<br>Le chiffre à gauche de celui des centaines est celui des <span class='g'>milliers</span> (0 dans l'exemple).<br>Le chiffre à gauche de celui des milliers est celui des <span class='g'>dizaines de milliers </span>(9 dans l'exemple).<br>Le chiffre à gauche de celui des dizaines de milliers est celui des <span class='g'>centaines de milliers </span>(8 dans l'exemple).<br>Le chiffre à gauche de celui des centaines de milliers est celui des <span class='g'>millions</span> (6 dans l'exemple).</span></span>"
+}

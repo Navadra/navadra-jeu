@@ -1,0 +1,22 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Tu as décidé de dépenser toutes tes Pyrs pour apprendre de nouveaux sorts.<br>Tu as donc appris {spells1} sorts à {pyrs1} Pyrs {element1} chacun, {spells2} sorts à {pyrs2} Pyrs {element2} chacun et {spells3} sorts à {pyrs3} Pyrs {element3} chacun.<br>Quelle est la question qui nécessite un calcul pour répondre ?",
+  "answer": [
+	  { "determined": true, "choice": "Combien de Pyrs as-tu utilisées en tout ?" },
+	  { "determined": false, "choice": "Combien de sorts {element1} as-tu appris ? " },
+	  { "determined": false, "choice": "Quel est le coût d'un sort {element2} ?" }
+  ],
+  "var": {
+	"spells1": { "type": "number", "value": "randomInt(2,7)" },
+	"spells2": { "type": "number", "value": "randomInt(2,7)", "conditions": ["spells2!=spells1"] },
+	"spells3": { "type": "number", "value": "randomInt(2,7)", "conditions": ["spells3!=spells2","spells3!=spells1"] },
+	"pyrs1": { "type": "number", "value": "randomInt(5,16)" },
+	"pyrs2": { "type": "number", "value": "randomInt(5,16)", "conditions": ["pyrs2!=pyrs1"] },
+	"pyrs3": { "type": "number", "value": "randomInt(5,16)", "conditions": ["pyrs3!=pyrs2","pyrs3!=pyrs1"] },
+	"element1": { "type": "string", "value": "pickRandom([\"de Feu\", \"d'Eau\", \"de Vent\", \"de Terre\"])"},
+	"element2": { "type": "string", "value": "pickRandom([\"de Feu\", \"d'Eau\", \"de Vent\", \"de Terre\"])", "conditions": ["element2!=element1"]},
+	"element3": { "type": "string", "value": "pickRandom([\"de Feu\", \"d'Eau\", \"de Vent\", \"de Terre\"])", "conditions": ["element3!=element1","element3!=element2"]}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si tu fais attention, tu te rends compte que la seule donnée qui ne figure pas dans l'énoncé est « <span class='g'>le nombre de pyrs que tu as utilisées en tout</span> ».</span>"
+}

@@ -1,0 +1,21 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "{x} est le chiffre des {powerString1} d’un nombre et on multiplie ce nombre par {a}.<br>{x} devient le chiffre des ... de ce nombre.",
+  "answer": [
+    { "if": "powerString2 == \"unités\"", "choice": "unités" },
+	{ "if": "powerString2 == \"dixièmes\"", "choice": "dixièmes" },
+    { "if": "powerString2 == \"centièmes\"", "choice": "centièmes" },
+    { "if": "powerString2 == \"millièmes\"", "choice": "millièmes" }
+  ],
+  "var": {
+    "x": { "type": "number", "value": "randomInt(1, 10)" },
+	"factor": { "type": "number", "value": "randomInt(-3, 0)" },
+	"a": { "type": "number", "value": "pow(10,factor)" },
+	"powerBase": { "type": "array", "expression": ["unités", "dixièmes", "centièmes", "millièmes"] },
+	"rand": { "type": "number", "value": "randomInt(1,4)", "conditions": ["rand-factor>=1", "rand-factor<=4"] },
+	"powerString1": { "type": "string", "value": "powerBase[rand]" },
+	"powerString2": { "type": "string", "value": "powerBase[rand-factor]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Multiplier un nombre par <span class='g'>0,1</span> ou <span class='g'>0,01</span> ou <span class='g'>0,001</span> revient à <span class='g'>décaler la virgule de ce nombre vers la gauche autant de fois qu'il y a de zéros dans le multiplicateur</span>.<br><br><span class='i'>Ex : 5 est le chiffre des unités d'un nombre et on multiplie ce nombre par 0,001. On décale donc de 3 fois la virgule vers la gauche.<br>1 fois : 5 devient le chiffre des dixièmes<br>2 fois : 5 devient le chiffre des centièmes<br>3 fois : <span class='g'>5</span> devient le chiffre des <span class='g'>millièmes</span><br><span class='g'>Il n'y a même pas besoin de connaitre les autres chiffres de ce nombre.</span></span></span>"
+}

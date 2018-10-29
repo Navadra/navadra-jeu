@@ -1,0 +1,17 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Tu pars du Village à {hour1}h {minute1} pour aller à la plage.<br>Tu triomphes d’un monstre sur le chemin ce qui te fait passer de {prestige1} à {prestige2} points de Prestige.<br>Quelle donnée te manque pour savoir à quelle heure tu arrives à la plage ?",
+  "answer": [
+	  { "determined": false, "choice": "le nbre de points de prestige gagnés" },
+	  { "determined": true, "choice": "la durée totale du trajet" },
+	  { "determined": false, "choice": "ta vitesse de marche" }
+  ],
+  "var": {
+	"hour1": { "type": "number", "value": "randomInt(7,20)" },
+	"minute1": { "type": "number", "value": "randomInt(10,60)" },
+	"prestige1": { "type": "number", "value": "randomInt(30,60)" },
+	"prestige2": { "type": "number", "value": "randomInt(60,100)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour savoir à quelle heure tu arriveras quelque part, il suffit de connaître ton heure de départ et la durée de ton trajet.</span>"
+}

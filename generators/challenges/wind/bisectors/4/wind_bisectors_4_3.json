@@ -1,0 +1,37 @@
+{
+  "timer": 60000,
+  "type": 2,
+  "question": "La droite (d1) est la médiatrice de [AB], la droite (d2) est la médiatrice de [CD].<br>Quel point est à égale distance de C et D et à 12 cm de I ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "A" },
+      { "determined": false, "choice": "B" },
+	  { "determined": false, "choice": "C" },
+	  { "determined": false, "choice": "D" },
+	  { "determined": false, "choice": "E" },
+	  { "determined": false, "choice": "F" },
+	  { "determined": true, "choice": "G" },
+	  { "determined": false, "choice": "H" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(15,19)","random(-2,2)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-15,-13)","random(2,4)"], "labelDisplay": "top" },
+	"line1": { "type": "line", "expression": "AB" },
+	"d1": { "type": "line", "expression": "bisector(AB)", "labelDisplay": "top" },
+	"angle1": { "type": "angle", "expression": "line1,d1", "color": "red", "radius": 1 },
+	"C": { "type": "point", "value": ["random(-6,-4)","random(4,5)"], "labelDisplay": "top" },
+	"D": { "type": "point", "value": ["random(10,12)","random(-8,-7)"], "labelDisplay": "top" },
+	"line2": { "type": "line", "expression": "CD" },
+	"d2": { "type": "line", "expression": "bisector(CD)", "labelDisplay": "top" },
+	"angle2": { "type": "angle", "expression": "d2,line2", "color": "red", "radius": 1 },
+	"I": { "type": "point", "value": ["random(-4,-2)","random(-5,-3)"], "labelDisplay": "top" },
+	"circle1": { "type": "circle", "expression": "radius(I,12)", "labelDisplay": "center", "labelType": "radius" },
+	"E": { "type": "point", "expression": "intersection(circle1,d1,1)", "labelDisplay": "top" },
+	"F": { "type": "point", "expression": "intersection(d1,d2)", "labelDisplay": "top" },
+	"G": { "type": "point", "expression": "intersection(circle1,d2,1)", "labelDisplay": "top" },
+	"H": { "type": "point", "expression": "intersection(line1,line2)", "labelDisplay": "top" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La médiatrice d'un segment est perpendiculaire à ce dernier et le coupe en son milieu.</span><br><br><span class='g'>Tout point appartenant à cette médiatrice est donc à égale distance des extrémités du segment.</span><br><br><span class='i'>Dans cet exemple, les points à égale distance de A et B se situent sur (d1) et les points à égale distance de C et de D se situent sur (d2).<br>Ainsi le point à égale distance de A et de B et qui est aussi à égale distance de C et de D est F qui est situé à l'intersection de (d1) et (d2).</span></span>"
+}

@@ -1,0 +1,16 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "En moyenne, {x} m3 d’eau s’écoulent en {y} s dans un ruisseau.<br>Peut-on appliquer la proportionnalité pour savoir combien d’eau s’écoulera en {z} s ?",
+  "answer": [
+	  { "determined": true, "choice": "Oui" },
+	  { "determined": false, "choice": "Non" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "round(random(0.5,2),1)" },
+	"y": { "type": "number", "value": "randomInt(1,5)" },
+	"factor": { "type": "number", "value": "randomInt(2,16)" },
+	"z": { "type": "number", "value": "y*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Sauf indication contraire dans l'énoncé, <span class='g'>on peut considérer que le débit d'un ruisseau est constant</span>.<br><br>Donc si 1m3 d'eau s'est écoulée en 1s et qu'on mesure pendant <span class='g'>7 fois plus longtemps </span>(7s) on trouvera que <span class='g'>7 fois plus d'eau s'est écoulée</span>.</span>"
+}

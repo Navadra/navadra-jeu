@@ -1,0 +1,28 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. Peut-on déterminer sans calcul la longueur de {segment2} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "(chosenType == \"losange\" and (segment2 == \"[CD]\" or segment2 == \"[BC]\")) or (chosenType == \"parallélogramme quelconque\" and segment2 == \"[CD]\")", "choice": "oui" },
+      { "if": "segment2 == \"[AC]\" or (chosenType == \"parallélogramme quelconque\" and segment2 == \"[BC]\")", "choice": "il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(4,5)","random(4,5)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(5,7)","random(0,2)"], "labelDisplay": "right" },
+	"D": { "type": "point", "value": ["random(-7,-5)","random(0,2)"], "labelDisplay": "left" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["losange", "parallélogramme quelconque"]  },
+	"typeEng": { "type": "array", "expression": ["lozenge", "parallelogram"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC"},
+	"diag2": { "type": "line", "expression": "BD"},
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length" },
+	"segment2": { "type": "string", "value": "pickRandom([\"[AC]\",\"[CD]\",\"[BC]\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un losange, tous les côtés sont égaux tandis que dans un parallélogramme quelconque deux côtés consécutifs ne sont pas égaux.</span><br><br>Ainsi on peut déterminer sans calcul la longueur de [CD] dans tous les cas et la longueur de [BC] seulement si ABCD est un losange.</span>"
+}

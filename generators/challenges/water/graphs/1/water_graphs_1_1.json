@@ -1,0 +1,22 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Quelle est l’abscisse du point A ?<br>{input1}",
+  "view": {
+  	  "geometry": [-2, 1, 2, -1],
+	  "grid": false,
+	  "axis": true
+  },
+  "answer": [
+	  "x"
+  ],
+   "criteria": [
+	  "{input1} == x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "round(random(-1.8,1.9),1)" },
+	"A": { "type": "point", "value": ["x", 0], "labelDisplay": "top" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/graphsHint1.png' /><span class='mg2 l95 ib'><span class='g'>L'axe des abscisses est l'axe horizontal </span>(en bleu) tandis que <span class='g'>l'axe des ordonnées est l'axe vertical </span>(en rouge).<br>On appelle <span class='g'>coordonnées d'un point le couple « abscisses-ordonnées » de ce point</span>.<br><br><span class='i'>Ex :<br>le point A a pour abscisse 1,6.<br>Le point A a pour ordonnée 0.<br>Les coordonnées de A sont (1,6 ; 0).</span></span>"
+}

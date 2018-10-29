@@ -1,0 +1,18 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Noémie a acheté {x} kg de poires au marché et ça lui a coûté {y} €.<br>Quel est le prix au kilo des poires ?<br>{input1} €/kg<br><span class='i'>Sur le chemin du retour, Noémie se dit que les poires ont vraiment intérêt à être bonnes vu leur prix.</span>",
+  "answer": [
+	  "z"
+  ],
+   "criteria": [
+	  "{input1} == z"
+  ],
+  "type_answer": "single",
+  "var": {
+	"z": { "type": "number", "value": "pickRandom([3,4,5])" },
+	"x": { "type": "number", "value": "pickRandom([2,3,4,5])" },
+	"y": { "type": "number", "value": "z*x" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, <span class='g'>ramène le montant dépensé à 1 kilo de poires.</span><br><br>Par exemple, si le montant total est de 9€ et que Noémie a acheté 3 kilos de poires alors un kilo de poires coûtera 3 fois moins cher soit 3€.<br><br>Le prix au kilo est donc de 3€/kg.</span>"
+}

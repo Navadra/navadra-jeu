@@ -1,0 +1,27 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "La droite (d) est la médiatrice du segment [BC]. Combien mesure BD ? <br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "0.5*segment2Length"
+  ],
+   "criteria": [
+	  "{input1} == 0.5*segment2Length"
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,8)","random(5,5.5)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(0,3)","random(-7,-4)"], "labelDisplay": "right" },
+	"D": { "type": "point", "expression": "middle(BC)", "labelDisplay": "right" },
+	"d": { "type": "line", "expression": "perpendicular(BC,D)", "labelDisplay": "bottom"},
+	"d2": { "type": "line", "expression": "BC", "visible": false},
+	"angle1": { "type": "angle", "expression": "d,d2", "color": "red", "radius": 1},
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length"},
+	"segment2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length"},
+	"segment3": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length"}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La médiatrice d'un segment est perpendiculaire à ce dernier et le coupe en son milieu.</span><br><br><span class='i'>Dans cet exemple, la longueur de [BC] étant connu, on sait que le segment [BD] mesure la même longueur.</span></span>"
+}

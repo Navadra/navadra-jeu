@@ -1,0 +1,41 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "ABCD est un carré, BEC et ADF sont des triangles équilatéraux.<br>Quel est le périmètre de cette figure ?<br>Rappel : seuls les contours de la figure comptent !<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg3Length*6"
+  ],
+   "criteria": [
+	  "{input1} == seg3Length*6"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) >= 6", "round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(6,7)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD", "visible": false},
+	"circle1": { "type": "circle", "expression": "radius(B,C)", "visible": false},
+	"circle2": { "type": "circle", "expression": "radius(C,B)", "visible": false},
+	"E": { "type": "point", "expression": "intersection(circle1,circle2,2)", "labelDisplay": "bottom" },
+	"circle3": { "type": "circle", "expression": "radius(A,D)", "visible": false},
+	"circle4": { "type": "circle", "expression": "radius(D,A)", "visible": false},
+	"F": { "type": "point", "expression": "intersection(circle3,circle4,1)", "labelDisplay": "bottom" },
+	"seg1": { "type": "segment", "expression": "AB" },
+	"seg2": { "type": "segment", "expression": "BC" },
+	"seg3": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length" },
+	"seg4": { "type": "segment", "expression": "DA" },
+	"seg5": { "type": "segment", "expression": "BE" },
+	"seg6": { "type": "segment", "expression": "CE" },
+	"seg7": { "type": "segment", "expression": "DF" },
+	"seg8": { "type": "segment", "expression": "AF" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/perimetersHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés mais attention : seuls les contours de la figure comptent !</span><br><br>Dans le cas de cette figure composée d'un carré et de triangles équilatéraux, tous les côtés sont égaux mais seuls les 6 côtés extérieurs comptent dans le périmètre (les côtés en rouge).<br><br>Dans cet exemple, le périmètre vaut donc 6x7 = 42 cm.</span>"
+}

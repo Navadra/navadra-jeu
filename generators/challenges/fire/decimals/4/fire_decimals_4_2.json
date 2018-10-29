@@ -1,0 +1,20 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Donne l'écriture décimale de {a} + {b}/10 + {c}/100 + {d}/1000.<br>{input1}",
+  "answer": [
+	  "round(x,4)"
+  ],
+  "criteria": [
+	  "{input1} == round(x,4)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(0, 100)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)" },
+	"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["d!=b","d!=c"] },
+	"x": { "type": "number", "value": "round(a + b/10 + c/100 + d/1000, 3)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour donner l'écriture décimale d'un nombre écrit sous forme de fractions décimales, il te suffit d'utiliser l'astuce suivante :<br>Un chiffre divisé par <span class='g'>dix</span> deviendra le chiffre des <span class='g'>dixi</span>èmes<br>Un chiffre divisé par <span class='g'>cent</span> deviendra le chiffre des <span class='g'>cent</span>ièmes<br>Un chiffre divisé par <span class='g'>mille</span> deviendra le chiffre des <span class='g'>mill</span>ièmes<br><br><span class='i'>Ex : 42 + 2/100 + 3/10 + 6/1000  = 42 + 2 centièmes + 3 dixièmes + 6 millièmes = 42,326</span></span>"
+}

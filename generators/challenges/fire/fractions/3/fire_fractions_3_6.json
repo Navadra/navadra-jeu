@@ -1,0 +1,17 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "{numerator1}/{denominator1} ... {numerator2}/{denominator2}",
+  "answer": [
+    { "if": "numerator1/denominator1 < numerator2/denominator2", "choice": " &lt; " },
+    { "if": "numerator1/denominator1 == numerator2/denominator2", "choice": " = " },
+    { "if": "numerator1/denominator1 > numerator2/denominator2", "choice": " &gt; " }
+  ],
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,10)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"numerator2": { "type": "number", "value": "randomInt(2,10)" },
+	"denominator2": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(numerator2,denominator2) == 1", "numerator1/denominator1 != numerator2/denominator2"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>La façon la plus sûre de comparer 2 fractions est de les <span class='g'>mettre au même dénominateur </span>puis de <span class='g'>comparer leur numérateur</span>.<br><br><span class='i'>Ex : 8/5 et 9/7.<br>Pour les mettre au même dénominateur, on cherche d'abord un multiple commun à 5 et 7. Prenons 35 (35 = 5x7).<br>Pour obtenir 35 en partant de 5, on multiplie par <span class='g'>7</span> donc on multiplie le dénominateur et numérateur de la 1° fraction par 7 : <span class='g'>8/5 = 56/35</span><br>Pour obtenir 35 en partant de 7, on multiplie par <span class='g'>5</span> donc on multiplie le dénominateur et numérateur de la 2° fraction par 5 : <span class='g'>9/7 = 45/35</span><br>Maintenant, il suffit de comparer les 2 numérateurs et comme <span class='g'>56 > 45 </span>alors <span class='g'>8/5 > 9/7</span>.</span></span>"
+}

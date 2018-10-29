@@ -1,0 +1,1 @@
+Répertoire à garder, les images des avatars des joueurs seront créés ici.

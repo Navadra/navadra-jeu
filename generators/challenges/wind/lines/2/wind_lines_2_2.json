@@ -1,0 +1,28 @@
+{
+  "timer": 35000,
+  "type": 5,
+  "question": "Place le point A à l'intersection des droites (d1) et (d2).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(A,E)"
+  ],
+  "criteria": [
+	  "A belongsTo d1",
+	  "A belongsTo d2"
+  ],
+  "type_answer": "single",
+  "var": {
+	"d1": { "type": "line", "value": ["randomInt(2,5)","randomInt(-5,6)"], "labelDisplay": "top" },
+	"d2": { "type": "line", "value": ["randomInt(-5,-2)","randomInt(-5,6)"], "labelDisplay": "top" },
+	"d3": { "type": "line", "value": ["-1","randomInt(-10,0)"], "labelDisplay": "top" },
+	"d4": { "type": "line", "value": ["1","randomInt(1,11)"], "labelDisplay": "top" },
+	"E": { "type": "point", "expression": "intersection(d1,d2)", "visible": false },
+	"A": { "type": "point", "value": [18,8], "labelDisplay": "top", "color": "red", "fixed": false },
+	"B": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A)"  },
+	"C": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B)" },
+	"D": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B,C)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'><span class='g'>L'intersection de deux droites correspond au point où elles se coupent.</span><br>Attention<span class='g'>, deux droites parallèles </span>ne se coupent jamais, elles <span class='g'>n'ont donc pas d'intersection.</span></span>"
+}

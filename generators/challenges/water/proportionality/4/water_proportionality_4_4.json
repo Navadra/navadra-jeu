@@ -1,0 +1,15 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "Un scorpion bébé mesure {x} cm et pèse {y} g, une fois adulte il mesure {z} cm.<br>Peut-on appliquer la proportionnalité pour savoir combien pèse le scorpion adulte ?",
+  "answer": [
+	  { "determined": false, "choice": "Oui" },
+	  { "determined": true, "choice": "Non" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "round(random(0.5,2),1)" },
+	"y": { "type": "number", "value": "round(random(0.5,2),1)" },
+	"z": { "type": "number", "value": "randomInt(15,21)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Il est <span class='g'>presque impossible que le rapport entre la taille et le poids d'un animal reste le même tout au long de sa vie</span>.<br><br>A titre d'exemple, si ton rapport poids/taille restait le même tout au long de ta vie, tu pèserais 9 kilos si tu faisais 1m50…</span>"
+}

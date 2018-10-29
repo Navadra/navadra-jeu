@@ -1,0 +1,29 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. Peut-on déterminer la longueur de {segment2} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "segment2 == \"[CI]\"", "choice": "oui" },
+      { "if": "segment2 == \"[BI]\" or segment2 == \"[DI]\"", "choice": "il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(4,5)","random(4,5)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(1.5,2.5)","random(0,2)"], "labelDisplay": "top" },
+	"D": { "type": "point", "value": ["random(-9,-5)","random(0,2)"], "labelDisplay": "top" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["losange", "parallélogramme quelconque"]  },
+	"typeEng": { "type": "array", "expression": ["lozenge", "parallelogram"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC"},
+	"diag2": { "type": "line", "expression": "BD"},
+	"I": { "type": "point", "expression": "intersection(diag1,diag2)", "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AI", "labelDisplay": "left", "labelType": "length" },
+	"segment2": { "type": "string", "value": "pickRandom([\"[BI]\",\"[CI]\",\"[DI]\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un losange comme dans un parallélogramme quelconque, les diagonales se coupent en leur milieu mais ne sont pas de même longueur.</span><br><br>Ainsi dans tous les cas, si la longueur AI est connue, on pourra connaître la longueur CI mais pas les longueurs BI ni DI.</span>"
+}

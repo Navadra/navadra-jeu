@@ -1,0 +1,16 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "On donne le choix à Clara entre recevoir {x} pièces de {y} centimes ou recevoir une pièce de {z} €.<br>Quel proposition doit choisir Clara ? <br><span class='i'>On fait l'hypothèse que ça arrangerait bien Clara de gagner un maximum d'argent.</span>",
+  "answer": [
+	  { "if": "z<x*y/100", "choice": "Les pièces de {y} centimes" },
+      { "if": "z>x*y/100", "choice": "La pièce de {z} €" },
+	  { "if": "z==x*y/100", "choice": "Égalité" }
+  ],
+  "var": {
+	"y": { "type": "number", "value": "pickRandom([10,20,50])" },
+	"z": { "type": "number", "value": "pickRandom([1,2])" },
+	"x": { "type": "number", "value": "z*100/y+pickRandom([-2,-1,0,1,2])", "conditions": ["x>1"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, calcule combien Clara recevrait avec les centimes en calculant :<br><br><span class='g'>« nombre de pièces » x « valeur des pièces »<br><br></span>Puis compare ce résultat avec la pièce en euros.</span>"
+}

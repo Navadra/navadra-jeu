@@ -1,0 +1,17 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Tu t'approches d'un terrier de lapins sur le territoire des Ataliis et comptes {rabbitsLeft} lapins à l'intérieur.<br>Tu vois {rabbitsIn} lapins y rentrer et {rabbitsOut} en sortir.<br>Combien reste-t-il de lapins dans le terrier ?",
+  "answer": [
+	  { "determined": false, "choice": "{rabbitsLeft} - {rabbitsIn} - {rabbitsOut}" },
+	  { "determined": false, "choice": "{rabbitsLeft} + {rabbitsIn} + {rabbitsOut}" },
+	  { "determined": false, "choice": "{rabbitsLeft} - {rabbitsIn} + {rabbitsOut}" },
+	  { "determined": true, "choice": "{rabbitsLeft} + {rabbitsIn} - {rabbitsOut}" }
+  ],
+  "var": {
+	"rabbitsIn": { "type": "number", "value": "randomInt(2,10)" },
+	"rabbitsOut": { "type": "number", "value": "randomInt(2,10)", "conditions": ["rabbitsOut!=rabbitsIn"] },
+	"rabbitsLeft": { "type": "number", "value": "randomInt(10,20)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que tu comptes <span class='g'>11 lapins à l'intérieur du terrier</span>.<br>Si tu as vu <span class='g'>5 lapins rentrer</span> et <span class='g'>3 en sortir</span> ça veut dire qu'il y a maintenant <span class='g'>2</span> (5-3) <span class='g'>lapins de plus qu'au début</span>. Il y a donc maintenant 11+5-3 = 13 lapins.</span>"
+}

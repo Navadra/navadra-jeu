@@ -1,0 +1,17 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Si Dwensa est née le {day1} {month1} et Garddoch le {day2} {month2}, quelle donnée te manque-t-il pour savoir quel est le plus âgé des deux ?",
+  "answer": [
+	  { "determined": false, "choice": "jour de naissance" },
+	  { "determined": false, "choice": "mois de naissance" },
+	  { "determined": true, "choice": "année de naissance" }
+  ],
+  "var": {
+	"day1": { "type": "number", "value": "randomInt(1,29)" },
+	"day2": { "type": "number", "value": "randomInt(1,29)", "conditions": ["day2!=day1"] },
+	"month1": { "type": "string", "value": "pickRandom([\"janvier\", \"février\", \"mars\", \"avril\", \"mai\", \"juin\", \"juillet\", \"août\", \"septembre\", \"octobre\", \"novembre\", \"décembre\"])"},
+	"month2": { "type": "string", "value": "pickRandom([\"janvier\", \"février\", \"mars\", \"avril\", \"mai\", \"juin\", \"juillet\", \"août\", \"septembre\", \"octobre\", \"novembre\", \"décembre\"])", "conditions": ["month2!=month1"]}
+  },
+	"hint" : "<span class='mg2 l95 ib'>L'énoncé te donne le <span class='g'>jour</span> et le <span class='g'>mois de naissance</span>, quelle dernière donnée te manque-t-il pour répondre à la question ?</span>"
+}

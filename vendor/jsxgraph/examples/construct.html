@@ -1,0 +1,126 @@
+﻿<!--<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> <html>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+   <title>JSXGraph example</title>
+    <link rel="stylesheet" type="text/css" href="../distrib/jsxgraph.css" />
+    <script type="text/javascript" src="../src/loadjsxgraph.js"></script>
+    <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.94/jsxgraphcore.js"></script>-->
+    <!--<script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>-->
+    <script type="text/javascript" src="../src/reader/geonext.js"></script>
+    <script type="text/javascript" src="../src/renderer/canvas.js"></script>
+</head>
+<body id="body">
+    
+<input type="button" id="schalter" onClick="A.remove(); board.fullUpdate()" value="Spur an">
+<div id='jxgbox' class='jxgbox' style='width:600px; height:600px;'></div>
+
+<script type='text/javascript'>
+//JXG.Options.renderer = 'canvas';
+//JXG.Options.grid.snapToGrid = true;
+
+//JXG.Options.axis.visible = false;
+//JXG.Options.axis.ticks.drawLabels = true;
+//JXG.Options.axis.ticks.drawZero = true;
+//JXG.Options.axis.withLabel = false;
+
+//JXG.Options.text.display = 'internal';
+
+/*
+var brd = JXG.JSXGraph.initBoard('jxgbox', {boundingbox:[-6,6,6,-6], 
+axis:false, keepaspectratio:true, 
+grid:false, showNavigation:true});
+*/
+
+/*
+JXG.Options.zoom.wheel = false;
+JXG.Options.glider = {label:{}};
+JXG.Options.point.label = {};
+*/
+    JXG.joinCurves = function(board, parents, attributes) {
+        var cu1 = parents[0], 
+            cu2 = parents[1],
+            attr = JXG.copyAttributes(attributes, board.options, 'curve'),
+            c = board.create('curve', [[0], [0]], attr);
+        
+        c.updateDataArray = function() {
+            // The two paths have to be connected
+            this.dataX = cu1.dataX.slice(0,-1).concat(cu2.dataX);
+            this.dataY = cu1.dataY.slice(0,-1).concat(cu2.dataY);
+            if (this.dataX.length<4) {
+                this.bezierDegree = 1;
+            } else {
+                this.bezierDegree = cu1.bezierDegree;
+            }
+        };
+        c.prepareUpdate().update().updateRenderer();
+        return c;
+    };
+
+var stempel = function(element) {
+    element.cloneToBackground();
+};
+
+if (false) {
+var trace = false;
+
+
+var board = JXG.JSXGraph.initBoard('jxgbox',{boundingbox: [-4, 4, 4, -4], axis:false});
+    var sli = board.create('slider', [[-2,1],[1,1],[0,1,10]]
+        ,{
+            point1: {visible:true, fixed:false, needsRegularUpdate:true},
+            point2: {visible:true, fixed:false, needsRegularUpdate:true},
+            baseline: {visible:true, needsRegularUpdate:true},
+            ticks: {visible:true, needsRegularUpdate:true}
+        }
+        );
+/*    
+    sli.point1.moveTo([0,0]);
+    sli.point2.moveTo([3,0]);
+    board.fullUpdate();
+*/
+} else {
+	brdyy = JXG.JSXGraph.initBoard('jxgbox',{axis:false, boundingbox: [-2, 4.9, 15, 0]});
+	brdyy.options.text.anchorY = 'top';
+	
+	brdyy.create("text", [-1.5, 1.5, "<strong>b)</strong>"]);
+	brdyy.create("text", [-1.5, 3.5, "<strong>a)</strong>"]);
+
+	var p11 = brdyy.create("point", [0, 1.2], {fillcolor:'blue', name:''});
+	var p21 = brdyy.create("point", [0, 3.2], {fillcolor:'blue', name:''});
+	var p12 = brdyy.create("point", [10, 1.2], {fillcolor:'lightgray', name:'$10$', label:{offset:[-5,20]}});
+	var p22 = brdyy.create("point", [10, 3.2], {fillcolor:'lightgray', name:'$10$', label:{offset:[-5,20]}});
+	brdyy.create("segment", [p11,p12], {color:'lightgray', strokewidth:5});
+	brdyy.create("segment", [p21,p22], {color:'lightgray', strokewidth:5});
+	var l1 = brdyy.create("segment", [[0,1.2],[15,1.2]], {visible:false});
+	var l2 = brdyy.create("segment", [[0,3.2],[15,3.2]], {visible:false});
+	var p13 = brdyy.create("glider", [10, 1.2, l1], {fillcolor:'red', fixed:false, highlight:true, name:'', snapsizex:0.1, snaptogrid:true});
+	var p23 = brdyy.create("glider", [10, 3.2, l2], {fillcolor:'red', fixed:false, highlight:true, name:'', snapsizex:0.1, snaptogrid:true});
+	brdyy.create("segment", [p11,p13], {color:'orange', strokewidth:5});
+	brdyy.create("segment", [p21,p23], {color:'blue', strokewidth:5});
+
+	brdyy.create("text", [function() { return p13.X()-0.17;}, 2, function() { 
+		var pos = Math.floor(p13.X()*10)/10;
+		pos = pos.toString().replace(".",","); 
+		return "$" + pos + "$"; }]);
+	brdyy.create("text", [function() { return p23.X()-0.17;}, 3.9, function() { 		
+		var pos = Math.floor(p23.X()*10)/10;
+		pos = pos.toString().replace(".",","); 
+		return "$" + pos + "$"; }]);
+	
+	brdyy.create("text", [7, 4, "PRAVILNO"], {color:'red', opacity:function() {
+		if(Math.floor(p23.X()*10)/10 == 11.2)
+			return 1;
+		else
+			return 0;
+	}});
+	brdyy.create("text", [7, 2.1, "PRAVILNO"], {color:'red', opacity:function() {
+		if(Math.floor(p13.X()*10)/10 == 11.2)
+			return 1;
+		else
+			return 0;
+	}});
+}
+    
+</script> 
+</body>
+</html>

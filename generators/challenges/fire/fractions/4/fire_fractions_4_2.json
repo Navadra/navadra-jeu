@@ -1,0 +1,24 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "<span class='p3'>{numerator1}/{denominator1} x {numerator2}/{denominator2} = ?</span><br><span class='p0 g'>La fraction doit être irréductible.</span><br>{input1}{fraction}{input2}",
+  "answer": [
+	  "numerator3",
+	  "denominator3"
+  ],
+  "criteria": [
+	  "{input1} == numerator3",
+	  "{input2} == denominator3"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,6)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,6)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"numerator2": { "type": "number", "value": "randomInt(2,6)"},
+	"denominator2": { "type": "number", "value": "randomInt(2,6)", "conditions": ["gcd(numerator2,denominator2) == 1", "numerator1/denominator1*numerator2/denominator2 != 1"] },
+	"fraction1": { "type": "number", "value": "fraction(numerator1*numerator2,denominator1*denominator2)" },
+	"numerator3": { "type": "number", "value": "fraction1.n" },
+	"denominator3": { "type": "number", "value": "fraction1.d" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour multiplier une fraction par une fraction on multiplie les numérateurs entre eux et les dénominateurs entre eux</span>.<br><br><span class='i'>Ex : Pour multiplier 4/3 par 5/6, on procède en <span class='g'>3 étapes </span>:<br>1° : on multiplie les numérateurs entre eux => 4x5 = 20<br>2° : on multiplie les dénominateurs entre eux => 3x6 = 18<br>3° : on simplifie la fraction obtenue => 20/18 = <span class='g'>10/9</span></span></span>"
+}

@@ -1,0 +1,29 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "La droite (d1) est la médiatrice du segment [BC]. Les droites (d2) et (d1) sont parallèles.<br>Les droites (d2) et (BC) sont ...",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "parallèles" },
+      { "determined": true, "choice": "perpendiculaires" },
+	  { "determined": false, "choice": "impossible à déterminer" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,8)","random(5,5.5)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(0,3)","random(-7,-4)"], "labelDisplay": "right" },
+	"D": { "type": "point", "expression": "middle(BC)", "labelDisplay": "right" },
+	"d3": { "type": "line", "expression": "BC", "visible": false },
+	"E": { "type": "point", "expression": "belongsTo(d3)", "conditions": "far(D)", "labelDisplay": "right", "visible": false },
+	"d1": { "type": "line", "expression": "perpendicular(BC,D)", "labelDisplay": "bottom"},
+	"d2": { "type": "line", "expression": "perpendicular(BC,E)", "labelDisplay": "top"},
+	"d3": { "type": "line", "expression": "BC", "visible": false},
+	"angle1": { "type": "angle", "expression": "d1,d3", "color": "red", "radius": 1},
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "BC" },
+	"segment3": { "type": "segment", "expression": "AC" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La médiatrice d'un segment coupe ce dernier </span>en son milieu et <span class='g'>à angle droit.</span><br><br><span class='g'>Si deux droites sont parallèles, toute droite perpendiculaire à l'une sera également perpendiculaire à l'autre.</span><br><br><span class='i'>Dans cet exemple, (d2) et (d1) sont parallèles. Comme (d1) est la médiatrice de [BC], on sait que (BC) est perpendiculaire à (d1).<br>Ainsi (BC) est également perpendiculaire à (d2).</span></span>"
+}

@@ -1,0 +1,15 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "On multiplie un nombre par {b}, le résultat est-il divisible par {a} ?",
+  "answer": [
+    { "if": "b/a == floor(b/a)", "choice": "oui" },
+	{ "determined": false, "choice": "non" },
+	{ "if": "b/a != floor(b/a)", "choice": "il faudrait connaitre le nombre pour répondre" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "pickRandom([5, 9])" },
+	"b": { "type": "number", "value": "randomInt(5, 50)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si on multiplie un nombre par un autre nombre (appelons le « a »). Si <span class='g'>a est un multiple de 5, le résultat sera forcément divisible par 5</span>. Par contre <span class='g'>si a n'est pas un multiple de 5, on ne peut pas savoir si le résultat sera divisible par 5</span>.<br><br>On peut appliquer le même raisonnement en multipliant par 6, 7, 8, etc.<br><span class='i'>Ex : Si on multiplie un nombre par 10, le résultat sera forcément divisible par 5 puisque 10 est lui-même égal à 2x5.<br>En revanche, si on multiplie un nombre par 10, on ne peut pas savoir si le résultat sera divisible par 9 puisque 10 n'est pas un multiple de 9.</span></span>"
+}

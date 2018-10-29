@@ -1,0 +1,21 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Par combien faut-il multiplier {x} pour obtenir {y} ?<br>{input1}{fraction}{input2}",
+  "answer": [
+	  "numerator1",
+	  "denominator1"
+  ],
+  "criteria": [
+	  "x*{input1}/{input2} == y"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,10)"},
+	"y": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(x,y) == 1"] },
+	"fraction1": { "type": "number", "value": "fraction(y,x)" },
+	"numerator1": { "type": "number", "value": "fraction1.n" },
+	"denominator1": { "type": "number", "value": "fraction1.d" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Il faut <span class='g'>multiplier A</span> par <span class='g'>B/A</span> pour obtenir le <span class='g'>nombre B</span>.<br><br><span class='i'>Ex : Par combien faut-il multiplier 3 pour obtenir 8 ?<br>Il faut multiplier 3 par 8/3 pour obtenir 8.</span></span>"
+}

@@ -1,0 +1,42 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Les côtés du carré <span class='bleu g'>bleu</span> sont <span class='g'>2</span> fois plus longs que ceux du carré <span class='rouge g'>rouge</span>.<br>L'aire du carré <span class='bleu g'>bleu</span> est combien de fois plus grande que celle du carré <span class='rouge g'>rouge</span> ?<br>{input1}",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "4"
+  ],
+   "criteria": [
+	  "{input1} == 4"
+  ],
+  "var": {
+		"side1": { "type": "number", "value": "5" },
+		"side2": { "type": "number", "value": "5" },
+		"side3": { "type": "number", "value": "10" },
+		"side4": { "type": "number", "value": "10" },
+		"A": { "type": "point", "value": ["random(-13,-10)","random(4,6)"], "labelDisplay": "top" },
+		"M": { "type": "point", "value": ["random(-5,-4)","random(2,3)"], "visible": false },
+		"d1": { "type": "line", "expression": "AM", "visible": false },
+		"circle1": { "type": "circle", "expression": "radius(A,side1)", "visible": false },
+		"B": { "type": "point", "expression": "intersection(circle1,d1,1)", "labelDisplay": "top" },
+		"N": { "type": "point", "value": ["random(-5,-4)","random(-7,-6)"], "visible": false },
+		"d2": { "type": "line", "expression": "BN", "visible": false },
+		"circle2": { "type": "circle", "expression": "radius(B,side2)", "visible": false },
+		"C": { "type": "point", "expression": "intersection(circle2,d2,2)", "labelDisplay": "bottom" },
+		"D": { "type": "point", "value": ["random(-19,-17)","random(-8,-7)"], "labelDisplay": "bottom" },
+		"square1": { "type": "square", "expression": "ABCD", "color": "red" },
+		"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "precision": 1 },
+		"E": { "type": "point", "value": ["random(5,10)","random(7,8)"], "labelDisplay": "top" },
+		"O": { "type": "point", "value": ["random(17,19)","random(6,7)"], "visible": false },
+		"d3": { "type": "line", "expression": "EO", "visible": false },
+		"circle3": { "type": "circle", "expression": "radius(E,side3)", "visible": false },
+		"F": { "type": "point", "expression": "intersection(circle3,d3,1)", "labelDisplay": "top" },
+		"G": { "type": "point", "value": ["random(17,19)","random(-7,-6)"], "labelDisplay": "bottom" },
+		"H": { "type": "point", "value": ["random(5,10)","random(-6,-4)"], "labelDisplay": "bottom" },
+		"square2": { "type": "square", "expression": "EFGH", "color": "blue"  },
+		"seg2": { "type": "segment", "expression": "EH", "labelDisplay": "left", "labelType": "length", "precision": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br><span class='g'>Si on multiplie par 2 la longueur des côtés d'un rectangle, son aire sera elle multipliée par 4.</span><br><br><span class='i'>Ex : si un rectangle possède 2 côtés mesurant 2 cm et 2 côtés mesurant 3 cm son aire sera égale à 2 x 2 = 4 cm².<br><br>Si on multiplie par 2 chaque côté, sa nouvelle aire sera égale à 4 x 4 = 16 cm².</span></span>"
+}

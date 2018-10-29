@@ -1,0 +1,19 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "{e} est le chiffre des ... de {x}.",
+  "answer": [
+    { "if": "e == b", "choice": "dixièmes" },
+    { "if": "e == c", "choice": "centièmes" },
+    { "if": "e == d", "choice": "millièmes" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(0, 1000)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)" },
+	"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["d!=b","d!=c"] },
+	"e": { "type": "number", "value": "pickRandom([\"{b}\",\"{c}\",\"{d}\"])" },
+	"x": { "type": "number", "value": "round(a + b/10 + c/100 + d/1000, 3)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le <span class='g'>1° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>dixièmes</span> ».<br>Le <span class='g'>2° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>centièmes</span> ».<br>Le <span class='g'>3° chiffre après la virgule </span>s'appelle le chiffre des « <span class='g'>millièmes</span> ».<br><span class='i'>Ex : 590,185<br>Le chiffre des dixièmes est 1<br>Le chiffre des centièmes est 8<br>Le chiffre des millièmes est 5</span></span>"
+}

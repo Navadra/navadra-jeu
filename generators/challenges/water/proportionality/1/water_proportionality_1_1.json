@@ -1,0 +1,19 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x} couleuvres pèsent {y} kg, combien pèsent {x2} couleuvres ?<br>{input1} <span class='g'>kg</span>",
+  "answer": [
+	  "y*factor"
+  ],
+   "criteria": [
+	  "{input1} == y*factor"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,7)" },
+	"y": { "type": "number", "value": "randomInt(2,4)", "conditions": ["y!=x"] },
+	"factor": { "type": "number", "value": "randomInt(2,5)" },
+	"x2": { "type": "number", "value": "x*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que 4 couleuvres pèsent 3 kg et qu'on souhaite savoir combien pèsent 12 couleuvres.<br>12 couleuvres c'est <span class='g'>3 fois plus </span>que 4 couleuvres donc elles pèseront <span class='g'>3 fois plus lourd </span>soit <span class='g'>9 kg </span>!</span>"
+}

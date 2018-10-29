@@ -1,0 +1,17 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Tu cueilles {bananas} bananes en territoire Keodenns.<br>Tu en manges {eatenBananas} et tu en perds {remainingBananas} sur le chemin de retour au Village.<br>Combien t’en reste-t-il ?",
+  "answer": [
+	  { "determined": true, "choice": "{bananas} - {eatenBananas} - {remainingBananas}" },
+	  { "determined": false, "choice": "{bananas} + {eatenBananas} + {remainingBananas}" },
+	  { "determined": false, "choice": "{bananas} - {eatenBananas} + {remainingBananas}" },
+	  { "determined": false, "choice": "{bananas} + {eatenBananas} - {remainingBananas}" }
+  ],
+  "var": {
+	"bananas": { "type": "number", "value": "randomInt(15,30)" },
+	"eatenBananas": { "type": "number", "value": "randomInt(2,6)" },
+	"remainingBananas": { "type": "number", "value": "randomInt(2,6)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Mettons que tu avais 22 bananes au début</span>, si tu en manges 4, il ne t'en reste plus que 22-4 = 18.<br>Si en plus tu en perds 5 sur le chemin, il ne t'en reste plus que 18-5 = <span class='g'>13</span>.</span>"
+}

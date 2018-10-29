@@ -1,0 +1,37 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Quel est le sommet de l'angle en {color} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "color == \"rouge\"", "choice": "A" },
+      { "if": "color == \"bleu\"", "choice": "B" },
+	  { "if": "color == \"vert\"", "choice": "C" },
+	  { "if": "color == \"gris\"", "choice": "D" },
+	  { "if": "color == \"violet\"", "choice": "E" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-2,2)","random(-7,-5)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(-19,-15)","random(4,7)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(15,19)","random(4,7)"], "labelDisplay": "top" },
+	"l1": { "type": "line", "expression": "AB" },
+	"l2": { "type": "line", "expression": "AC" },
+	"l3": { "type": "line", "expression": "BC" },
+	"segment1": { "type": "segment", "expression": "AB", "visible": false },
+	"segment2": { "type": "segment", "expression": "AC", "visible": false },
+	"D": { "type": "point", "expression": "belongsTo(segment1)", "labelDisplay": "top" },
+	"E": { "type": "point", "expression": "belongsTo(segment2)", "labelDisplay": "top" },
+	"l4": { "type": "line", "expression": "DE" },
+	"angle1": { "type": "angle", "expression": "CAB", "color": "red"},
+	"angle2": { "type": "angle", "expression": "ABC", "color": "blue"},
+	"angle3": { "type": "angle", "expression": "BCA", "color": "green"},
+	"angle4": { "type": "angle", "expression": "ADE", "color": "grey"},
+	"angle5": { "type": "angle", "expression": "CED", "color": "purple"},
+	"possibilities": { "type": "array", "expression": ["rouge", "bleu", "vert", "gris", "violet"] },
+	"random": { "type": "number", "value": "randomInt(1,6)" },
+	"color": { "type": "string", "value": "possibilities[random]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint1.png' /><span class='mh2 mg2 l95 ib'>Le nom d'un angle s'écrit en utilisant dans l'ordre :<br><span class='g'>Un point d'un côté de l'angle</span><br><span class='g'>Le point au sommet de l'angle</span><br><span class='g'>Un point de l'autre côté de l'angle</span><br><br><span class='i'>Ainsi dans l'exemple ci-dessus, l'angle en rouge peut s'écrire au choix : DÂE, DÂC, BÂE, BÂC, EÂD, EÂB, CÂD ou CÂB.</span></span>"
+}

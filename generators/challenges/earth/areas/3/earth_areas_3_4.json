@@ -1,0 +1,33 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "ABCD est un carré.<br>Quelle est l'aire (arrondie) de cette figure ?<br>",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{area} cm²" },
+      { "determined": false, "choice": "{choice2} cm²" },
+	  { "determined": false, "choice": "{choice3} cm²" },
+	  { "determined": false, "choice": "{choice4} cm²" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) >= 6", "round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10", "mod(round(sqrt((ordB-ordA)^2 + (absB-absA)^2)),2) == 0"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(6,7)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD"},
+	"E": { "type": "point", "expression": "middle(BC)", "display": false },
+	"arc1": { "type": "arc", "expression": "ECB" },
+	"seg1": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length" },
+	"area": { "type": "number", "value": "round(seg1Length*seg1Length + (0.5*seg1Length)^2*pi*0.5)" },
+	"choice2": { "type": "number", "value": "round(area*0.5)" },
+	"choice3": { "type": "number", "value": "round(area*1.5)" },
+	"choice4": { "type": "number", "value": "round(area*2)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Pour calculer l'aire de cette figure, il faut procéder en 3 étapes :</span><br><br><span class='g'>1° : calculer l'aire du carré</span><br><span class='i'>Ex : si les côtés du carré mesurent 10 cm, alors son aire vaut 10x10 = 100 cm².</span><br><br><span class='g'>2° : calculer l'aire du demi-cercle</span><br><span class='i'>Ex : le rayon du demi-cercle mesurant alors 5 cm, son aire vaudra environ 3 x 25 / 2 = 75 / 2 = 37,5 cm².</span><br><br><span class='g'>3° : faire la somme de ces aires</span><br><span class='i'>Ex : on additionne l'aire du carré à celle du demi-cercle (100 + 37,5) et on obtient l'aire totale soit 137,5 cm². Il ne reste plus qu'à choisir le choix le plus proche de ce résultat (à cause de l'arrondi que l'on a fait en considérant que π ≈ 3).</span></span>"
+}

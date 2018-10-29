@@ -1,0 +1,17 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "Tu découpes un gâteau en {x} puis chaque part en {y}, combien obtiens-tu de parts?<br>{input1}",
+  "answer": [
+	  "x*y"
+  ],
+  "criteria": [
+	  "{input1} == x*y"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(2,6)"},
+	"y": { "type": "number", "value": "randomInt(2,6)", "conditions": ["x != y"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si tu <span class='g'>découpes un gâteau en un certain nombre de parts </span>(appelons « <span class='g'>A</span> » le nombre de parts) et que tu redécoupes chaque part en un autre nombre de parts (appelons « B » ce nouveau nombre). Alors tu obtiendras A x B parts.<br><br><span class='i'>Ex : Tu découpes un gâteau en <span class='g'>4 parts</span>.<br>Tu t'aperçois qu'il n'y a pas assez de parts et décide de <span class='g'>recouper chaque part en 3</span>.<br>Chaque part de gâteau se transformera en 3 parts plus petites.<br>Vu qu'il y avait 4 parts avant ta recoupe, tu obtiens donc <span class='g'>4x3 = 12 parts</span>.</span></span>"
+}

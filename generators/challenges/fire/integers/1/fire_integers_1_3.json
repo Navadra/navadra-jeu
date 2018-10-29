@@ -1,0 +1,17 @@
+{
+  "timer": 15000,
+  "type": 1,
+  "question": "{x} x {y} = {input1}",
+  "answer": [
+	  "x * y"
+  ],
+   "criteria": [
+	  "{input1} == x * y"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(5,10)" },
+    "y": { "type": "number", "value": "randomInt(1,10)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce 1 : n'oublie pas que tu peux inverser les nombres si c'est plus facile pour toi.</span><br><span class='i'>Ex : 8 x 6 = 6 x 8</span><br><br><span class='g'>Astuce 2 : pour la table de 9, tu peux aussi utiliser multiplier par 10 et enlever une fois le nombre.</span><br><span class='i'>Ex : 9 x 8 = <span class='g'>10 x 8 </span>– 8 = <span 'class='g'>80</span> – 8 = 72</span></span>"
+}

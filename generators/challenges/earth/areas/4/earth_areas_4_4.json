@@ -1,0 +1,27 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Ce cercle a une aire arrondie de {area} cm².<br>Quelle est la longueur de son rayon ?<br>Rappel : π ≈ 3",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "{choice1} cm" },
+      { "determined": false, "choice": "{choice2} cm" },
+	  { "determined": false, "choice": "{choice3} cm" },
+	  { "determined": false, "choice": "{choice4} cm" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"radius1": { "type": "number", "value": "randomInt(2,5)" },
+	"circle1": { "type": "circle", "expression": "radius(A,radius1)" },
+	"area": { "type": "number", "value": "round(radius1*radius1*pi,1)" },
+	"choice1": { "type": "number", "value": "round(radius1)" },
+	"choice2": { "type": "number", "value": "round(radius1*2)" },
+	"choice3": { "type": "number", "value": "round(radius1/2)" },
+	"choice4": { "type": "number", "value": "round(radius1*4)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un cercle :<br><br><span class='g'>aire = π x R² (ou π = 3,14… et R est le rayon du cercle).<br><br></span>Comme π vaut environ 3, on peut diviser son aire par 3 pour obtenir une estimation du rayon au carré. Il suffit ensuite de trouver le nombre qui multiplié par lui-même donne ce résultat.<br><br><span class='i'>Ex : si l'aire du cercle vaut environ 50 cm, on sait que son rayon au carré vaudra environ 16 (3x16 = 48). Or le nombre qui multiplié par lui-même donne 16 est 4. Le rayon vaudra donc 4 cm.</span></span>"
+}

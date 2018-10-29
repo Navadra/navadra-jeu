@@ -1,0 +1,33 @@
+{
+  "timer": 65000,
+  "type": 4,
+  "question": "Classe les durées suivantes de la plus grande à la petite.<br>{slot1} ≥ {slot2} ≥ {slot3}",
+  "answer": [
+	  "{x} {unitX}",
+	  "{y} {unitY}",
+	  "{z} {unitZ}"
+  ],
+  "var": {
+	"hour": { "type": "number", "value": "pickRandom([0.5, 1.5, 3, 4, 6])" },
+	"minutes": { "type": "number", "value": "pickRandom([20, 40, 80, 140, 300, 500])" },
+	"seconds": { "type": "number", "value": "pickRandom([1000, 3600, 7200, 15000])" },
+	"choices": { "type": "array", "value": ["hour","minutes","seconds"] },
+	"choicesString": { "type": "array", "expression": ["h","min","s"] },
+	"minutesConverted": { "type": "number", "value": "minutes/60" },
+	"secondsConverted": { "type": "number", "value": "seconds/3600" },
+	"choicesBis": { "type": "array", "value": ["hour","minutesConverted","secondsConverted"] },
+	"max1": { "type": "number", "value": "max(choicesBis)" },
+	"min1": { "type": "number", "value": "min(choicesBis)" },
+	"int1": { "type": "number", "value": "pickRandom(choicesBis)", "conditions": ["int1!=max1","int1!=min1"] },
+	"indexX": { "type": "number", "value": "indexOf(choicesBis,max1) +1" },
+	"x": { "type": "number", "value": "choices[indexX]" },
+	"unitX": { "type": "string", "value": "choicesString[indexX]" },
+	"indexY": { "type": "number", "value": "indexOf(choicesBis,int1) +1" },
+	"y": { "type": "number", "value": "choices[indexY]" },
+	"unitY": { "type": "string", "value": "choicesString[indexY]" },
+	"indexZ": { "type": "number", "value": "indexOf(choicesBis,min1) +1" },
+	"z": { "type": "number", "value": "choices[indexZ]" },
+	"unitZ": { "type": "string", "value": "choicesString[indexZ]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

@@ -1,0 +1,17 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Chez le boucher, le rôti de bœuf est vendu à {x} €/kg. Combien pèse un rôti de bœuf qui coûte {y} € ?<br>{input1} kg",
+  "answer": [
+	  "y/x"
+  ],
+   "criteria": [
+	  "{input1} == y/x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([10,20,25,30])" },
+	"y": { "type": "number", "value": "randomInt(2,6)*x" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons qu'un rôti de bœuf soit vendu à 30 €/kg et qu'un morceau de ce rôti coûte 90 €. On remarque que 90€ c'est <span class='g'>3 fois plus </span>que 30€.<br><br>Si un kilo coute 30€ et que le morceau vaut <span class='g'>3 fois plus cher</span>, ça veut dire que le morceau pèse <span class='g'>3 kilos </span>!</span>"
+}

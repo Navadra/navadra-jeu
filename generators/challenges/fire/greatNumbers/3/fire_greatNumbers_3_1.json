@@ -1,0 +1,21 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "{a} x {rand1} + {b} x {rand2} + {c} x {rand3} ... {w} x {rand4}",
+  "answer": [
+    { "if": "a*rand1+b*rand2+c*rand3 < w*rand4", "choice": " &lt; " },
+    { "if": "a*rand1+b*rand2+c*rand3 == w*rand4", "choice": " = " },
+    { "if": "a*rand1+b*rand2+c*rand3 > w*rand4", "choice": " &gt; " }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(1, 10)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=a", "c!=b"] },
+	"rand1": { "type": "number", "value": "pow(10,randomInt(5,7))" },
+	"rand2": { "type": "number", "value": "pow(10,randomInt(3,5))"  },
+	"rand3": { "type": "number", "value": "pow(10,randomInt(1,3))"  },
+	"w": { "type": "number", "value": "randomInt(1000,10000)" },
+	"rand4": { "type": "number", "value": "pow(10,randomInt(1,4))"  }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour <span class='g'>multiplier</span> un nombre par une <span class='g'>puissance de 10 </span>(10, 100 ou 1 000), on <span class='g'>décale la virgule </span>de ce nombre d'autant de fois <span class='g'>vers la droite</span>.<br><br>Pour <span class='g'>diviser</span> un nombre par une <span class='g'>puissance de 10</span>, on <span class='g'>décale la virgule </span>de ce nombre d'autant de fois <span class='g'>vers la gauche</span>.</span>"
+}

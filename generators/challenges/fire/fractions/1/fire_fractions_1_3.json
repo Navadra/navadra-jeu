@@ -1,0 +1,30 @@
+{
+  "timer": 60000,
+  "type": 5,
+  "question": "Déplace le point C pour que la longueur du segment [AC] soit égale à {numerator}/{denominator} de la longueur du segment [AB].<br>Tolérance de 0,05 sur le positionnement.",
+  "view": {
+  	  "geometry": [-0.1, 0.3, 1.1, -0.3],
+	  "grid": true,
+	  "axis": true
+  },
+  "answer": [
+	  "placePoint(C,E)"
+  ],
+  "criteria": [
+	  "abs(segment2Length - numerator*segment1Length/denominator) < 0.06"
+  ],
+  "type_answer": "single",
+  "var": {
+	"denominator": { "type": "number", "value": "randomInt(2,9)" },
+	"numerator": { "type": "number", "value": "randomInt(2,9)", "conditions": ["gcd(numerator,denominator)==1", "numerator <= denominator + 1"]},
+	"A": { "type": "point", "value": [0,0], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["denominator/10",0], "labelDisplay": "top" },
+	"D": { "type": "point", "value": [1.05,0], "visible": false },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "bottom", "labelType": "length", "precision": 0.01},
+	"segment3": { "type": "segment", "expression": "AD", "visible": false},
+	"C": { "type": "glider", "expression": "AD", "labelDisplay": "top", "color": "red", "fixed": false, "magnetic": false },
+	"segment2": { "type": "segment", "expression": "AC", "labelDisplay": "top", "labelType": "length", "precision": 0.01},
+	"E": { "type": "point", "value": ["numerator/10",0], "visible": false }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour déterminer la relation entre la longueur de 2 segments, procède en 3 étapes :<br><br>1° : détermine la <span class='g'>longueur du premier segment </span><span class='i'>(ex: le segment [AB] mesure 8 cm)</span><br>2° : détermine la <span class='g'>longueur du deuxième segment </span><span class='i'>(ex: le segment [AC] mesure 4 cm)</span><br>3° : exprime maintenant la relation entre les 2 longueurs sous une de ses formes :<br><span class='g'>AC = AC/AB x AB </span><span class='i'>(ex: AC = 4/8 x AB qui se simplifie en AC = 1/2 x AB)</span><br><span class='g'>AB = AB/AC x AC</span><span class='i'> (ex: AB = 8/4 x AC qui se simplifie en AB = 2 x AC)</span></span>"
+}

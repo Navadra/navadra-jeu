@@ -1,0 +1,38 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Calcule la différence entre le chiffre des {powerString1} de {x} <br>et le chiffre des {powerString2} de {y} <br>{input1}",
+  "answer": [
+	  "possibilities1[rand1]-possibilities2[rand2]"
+  ],
+  "criteria": [
+	  "{input1} == possibilities1[rand1]-possibilities2[rand2]"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(0, 10)" },
+	"b": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["c!=a", "c!=b"] },
+	"d": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["d!=a","d!=b","d!=c"] },
+	"e": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["e!=a","e!=b","e!=c","e!=d"] },
+	"f": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["f!=a","f!=b","f!=c","f!=d","f!=e"] },
+	"g": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["g!=a","g!=b","g!=c","g!=d","g!=e","g!=f"] },
+	"x": { "type": "number", "value": "a + b*10 + c*100 + d*1000 + e*10000 + f*100000+ g*1000000" },
+	"h": { "type": "number", "value": "randomInt(0, 10)" },
+	"i": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["i!=h"] },
+	"j": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["j!=h", "j!=i"] },
+	"k": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["k!=h","k!=i","k!=j"] },
+	"l": { "type": "number", "value": "randomInt(0, 10)", "conditions": ["l!=h","l!=i","l!=j","l!=k"] },
+	"m": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["m!=h","m!=i","m!=j","m!=k","m!=l"] },
+	"n": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["n!=h","n!=i","n!=j","n!=k","n!=l","n!=m"] },
+	"y": { "type": "number", "value": "h + i*10 + j*100 + k*1000 + l*10000 + m*100000+ n*1000000" },
+	"power": { "type": "array", "expression": ["unités", "dizaines", "centaines", "milliers", "dizaines de milliers", "centaines de milliers", "millions"] },
+	"possibilities1": { "type": "array", "value": ["a", "b", "c", "d", "e", "f", "g"] },
+	"possibilities2": { "type": "array", "value": ["h", "i", "j", "k", "l", "m", "n"] },
+	"rand1": { "type": "number", "value": "randomInt(1,8)" },
+	"rand2": { "type": "number", "value": "randomInt(1,8)"  },
+	"powerString1": { "type": "string", "value": "power[rand1]" },
+	"powerString2": { "type": "string", "value": "power[rand2]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour calculer la somme, la différence ou le produit de chiffres particuliers, il te faut raisonner en 2 étapes :<br>1° étape : <span class='g'>identifier de quels chiffres on parle.</span><br>2° étape : <span class='g'>appliquer l'opération</span> dont il est question (somme = '+' ; différence = '-' ; produit = 'x')<br><br><span class='i'>Ex : On veut calculer la différence entre le chiffre des centaines de milliers de 5 496 137 et le chiffre des centaines de 5 496 137.<br>Le chiffre des centaines de milliers de 5 496 137 est <span class='g'>4</span>. Le chiffre des centaines de 5 496 137 est <span class='g'>1</span>.<br>La différence entre 4 et 1 s'obtient en faisant : 4 – 1 = <span class='g'>3.</span></span></span>"
+}

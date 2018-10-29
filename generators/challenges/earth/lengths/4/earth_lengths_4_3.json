@@ -1,0 +1,38 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Quelle est la longueur totale <span class='g'>en {unit}</span> de la ligne brisée ci-dessous ?<br>{input1} <span class='g'>{unit}</span>",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "round(x,5)"
+  ],
+   "criteria": [
+	  "{input1} == round(x,5)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"d1": { "type": "line", "value": ["random(-0.2,0.2)","random(1,2)"], "visible": false },
+	"d2": { "type": "line", "value": ["random(-0.2,0.2)","random(-0.5,0.5)"], "visible": false },
+	"d3": { "type": "line", "value": ["random(-0.2,0.2)","random(-2,-1)"], "visible": false },
+	"A": { "type": "point", "value": ["random(-18,-15)","random(-2,2)"], "labelDisplay": "top" },
+	"length1": { "type": "number", "value": "randomInt(7,12)" },
+	"circle1": { "type": "circle", "expression": "radius(A,length1)", "visible": false },
+	"B": { "type": "point", "expression": "intersection(circle1,d1,1)", "labelDisplay": "top" },
+	"length2": { "type": "number", "value": "randomInt(7,12)" },
+	"circle2": { "type": "circle", "expression": "radius(B,length2)", "visible": false },
+	"C": { "type": "point", "expression": "intersection(circle2,d3,1)", "labelDisplay": "top" },
+	"length3": { "type": "number", "value": "randomInt(7,12)" },
+	"circle3": { "type": "circle", "expression": "radius(C,length3)", "visible": false },
+	"D": { "type": "point", "expression": "intersection(circle3,d2,1)", "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "bottom", "labelType": "length" },
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "top", "labelType": "length" },
+	"seg3": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length" },
+	"lengths": { "type": "array", "expression": ["mm", "cm", "dm", "m"] },
+	"rand": { "type": "number", "value": "pickRandom([1, 3])" },
+	"unit": { "type": "string", "value": "lengths[rand]" },
+	"x": { "type": "number", "value": "round((length1 + length2 + length3)*10^(2-rand),4)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu dois <span class='g'>additionner les longueurs de chaque segment </span>puis penser à <span class='g'>convertir le résultat dans l'unité désirée.</span></span>"
+}

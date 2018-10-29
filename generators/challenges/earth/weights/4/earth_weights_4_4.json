@@ -1,0 +1,28 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "On pèse ces 3 boules et la balance affiche {x} {unitA}<br>Si on enlève la boule rouge, la balance affiche {y} {unitA}.<br>Quelle est la masse de la boule rouge <span class='g'>en {unitB}</span> ?<br>{input1} <span class='g'>{unitB}</span>",
+  "view": {
+  	  "image": "balls"
+  },
+  "answer": [
+	  "round(a*10^(baseA-baseB),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(a*10^(baseA-baseB),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"weights": { "type": "array", "expression": ["g", "dag", "hg", "kg"] },
+	"baseA": { "type": "number", "value": "4" },
+	"unitA": { "type": "string", "value": "weights[baseA]" },
+	"a": { "type": "number", "value": "randomInt(2,10)" },
+	"baseB": { "type": "number", "value": "1" },
+	"unitB": { "type": "string", "value": "weights[baseB]" },
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(2,10)", "conditions": ["c!=a","c!=b"] },
+	"x": { "type": "number", "value": "a + b + c" },
+	"y": { "type": "number", "value": "b + c" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu connais la masse des 3 boules ensemble et celle de de la boule jaune et de la boule bleue ensemble.<br><br>Pour calculer la masse de la boule rouge, il suffit donc de calculer :<br><span class='g'>« masse 3 boules » - « masse boules jaune et bleue »<br><br></span>Enfin, il faut penser à <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

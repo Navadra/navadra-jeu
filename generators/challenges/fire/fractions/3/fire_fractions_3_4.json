@@ -1,0 +1,18 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Quel est le <span class='g'>plus petit entier supérieur à</span> {numerator1}/{denominator1} ?<br>{input1}",
+  "answer": [
+	  "nextInteger"
+  ],
+  "criteria": [
+	  "{input1} == nextInteger"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,11)"},
+		"denominator1": { "type": "number", "value": "randomInt(2,5)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+		"nextInteger": { "type": "number", "value": "ceil(numerator1/denominator1)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver l'entier supérieur ou inférieur le plus proche d'une fraction, il te suffit <span class='g'>d'encadrer le numérateur par des multiples du dénominateur</span>.<br><br><span class='i'>Ex : pour estimer la valeur décimale de 13/5, on peut remarquer que :<br>Le plus proche multiple de 5 <span class='g'>inférieur</span> à 13 est <span class='g'>10</span>. Or 10 = 5x<span class='g'>2</span>.<br>Le plus proche multiple de 5 <span class='g'>supérieur</span> à 13 est <span class='g'>15</span>. Or 15 = 5x<span class='g'>3</span>.<br>On peut donc estimer que la fraction <span class='g'>13/5</span> est <span class='g'>comprise entre 2 et 3</span>.</span></span>"
+}

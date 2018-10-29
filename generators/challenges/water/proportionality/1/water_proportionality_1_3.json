@@ -1,0 +1,17 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x} castors rapportent chacun {y} bouts de bois pour construire un barrage.<br>De combien de bouts de bois est constitué le barrage ?<br>{input1}",
+  "answer": [
+	  "x*y"
+  ],
+   "criteria": [
+	  "{input1} == x*y"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,10)" },
+	"y": { "type": "number", "value": "randomInt(2,10)", "conditions": ["y!=x"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que <span class='g'>3 castors </span>rapportent <span class='g'>chacun 7 bouts de bois </span>pour construire un barrage.<br>Si chaque castor rapporte 7 bouts de bois on aura donc 3x7 = <span class='g'>21 bouts de bois en tout </span>!</span>"
+}

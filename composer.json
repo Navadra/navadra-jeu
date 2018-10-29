@@ -1,0 +1,12 @@
+{
+        "autoload": {
+			"psr-0": {
+				"classes": "app"
+			}
+		},
+		"require": {
+                "swiftmailer/swiftmailer": "5.4.*",
+                "mailjet/mailjet-apiv3-php": "^1.1",
+                "cboden/ratchet": "^0.3.5"
+        }
+}

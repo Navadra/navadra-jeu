@@ -1,0 +1,38 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "On a mélangé <span class='g'>{x} {baseLength} d'eau</span> avec <span class='g'>{y} {baseLength} d'huile</span> dans une grosse cuve.<br>On enlève <span class='g'>{fractionString} de l'huile</span> de la cuve.<br>Quel volume <span class='g'>d'huile reste-t-il</span> dans la cuve <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span>",
+  "view": {
+      "smallBars": true,
+	  "tableTitle": "Mélange d'huile et d'eau dans une grosse cuve."
+  },
+  "answer": [
+	  "answer"
+  ],
+   "criteria": [
+	  "{input1} == answer"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["L", "daL", "hL", "m3"] },
+	"basePower": { "type": "number", "value": "pickRandom([1,4])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "pickRandom([1,4])" , "conditions": ["convertedPower!=basePower"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(2,20)" },
+	"xUnit": { "type": "number", "value": "lengths[basePower]" },
+	"fractionsString": { "type": "array", "expression": ["un tiers", "un quart", "la moitié", "les deux tiers", "les trois quarts"] },
+	"fractions": { "type": "array", "value": ["1/3", "1/4", "1/2", "2/3", "3/4"] },
+	"rand": { "type": "number", "value": "randomInt(1,6)" },
+	"fractionString": { "type": "string", "value": "fractionsString[rand]" },
+	"fraction": { "type": "number", "value": "fractions[rand]" },
+	"y": { "type": "number", "value": "round(randomInt(2,8) / (1-fraction),4)", "conditions": ["floor(y)==y"] },
+	"yUnit": { "type": "number", "value": "lengths[basePower]" },
+	"answer": { "type": "number", "value": "round(y*(1-fraction)*10^(basePower-convertedPower),5)" },
+	"legend": { "type": "array", "expression": ["Eau", "Huile"] },
+	"serie1": { "type": "array", "value": ["x"] },
+	"serie2": { "type": "array", "value": ["y"] },
+	"series": { "type": "table", "value": ["serie1","serie2"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te faut procéder en 2 étapes :<br><br>1° : <span class='g'>calculer le volume d'huile restant après en avoir retiré</span><br><span class='i'>Ex : s'il y avait 12 L d'huile et qu'on retire les 2/3, il en restera donc 1/3. Or 12 x 1/3 = 12/3 = 4 L.</span><br><br>2° : <span class='g'>convertir le résultat dans l'unité désirée</span></span>"
+}

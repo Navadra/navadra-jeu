@@ -1,0 +1,26 @@
+{
+  "timer": 75000,
+  "type": 1,
+  "question": "La boule rouge pèse {a} {unitA}, la jaune pèse {b} {unitB} et la bleue {c} {unitA}<br>Quelle est la masse totale de ces 3 boules <span class='g'>en {unitA}</span>?<br>{input1} <span class='g'>{unitA}</span>",
+  "view": {
+  	  "image": "balls"
+  },
+  "answer": [
+	  "round(a + c + b*10^(baseB-baseA),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(a + c + b*10^(baseB-baseA),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"weights": { "type": "array", "expression": ["g", "dag", "hg", "kg"] },
+	"baseA": { "type": "number", "value": "1" },
+	"unitA": { "type": "string", "value": "weights[baseA]" },
+	"a": { "type": "number", "value": "pickRandom([10,100])*randomInt(2,10)" },
+	"baseB": { "type": "number", "value": "4" },
+	"unitB": { "type": "string", "value": "weights[baseB]" },
+	"b": { "type": "number", "value": "randomInt(2,10)" },
+	"c": { "type": "number", "value": "pickRandom([10,100])*randomInt(2,10)", "conditions": ["c!=a","c!=b"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu dois <span class='g'>additionner les masses de chaque boule </span>puis penser à <span class='g'>convertir le résultat dans l'unité désirée.</span></span>"
+}

@@ -1,0 +1,31 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Quel est le périmètre de ce triangle équilatéral ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length*3"
+  ],
+   "criteria": [
+	  "{input1} == 3*seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(6.5,7)" },
+	"absA": { "type": "number", "value": "random(-6,-2)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(4,6)" },
+	"absB": { "type": "number", "value": "random(1,6)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length" },
+	"ordC": { "type": "number", "value": "random(-6,-4)" },
+	"absC": { "type": "number", "value": "random(-2,2)" },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"triangle1": { "type": "equiTriangle", "expression": "ABC", "visible": false },
+	"seg2": { "type": "segment", "expression": "BC" },
+	"seg3": { "type": "segment", "expression": "AC" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br>Dans le cas d'un triangle équilatéral, comme tous ses côtés sont égaux, il suffit de connaître la longueur d'un seul côté et de la multiplier par 3.</span>"
+}

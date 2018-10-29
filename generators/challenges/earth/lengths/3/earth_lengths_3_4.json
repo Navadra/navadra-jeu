@@ -1,0 +1,35 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Taealle souhaite descendre en rappel d’une falaise de {x} {unitX}.<br>Quelle corde lui conseilles-tu ?<br><span class='i'>On suppose que tu l'aimes bien et que tu n'as pas envie qu'elle se retrouve suspendue dans le vide.</span>",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths)", "choice": "{a} {unitA}" },
+      { "if": "b*10^baseB == max(allLengths)", "choice": "{b} {unitB}" },
+	  { "if": "c*10^baseC == max(allLengths)", "choice": "{c} {unitC}" },
+	  { "if": "d*10^baseD == max(allLengths)", "choice": "{d} {unitD}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["cm", "dm", "m"] },
+	"baseA": { "type": "number", "value": "3" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "10*randomInt(3,10)" },
+	"baseB": { "type": "number", "value": "randomInt(1, 4)", "conditions": ["baseB!=baseA"] },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"b": { "type": "number", "value": "10*randomInt(3,10)", "conditions": ["b!=a"] },
+	"baseC": { "type": "number", "value": "randomInt(1, 4)", "conditions": ["baseC!=baseB", "baseC!=baseA"] },
+	"unitC": { "type": "string", "value": "lengths[baseC]" },
+	"c": { "type": "number", "value": "10*randomInt(3,10)", "conditions": ["c!=a","c!=b"] },
+	"baseD": { "type": "number", "value": "randomInt(1, 4)", "conditions": ["baseD!=baseC","baseC!=baseB", "baseC!=baseA"] },
+	"unitD": { "type": "string", "value": "lengths[baseD]" },
+	"d": { "type": "number", "value": "10*randomInt(3,10)", "conditions": ["d!=c","c!=a","c!=b"] },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB", "c*10^baseC", "d*10^baseD"] },
+	"allNumbers": { "type": "array", "value": ["a", "b", "c", "d"] },
+	"allUnits": { "type": "array", "value": ["unitA", "unitB", "unitC", "unitD"] },
+	"maxLength": { "type": "number", "value": "max(allLengths)" },
+	"index": { "type": "number", "value": "indexOf(allLengths,maxLength) + 1" },
+	"xMax": { "type": "number", "value": "allNumbers[index]" },
+	"x": { "type": "number", "value": "randomInt(1,xMax)", "conditions": ["x>xMax-10"] },
+	"unitX": { "type": "number", "value": "allUnits[index]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/lengthsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, on considère que Taealle accroche la corde au pied d'un gros arbre en haut de la falaise. Pour être sûre de pouvoir arriver en bas sans se faire mal, il faut donc une corde de longueur supérieure ou égale à la hauteur de la falaise<span class='g'>.</span></span>"
+}

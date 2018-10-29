@@ -1,0 +1,27 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Combien mesure l'angle CÂD ?<br>{input1}°",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "angle1Value-angle3Value"
+  ],
+   "criteria": [
+	  "{input1} == angle1Value-angle3Value"
+  ],
+  "var": {
+	"B": { "type": "point", "value": ["randomInt(5,16)","randomInt(6,9)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["randomInt(5,16)","randomInt(-9,-6)"], "labelDisplay": "top" },
+	"A": { "type": "point", "value": [-3,0], "labelDisplay": "top" },
+	"D": { "type": "point", "value": "middle(BC)", "labelDisplay": "top" },
+	"d1": { "type": "line", "expression": "AB" },
+	"d2": { "type": "line", "expression": "AC" },
+	"d3": { "type": "line", "expression": "AD" },
+	"angle1": { "type": "angle", "expression": "CAB", "labelDisplay": true, "labelType": "value", "radius": 5},
+	"angle2": { "type": "angle", "expression": "CAD",  "color": "blue", "labelDisplay": true, "radius": 2 },
+	"angle3": { "type": "angle", "expression": "DAB",  "color": "rouge", "labelDisplay": true, "labelType": "value", "radius": 3 }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint6.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Un angle qui en inclus deux autres mesure la somme de ces deux angles.</span><br><br><span class='i'>Ainsi dans l'exemple :<br>CÂB = CÂD + DÂB donc<br>CÂD = CÂB – DÂB = 58 – 24 = 34°</span></span>"
+}

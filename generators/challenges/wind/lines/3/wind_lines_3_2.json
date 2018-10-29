@@ -1,0 +1,25 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "... est la droite parallèle à (BC) passant par A.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "order[1] == 1", "choice": "(d1)" },
+      { "if": "order[2] == 1", "choice": "(d2)" },
+	  { "if": "order[3] == 1", "choice": "(d3)" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": [-8.61,2.11], "labelDisplay": "top" },
+	"B": { "type": "point", "value": [2.99,2.81], "labelDisplay": "top", "conditions": "far(A)" },
+	"C": { "type": "point", "value": [8.40,-6.14], "labelDisplay": "top", "conditions": "far(A,B)" },
+	"possibilities": { "type": "array", "expression": ["parallel(BC,A)", "parallel(AC,B)", "parallel(AB,C)"] },
+	"order": { "type": "array", "value": ["randomInt(1,4)", "randomInt(1,4)", "randomInt(1,4)"], "conditions": "different(order)" },
+	"l1": { "type": "line", "expression": "BC" },
+	"d1": { "type": "line", "value": "possibilities[order[1]]", "labelDisplay": "top" },
+	"d2": { "type": "line", "value": "possibilities[order[2]]", "labelDisplay": "top" },
+	"d3": { "type": "line", "value": "possibilities[order[3]]", "labelDisplay": "bottom" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint4.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Deux droites sont perpendiculaires si elles se coupent à angle droit </span>(symbolisé par un carré à leur intersection).<br><br><span class='g'>Deux droites sont parallèles si elles ne se coupent jamais </span>(même si on prolongeait le dessin à l'infini).</span>"
+}

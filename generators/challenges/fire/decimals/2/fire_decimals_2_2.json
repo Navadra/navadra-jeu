@@ -1,0 +1,16 @@
+{
+  "timer": 25000,
+  "type": 1,
+  "question": "Quel est le nombre entier qui suit {x} ?<br>{input1}",
+  "answer": [
+	  "ceil(x)"
+  ],
+  "criteria": [
+	  "{input1} == ceil(x)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "round(random(10, 50), 2)", "conditions": ["ceil(x)!=x"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Le nombre entier qui <span class='g'>suit</span> un nombre décimal est le plus proche <span class='g'>nombre sans virgule </span>qui lui est<span class='g'> supérieur</span>.<br><span class='i'>Ex : 14,59<br>Le premier nombre sans virgule supérieur à 14,59 est <span class='g'>15</span>.</span></span>"
+}

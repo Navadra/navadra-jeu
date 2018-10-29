@@ -1,0 +1,17 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Tu fais un concours d’apnée avec 2 amis en territoire Lyréens.<br>Greymund peut rester {sec} secondes sous l’eau sans respirer.<br>Tu peux rester {factor1} fois plus longtemps mais Taealle peut rester {factor2} fois plus longtemps que toi.<br>Combien de secondes Taealle peut-elle rester sous l’eau ?",
+  "answer": [
+	  { "determined": true, "choice": "{sec} x {factor1} x {factor2}" },
+	  { "determined": false, "choice": "{sec} x {factor1} + {factor2}" },
+	  { "determined": false, "choice": "{sec} + {factor1} x {factor2}" },
+	  { "determined": false, "choice": "{sec} + {factor1} + {factor2}" }
+  ],
+  "var": {
+	"sec": { "type": "number", "value": "randomInt(10,30)" },
+	"factor1": { "type": "number", "value": "randomInt(2,4)" },
+	"factor2": { "type": "number", "value": "randomInt(2,4)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Mettons que Greymund puisse rester 20 secondes sous l'eau sans respirer.</span> Si tu peux rester 2 fois plus longtemps que lui sous l'eau alors tu peux tenir 40 secondes.<br>Et si Taealle peut rester 3 fois plus longtemps que toi, alors elle peut tenir 40 x 3 = <span class='g'>120 secondes</span> !</span>"
+}

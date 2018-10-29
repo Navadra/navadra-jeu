@@ -1,0 +1,16 @@
+{
+  "timer": 25000,
+  "type": 1, 
+  "question": "{x} - {y} = {input1}",
+  "answer": [
+	  "x - y"
+  ],
+   "criteria": [
+	  "{input1} == x - y"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(5,21)" },
+    "y": { "type": "number", "value": "randomInt(1,21)", "conditions": ["x>y"] }
+  }
+}

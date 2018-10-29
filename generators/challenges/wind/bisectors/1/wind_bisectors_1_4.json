@@ -1,0 +1,37 @@
+{
+  "timer": 45000,
+  "type": 5,
+  "question": "Déplace le point O pour le positionner à l’intersection des 3 médiatrices du triangle ABC.<br>Ensuite, déplace le point M pour que le rayon du cercle devienne égal à OA (tolérance 0,1cm).",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(O,P)",
+	  "placePoint(M,A)"
+  ],
+  "criteria": [
+	  "O belongsTo bisector1",
+	  "O belongsTo bisector2",
+	  "A belongsTo circle"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-6)","random(6,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(6,8)","random(4,5.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(2,4)","random(-7,-6)"], "labelDisplay": "bottom" },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "AC" },
+	"segment3": { "type": "segment", "expression": "BC" },
+	"bisector1": { "type": "line", "expression": "bisector(AB)" },
+	"bisector2": { "type": "line", "expression": "bisector(BC)" },
+	"bisector3": { "type": "line", "expression": "bisector(AC)" },
+	"angle1": { "type": "angle", "expression": "bisector1,segment1", "color": "red", "radius": 1 },
+	"angle2": { "type": "angle", "expression": "bisector2,segment3", "color": "red", "radius": 1 },
+	"angle3": { "type": "angle", "expression": "bisector3,segment2", "color": "red", "radius": 1 },
+	"O": { "type": "point", "value": ["random(-2,2)","random(-2,2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"M": { "type": "point", "value": ["random(-2,2)","random(-4,-3)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"P": { "type": "point", "value": "intersection(bisector1,bisector2)", "visible": false },
+	"circle": { "type": "circle", "expression": "radius(O,M)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La médiatrice d'un segment est perpendiculaire à ce dernier et le coupe en son milieu.</span></span>"
+}

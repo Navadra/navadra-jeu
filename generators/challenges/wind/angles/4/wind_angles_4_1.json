@@ -1,0 +1,33 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Lequel de ces noms ne convient pas pour l'angle en rouge ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "FDE" },
+      { "determined": false, "choice": "CDB" },
+	  { "determined": false, "choice": "FDC" },
+	  { "determined": false, "choice": "EDB" },
+	  { "determined": true, "choice": "DFC" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-17,-13)","random(6,8)"], "labelDisplay": "right" },
+	"B": { "type": "point", "value": ["random(13,17)","random(6,8)"], "labelDisplay": "left" },
+	"C": { "type": "point", "value": ["random(13,17)","random(-6,-8)"], "labelDisplay": "left" },
+	"D": { "type": "point", "value": ["random(-13,-17)","random(-6,-8)"], "labelDisplay": "left" },
+	"line1": { "type": "line", "expression": "AB" },
+	"line2": { "type": "line", "expression": "BC" },
+	"line3": { "type": "line", "expression": "CD" },
+	"line4": { "type": "line", "expression": "DA" },
+	"line5": { "type": "line", "expression": "DB" },
+	"E": { "type": "point", "value": "middle(DC)", "labelDisplay": "bottom" },
+	"line6": { "type": "line", "expression": "AE" },
+	"F": { "type": "point", "value": "intersection(line5,line6)", "labelDisplay": "bottom" },
+	"G": { "type": "point", "value": "middle(AB)", "labelDisplay": "top" },
+	"line7": { "type": "line", "expression": "GC" },
+	"angle1": { "type": "angle", "expression": "CDB", "labelDisplay": true, "radius": 3, "color": "red" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint1.png' /><span class='mh2 mg2 l95 ib'>Le nom d'un angle s'écrit en utilisant dans l'ordre :<br><span class='g'>Un point d'un côté de l'angle</span><br><span class='g'>Le point au sommet de l'angle</span><br><span class='g'>Un point de l'autre côté de l'angle</span><br><br><span class='i'>Ainsi dans l'exemple, l'angle en rouge peut s'écrire au choix : DÂE, DÂC, BÂE, BÂC, EÂD, EÂB, CÂD ou CÂB.</span></span>"
+}

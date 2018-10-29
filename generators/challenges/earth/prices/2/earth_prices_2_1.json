@@ -1,0 +1,16 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Théo veut acheter un paquet de madeleines dans un supermarché.<br>Il remarque que le paquet de {x}g coûte {y} € et que les mêmes madeleines sont vendues au poids à {z} €/kg.<br>Quelle est la meilleure affaire pour Théo ?<br><span class='i'>Dans le doute, j'aurais pris les deux à sa place.</span>",
+  "answer": [
+	  { "if": "y<z*x/1000", "choice": "Le paquet de {x}g" },
+      { "if": "y>z*x/1000", "choice": "Les madeleines au poids" },
+	  { "if": "y==z*x/1000", "choice": "Égalité" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "100*randomInt(1,7)" },
+	"z": { "type": "number", "value": "randomInt(3,7)" },
+	"y": { "type": "number", "value": "round(z*x/1000) + pickRandom([-2,-1,0,1,2])", "conditions": ["y>0"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour cette question, <span class='g'>essaie de calculer approximativement combien Théo devrait acheter de paquets de madeleine pour atteindre 1 kg et combien cela lui coûterait</span>.<br><br>Par exemple si le paquet de 400g coûte 1€ et que les madeleines sont vendues 4€/kg, tu peux calculer que si Théo achète 3 paquets, il aura 1,2 kg (400x3 = 1 200g) de madeleine le tout pour 3€ (3x1€).<br><br>Bref, dans cet exemple, il aura plus de madeleines pour moins cher en les achetant en paquets plutôt qu'au poids.</span>"
+}

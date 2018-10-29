@@ -1,0 +1,17 @@
+{
+  "timer": 25000,
+  "type": 2,
+  "question": "{z} est ... {x} et {y}.",
+  "answer": [
+    { "if": "z == x + y", "choice": "la somme de" },
+    { "if": "z == x - y", "choice": "la différence entre" },
+    { "if": "z == x * y", "choice": "le produit de" }
+  ],
+  "var": {
+    "op": { "type": "operator", "value": "pickRandom([\"+\",\"-\",\"*\"])" },
+    "x": { "type": "number", "value": "pickRandom([1,3,4,5,6,7,8,9])" },
+    "y": { "type": "number", "value": "randomInt(1,10)" },
+    "z": { "type": "number", "value":"x {op} y" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La somme de plusieurs nombre revient à additionner tous ces nombres.<br></span><span class='i'>Ex : La somme de 7 | 8 | 5  est égale à :<br>7 + 8 + 5 = 15 + 5 = 20</span><br><br><span class='g'>La différence entre deux nombres revient à faire une soustraction entre ces nombres.<br></span><span class='i'>Ex : La différence entre 9 et 5 est égale à :<br>9 – 5 = 4</span><br><br><span class='g'>Le produit de plusieurs nombres revient à multiplier ces nombres entre eux.<br></span><span class='i'>Ex : Le produit de 7 et 9 est égal à :<br>7 x 9 = 63</span></span>"
+}

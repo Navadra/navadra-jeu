@@ -1,0 +1,15 @@
+{
+  "timer": 20000,
+  "type": 2,
+  "question": "{x}-{y} ... {x}x{y}",
+  "answer": [
+    { "if": "(x-y) < (x*y)", "choice": " &lt; " },
+    { "if": "(x-y) == (x*y)", "choice": " = " },
+    { "if": "(x-y) > (x*y)", "choice": " &gt; " }
+  ],
+  "var": {
+    "x": { "type": "number", "value": "randomInt(3,6)" },
+    "y": { "type": "number", "value": "randomInt(1,6)", "conditions": ["x>y"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce pour les soustractions : calcule combien il faut ajouter au plus petit nombre pour atteindre le plus grand.</span><br><span class='i'>Ex avec 15 – 8.<br>Il faut 2 pour aller de 8 à 10.<br>Il faut 5 pour aller de 10 à 15.<br>Il faut donc <span class='g'>2 + 5 = 7 </span>pour aller de 8 à 15.<br><br></span><span class='g'>Astuce 1 pour les multiplications: n'oublie pas que tu peux inverser les nombres si c'est plus facile pour toi.</span><br><span class='i'>Ex : 8 x 6 = 6 x 8</span><br><br><span class='g'>Astuce 2 pour les multiplications : pour la table de 9, tu peux aussi utiliser multiplier par 10 et enlever une fois le nombre.</span><br><span class='i'>Ex : 9 x 8 = <span class='g'>10 x 8 </span>– 8 = <span 'class='g'>80</span> – 8 = 72</span></span>"
+}

@@ -1,0 +1,30 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. La droite (d) est parallèle à la droite (AB). Les droites (d) et (CD) sont ...",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "parallèles" },
+      { "determined": false, "choice": "perpendiculaires" },
+	  { "determined": false, "choice": "ni parallèles ni perpendiculaires" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(7,8)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(4,5)","random(4,5)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(5,9)","random(0,2)"], "labelDisplay": "right" },
+	"D": { "type": "point", "value": ["random(-9,-5)","random(0,2)"], "labelDisplay": "left" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["losange", "parallélogramme quelconque"]  },
+	"typeEng": { "type": "array", "expression": ["lozenge", "parallelogram"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC"},
+	"diag2": { "type": "line", "expression": "BD"},
+	"line1": { "type": "line", "expression": "AB", "visible": false},
+	"line2": { "type": "line", "expression": "CD", "visible": false},
+	"d": { "type": "line", "expression": "parallel(line1,*)", "conditions": "far(line1,line2)", "labelDisplay": "top" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un parallélogramme, les côtés opposés sont parallèles.<br><br></span>Ainsi que ABCD soit un parallélogramme quelconque ou un losange, si une droite est parallèle à un des côtés, elle est forcément parallèle au côté opposé.</span>"
+}

@@ -1,0 +1,22 @@
+{
+  "timer": 35000,
+  "type": 1,
+  "question": "{x} {baseLength} = {input1} {convertedLength}",
+  "answer": [
+	  "y"
+  ],
+   "criteria": [
+	  "{input1} == y"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["h", "jour(s)", "mois", "année(s)"] },
+	"basePower": { "type": "number", "value": "pickRandom([2,4])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "basePower-1" },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(1,3)" },
+	"y": { "type": "number", "value": "x*( (basePower==2)*24 +(basePower==4)*12 )" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

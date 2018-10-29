@@ -1,0 +1,28 @@
+{
+  "timer": 45000,
+  "type": 5,
+  "question": "Déplace le point A à moins de 12 cm de B, moins de 13 cm de D mais plus de 11 cm de C.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(A,E)"
+  ],
+  "criteria": [
+	  "A inside circle1",
+	  "A inside circle2",
+	  "!A inside circle3"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": [19,-8], "labelDisplay": "top", "color": "red", "fixed": false },
+	"D": { "type": "point", "value": ["random(-10,-6)","random(4,5.5)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(6,10)","random(4,5.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(-2,3)","random(-5.5,-4)"], "labelDisplay": "top" },
+	"E": { "type": "point", "value": [0,8], "visible": false },
+	"circle1": { "type": "circle", "expression": "radius(D,13)", "labelDisplay": "center", "labelType": "radius", "color": "red"},
+	"circle2": { "type": "circle", "expression": "radius(B,12)", "labelDisplay": "center", "labelType": "radius", "color": "blue"},
+	"circle3": { "type": "circle", "expression": "radius(C,11)", "labelDisplay": "center", "labelType": "radius", "color": "green"}
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/circlesHint2.png' /><span class='mh2 mg2 l95 ib'>Tout point à <span class='g'>l'intérieur du cercle rouge </span>est obligatoirement situé <span class='g'>à moins de 13 cm de D</span>.<br><br>Tout point à <span class='g'>l'intérieur du cercle bleu </span>est obligatoirement situé <span class='g'>à moins de 12 cm de B</span>.<br><br>Tout point à <span class='g'>l'intérieur du cercle vert </span>est obligatoirement situé <span class='g'>à moins de 11 cm de C</span>.<br><br>L'exemple ci-dessus montre où placer le point A en fonction de la consigne.</span>"
+}

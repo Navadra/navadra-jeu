@@ -1,0 +1,26 @@
+{
+  "timer": 50000,
+  "type": 5,
+  "question": "Clique sur la barre représentant le mois où il a le moins plu.",
+  "view": {
+  	  "diagram": "bars",
+	  "title": "Précipitations mensuelles moyennes sur Navadra (mm)."
+  },
+  "answer": [
+	  "highlightDiagram(1,index)"
+  ],
+  "criteria": [
+	  "clickDiagram(1,index)"
+  ],
+  "var": {
+	"serie1": { "type": "array", "value": ["5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)","5*randomInt(3,20)"], "conditions": "different(serie1)" },
+	"x": { "type": "number", "value": "min(serie1)" },
+	"index": { "type": "number", "value": "indexOf(serie1,x) + 1" },
+	"legend": { "type": "array", "expression": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"] },
+	"serie1Name": { "type": "array", "expression": " " },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "bars", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "type_diagram": "column", "evaluate": false, "showLegend": false }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/barsHint2.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme, <span class='g'>chaque barre représente les précipitations (pluies) moyennes un mois donné</span>.<br>Pour <span class='g'>connaitre les précipitations moyennes un mois donné</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br>Pour déterminer <span class='g'>le mois où il a le plus ou le moins plu </span>pendant une période donnée il suffit de déterminer <span class='g'>la barre la plus grande ou la plus petite </span>pendant cette période.<br><span class='i'>Ex : le mois ou il a le plus plu entre Mai et Septembre (inclus) est le mois de Juillet.</span></span>"
+}

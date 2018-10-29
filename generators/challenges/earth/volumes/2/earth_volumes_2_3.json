@@ -1,0 +1,21 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Si, au cours d’un match de tennis, Léo boit {a} {unitA} d’eau et que Camille boit {b} {unitB}, qui se sera le plus hydraté pendant ce match ?",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB != max(allLengths)", "choice": "Léo" },
+      { "if": "a*10^baseA != max(allLengths) and b*10^baseB == max(allLengths)", "choice": "Camille" },
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB == max(allLengths)", "choice": "Égalité" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["cL", "dL", "L"] },
+	"a": { "type": "number", "value": "randomInt(2,5)" },
+	"baseA": { "type": "number", "value": "3" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"b": { "type": "number", "value": "pickRandom([10,100])*randomInt(2,5)" },
+	"baseB": { "type": "number", "value": "1", "conditions": ["baseB>=1"] },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

@@ -1,0 +1,30 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Qui de Ebbister ou Sayeya a obtenu <span class='g'>le plus</span> de bonnes réponses pour le défi n°{x} ?",
+  "view": {
+  	  "diagram": "spider",
+	  "title": "Nombre de bonnes réponses par défi pour Ebbister et Sayeya"
+  },
+  "answer": [
+	  { "if": "serie1[x] == answer and serie2[x] != answer", "choice": "Ebbister" },
+	  { "if": "serie1[x] != answer and serie2[x] == answer", "choice": "Sayeya" },
+	  { "if": "serie1[x] == answer and serie2[x] == answer", "choice": "Égalité" }
+  ],
+  "var": {
+	"serie1": { "type": "array", "value": ["randomInt(1,5)","randomInt(1,5)","4"] },
+	"serie1Name": { "type": "string", "expression": "Bonnes réponses d'Ebbister" },
+	"serie2": { "type": "array", "value": ["randomInt(1,5)","randomInt(1,5)","randomInt(1,5)"] },
+	"serie2Name": { "type": "string", "expression": "Bonnes réponses de Sayeya" },
+	"challenge1": { "type": "string", "expression": "défi n°1" },
+	"challenge2": { "type": "string", "expression": "défi n°2" },
+	"challenge3": { "type": "string", "expression": "défi n°3" },
+	"legend": { "type": "array", "value": ["challenge1", "challenge2", "challenge3"] },
+	"series": { "type": "table", "value": ["serie1","serie2"] },
+	"seriesName": { "type": "table", "value": ["serie1Name","serie2Name"] },
+	"seriesOption": { "type": "options", "expression": "radar", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "pointPlacement": "on", "showTooltip": false },
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"answer": { "type": "number", "value": "max(serie1[x],serie2[x])" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/radarsHint2.png' /><span class='mh2 mg2 l95 ib'>Sur ce type de représentation en radar, <span class='g'>plus les points sont éloignés du centre de la figure, plus leur valeur est élevée</span>.<br>Pour <span class='g'>connaitre précisément leur valeur</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br>Ici, chaque couleur représente un joueur (bleu pour Ebbister et orange pour Sayeya).<br><span class='i'>Ainsi, sur cet exemple Sayeya a eu plus de bonnes réponses qu'Ebbister au défi n°2 (4 contre 1) mais moins de bonnes réponses que lui au défi n°3 (1 contre 4).</span></span>"
+}

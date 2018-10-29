@@ -1,0 +1,23 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Combien vaut □ ?<br>{input1}",
+  "view": {
+  	   "euclideanDivision": "(d,a,e,c)"
+  },
+  "answer": [
+	  "b"
+  ],
+  "criteria": [
+	  "{input1} == b"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"e": { "type": "string", "expression": "□" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le <span class='g'>quotient d'une division, </span>trouve le <span class='g'>multiple du diviseur </span>tout juste <span class='g'>inférieur au dividende</span>.<br><span class='i'>Exemple : pour la division de 57 par 6, le multiple de 6 tout juste inférieur à 57 est 54.<br>Par combien faut-il multiplier 6 pour obtenir 54 ? Par <span class='g'>9</span> !</span></span>"
+}

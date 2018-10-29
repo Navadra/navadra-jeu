@@ -1,0 +1,42 @@
+[
+  {
+    "joueur": "Haleham",
+    "nom": "Araignée feu",
+    "element": "feu",
+    "level": 12,
+    "hunters": 1,
+    "category": "defensif",
+    "position": "a:2:{s:4:\"posX\";s:5:\"67.5%\";s:4:\"posY\";s:5:\"35.4%\";}",
+    "img": "/webroot/img/monstres/veuve_noire.png"
+  },
+  {
+    "joueur": "Haleham",
+    "nom": "Veuve terre",
+    "element": "terre",
+    "level": 12,
+    "hunters": 1,
+    "category": "offensif",
+    "position": "a:2:{s:4:\"posX\";s:5:\"67.5%\";s:4:\"posY\";s:5:\"35.4%\";}",
+    "img": "/webroot/img/monstres/veuve_noire.png"
+  },
+  {
+    "joueur": "Haleham",
+    "nom": "Veuve eau",
+    "element": "eau",
+    "level": 12,
+    "hunters": 1,
+    "category": "equilibre",
+    "position": "a:2:{s:4:\"posX\";s:5:\"67.5%\";s:4:\"posY\";s:5:\"35.4%\";}",
+    "img": "/webroot/img/monstres/veuve_noire.png"
+  },
+  {
+    "joueur": "Haleham",
+    "nom": "Veuve vent",
+    "element": "vent",
+    "level": 12,
+    "hunters": 1,
+    "category": "offensif",
+    "position": "a:2:{s:4:\"posX\";s:5:\"67.5%\";s:4:\"posY\";s:5:\"35.4%\";}",
+    "img": "/webroot/img/monstres/veuve_noire.png"
+  }
+]

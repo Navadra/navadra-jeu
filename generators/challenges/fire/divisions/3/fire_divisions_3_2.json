@@ -1,0 +1,18 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Tu marches {d} km le long des côtes de Navadra qui font {a} km de long (périmètre de l'île).<br>Combien de tours complets as-tu fait ?",
+  "answer": [
+	  { "determined": false, "choice": "le reste de la division de {a} par {d}" },
+	  { "determined": false, "choice": "le quotient de la division de {a} par {d}" },
+	  { "determined": false, "choice": "le reste de la division de {d} par {a}" },
+	  { "determined": true, "choice": "le quotient de la division de {d} par {a}" }
+  ],
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,15)"},
+	"b": { "type": "number", "value": "randomInt(2,15)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Cet énoncé ne te fait pas penser à un calcul de <span class='g'>quotient</span> ?<br><br>Identifie le dividende, le diviseur et le reste et utilise la formule que tu as apprise dans les niveaux précédents.</span>"
+}

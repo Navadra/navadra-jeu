@@ -1,0 +1,33 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "On a mélangé {x} {baseLength} d'eau avec {y} {baseLength} d'huile dans un récipient.<br>Quel est le volume total de liquide dans le récipient <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span>",
+  "view": {
+      "smallBars": true,
+	  "tableTitle": "Mélange d'huile et d'eau dans un récipient."
+  },
+  "answer": [
+	  "answer"
+  ],
+   "criteria": [
+	  "{input1} == answer"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL", "dL", "L"] },
+	"basePower": { "type": "number", "value": "pickRandom([1,2,4])" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "pickRandom([1,2,4])" , "conditions": ["convertedPower!=basePower", "abs(convertedPower-basePower)<=3"] },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(2,20)" },
+	"xUnit": { "type": "number", "value": "lengths[basePower]" },
+	"y": { "type": "number", "value": "randomInt(2,20)" },
+	"yUnit": { "type": "number", "value": "lengths[basePower]" },
+	"answer": { "type": "number", "value": "(x+y)*10^(basePower-convertedPower)" },
+	"legend": { "type": "array", "expression": ["Eau", "Huile"] },
+	"serie1": { "type": "array", "value": ["x"] },
+	"serie2": { "type": "array", "value": ["y"] },
+	"series": { "type": "table", "value": ["serie1","serie2"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu dois <span class='g'>additionner les volumes de chaque liquide </span>puis penser à <span class='g'>convertir le résultat dans l'unité désirée.</span></span>"
+}

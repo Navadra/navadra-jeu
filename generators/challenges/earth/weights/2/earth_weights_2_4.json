@@ -1,0 +1,21 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Si un griffon a une masse de {a} {unitA} et qu'un hippopotame a une masse de {b} {unitB}, qui pèse le plus lourd ?<br><span class='i'>Le plus dur, c'était de trouver le volontaire pour les peser.</span>",
+  "answer": [
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB != max(allLengths)", "choice": "le griffon" },
+      { "if": "a*10^baseA != max(allLengths) and b*10^baseB == max(allLengths)", "choice": "l'hippopotame" },
+	  { "if": "a*10^baseA == max(allLengths) and b*10^baseB == max(allLengths)", "choice": "Égalité" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["kg", "undefined", "q", "t"] },
+	"a": { "type": "number", "value": "randomInt(1,10)" },
+	"baseA": { "type": "number", "value": "4" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"b": { "type": "number", "value": "pickRandom([100, 1000, 10000])*randomInt(1,10)" },
+	"baseB": { "type": "number", "value": "1" },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

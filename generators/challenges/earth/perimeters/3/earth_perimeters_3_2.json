@@ -1,0 +1,32 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Ce rectangle a un périmètre de {perimeter} cm.<br>Quelle est la longueur du côté AB ?<br>{input1} cm",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "left", "labelType": "length", "visible": false },
+	"ordC": { "type": "number", "value": "random(5,-4)" },
+	"absC": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) <= 10", "round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) != seg1Length"] },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"rectangle1": { "type": "rectangle", "expression": "ABCD" },
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"perimeter": { "type": "number", "value": "(seg1Length+seg2Length)*2" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br>Dans le cas d'un rectangle, comme ses côtés opposés sont égaux, il suffit de connaître son périmètre et la longueur d'un de ses côtés pour en déduire la longueur des autres côtés.<br><br><span class='i'>Ex : si le périmètre vaut 34 cm et que la longueur d'un des côtés vaut 7 cm, on sait que le côté opposé mesure aussi 7 cm soit 14 cm en tout avec le premier côté.<br><br>Cela laisse 20 cm (34 – 14) pour les 2 côtés restants donc chacun des 2 côtés restants mesure 10 cm (20/2).</span></span>"
+}

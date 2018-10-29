@@ -1,0 +1,18 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "{x} + {y} = □ <br> □ + {z} = {input1}",
+  "answer": [
+	  "round(x+y+z,4)"
+  ],
+  "criteria": [
+	  "{input1} == round(x+y+z,4)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "round(random(0, 5), 1)" },
+	"y": { "type": "number", "value": "round(random(0, 5), 1)" },
+	"z": { "type": "number", "value": "round(random(0, 5), 1)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Faire des additions de 3 décimaux ne demande pas de technique particulière, il faut juste réussir à <span class='g'>retenir le résultat intermédiaire dans ta tête</span>.<br><br><span class='i'>Ex : 3,5 + 2,2 = □ (□ vaut donc 5,7)<br>□ + 3,1 = <span class='g'>8,8</span> (5,7 + 3,1)</span></span>"
+}

@@ -1,0 +1,17 @@
+{
+  "timer": 15000,
+  "type": 1,
+  "question": "{x} + {y} = {input1}",
+  "answer": [
+	  "x + y"
+  ],
+   "criteria": [
+	  "{input1} == x + y"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(1,21)" },
+    "y": { "type": "number", "value": "randomInt(1,21)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce : décompose ton calcul pour faire apparaitre des nombres ronds.<br></span><span class='i'>Ex avec 7 + 16, on décompose 7 en 3 + 4 pour faire un nombre rond avec 16 :<br>3 + <span class='g'>4 + 16</span> = 3 + <span class='g'>20</span> = 23</span>"
+}

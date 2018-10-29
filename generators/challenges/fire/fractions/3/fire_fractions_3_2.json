@@ -1,0 +1,20 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "{numerator2}/{denominator2} = {input1}/{denominator1}",
+  "answer": [
+	  "numerator1"
+  ],
+  "criteria": [
+	  "{input1} == numerator1"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator1": { "type": "number", "value": "randomInt(2,10)"},
+	"denominator1": { "type": "number", "value": "randomInt(2,10)", "conditions": ["gcd(numerator1,denominator1) == 1"] },
+	"factor": { "type": "number", "value": "randomInt(2,10)" },
+	"numerator2": { "type": "number", "value": "numerator1*factor" },
+	"denominator2": { "type": "number", "value": "denominator1*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour compléter une égalité de fraction, <span class='g'>trouve comment « passer » de l'une à l'autre en multipliant</span>.<br><br><span class='i'>Ex : Pour compléter l'égalité 48/56 = □/7 tu peux remarquer que pour <span class='g'>« passer » de 56 à 7</span>, il suffit de <span class='g'>diviser</span> par 8 (parce que 8x7 = 56).<br>Pour conserver l'égalité entre les fractions, il faut aussi diviser le numérateur par 8 : 48 / 8 = <span class='g'>6</span>.<br>Bref, le résultat est donc <span class='g'>6/7</span>.</span></span>"
+}

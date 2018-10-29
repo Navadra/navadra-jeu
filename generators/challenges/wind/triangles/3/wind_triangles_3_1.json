@@ -1,0 +1,26 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "ABC est un triangle {chosenType}. Peut-on déterminer la longueur de {segment2} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "chosenType == \"équilatéral\"", "choice": "Oui" },
+      { "if": "chosenType == \"rectangle\"", "choice": "Il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,6)","random(4,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-6,-4)"], "labelDisplay": "bottom" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["équilatéral", "rectangle"] },
+	"typeEng": { "type": "array", "expression": ["equiTriangle", "rightAngleTriangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABC" },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length" },
+	"segment2": { "type": "string", "value": "pickRandom([\"[AC]\",\"[BC]\"])" },
+	"angle1": { "type": "angle", "expression": "ABC", "color": "red", "radius": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle équilatéral, les côtés sont tous égaux tandis que dans un triangle rectangle ce n'est pas le cas.</span><br><br>Ainsi si ABC est un triangle équilatéral, on peut déterminer la longueur de [AC] et [BC] en ayant la longueur de [AB] mais ce n'est pas le cas si ABC est un triangle rectangle.</span>"
+}

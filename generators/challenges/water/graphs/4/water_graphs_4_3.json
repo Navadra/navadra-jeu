@@ -1,0 +1,29 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Quel élément a été le moins utilisé pour lancer des sorts le {x}° jour ?",
+  "view": {
+  	  "geometry": [-1, 200, 11, -20],
+	  "grid": false,
+	  "axis": true,
+	  "tableTitle": "Evolution du nombre de sorts lancés sur Navadra par élément sur 10 jours."
+  },
+  "answer": [
+	  { "if": "ordonatesWater[x+1] < ordonatesEarth[x+1]", "choice": "{element1Html}" },
+	  { "if": "ordonatesWater[x+1] > ordonatesEarth[x+1]", "choice": "{element2Html}" },
+	  { "if": "ordonatesWater[x+1] == ordonatesEarth[x+1]", "choice": "Égalité" }
+  ],
+  "var": {
+	"abscissas" : {"type" : "array", "value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+	"ordonatesWater": { "type": "array", "value": ["20*randomInt(0,11)", "20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)","20*randomInt(0,11)"], "conditions": "different(ordonatesWater)" },
+	"curveWater": { "type": "curve", "value": ["abscissas", "ordonatesWater"], "color": "blue" },
+	"order": { "type": "array", "value": ["randomInt(1,12)", "randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)","randomInt(1,12)"], "conditions": "different(order)" },
+	"ordonatesEarth": { "type": "array", "value": ["ordonatesWater[order[1]]", "ordonatesWater[order[2]]","ordonatesWater[order[3]]","ordonatesWater[order[4]]","ordonatesWater[order[5]]","ordonatesWater[order[6]]","ordonatesWater[order[7]]","ordonatesWater[order[8]]","ordonatesWater[order[9]]","ordonatesWater[10]","ordonatesWater[order[11]]"] },
+	"curveEarth": { "type": "curve", "value": ["abscissas", "ordonatesEarth"], "color": "green" },
+	"htmlElements": { "type": "array", "expression": ["{img_eau}", "{img_terre}"] },
+	"element1Html": { "type": "string", "value": "htmlElements[1]" },
+	"element2Html": { "type": "string", "value": "htmlElements[2]" },
+	"x": { "type": "number", "value": "randomInt(1,11)" }
+  },
+	"hint" : "<img class='ib l70 mg15 md15' src='/webroot/img/challenges/graphsHint3.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Sur un même graphe, on représente cette fois 2 courbes </span>: le nombre de sorts de <span class='g rouge'>Feu</span> lancés (<span class='g rouge''>en rouge</span>) et le nombre de sorts d'<span class='g bleu'>Eau</span> lancés (<span class='g bleu''>en bleu</span>).<br>Pour <span class='g'>un jour donné</span>, il est donc <span class='g'>possible de savoir le nombre de sorts de Feu et d'Eau lancés</span>.<br><br><span class='i'>Si on cherche à savoir <span class='g'>au bout de combien de jours, le nombre de joueurs de l'élément Feu devient égal au nombre de joueurs de l'élément Eau</span>, il faut s'intéresser aux <span class='g'>intersections entre les courbes</span>.<br>Ici, les courbes rouge et bleu se coupent 4 fois mais les 2 premières fois (cercle gris), l'intersection n'a pas lieu un jour donné mais <span class='g'>entre 2 jours </span>donc ça ne répond pas à la question.<br>En revanche, les 2 dernières fois (cercles violets), l'intersection a lieu pendant un jour donné (le 6° et le 9°).<br>Puisque la question était « au bout de combien de jours » alors <span class='g'>la réponse est le premier de ces 2 jours </span>soit le <span class='g'>6°.</span></span></span>"
+}

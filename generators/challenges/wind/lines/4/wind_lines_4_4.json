@@ -1,0 +1,28 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Complète par le symbole qui convient : C ... {expression}.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "C belongsTo d4", "choice": "appartient à (∈)" },
+      { "if": "!C belongsTo d4", "choice": "n'appartient pas à (∉)" }
+  ],
+  "var": {
+	"d1": { "type": "line", "value": ["random(-0.5,0.5)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"A": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top" },
+	"B": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A)" },
+	"C": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A,B)" },
+	"D": { "type": "point", "expression": "belongsTo(d1)", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"d2": { "type": "segment", "expression": "AB", "visible": false },
+	"d3": { "type": "halfline", "expression": "AB", "visible": false },
+	"possibilites": { "type": "array", "expression": ["line", "segment", "halfline"] },
+	"lineNames": { "type": "array", "expression": ["d1", "d2", "d3"] },
+	"lineNames2": { "type": "array", "expression": ["(AB)", "[AB]", "[AB)"] },
+	"rand": { "type": "number", "value": "randomInt(1,4)" },
+	"d4": { "type": "possibilites[rand]", "value": "lineNames[rand]", "visible": false },
+	"expression": { "type": "string", "value": "lineNames2[rand]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/linesHint1.png' /><span class='mh2 mg2 l95 ib'>Supposons que nous ayons 2 points A et B.<br><br><span class='g'>La droite (AB) se prolonge à l'infini </span>à gauche de A et à droite de B. C'est le cas 1 de l'exemple ci-dessus.<br><br><span class='g'>La demi-droite [AB) se prolonge à l'infini seulement à droite de B</span>. C'est le cas 2 de l'exemple ci-dessus.<br><br><span class='g'>Le segment [AB] se limite à la portion comprise entre le point A et le point B</span>. C'est le cas 3 de l'exemple ci-dessus.</span>"
+}

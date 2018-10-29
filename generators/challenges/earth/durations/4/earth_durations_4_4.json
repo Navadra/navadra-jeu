@@ -1,0 +1,19 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Combien vaut {selected} d’une heure en minutes ?<br>{input1} min",
+  "answer": [
+	  "choices[rand]"
+  ],
+   "criteria": [
+	  "{input1} == choices[rand]"
+  ],
+  "type_answer": "single",
+  "var": {
+	"choicesString": { "type": "array", "expression": ["la moitié","le tiers","le quart","les trois-quarts","la moitié de la moitié"] },
+	"choices": { "type": "array", "value": [30,20,15,45,15] },
+	"rand": { "type": "number", "value": "randomInt(1,6)" },
+	"selected": { "type": "number", "value": "choicesString[rand]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te faudra te souvenir que :<br><br>la moitié s'obtient en divisant une quantité par 2<br>le tiers s'obtient en divisant une quantité par 3<br>le quart s'obtient en divisant une quantité par 4<br>les trois-quarts s'obtiennent en multipliant une quantité par 3 puis en la divisant par 4<br>la moitié de la moitié s'obtient en divisant par 2 puis encore par 2 donc cela revient à diviser par 4</span>"
+}

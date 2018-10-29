@@ -1,0 +1,25 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Ton sort a fait une majorité de …",
+  "view": {
+  	  "diagram": "pies",
+	  "title": "Répartition des dégâts d'un de tes sorts en combat."
+  },
+  "answer": [
+	  { "if": "y == 1", "choice": "dégâts faibles" },
+	  { "if": "y == 2", "choice": "dégâts normaux" },
+	  { "if": "y == 3", "choice": "dégâts élevés" }
+  ],
+  "var": {
+	"legend": { "type": "array", "expression": ["dégâts faibles", "dégâts normaux", "dégâts élevés"] },
+	"serie1": { "type": "array", "value": ["randomInt(20,100)","randomInt(20,100)","randomInt(20,100)"], "conditions": "different(serie1)" },
+	"x": { "type": "number", "value": "max(serie1)" },
+	"y": { "type": "number", "value": "indexOf(serie1,x)+1" },
+	"serie1Name": { "type": "array", "expression": "% des dégâts" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": {"type": "options", "expression": "circulars", "colorByPoint": true, "showLegend": true }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/circularsHint2.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme circulaire, <span class='g'>chaque portion colorée du diagramme représente la proportion d'un type de dégâts parmi les dégâts d'un de tes sorts.</span><br><br>Comme tu peux le voir, <span class='g'>la somme des pourcentages fait 100% </span>montrant qu'on représente toujours toutes les catégories.<br><br><span class='i'>Si on te demande les dégâts que ton sort a fait en majorité, détermine le maximum parmi les légendes de chaque catégorie.<br>Dans cet exemple, ton sort a fait une majorité de dégâts élevés.</span></span>"
+}

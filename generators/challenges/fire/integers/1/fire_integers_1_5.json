@@ -1,0 +1,15 @@
+{
+  "timer": 20000,
+  "type": 2,
+  "question": "{x}+{y} ... {x}x{y}",
+  "answer": [
+    { "if": "(x+y) < (x*y)", "choice": " &lt; " },
+    { "if": "(x+y) == (x*y)", "choice": " = " },
+    { "if": "(x+y) > (x*y)", "choice": " &gt; " }
+  ],
+  "var": {
+    "x": { "type": "number", "value": "randomInt(1,6)" },
+    "y": { "type": "number", "value": "randomInt(1,6)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce pour les additions : décompose ton calcul pour faire apparaitre des nombres ronds.<br></span><span class='i'>Ex avec 7 + 16, on décompose 7 en 3 + 4 pour faire un nombre rond avec 16 :<br>3 + <span class='g'>4 + 16 </span>= 3 + <span class='g'>20</span> = 23<br><br></span><span class='g'>Astuce 1 pour les multiplications : n'oublie pas que tu peux inverser les nombres si c'est plus facile pour toi.</span><br><span class='i'>Ex : 8 x 6 = 6 x 8</span><br><br><span class='g'>Astuce 2 pour les multiplications : pour la table de 9, tu peux aussi utiliser multiplier par 10 et enlever une fois le nombre.</span><br><span class='i'>Ex : 9 x 8 = <span class='g'>10 x 8 </span>– 8 = <span 'class='g'>80</span> – 8 = 72</span></span>"
+}

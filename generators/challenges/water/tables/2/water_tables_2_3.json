@@ -1,0 +1,30 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Quel écart en prestige y a-t-il entre le joueur classé {x}° et le joueur classé {y}° ?<br>{input1}",
+  "view": {
+  	  "table": true
+  },
+  "answer": [
+	  "difference"
+  ],
+   "criteria": [
+	  "{input1} == difference"
+  ],
+  "type_answer": "single",
+  "var": {
+	"prestige": { "type": "number", "value": "10*randomInt(90,100)" },
+	"names": { "type": "array", "expression": ["Haleham", "Dwensa", "Eleïa", "Taealle", "Sayeya", "Garddoch", "Ebbister", "Greymund"] },
+	"elements": { "type": "array", "expression": ["{img_feu}", "{img_eau}", "{img_vent}", "{img_terre}"] },
+	"column1": { "type": "array", "expression": ["1°", "2°", "3°", "4°"] },
+	"column2": { "type": "array", "value": ["prestige", "prestige-10*randomInt(1,10)", "prestige-10*randomInt(10,20)", "prestige-10*randomInt(20,30)"] },
+	"column3": { "type": "array", "value": ["pickRandom(names)", "pickRandom(names)", "pickRandom(names)", "pickRandom(names)"], "conditions": "different(column3)" },
+	"column4": { "type": "array", "value": ["randomInt(11,50)", "randomInt(11,50)", "randomInt(11,50)", "randomInt(11,50)"] },
+	"column5": { "type": "array", "value": ["pickRandom(elements)", "pickRandom(elements)", "pickRandom(elements)", "pickRandom(elements)"] },
+    "table": { "type": "table", "value": ["column1", "column2", "column3", "column4", "column5"], "columnheads": ["Classement", "Prestige", "Nom", "Niveau", "Élément"] },
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"y": { "type": "number", "value": "randomInt(1,5)", "conditions": ["x<y"] },
+	"difference": { "type": "number", "value": "column2[x]-column2[y]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/tablesHint3.png' /><span class='mg2 l95 ib'>Sur ce tableau, <span class='g'>les informations sont ordonnées par classement décroissant </span>(1° colonne).<br><br><span class='g'>Chaque ligne représente un joueur qui possède 5 caractéristiques</span> : son classement, son prestige, son nom, son niveau et son élément.<br><br>Ainsi, le niveau du 2° joueur est égal à 46 (2° ligne colonne « niveau »).</span>"
+}

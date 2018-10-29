@@ -1,0 +1,18 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x}% des joueurs de Navadra sont des {sex1}.<br>Si Navadra comptait 100 joueurs, combien y-aurait-il de {sex2} sur l'île ?<br>{input1}",
+  "answer": [
+	  "100-x"
+  ],
+   "criteria": [
+	  "{input1} == 100-x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(10,91)" },
+	"sex1": { "type": "string", "value": "pickRandom([\"filles\", \"garçons\"])"},
+	"sex2": { "type": "string", "value": "pickRandom([\"filles\", \"garçons\"])", "conditions": ["sex2!=sex1"]}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que <span class='g'>20%</span> des joueurs de Navadra soient des filles. Ça veut dire que <span class='g'>s'il y avait 100 joueurs sur l'île</span>, il y <span class='g'>aurait 20 filles </span>… et donc <span class='g'>80 </span>(100-20) <span class='g'>garçons</span>.<br><br>Ça tombe bien, dans l'énoncé on te dit qu'il y a 100 joueurs sur l'île, à toi de jouer !</span>"
+}

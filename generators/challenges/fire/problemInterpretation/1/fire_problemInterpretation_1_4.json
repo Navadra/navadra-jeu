@@ -1,0 +1,16 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Tu pars du Village à {heure1}h {minute1} pour aller à la plage.<br>Tu triomphes d’un monstre sur le chemin qui te fait gagner {prestige1} points de Prestige.<br>Quelle donnée te manque pour savoir combien de Prestige tu as à la fin du combat ?",
+  "answer": [
+	  { "determined": true, "choice": "ton Prestige avant le combat" },
+	  { "determined": false, "choice": "la durée totale du trajet" },
+	  { "determined": false, "choice": "ta vitesse de marche" }
+  ],
+  "var": {
+	"heure1": { "type": "number", "value": "randomInt(7,20)" },
+	"minute1": { "type": "number", "value": "randomInt(10,60)" },
+	"prestige1": { "type": "number", "value": "randomInt(30,60)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Attention, <span class='g'>certaines données ne servent à rien</span>.<br><br>Pour savoir combien tu auras de points de Prestige à la fin du combat il faut savoir combien tu avais de points de Prestige avant le combat et combien le combat t'en a fait gagner.</span>"
+}

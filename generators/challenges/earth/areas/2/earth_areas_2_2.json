@@ -1,0 +1,33 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Quelle est l'aire de ce rectangle ?<br>{input1} cm²",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg1Length*seg2Length"
+  ],
+   "criteria": [
+	  "{input1} == seg1Length*seg2Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-5,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,5)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"seg1": { "type": "segment", "expression": "AB", "labelDisplay": "left", "labelType": "length" },
+	"ordC": { "type": "number", "value": "random(5,-4)" },
+	"absC": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) <= 10", "round(sqrt((ordB-ordC)^2 + (absB-absC)^2)) != seg1Length"] },
+	"C": { "type": "point", "value": ["absC","ordC"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"rectangle1": { "type": "rectangle", "expression": "ABCD", "labelDisplay": "center", "labelType": "perimeter", "visible": false},
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"seg3": { "type": "segment", "expression": "CD" },
+	"seg4": { "type": "segment", "expression": "DA" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un rectangle, son aire se calcule à l'aide de cette formule :<br><br>aire = côté x côtéConsécutif<br><br>Comme ses côtés opposés sont égaux, il suffit de connaître 2 côtés opposés pour en déduire son aire.<br><br><span class='i'>Ex : si AB mesure 5cm et BC mesure 7cm, alors l'aire du rectangle sera égale à<br>5 x 7 = 35 cm²</span></span>"
+}

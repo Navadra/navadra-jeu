@@ -1,0 +1,9 @@
+{ 
+  "config_ssh" : {
+    "host": "localhost",
+    "port": "42022",
+    "username": "navadra",
+    "password": "navadra",
+    "privateKey": "D:/DEV/NAVADRA/DEV/_keystore/rsa-key-20160714_Navadra_DEV.ppk"
+  }
+}

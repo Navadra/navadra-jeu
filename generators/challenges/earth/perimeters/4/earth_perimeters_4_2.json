@@ -1,0 +1,21 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Le rayon de la roue de vélo de Claire mesure {radius1} cm.<br>Combien doit-elle faire de tours de roue complets pour parcourir {distance} m ?<br>Rappel : π ≈ 3",
+  "answer": [
+	  { "determined": true, "choice": "{turns}" },
+      { "determined": false, "choice": "{choice2}" },
+	  { "determined": false, "choice": "{choice3}" },
+	  { "determined": false, "choice": "{choice4}" }
+  ],
+  "var": {
+	"radius1": { "type": "number", "value": "10*randomInt(2,5)" },
+	"possibilities": { "type": "number", "value": [2,3,4,5] },
+	"turns": { "type": "number", "value": "pickRandom(possibilities)", "conditions": ["turns < 4"] },
+	"choice2": { "type": "number", "value": "pickRandom(possibilities)", "conditions": ["choice2 != turns"] },
+	"choice3": { "type": "number", "value": "pickRandom(possibilities)", "conditions": ["choice3 != choice2", "choice3 != turns"] },
+	"choice4": { "type": "number", "value": "pickRandom(possibilities)", "conditions": ["choice4 != choice3", "choice4 != choice2", "choice4 != turns"] },
+	"distance": { "type": "number", "value": "round(radius1/100*3*2*turns,1)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'un cercle se calcule à l'aide de cette formule :<br><br>Périmètre =  2 x π x R (ou π = 3,14… et R est le rayon du cercle)</span><br><br>En un tour de roue, chaque point de cette roue aura touché terre donc le vélo aura parcouru l'équivalent du périmètre de la roue.<br><br>Il ne reste qu'à calculer le périmètre de la roue et le nombre de tour nécessaire pour atteindre la distance désirée.<br><br><span class='i'>Ex : Si la roue mesure 20 cm, alors son périmètre vaut 2 x π x R ≈ 2 x 3 x R = 6 x R = 120 cm = 1,2 m.<br>Si la distance à parcourir est de 3,8 m alors on remarque que 3 x 1,2 = 3,6 m est le plus proche de la distance à parcourir.<br>Claire devra donc faire 3 tours de roue complets pour parcourir 3,8 m (le calcul ne tombe pas juste à cause de l'arrondi de π).</span></span>"
+}

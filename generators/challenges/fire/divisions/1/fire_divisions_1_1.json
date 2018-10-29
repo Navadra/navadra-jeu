@@ -1,0 +1,22 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Dans cette division, {e} est le ... .",
+  "view": {
+  	   "euclideanDivision": "(d,a,b,c)"
+  },
+  "answer": [
+	  { "if": "e == d", "choice": "dividende" },
+	  { "if": "e == a", "choice": "diviseur" },
+	  { "if": "e == b", "choice": "quotient" },
+	  { "if": "e == c", "choice": "reste" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(2,15)"},
+	"b": { "type": "number", "value": "randomInt(2,15)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"e": { "type": "number", "value": "pickRandom([\"a\", \"b\", \"c\", \"d\"])" }
+  },
+	"hint" : "<img class='mg2 ib l10' src='/webroot/img/challenges/divisionsHint1.png'/><span class='ib mg2 l85 align_middle'>Pour te souvenir de la position des différents termes tu peux utiliser ce <span class='g'>moyen mnémotechnique </span>:<br>Le « <span class='g'>diviseur</span> » <span class='g'>divise</span> donc c'est lui qu'on place en <span class='g'>haut à droite</span>.<br>Le « <span class='g'>quo</span>tient » est sur le « <span class='g'>cô</span>té » de la division.<br>Le « <span class='g'>reste</span> », est celui qui <span class='g'>reste à la fin </span>donc tout « <span class='g'>en bas</span> » de la division.<br>Il ne te reste plus qu'à placer le « <span class='g'>dividende</span> » à la seule <span class='g'>place restante </span>: en haut à gauche.<br>A toi de jouer !</span>"
+}

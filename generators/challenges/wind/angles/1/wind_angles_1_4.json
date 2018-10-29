@@ -1,0 +1,45 @@
+{
+  "timer": 45000,
+  "type": 5,
+  "question": "Bouge les points A, B, C ou D pour que l'angle {chosenAngle} devienne le plus grand des 4.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint({movingPoint},{targetPoint})"
+  ],
+  "criteria": [
+	  "angle3Value == max(angle1Value,angle2Value,angle3Value,angle4Value)"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-2,2)","random(5,7)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"B": { "type": "point", "value": ["random(-10,-5)","random(-2,2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"C": { "type": "point", "value": ["random(5,10)","random(-2,2)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"D": { "type": "point", "value": ["random(-2,2)","random(-5,-7)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"l1": { "type": "line", "expression": "AD", "visible" : false },
+	"l2": { "type": "line", "expression": "BC", "visible" : false },
+	"E": { "type": "point", "expression": "intersection(l1,l2)", "labelDisplay": "top" },
+	"l3": { "type": "halfline", "expression": "EA" },
+	"l4": { "type": "halfline", "expression": "EB" },
+	"l5": { "type": "halfline", "expression": "EC" },
+	"l6": { "type": "halfline", "expression": "ED" },
+	"possibilities": { "type": "array", "expression": ["CEA", "AEB", "BED", "DEC"] },
+	"possibilitiesAccent": { "type": "array", "expression": ["CÊA", "BÊA", "BÊD", "CÊD"] },
+	"F": { "type": "point", "value": [5,-8], "visible" : false },
+	"G": { "type": "point", "value": [10,5], "visible" : false },
+	"H": { "type": "point", "value": [-5,8], "visible" : false },
+	"I": { "type": "point", "value": [-10,-5], "visible" : false },
+	"movingPoints": { "type": "array", "expression": ["C", "A", "B", "D"] },
+	"targetPoints": { "type": "array", "expression": ["F", "G", "H", "I"] },
+	"order": { "type": "array", "value": ["randomInt(1,5)", "randomInt(1,5)", "randomInt(1,5)", "randomInt(1,5)"], "conditions": "different(order)" },
+	"angle1": { "type": "angle", "value": "possibilities[order[1]]", "color": "red", "labelDisplay": true, "labelType": "value"},
+	"angle2": { "type": "angle", "value": "possibilities[order[2]]", "color": "blue", "labelDisplay": true, "labelType": "value"},
+	"angle3": { "type": "angle", "value": "possibilities[order[3]]", "color": "green", "labelDisplay": true, "labelType": "value"},
+	"angle4": { "type": "angle", "value": "possibilities[order[4]]", "color": "grey", "labelDisplay": true, "labelType": "value"},
+	"chosenAngle": { "type": "string", "value": "possibilitiesAccent[order[3]]" },
+	"movingPoint": { "type": "string", "value": "movingPoints[order[3]]" },
+	"targetPoint": { "type": "string", "value": "targetPoints[order[3]]" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/anglesHint1.png' /><span class='mh2 mg2 l95 ib'>La valeur d'un angle peut <span class='g'>s'estimer</span> en déterminant <span class='g'>l'écartement entre ses 2 côtés</span>.<br><br><span class='i'>Ainsi, sur le dessin, sans connaître la valeur exacte des angles on peut déjà déterminer que l'angle représenté en violet est plus grand que l'angle représenté en vert.</span></span>"
+}

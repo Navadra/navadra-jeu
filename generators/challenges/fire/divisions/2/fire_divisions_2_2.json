@@ -1,0 +1,23 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Combien vaut □ ?<br>{input1}",
+  "view": {
+  	   "euclideanDivision": "(d,a,b,e)"
+  },
+  "answer": [
+	  "c"
+  ],
+  "criteria": [
+	  "{input1} == c"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"e": { "type": "string", "expression": "□" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour calculer le <span class='g'>reste de la division d'un nombre par un autre</span>, il te faut procéder en 2 étapes.<br><span class='i'>Exemple avec le reste de la division de 37 par 7.</span><br><br>1° étape : trouve le <span class='g'>multiple directement inférieur </span>au nombre à diviser (37).<br><span class='i'>Le multiple de 7 tout juste inférieur à 37 est <span class='g'>35</span> (7x5).</span><br><br>2° étape : fais la <span class='g'>différence entre le nombre à diviser </span>(37) <span class='g'>et ce multiple</span> (35).<br><span class='i'>Le reste vaut donc 37 – 35 = <span class='g'>2</span>.</span></span>"
+}

@@ -1,0 +1,26 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "A, B et D sont-ils alignés ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "D belongsTo line1", "choice": "Oui" },
+      { "if": "!D belongsTo line1", "choice": "Non" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-17,-14)","random(4,6)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(14,17)","random(4,6)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(-5,5)","random(-6,-4)"], "labelDisplay": "top" },
+	"line1": { "type": "line", "expression": "AB" },
+	"line2": { "type": "line", "expression": "AC" },
+	"line3": { "type": "line", "expression": "BC" },
+	"possibilities": { "type": "array", "expression": ["belongsTo(line1)", "belongsTo(line2)", "belongsTo(line3)"] },
+	"order": { "type": "array", "value": ["randomInt(1,4)", "randomInt(1,4)", "randomInt(1,4)"], "conditions": "different(order)" },
+	"D": { "type": "point", "value": "possibilities[order[1]]", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"E": { "type": "point", "value": "possibilities[order[2]]", "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"F": { "type": "point", "value": "possibilities[order[3]]", "labelDisplay": "top", "conditions": "far(A,B,C)" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint2.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Trois points sont alignés si on peut tracer une droite passant par les 3 points.<br><br></span><span class='i'>Ainsi sur cet exemple :<br>A, C et D sont alignés.<br>E, B et F ne sont pas alignés.</span></span>"
+}

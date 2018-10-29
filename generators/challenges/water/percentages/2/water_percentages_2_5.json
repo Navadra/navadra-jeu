@@ -1,0 +1,20 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Un de tes sorts inflige normalement 100 dégâts.<br>Ce tour-ci, il inflige {x}% de ses dégâts.<br>Combien de dégâts inflige-t-il <span class='g'>{operation}</span> ce tour-ci ?<br>{input1}",
+  "answer": [
+	  "abs(x-100)"
+  ],
+   "criteria": [
+	  "{input1} == abs(x-100) "
+  ],
+  "type_answer": "single",
+  "var": {
+	"rand": { "type": "number", "value": "randomInt(1,3)" },
+	"possibilities": { "type": "array", "value": ["5*randomInt(2,18)","5*randomInt(22,38)"] },
+	"possibilitiesString": { "type": "array", "expression": ["en moins","en plus"] },
+	"x": { "type": "number", "value": "possibilities[rand]" },
+	"operation": { "type": "string", "value": "possibilitiesString[rand]"}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Un pourcentage peut aussi s'écrire sous forme de fraction avec 100 au dénominateur</span>.<br><span class='i'>Ex : 58% = 58/100.</span><br><br>Donc si on <span class='g'>multiplie par</span>, mettons <span class='g'>75%</span>, cela revient à <span class='g'>multiplier par 75/100</span>.<br>Si ton sort infligeait 100 dégâts à la base, il infligera donc 75/100 x 100 = <span class='g'>75 dégâts</span> !<br><br><span class='g'>Oui mais</span>… si on te demande combien de dégâts il inflige <span class='g'>en moins </span>il faut comparer ses dégâts normaux (100) et ses nouveaux dégâts (75). Il inflige donc <span class='g'>25</span> (100-75) <span class='g'>dégâts en moins</span>.</span>"
+}

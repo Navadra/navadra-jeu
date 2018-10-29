@@ -1,0 +1,19 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Un monstre inflige {a} dégâts chaque tour. Tu as {d} d’endurance.<br>Au bout de combien de tours le monstre te mettra-t-il K.O si tu ne fais rien ?<br>{input1}",
+  "answer": [
+	  "b+1"
+  ],
+  "criteria": [
+	  "{input1} == b+1"
+  ],
+  "type_answer": "single",
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Cet énoncé ne te fait pas penser à un calcul de <span class='g'>quotient</span> ?<br><br>Identifie le dividende, le diviseur et le reste et utilise la formule que tu as apprise dans les niveaux précédents.</span>"
+}

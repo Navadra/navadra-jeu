@@ -1,0 +1,35 @@
+{
+  "timer": 75000,
+  "type": 5,
+  "question": "Positionne les points C et D pour transformer le quadrilatère en parallélogramme.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(C,E)",
+	  "placePoint(D,F)"
+  ],
+  "criteria": [
+	  "abs(segment1Length - segment3Length) < 0.4",
+	  "abs(segment2Length - segment4Length) < 0.4"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(4,6)","random(6,6.5)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(15,17)","random(-7,-4)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"D": { "type": "point", "value": ["random(-17,-15)","random(-7,-4)"], "labelDisplay": "top", "color": "red", "fixed": false },
+	"E": { "type": "point", "value": ["random(4,8)","random(-7,-4)"], "visible": false },
+	"F": { "type": "point", "value": ["random(-8,-4)","random(-7,-4)"], "visible": false },
+	"parallelogram1": { "type": "parallelogram", "expression": "ABEF", "visible": false },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "top", "labelType": "length", "precision": 0.1 },
+	"segment2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length", "precision": 0.1 },
+	"segment3": { "type": "segment", "expression": "CD", "labelDisplay": "bottom", "labelType": "length", "precision": 0.1 },
+	"segment4": { "type": "segment", "expression": "DA", "labelDisplay": "left", "labelType": "length", "precision": 0.1 },
+	"angle1": { "type": "angle", "expression": "DAB", "labelDisplay": true, "labelType": "value", "precision": 1},
+	"angle2": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value", "precision": 1},
+	"angle3": { "type": "angle", "expression": "BCD", "labelDisplay": true, "labelType": "value", "precision": 1},
+	"angle4": { "type": "angle", "expression": "CDA", "labelDisplay": true, "labelType": "value", "precision": 1}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un parallélogramme, les côtés opposés sont de même longueur mais les angles ne sont pas droits.</span></span>"
+}

@@ -1,0 +1,26 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Sachant qu'il y a une relation de proportionnalité entre niveau et Puissance Magique, quelle est le niveau du monstre 3 ?<br>{input1}",
+  "view": {
+      "table": true
+  },
+  "answer": [
+	  "x*factor2"
+  ],
+   "criteria": [
+	  "{input1} == x*factor2"
+  ],
+  "type_answer": "single",
+  "var": {
+	"coeff": { "type": "number", "value": "randomInt(2, 4)" },
+	"x": { "type": "number", "value": "randomInt(1, 5)" },
+	"factor1": { "type": "number", "value": "randomInt(2, 4)" },
+	"factor2": { "type": "number", "value": "randomInt(4, 7)" },
+	"column1": { "type": "array", "value": ["x", "x*coeff"] },
+	"column2": { "type": "array", "value": ["x*factor1", ""] },
+	"column3": { "type": "array", "value": ["", "x*coeff*factor2"] },
+    "table": { "type": "table", "value": ["column1", "column2", "column3"], "rowheads": ["Niveau", "Puissance Magique"], "columnheads": ["Monstre1", "Monstre2", "Monstre3"] }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/proportionalityHint3.png'/><span class='mg2 l95 ib'>L'énoncé te dit qu'il y a une <span class='g'>relation de proportionnalité entre Niveau et Puissance Magique</span>.<br><br>Dans cet exemple, tu vois qu'<span class='g'>on peut obtenir la Puissance Magique d'un monstre en multipliant son niveau par 3.</span><br>Tu peux donc en déduire que :<br>La Puissance Magique du Monstre2 est égale à 4x3 = 12<br>Le Niveau du Monstre3 est égal à 30/3 = 10</span>"
+}

@@ -1,0 +1,20 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "Recopie le nombre {a} sans les 0 inutiles.<br>{input1}",
+  "answer": [
+	  "x"
+  ],
+   "criteria": [
+	  "{input1} == x",
+	  "length({input1}) == length(x)"
+  ],
+  "type_answer": "single",
+  "var": {
+  "x": { "type": "number", "value": "round(random(11,100), 2)", "conditions": ["floor(x) != x"] },
+	"y": { "type": "string", "value": "[0]{0,1}" },
+	"z": { "type": "string", "value": "[0]{0,1}" },
+	"a": { "type": "string", "expression":"{y}{x}{z}" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Tous les « 0 » qui sont situés <span class='g'>« à gauche » </span>du nombre sont inutiles.<br>Tous les « 0 » qui sont situés <span class='g'>après la virgule </span>et <span class='g'>« à droite » </span>du nombre sont inutiles.<br><span class='i'>Ex : le nombre 0090,220<br>On commence par enlever les 0 à gauche => 90,220<br>On enlève ensuite les 0 à droite après la virgule => 90,22<br>Et voilà, le tour est joué, on obtient : <span class='g'>90,22</span> !</span></span>"
+}

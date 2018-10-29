@@ -1,0 +1,28 @@
+{
+  "timer": 45000,
+  "type": 5,
+  "question": "Déplace le point B pour qu'il corresponde au symétrique de A par rapport à (d).",
+  "view": {
+  	  "geometry": [-6, 3, 6, -3],
+	  "grid": true
+  },
+  "answer": [
+	  "placePoint(B,C)"
+  ],
+  "criteria": [
+	  "segment1Length < 0.5"
+  ],
+  "type_answer": "single",
+  "var": {
+	"M": { "type": "point", "value": [0,0], "visible": false },
+	"N": { "type": "point", "value": [0,1], "visible": false },
+	"d": { "type": "line", "expression": "MN", "labelDisplay": "top", "color": "red" },
+	"x": { "type": "number", "value": "randomInt(-5,0)" },
+	"y": { "type": "number", "value": "randomInt(-2,3)" },
+	"A": { "type": "point", "value": ["x","y"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": [3.5,-1], "labelDisplay": "right", "color": "red", "fixed": false, "snapToGrid": true },
+	"C": { "type": "point", "value": ["-x","y"], "visible": false },
+	"segment1": { "type": "segment", "expression": "BC", "labelDisplay": "top", "labelType": "length", "visible": false }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/symmetriesHint1.png' /><span class='mh2 mg2 l95 ib'>Pour tracer le symétrique d'un point A par rapport à un axe (d) on procède en <span class='g'>2 étapes </span>:<br><span class='g'>1° : tracer (d1), la droite perpendiculaire à (d) passant par A</span><br><span class='g'>2° : reporter la distance entre A et (d) de « l'autre côté » de l'axe de symétrie le long de (d1). </span>Dans cet exemple, on compte 3 carreaux entre A et (d) que l'on reporte de l'autre côté tout en restant sur la droite (d1).</span>"
+}

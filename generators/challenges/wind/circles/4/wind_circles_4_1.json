@@ -1,0 +1,17 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Complète la phrase : \"Trace … cercle de centre O.\"",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "un" },
+      { "determined": false, "choice": "le" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-11,-5)","randomInt(-2,3)"], "labelDisplay": "top" },
+	"O": { "type": "point", "value": ["randomInt(5,11)","randomInt(-2,3)"], "labelDisplay": "top" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Il y a une infinité de cercles de centre O.<br><br></span><span class='i'>On pourrait par exemple tracer un cercle de centre O et de rayon 1cm puis un autre de rayon 2cm puis de rayon 3cm, etc.</span></span>"
+}

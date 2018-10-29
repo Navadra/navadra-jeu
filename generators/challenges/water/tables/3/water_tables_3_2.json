@@ -1,0 +1,31 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Quel est le joueur qui a <span class='g'>le moins</span> de Pyrs ?",
+  "view": {
+  	  "table": true,
+	  "tableTitle": "Nombre de Pyrs de chaque élément par joueur"
+  },
+  "answer": [
+	  { "if": "z == subset(table, index(5, 1))", "choice": "{name1}" },
+	  { "if": "z == subset(table, index(5, 2))", "choice": "{name2}" },
+	  { "if": "z == subset(table, index(5, 3))", "choice": "{name3}" },
+	  { "if": "z == subset(table, index(5, 4))", "choice": "{name4}" }
+  ],
+  "var": {
+	"column1": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "column1[1]+column1[2]+column1[3]+column1[4]"], "conditions": "different(column1)" },
+	"column2": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "column2[1]+column2[2]+column2[3]+column2[4]"], "conditions": "differentAll(column1,column2)" },
+	"column3": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "column3[1]+column3[2]+column3[3]+column3[4]"], "conditions": "differentAll(column1,column2,column3)" },
+	"column4": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "randomInt(11,1000)", "column4[1]+column4[2]+column4[3]+column4[4]"], "conditions": "differentAll(column1,column2,column3,column4)" },
+	"column5": { "type": "array", "value": ["column1[1]+column2[1]+column3[1]+column4[1]", "column1[2]+column2[2]+column3[2]+column4[2]", "column1[3]+column2[3]+column3[3]+column4[3]", "column1[4]+column2[4]+column3[4]+column4[4]", "column1[5]+column2[5]+column3[5]+column4[5]"] },
+	"names": { "type": "array", "expression": ["Greymund", "Haleham", "Garddoch", "Eleïa", "Ebbister", "Taealle", "Dwensa", "Sayeya"] },
+	"selectedNames": { "type": "array", "value": ["pickRandom(names)", "pickRandom(names)", "pickRandom(names)", "pickRandom(names)"], "conditions": "different(selectedNames)" },
+    "table": { "type": "table", "value": ["column1", "column2", "column3", "column4", "column5"], "rowheads": ["selectedNames[1]", "selectedNames[2]", "selectedNames[3]", "selectedNames[4]", "Total"], "columnheads": ["{img_pyrs_feu}", "{img_pyrs_eau}", "{img_pyrs_vent}", "{img_pyrs_terre}", "Total"] },
+	"z": { "type": "number", "value": "min(subset(table, index(5, 1)), subset(table, index(5, 2)), subset(table, index(5, 3)), subset(table, index(5, 4)))" },
+	"name1": { "type": "string", "value": "selectedNames[1]" },
+	"name2": { "type": "string", "value": "selectedNames[2]" },
+	"name3": { "type": "string", "value": "selectedNames[3]" },
+	"name4": { "type": "string", "value": "selectedNames[4]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><img class='ib l50 mg25 md25' src='/webroot/img/challenges/tablesHint2.png' /><span class='mg2 l95 ib'>Ce type de tableau introduit une ligne et une colonne supplémentaire : les sous-totaux.<br><br>Tu peux ainsi <span class='g'>lire directement le total de Pyrs possédées par Eleïa sans avoir à calculer</span>. Pour ça il te suffit de lire le nombre inscrit dans la colonne Total au bout de la ligne d'Eleïa (1 670). Tu aurais pu aussi le calculer (284+442+453+491) mais cela aurait sans doute été plus long ;).<br><br>Tu peux <span class='g'>lire directement le nombre de Pyrs d'Eau possédées par les 4 joueurs</span> grâce à la ligne Total en bas de la colonne Pyrs d'Eau (1 947). Encore une fois, tu aurais pu le calculer (443+442+622+440) mais ici, ce n'est pas nécessaire.<br><br>Tu peux enfin savoir <span class='g'>combien de Pyrs sont détenues par l'ensemble des joueurs</span> en lisant le nombre tout en bas à droite (en violet). Ici, ces 4 joueurs possèdent en tout 8 701 Pyrs.</span></span>"
+}

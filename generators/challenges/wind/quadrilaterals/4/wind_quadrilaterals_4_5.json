@@ -1,0 +1,29 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "ABCD est un {chosenType}. Peut-on déterminer la longueur de {segment2} ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "oui" },
+      { "determined": false, "choice": "il manque des informations" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-7,-5)","random(6,7)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["random(5,7)","random(5,6)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(5,7)","random(0,2)"], "labelDisplay": "right" },
+	"D": { "type": "point", "value": ["random(-7,-5)","random(0,2)"], "labelDisplay": "left" },
+	"random": { "type": "number", "value": "pickRandom([1,2])" },
+	"typeFr": { "type": "array", "expression": ["carré", "rectangle"] },
+	"typeEng": { "type": "array", "expression": ["square", "rectangle"] },
+	"chosenType": { "type": "string", "value": "typeFr[random]" },
+	"chosenQuadri": { "type": "typeEng[random]", "expression": "ABCD" },
+	"diag1": { "type": "line", "expression": "AC"},
+	"diag2": { "type": "line", "expression": "BD"},
+	"I": { "type": "point", "expression": "intersection(diag1,diag2)", "labelDisplay": "top" },
+	"segment1": { "type": "segment", "expression": "AI", "labelDisplay": "left", "labelType": "length" },
+	"segment2": { "type": "string", "value": "pickRandom([\"[BI]\",\"[CI]\",\"[DI]\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un carré comme dans un rectangle, les diagonales ont la même longueur et se coupent en leur milieu.</span><br><br>Ainsi que ABCD soit un carré ou un rectangle, si la longueur AI est connue, on connait automatiquement DI, CI et BI.</span>"
+}

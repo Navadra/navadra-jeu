@@ -1,0 +1,15 @@
+{
+  "timer": 20000,
+  "type": 2,
+  "question": "{x}+{y} ... {x}-{y}",
+  "answer": [
+    { "if": "(x+y) < (x-y)", "choice": " &lt; " },
+    { "if": "(x+y) == (x-y)", "choice": " = " },
+    { "if": "(x+y) > (x-y)", "choice": " &gt; " }
+  ],
+  "var": {
+    "x": { "type": "number", "value": "randomInt(5,10)" },
+    "y": { "type": "number", "value": "randomInt(1,10)", "conditions": ["x>y"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce pour les additions : décompose ton calcul pour faire apparaitre des nombres ronds.<br></span><span class='i'>Ex avec 7 + 16, on décompose 7 en 3 + 4 pour faire un nombre rond avec 16 :<br>3 + <span class='g'>4 + 16 </span>= 3 + <span class='g'>20</span> = 23<br><br></span><span class='g'>Astuce pour les soustractions : calcule combien il faut ajouter au plus petit nombre pour atteindre le plus grand.</span><br><span class='i'>Ex avec 15 – 8.<br>Il faut 2 pour aller de 8 à 10.<br>Il faut 5 pour aller de 10 à 15.<br>Il faut donc <span class='g'>2 + 5 = 7 </span>pour aller de 8 à 15.</span></span>"
+}

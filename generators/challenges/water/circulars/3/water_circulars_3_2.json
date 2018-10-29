@@ -1,0 +1,29 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Quels sont les monstres présents en majorité sur Navadra ?",
+  "view": {
+  	  "diagram": "pies",
+	  "title": "Répartition des monstres présents sur Navadra par élément."
+  },
+  "answer": [
+	  { "if": "serie1[1]==x", "choice": "Les monstres de Feu" },
+	  { "if": "serie1[2]==x", "choice": "Les monstres d'Eau" },
+	  { "if": "serie1[3]==x", "choice": "Les monstres de Vent" },
+	  { "if": "serie1[4]==x", "choice": "Les monstres de Terre" }
+  ],
+  "var": {
+	"a": { "type": "number", "value": "10*randomInt(2,50)" },
+	"b": { "type": "number", "value": "10*randomInt(2,50)", "conditions": ["abs(b-a)/a>0.2"] },
+	"c": { "type": "number", "value": "10*randomInt(2,50)", "conditions": ["abs(c-a)/a>0.2","abs(c-b)/b>0.2"] },
+	"d": { "type": "number", "value": "10*randomInt(2,50)", "conditions": ["abs(d-a)/a>0.2","abs(d-c)/c>0.2","abs(d-b)/b>0.2"] },
+	"legend": { "type": "array", "expression": ["monstres de Feu", "monstres d'Eau", "monstres de Vent", "monstres de Terre"] },
+	"serie1": { "type": "array", "value": ["a","b","c","d"] },
+	"x": { "type": "number", "value": "max(serie1)" },
+	"serie1Name": { "type": "array", "expression": "% des monstres" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": {"type": "options", "expression": "circulars", "colorByPoint": true, "showLegend": false }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/circularsHint3.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme circulaire, <span class='g'>chaque portion colorée du diagramme représente la proportion d'un type de monstre parmi les monstres présents sur Navadra.</span><br><br>Cette fois ci tu n'as plus la légende pour les catégories, il va falloir <span class='g'>estimer</span> !<br><br><span class='i'>Si on te dit par exemple qu'il y a en ce moment sur Navadra 260 monstres de Feu, 170 monstres d'Eau, 430 monstres de Vent et 40 monstres de Terre et qu'on te demande les monstres représentés par la portion orange.<br>A vue d'œil, tu peux déjà déterminer que la portion orange est la <span class='g'>deuxième plus petite</span>.<br><br>Elle représente donc le <span class='g'>2° nombre le plus petit</span> soit les 260 <span class='g'>monstres de Feu</span>.</span></span>"
+}

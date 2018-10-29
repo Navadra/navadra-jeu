@@ -1,0 +1,21 @@
+{
+  "timer": 60000,
+  "type": 1,
+  "question": "Cette semaine Sayeya a battu {x} monstres {element1} et {y} monstres {element2} qui rapportaient chacun le même nombre de points de Prestige.<br>Sayeya a gagné {z} points de Prestige.<br>Combien de points de Prestige rapportait un seul monstre ?<br>{input1}",
+  "answer": [
+	  "factor"
+  ],
+   "criteria": [
+	  "{input1} == factor"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,6)" },
+	"y": { "type": "number", "value": "randomInt(2,6)", "conditions": ["y!=x"] },
+	"factor": { "type": "number", "value": "randomInt(2,10)" },
+	"z": { "type": "number", "value": "(x+y)*factor" },
+	"element1": { "type": "string", "value": "pickRandom([\"de Feu\", \"d'Eau\", \"de Vent\", \"de Terre\"])"},
+	"element2": { "type": "string", "value": "pickRandom([\"de Feu\", \"d'Eau\", \"de Vent\", \"de Terre\"])", "conditions": ["element2!=element1"]}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons que Sayeya ait battu 5 monstres de Terre et 3 monstres de Feu qui rapportaient chacun le même nombre de points de Prestige et qu'elle ait gagné <span class='g'>32 points de Prestige en tout</span>.<br><span class='g'>En tout Sayeya a battu 8 </span>(5 + 3) <span class='g'>monstres</span>.<br><br>Si elle a gagné 32 points de Prestige avec 8 monstres, alors elle a gagné 8 fois moins de Prestige pour chaque monstre soit 32/8 = <span class='g'>4 points de Prestige pour chaque monstre</span>.</span>"
+}

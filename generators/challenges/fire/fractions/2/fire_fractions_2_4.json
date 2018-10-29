@@ -1,0 +1,19 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Tu as {x} Pyrs de {element}, tu utilises les {numerator}/{denominator} pour apprendre un sort.<br>Combien de Pyrs <span class='g'>te reste-t-il</span> après avoir appris ton sort ?<br>{input1}",
+  "answer": [
+	  "round(x*(1-numerator/denominator))"
+  ],
+  "criteria": [
+	  "{input1} == round(x*(1-numerator/denominator))"
+  ],
+  "type_answer": "single",
+  "var": {
+	"denominator": { "type": "number", "value": "randomInt(3,6)" },
+	"x": { "type": "number", "value": "denominator*randomInt(2,5)"},
+	"numerator": { "type": "number", "value": "randomInt(2,denominator)", "conditions": ["gcd(numerator,denominator) == 1"]},
+	"element": { "type": "array", "value": "pickRandom([\"Feu\", \"Eau\", \"Vent\", \"Terre\"])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour calculer combien fait la fraction d'un nombre, tu peux transformer la fraction en la <span class='g'>multipliant</span> pour que le <span class='g'>dénominateur</span> <span class='g'>soit égal à ce nombre</span>.<br><br><span class='i'>Ex : Pour calculer les 3/4 de 12 objets, commence par transformer la fraction pour obtenir 12 au dénominateur.<br>Pour obtenir 12 au dénominateur, il faut multiplier 4 par <span class='g'>3</span> (4 x 3 = 12).<br>Si on multiplie le dénominateur de la fraction par 3, il faut multiplier le numérateur par ce même nombre pour que la fraction reste identique. On multiplie donc 3 par <span class='g'>3</span> et on obtient <span class='g'>9</span>.<br>Ainsi prendre les <span class='g'>3/4 de 12 objets </span>revient à prendre les <span class='g'>9/12 de ces 12 objets </span>soit… <span class='g'>9 objets </span>!</span></span>"
+}

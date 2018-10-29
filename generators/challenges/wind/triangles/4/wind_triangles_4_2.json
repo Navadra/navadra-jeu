@@ -1,0 +1,23 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Le segment {segment1} est ...",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "if": "segment1 == \"[AC]\"", "choice": "le côté opposé au sommet B" },
+      { "if": "segment1 == \"[BC]\"", "choice": "le côté opposé au sommet A" },
+	  { "if": "segment1 == \"[BA]\"", "choice": "le côté opposé au sommet C" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-10,-5)","randomInt(-2,3)"], "labelDisplay": "left" },
+	"B": { "type": "point", "value": ["randomInt(0,8)","randomInt(6,9)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["randomInt(5,16)","randomInt(-1,2)"], "labelDisplay": "right" },
+	"triangle": { "type": "triangle", "expression": "ABC" },
+	"possibilities": { "type": "array", "expression": ["[BC]", "[BA]", "[AC]"] },
+	"random": { "type": "number", "value": "randomInt(1,4)" },
+	"segment1": { "type": "string", "value": "possibilities[random]"}
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/trianglesHint2.png' /><span class='mh2 mg2 l95 ib'>Utilise l'exemple ci-dessus pour ne plus te tromper entre côté opposé, côté adjacent et sommet opposé dans un triangle.</span>"
+}

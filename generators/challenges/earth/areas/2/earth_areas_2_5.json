@@ -1,0 +1,30 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Quelle est l'aire de ce demi-cercle ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "{choice1} x π/2 cm²" },
+      { "determined": false, "choice": "{choice2} x π/2 cm²" },
+	  { "determined": true, "choice": "{choice3} x π/2 cm²" },
+	  { "determined": false, "choice": "{choice4} x π/2 cm²" }
+  ],
+  "var": {
+	"ordA": { "type": "number", "value": "random(0.5,-0.5)" },
+	"absA": { "type": "number", "value": "random(-0.5,0.5)" },
+	"absB": { "type": "number", "value": "absA + randomInt(3,10)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["absB","ordA"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["2absA - absB","ordA"], "visible": false },
+	"seg1": { "type": "segment", "expression": "AC" },
+	"radius": { "type": "segment", "expression": "AB", "labelDisplay" : "bottom", "labelType": "length" },
+	"arc1": { "type": "arc", "expression": "ABC", "labelDisplay": "center", "labelType": "radius" },
+	"choice1": { "type": "number", "value": "2*radiusLength" },
+	"choice2": { "type": "number", "value": "radiusLength" },
+	"choice3": { "type": "number", "value": "radiusLength^2" },
+	"choice4": { "type": "number", "value": "round(radiusLength*4.5)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br><span class='g'>L'aire d'un demi-cercle se calcule à l'aide de cette formule :<br><br>Aire = π x R² / 2 (ou π = 3,14… et R est le rayon du cercle).</span><br><br><span class='i'>Ex : si le rayon mesure 4 cm alors l'aire sera égale à 16 x π/2 cm².</span></span>"
+}

@@ -1,0 +1,21 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "On divise un nombre par {a}, le quotient est {b} et le reste est {c}.<br>Quel est ce nombre ?",
+  "answer": [
+	  { "determined": true, "choice": "{d}" },
+	  { "determined": false, "choice": "{e}" },
+	  { "determined": false, "choice": "{f}" },
+	  { "determined": false, "choice": "{g}" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "randomInt(20,40)"},
+		"b": { "type": "number", "value": "randomInt(2,6)", "conditions": ["b!=a"] },
+		"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+		"d": { "type": "number", "value": "a*b + c" },
+		"e": { "type": "number", "value": "d + 20*pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["e>0"] },
+		"f": { "type": "number", "value": "d + 20*pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["f>0", "f!=e"] },
+		"g": { "type": "number", "value": "d + 20*pickRandom([-6,-5,-4,-3,3,4,5,6])", "conditions": ["g>0", "g!=f", "g!=e"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le <span class='g'>dividende d'une division, </span>utilise la formule suivante :<br>Dividende = <span class='g'>diviseur x quotient + reste. </span>Si le nombre est grand, commence par l'arrondir.<br><br><span class='i'>Exemple : si le diviseur est 56, le quotient 3 et le reste 22 alors commence par arrondir ces nombres à 60, 3 et 20.<br>Dividende = 60x3 + 20 = 180 + 20 = <span class='g'>200</span>. Le résultat exact doit donc <span class='g'>être proche de 200</span>.</span></span>"
+}

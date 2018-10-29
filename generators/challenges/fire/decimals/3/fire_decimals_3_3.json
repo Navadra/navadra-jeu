@@ -1,0 +1,32 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Calcule la différence entre le chiffre des {powerString1} de {x} et le chiffre des {powerString2} de {y} <br>{input1}",
+  "answer": [
+	  "possibilities1[rand1]-possibilities2[rand2]"
+  ],
+  "criteria": [
+	  "{input1} == possibilities1[rand1]-possibilities2[rand2]"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(1, 10)" },
+	"b": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["c!=a", "c!=b"] },
+	"d": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["d!=a", "d!=b","d!=c"] },
+	"x": { "type": "number", "value": "round(a + b/10 + c/100 + d/1000, 3)" },
+	"e": { "type": "number", "value": "randomInt(1, 10)" },
+	"f": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["f!=e"] },
+	"g": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["g!=e", "g!=f"] },
+	"h": { "type": "number", "value": "randomInt(1, 10)", "conditions": ["h!=e", "h!=f","h!=g"] },
+	"y": { "type": "number", "value": "round(e + f/10 + g/100 + h/1000, 3)" },
+	"power": { "type": "array", "expression": ["unités", "dixièmes", "centièmes", "millièmes"] },
+	"possibilities1": { "type": "array", "value": ["a", "b", "c", "d"] },
+	"possibilities2": { "type": "array", "value": ["e", "f", "g", "h"] },
+	"rand1": { "type": "number", "value": "randomInt(1,5)" },
+	"rand2": { "type": "number", "value": "randomInt(1,5)" },
+	"powerString1": { "type": "string", "value": "power[rand1]" },
+	"powerString2": { "type": "string", "value": "power[rand2]" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour calculer la somme, la différence ou le produit de chiffres particuliers, il te faut raisonner en 2 étapes :<br>1° étape : <span class='g'>identifier de quels chiffres on parle.</span><br>2° étape : <span class='g'>appliquer l'opération</span> dont il est question (somme = '+' ; différence = '-' ; produit = 'x')<br><br><span class='i'>Ex : On veut calculer la différence entre le chiffre des millièmes de 8,743 et le chiffre des centièmes de 3,418<br>Le chiffre des millièmes de 8,743 est <span class='g'>3</span>. Le chiffre des centièmes de 3,418 est <span class='g'>1</span>.<br>La différence entre 3 et 1 s'obtient en faisant : 3 – 1 = <span class='g'>2.</span></span></span>"
+}

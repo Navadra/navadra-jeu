@@ -1,0 +1,16 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "Eleïa a {x} ans, sa mère en a {y}.<br>Lorsque Eleïa aura {z} ans, pourra-t-on appliquer la proportionnalité pour connaître l'âge de sa mère ?",
+  "answer": [
+	  { "determined": false, "choice": "Oui" },
+	  { "determined": true, "choice": "Non" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(11,16)" },
+	"y": { "type": "number", "value": "randomInt(34,50)" },
+	"factor": { "type": "number", "value": "pickRandom([2,3,4])" },
+	"z": { "type": "number", "value": "x*factor" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons qu'<span class='g'>Eleïa ait 14 ans et que sa mère en ait 41</span>. Lorsqu'Eleïa aura 28 ans, elle sera donc 2 fois plus âgée qu'aujourd'hui (2x14 = 28).<br>14 ans se seront passés donc sa mère aura 14 ans de plus soit 41+14 = <span class='g'>55 ans</span>.<br><br>Tu peux donc voir que 55 ans n'est pas égal à 2x41 (=82) donc que <span class='g'>l'âge de la mère et de la fille ne sont pas proportionnels</span>.</span>"
+}

@@ -1,0 +1,14 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Si l’effet de l’un de tes sorts devient égal à {x}% de son effet de base, le sort ...",
+  "answer": [
+	  { "if": "x>100", "choice": "Devient plus puissant" },
+	  { "if": "x<100", "choice": "Devient moins puissant" },
+	  { "if": "x==100", "choice": "Reste aussi puissant" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,200)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si on applique la définition du pourcentage, 100% c'est aussi égal à 100/100 = 1.<br>Donc multiplier un nombre par 100% revient à le multiplier par 1 donc cela n'a aucun effet sur ce nombre.<br><br>En revanche, <span class='g'>multiplier un nombre par un pourcentage supérieur à 100 </span>(ex: 150%) revient à le multiplier par un nombre plus grand que 1 (ici 1,5) donc le <span class='g'>résultat sera plus grand que le nombre</span>.<br>De la même manière, si le pourcentage est <span class='g'>inférieur à 100 </span>(ex: 75%), cela revient à le multiplier par un nombre plus petit que 1 (ici 0,75) donc le <span class='g'>résultat sera plus petit que le nombre</span>.</span>"
+}

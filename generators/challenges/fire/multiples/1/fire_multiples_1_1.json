@@ -1,0 +1,17 @@
+{
+  "timer": 25000,
+  "type": 2,
+  "question": "{x} est un ... de {y}.",
+  "answer": [
+    { "if": "(x/y == floor(x/y)) and x > y", "choice": "multiple" },
+	{ "if": "(y/x == floor(y/x)) and y > x", "choice": "diviseur" }
+  ],
+  "var": {
+    "a": { "type": "number", "value": "pickRandom([2, 3, 5, 9])" },
+	"b": { "type": "number", "value": "randomInt(10, 100)" },
+	"c": { "type": "number", "value": "a*b" },
+	"x": { "type": "number", "value": "pickRandom([a, c])" },
+	"y": { "type": "number", "value": "pickRandom([a, c])", "conditions": ["y!=x"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Un nombre (appelons-le « a ») est un <span class='g'>diviseur</span> d'un autre nombre (appelons le « b ») si on peut <span class='g'>multiplier a par un autre nombre (entier) pour obtenir b</span>.<br><span class='i'>Ex : 5 est-il un diviseur ou un multiple de 35 ?<br><span class='g'>On peut multiplier 5 par 7 pour obtenir 35 </span>donc 5 est un <span class='g'>diviseur</span> de 35.</span><br><br>Un nombre (appelons-le « a ») est un <span class='g'>multiple</span> d'un autre nombre (appelons le « b ») si on peut <span class='g'>diviser a par un autre nombre (entier) pour obtenir b</span>.<br><span class='i'>Ex : 28 est-il un diviseur ou un multiple de 4 ?<br><span class='g'>On peut diviser 28 par 7 pour obtenir 4 </span>donc 28 est un <span class='g'>multiple</span> de 4.</span></span>"
+}

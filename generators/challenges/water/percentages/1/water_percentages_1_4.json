@@ -1,0 +1,15 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Dans un groupe de monstres, il y a {x}% de cobras et {y}% de vipères.<br>Y a-t-il d’autres monstres dans le groupe ?",
+  "answer": [
+	  { "if": "x+y == 100", "choice": "Non" },
+	  { "if": "x+y != 100", "choice": "Oui" },
+	  { "determined": false, "choice": "On ne peut pas le savoir" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,50)" },
+	"y": { "type": "number", "value": "pickRandom([100-x,randomInt(2,50)])" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Les pourcentages permettent de ramener une quantité à 100 (« pour cent ») pour pouvoir notamment comparer des groupes de tailles différentes.<br><br>Ainsi, si on divise un groupe en plusieurs sous-groupes différents et qu'on calcule le pourcentage de chaque sous-groupe par rapport au groupe initial, <span class='g'>la somme des pourcentages fera toujours 100</span>.</span>"
+}

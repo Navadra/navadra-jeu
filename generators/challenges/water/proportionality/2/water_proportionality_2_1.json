@@ -1,0 +1,23 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Détermine s'il y a une relation de proportionnalité entre le niveau d'un monstre et sa puissance magique.",
+  "view": {
+      "table": true
+  },
+  "answer": [
+	  { "if": "coeff1 == coeff2", "choice": "proportionnalité" },
+	  { "if": "coeff1 != coeff2", "choice": "non-proportionnalité" }
+  ],
+  "var": {
+	"coeff1": { "type": "number", "value": "randomInt(2, 4)" },
+	"coeff2": { "type": "number", "value": "pickRandom([coeff1, coeff1 + 1])" },
+	"x": { "type": "number", "value": "randomInt(1, 6)" },
+	"y": { "type": "number", "value": "randomInt(1, 6)", "conditions": ["y!=x"] },
+	"column1": { "type": "array", "value": ["x", "y"] },
+	"column2": { "type": "array", "value": ["x*coeff1", "y*coeff2"] },
+	"column3": { "type": "array", "value": ["x*coeff1*coeff1", "y*coeff1*coeff2"] },
+    "table": { "type": "table", "value": ["column1", "column2", "column3"], "rowheads": ["Niveau", "Puissance Magique"], "columnheads": ["Monstre1", "Monstre2", "Monstre3"] }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/proportionalityHint1.png'/><span class='mg2 l95 ib'>Dans cet exemple, il n'y a pas proportionnalité car si le <span class='g'>Niveau</span> d'un monstre est multiplié par <span class='g'>3</span> alors sa <span class='g'>Puissance Magique </span>est multipliée par <span class='g'>4</span>.</span><img class='ib l60 mg20 md20 mh2' src='/webroot/img/challenges/proportionalityHint2.png'/><span class='mg2 l95 ib'>Dans cet exemple, il a proportionnalité car si le <span class='g'>Niveau</span> d'un monstre est multiplié par <span class='g'>3</span> alors sa <span class='g'>Puissance Magique </span>est aussi multipliée par <span class='g'>3</span>.</span>"
+}

@@ -1,0 +1,29 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "Quelle est la somme des points de Prestige gagnés par tous les joueurs sur toutes les saisons ?<br>{input1}",
+  "view": {
+  	  "table": true,
+	  "tableTitle": "Points de Prestige gagnés sur 4 Saisons"
+  },
+   "answer": [
+	  "sumPrestige"
+  ],
+   "criteria": [
+	  "{input1} == sumPrestige"
+  ],
+  "type_answer": "single",
+  "var": {
+	"column1": { "type": "array", "value": ["10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "column1[1]+column1[2]+column1[3]+column1[4]"], "conditions": "different(column1)" },
+	"column2": { "type": "array", "value": ["10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "column2[1]+column2[2]+column2[3]+column2[4]"], "conditions": "differentAll(column1,column2)" },
+	"column3": { "type": "array", "value": ["10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "column3[1]+column3[2]+column3[3]+column3[4]"], "conditions": "differentAll(column1,column2,column3)" },
+	"column4": { "type": "array", "value": ["10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "10*randomInt(1,40)", "column4[1]+column4[2]+column4[3]+column4[4]"], "conditions": "differentAll(column1,column2,column3,column4)" },
+	"column5": { "type": "array", "value": ["column1[1]+column2[1]+column3[1]+column4[1]", "column1[2]+column2[2]+column3[2]+column4[2]", "column1[3]+column2[3]+column3[3]+column4[3]", "column1[4]+column2[4]+column3[4]+column4[4]", "column1[5]+column2[5]+column3[5]+column4[5]"] },
+	"names": { "type": "array", "expression": ["Greymund", "Haleham", "Garddoch", "Eleïa", "Ebbister", "Taealle", "Dwensa", "Sayeya"] },
+	"selectedNames": { "type": "array", "value": ["pickRandom(names)", "pickRandom(names)", "pickRandom(names)", "pickRandom(names)"], "conditions": "different(selectedNames)" },
+	"seasons": { "type": "array", "expression": ["Mars 2016", "Avril 2016", "Mai 2016", "Juin 2016", "Total"] },
+    "table": { "type": "table", "value": ["column1", "column2", "column3", "column4", "column5"], "rowheads": ["selectedNames[1]", "selectedNames[2]", "selectedNames[3]", "selectedNames[4]", "Total"], "columnheads": ["seasons[1]", "seasons[2]", "seasons[3]", "seasons[4]", "seasons[5]"] },
+	"sumPrestige": { "type": "number", "value": "subset(table, index(5, 5))" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/tablesHint4.png' /><span class='mg2 l95 ib'>Pour faire la somme de différentes informations, il te faut procéder en 2 étapes :<br><br><span class='g'>1° identifie les nombres dont tu auras besoin</span>. Par exemple, si on te demande la somme des points de Prestige gagnés par Sayeya et Garddoch en Juin 2016, tu trouveras les nombres 380 et 10.<br><br><span class='g'>2° effectue la somme des nombres</span>. Ici, il ne te reste plus qu'à additionner 380 et 10 : 380+10 = 390.</span>"
+}

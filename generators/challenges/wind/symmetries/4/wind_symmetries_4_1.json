@@ -1,0 +1,33 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Combien d’axes de symétrie ce triangle a-t-il ?<br>{input1}",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "answer"
+  ],
+   "criteria": [
+	  "{input1} == answer"
+  ],
+  "type_answer": "single",
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(4,6)","random(4,6)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-2,2)","random(-8,-6)"], "labelDisplay": "bottom" },
+	"possibilities": { "type": "array", "expression": ["triangle", "equiTriangle", "isoTriangle", "rightAngleTriangle", "isoRightAngleTriangle"] },
+	"answers": { "type": "array", "expression": ["0", "3", "1", "0", "1"] },
+	"rand": { "type": "number", "value": "randomInt(1,6)" },
+	"typeTriangle": { "type": "string", "value": "possibilities[rand]" },
+	"answer": { "type": "string", "value": "answers[rand]" },
+	"figure": { "type": "possibilities[rand]", "expression": "ABC" },
+	"line1": { "type": "segment", "expression": "AB", "labelDisplay": "right", "labelType": "length" },
+	"line2": { "type": "segment", "expression": "AC", "labelDisplay": "left", "labelType": "length" },
+	"line3": { "type": "segment", "expression": "BC", "labelDisplay": "bottom", "labelType": "length" },
+	"angle1": { "type": "angle", "expression": "CAB", "labelDisplay": true, "labelType": "value" },
+	"angle2": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value" },
+	"angle3": { "type": "angle", "expression": "BCA", "labelDisplay": true, "labelType": "value" }
+  },
+	"hint" : "<img class='ib mg2 l60 md2' src='/webroot/img/challenges/symmetriesHint3.png' /><span class='l35 ib align_middle'><span class='g'>Deux figures sont symétriques par rapport à une droite (d) si en « pliant la feuille » suivant la droite (d) les deux figures se superposent.<br><br></span>Les exemples ci-contre montrent les différents axes de symétrie en fonction de la nature du triangle.</span>"
+}

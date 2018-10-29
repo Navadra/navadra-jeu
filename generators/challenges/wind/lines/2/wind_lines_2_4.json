@@ -1,0 +1,25 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Quelle est la relation entre les droites (d2) et (d3) ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": true, "choice": "parallèles" },
+      { "determined": false, "choice": "perpendiculaires" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A)" },
+	"C": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B)" },
+	"D": { "type": "point", "value": ["randomInt(-15,16)","randomInt(-7,8)"], "labelDisplay": "top", "conditions": "far(A,B,C)" },
+	"d1": { "type": "line", "value": ["randomInt(2,5)","randomInt(-5,6)"], "labelDisplay": "top" },
+	"d2": { "type": "line", "value": "perpendicular(d1,*)", "labelDisplay": "top" },
+	"d3": { "type": "line", "value": "perpendicular(d1,*)", "labelDisplay": "right", "conditions": "far(d2)" },
+	"angle1": { "type": "angle", "expression": "d2,d1",  "radius": 1, "color": "red" },
+	"angle2": { "type": "angle", "expression": "d3,d1",  "radius": 1, "color": "red" },
+	"d4": { "type": "line", "value": [0.4,"randomInt(0,8)"], "labelDisplay": "top" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/linesHint3.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Si deux droites sont perpendiculaires à une même droite alors elles sont parallèles entre elles.</span><br><span class='i'>Ex : sur ce dessin, la droite en rouge et (d1) sont perpendiculaires à (d2). La droite en rouge est donc parallèle à (d1).</span></span>"
+}

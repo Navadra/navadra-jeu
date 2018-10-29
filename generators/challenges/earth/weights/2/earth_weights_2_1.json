@@ -1,0 +1,22 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Haleham mets {x} fruits de {y} {baseLength} dans son sac.<br>Quelle est la masse totale des fruits dans son sac <span class='g'>en {convertedLength}</span> ?<br>{input1} <span class='g'>{convertedLength}</span><br><span class='i'>En vrai, le connaissant, il en aura au moins mangé 1 ou 2 avant de les mettre dans son sac...</span>",
+  "answer": [
+	  "round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+   "criteria": [
+	  "{input1} == round(x*y*(10^basePower)/(10^convertedPower),6)"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["g", "dag", "hg", "kg"] },
+	"basePower": { "type": "number", "value": "1" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "4" },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(3,10)" },
+	"y": { "type": "number", "value": "pickRandom([10,100])*randomInt(2,10)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/weightsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te suffit de <span class='g'>multiplier le nombre de fruits </span>par <span class='g'>la masse d'un fruit </span>pour connaitre la masse totale des fruits dans le panier puis de <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

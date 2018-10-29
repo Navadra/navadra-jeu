@@ -1,0 +1,26 @@
+{
+  "timer": 40000,
+  "type": 2,
+  "question": "La droite (d) est la hauteur du segment [BC]. Comment qualifierais-tu le triangle ADC ?",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  { "determined": false, "choice": "isocèle" },
+      { "determined": true, "choice": "rectangle" },
+	  { "determined": false, "choice": "équilatéral" }
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["random(-8,-4)","random(6.5,7)"], "labelDisplay": "top"},
+	"B": { "type": "point", "value": ["random(8,15)","random(1,3)"], "labelDisplay": "top"},
+	"C": { "type": "point", "value": ["random(-8,-6)","random(-7,-4)"], "labelDisplay": "right" },
+	"d": { "type": "line", "expression": "perpendicular(BC,A)", "labelDisplay": "bottom"},
+	"d1": { "type": "line", "expression": "BC", "visible": false},
+	"D": { "type": "point", "expression": "intersection(d,d1)", "labelDisplay": "right" },
+	"segment1": { "type": "segment", "expression": "AB" },
+	"segment2": { "type": "segment", "expression": "BC" },
+	"segment3": { "type": "segment", "expression": "AC" },
+	"angle1": { "type": "angle", "expression": "BDA", "color": "red", "radius": 1 }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>La hauteur d'un segment dans un triangle est perpendiculaire à ce segment et passe par son sommet opposé.</span><br><br><span class='i'>Dans cet exemple, (d) étant la hauteur de [BC], elle coupe [BC] à angle droit. Le triangle ADC est donc rectangle.</span></span>"
+}

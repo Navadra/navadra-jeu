@@ -1,0 +1,27 @@
+{
+  "timer": 35000,
+  "type": 2,
+  "question": "Le sort a-t-il fait moins de {selected1} ou moins de {selected2} ?",
+  "view": {
+  	  "diagram": "pies",
+	  "title": "Répartition des dégâts d'un de tes sorts en combat."
+  },
+  "answer": [
+	  { "if": "serie1[x] < serie1[y]", "choice": "moins de {selected1}" },
+	  { "if": "serie1[x] > serie1[y]", "choice": "moins de {selected2}" },
+	  { "if": "serie1[x] == serie1[y]", "choice": "Autant des deux" }
+  ],
+  "var": {
+	"legend": { "type": "array", "expression": ["dégâts faibles", "dégâts normaux", "dégâts élevés"] },
+	"serie1": { "type": "array", "value": ["randomInt(20,100)","randomInt(20,100)","randomInt(20,100)"], "conditions": "different(serie1)" },
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"y": { "type": "number", "value": "randomInt(1,4)", "conditions": ["y != x"] },
+	"selected1": { "type": "number", "value": "legend[x]" },
+	"selected2": { "type": "number", "value": "legend[y]" },
+	"serie1Name": { "type": "array", "expression": "% des dégâts" },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": {"type": "options", "expression": "circulars", "colorByPoint": true, "showLegend": true }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/circularsHint2.png' /><span class='mh2 mg2 l95 ib'>Sur ce diagramme circulaire, <span class='g'>chaque portion colorée du diagramme représente la proportion d'un type de dégâts parmi les dégâts d'un de tes sorts.</span><br><br>Comme tu peux le voir, <span class='g'>la somme des pourcentages fait 100% </span>montrant qu'on représente toujours toutes les catégories.<br><br><span class='i'>Si on te demande les dégâts que ton sort a fait en minorité, détermine le minimum parmi les légendes de chaque catégorie.<br>Dans cet exemple, ton sort a fait une minorité de dégâts faibles.</span></span>"
+}

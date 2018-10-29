@@ -1,0 +1,24 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Jeanne veut mesurer {a} {unitA} de lait pour une recette.<br>Elle remplit un verre doseur et elle s’aperçoit qu’elle en a versé trop puisque le verre doseur indique {b} {unitA}.<br>Elle veut enlever le lait en trop à l’aide d’une cuillère.<br>Sachant que sa cuillère peut contenir {c} {unitC}, combien de cuillérées devra-t-elle enlever ?<br>{input1}<br><span class='i'>C'est ce genre de questions existentielles qui te donnent un autre regard sur la vie.</span>",
+  "answer": [
+	  "x"
+  ],
+   "criteria": [
+	  "{input1} == x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL"] },
+	"baseA": { "type": "number", "value": "2" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "randomInt(2,21)" },
+	"baseC": { "type": "number", "value": "1", "conditions": ["baseC < baseA"] },
+	"unitC": { "type": "string", "value": "lengths[baseC]" },
+	"c": { "type": "number", "value": "randomInt(2,10)", "conditions": ["c!=a"] },
+	"x": { "type": "number", "value": "randomInt(2,6)" },
+	"b": { "type": "number", "value": "round(a + x*c*10^(baseC-baseA),4)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, il te faut procéder en 3 étapes :<br><br>1° : <span class='g'>calculer le volume de lait en trop</span><br><br>2° : <span class='g'>convertir ce volume dans l'unité de la cuillère</span><br><br>3° : <span class='g'>diviser le volume en trop par la contenance de la cuillère</span></span>"
+}

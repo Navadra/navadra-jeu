@@ -1,0 +1,17 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Un premier sort peut te soigner de {x} pts de vie tandis qu’un deuxième sort peut te soigner de {y} pts de vie.<br>Tu lances ton premier sort à {z} % de sa puissance normale et ton deuxième sort à {w} % de sa puissance normale.<br>Lequel t’as le plus soigné ?",
+  "answer": [
+	  { "if": "x*z > y*w", "choice": "Le premier sort" },
+	  { "if": "x*z < y*w", "choice": "Le deuxième sort" },
+	  { "if": "x*z == y*w", "choice": "Les deux autant" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(100,500)" },
+	"y": { "type": "number", "value": "randomInt(100,500)" },
+	"z": { "type": "number", "value": "10*randomInt(1,20)" },
+	"w": { "type": "number", "value": "10*randomInt(1,20)", "conditions": ["abs(x*z - y*w) > 100"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Sur cet exercice, il n'est pas nécessaire de calculer exactement les pourcentages, <span class='g'>une approximation devrait suffire à trouver la réponse</span>.<br>Mettons que ton premier sort te soigne normalement de 149 pts de vie et que ton deuxième sort te soigne de 354 pts de vie.<br><br>Tu lances ton premier sort à 190% de sa puissance normale et ton deuxième sort à 40% de sa puissance normale.<br>Tu peux remarquer que l'efficacité de ton premier sort est quasiment doublée (presque 200%) donc il devrait te soigner de <span class='g'>presque 300 pts de vie </span>(149x2 = 298).<br>Tu peux aussi remarquer que l'efficacité de ton deuxième sort est réduite de plus de moitié (40%). La moitié de 350 est égale à 175 donc ton deuxième sort te soignera de <span class='g'>moins de 175 pts de vie</span>.<br><br><span class='g'>Bref, sans calculer le montant exact, tu sais déjà que c'est le premier sort qui sera le plus efficace.</span></span>"
+}

@@ -1,0 +1,26 @@
+{
+  "timer": 70000,
+  "type": 1,
+  "question": "Combien mesure l'angle BÂC ?<br>{input1}°",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "180-floor(angle3Value/10)*10-floor(angle2Value/10)*10"
+  ],
+   "criteria": [
+	  "{input1} == 180-floor(angle3Value/10)*10-floor(angle2Value/10)*10"
+  ],
+  "var": {
+	"A": { "type": "point", "value": ["randomInt(-16,-4)","randomInt(-1,2)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["randomInt(0,4)","randomInt(6,8)"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["randomInt(5,16)","randomInt(-8,-5)"], "labelDisplay": "top" },
+	"d1": { "type": "line", "expression": "AB" },
+	"d2": { "type": "line", "expression": "AC" },
+	"d3": { "type": "line", "expression": "BC" },
+	"angle1": { "type": "angle", "expression": "CAB" },
+	"angle2": { "type": "angle", "expression": "BCA", "labelDisplay": true, "labelType": "value", "precision": 10 },
+	"angle3": { "type": "angle", "expression": "ABC", "labelDisplay": true, "labelType": "value", "precision": 10 }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/anglesHint4.png' /><span class='mh2 mg2 l95 ib'><span class='g'>La somme des angles d'un triangle fait 180°.</span><br><br><span class='i'>Ainsi dans l'exemple, l'angle BÂC mesure :<br>180 – 90 (angle droit) - 51 = 90 - 51 = 39°</span></span>"
+}

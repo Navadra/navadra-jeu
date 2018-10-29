@@ -1,0 +1,17 @@
+{
+  "timer": 15000,
+  "type": 1,
+  "question": "{x} - {y} = {input1}",
+  "answer": [
+	  "x - y"
+  ],
+   "criteria": [
+	  "{input1} == x - y"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(5,21)" },
+    "y": { "type": "number", "value": "randomInt(1,21)", "conditions": ["x>y"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Astuce : calcule combien il faut ajouter au plus petit nombre pour atteindre le plus grand.<br></span><span class='i'>Ex avec 15 – 8.<br>Il faut 2 pour aller de 8 à 10.<br>Il faut 5 pour aller de 10 à 15.<br>Il faut donc <span class='g'>2 + 5 = 7</span> pour aller de 8 à 15.</span></span>"
+}

@@ -1,0 +1,37 @@
+{
+  "timer": 55000,
+  "type": 5,
+  "question": "Bouge le point M pour augmenter le périmètre du quadrilatère MNOP.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(M,E)"
+  ],
+   "criteria": [
+	  "square3Perimeter > initialPerimeter"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": [-4.5,5.5], "visible": false },
+	"B": { "type": "point", "value": [4.5,4.5], "visible": false },
+	"C": { "type": "point", "value": [4.5,-2.5], "visible": false },
+	"D": { "type": "point", "value": [-4.5,-2.5], "visible": false },
+	"square1": { "type": "square", "expression": "ABCD", "labelDisplay": "center", "labelType": "perimeter", "visible": false},
+	"line1": { "type": "line", "expression": "AC", "visible": false },
+	"seg1": { "type": "segment", "expression": "AC", "labelDisplay": "right", "labelType": "length", "visible": false },
+	"radius1": { "type": "number", "value": "seg1Length/8" },
+	"circle1": { "type": "circle", "expression": "radius(A,radius1)", "visible": false },
+	"E": { "type": "point", "value": "intersection(circle1,line1,2)", "visible": false },
+	"F": { "type": "point", "value": "intersection(circle1,line1,1)", "visible": false },
+	"seg2": { "type": "segment", "expression": "EF", "visible": false },
+	"M": { "type": "glider", "expression": "EF", "labelDisplay": "top", "fixed": false, "color": "red" },
+	"N": { "type": "point", "expression": "B", "labelDisplay": "top" },
+	"O": { "type": "point", "expression": "C", "labelDisplay": "bottom" },
+	"P": { "type": "point", "expression": "D", "labelDisplay": "bottom" },
+	"square2": { "type": "square", "expression": "MNOP"},
+	"square3": { "type": "square", "expression": "MNOP", "labelDisplay": "center", "labelType": "perimeter", "precision": 0.01, "visible": false},
+	"initialPerimeter": { "type": "number", "value": "square3Perimeter"}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Le périmètre d'une figure géométrique s'obtient en additionnant la longueur de tous ses côtés.</span><br><br>Dans cet exemple, il te suffit de déplacer légèrement M pour <span class='g'>agrandir la figure et donc le périmètre</span>.</span>"
+}

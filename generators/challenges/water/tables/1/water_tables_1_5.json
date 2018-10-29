@@ -1,0 +1,27 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Quel élément compte le plus de {genderSelected} ?",
+  "view": {
+  	  "table": true,
+	  "tableTitle": "Nombre de joueurs dans Navadra"
+  },
+  "answer": [
+	  { "if": "z == subset(table, index(1, x))", "choice": "{img_feu}" },
+	  { "if": "z == subset(table, index(2, x))", "choice": "{img_eau}" },
+	  { "if": "z == subset(table, index(3, x))", "choice": "{img_vent}" },
+	  { "if": "z == subset(table, index(4, x))", "choice": "{img_terre}" }
+  ],
+  "var": {
+	"column1": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)"], "conditions": "different(column1)" },
+	"column2": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)"], "conditions": "different(column1,column2)" },
+	"column3": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)"], "conditions": "different(column1,column2,column3)" },
+	"column4": { "type": "array", "value": ["randomInt(11,1000)", "randomInt(11,1000)"], "conditions": "different(column1,column2,column3,column4)" },
+    "table": { "type": "table", "value": ["column1", "column2", "column3", "column4"], "rowheads": ["filles", "garçons"], "columnheads": ["{img_feu}", "{img_eau}", "{img_vent}", "{img_terre}"] },
+	"x": { "type": "number", "value": "randomInt(1,3)" },
+	"z": { "type": "number", "value": "max(subset(table, index(1, x)), subset(table, index(2, x)), subset(table, index(3, x)), subset(table, index(4, x)))" },
+	"gender": { "type": "array", "expression": ["filles", "garçons"] },
+	"genderSelected": { "type": "string", "value": "gender[x]" }
+  },
+	"hint" : "<img class='ib l40 mg30 md30' src='/webroot/img/challenges/tablesHint1.png' /><span class='mg2 l95 ib'>Dans cet exemple, on cherche à savoir combien il y a de filles de l'élément Terre sur Navadra.<br><br>Pour cela, <span class='g'>on repère la ligne qui correspond aux filles </span>(en orange) et <span class='g'>la colonne qui correspond à l'élément Terre </span>(en vert).<br><br>Il suffit ensuite d'identifier <span class='g'>le nombre à l'intersection de la ligne et de la colonne</span>. Dans cet exemple, c'est donc le chiffre en rouge (726).<br><br>Utilise cette navigation entre lignes et colonnes pour les différents types de questions.</span>"
+}

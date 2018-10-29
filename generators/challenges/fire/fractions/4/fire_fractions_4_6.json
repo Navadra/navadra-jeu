@@ -1,0 +1,18 @@
+{
+  "timer": 30000,
+  "type": 1,
+  "question": "{x}/{y} x {input1} = {z}",
+  "answer": [
+	  "round(y*z/x)"
+  ],
+  "criteria": [
+	  "{input1} == round(y*z/x)"
+  ],
+  "type_answer": "single",
+  "var": {
+    "x": { "type": "number", "value": "randomInt(2,5)"},
+	"y": { "type": "number", "value": "randomInt(2,5)", "conditions": ["x != y"] },
+	"z": { "type": "number", "value": "x*randomInt(2,5)"}
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour obtenir un nombre entier plus grand à partir d'une fraction, il faut procéder en 2 étapes :<br>1° : <span class='g'>multiplier par le dénominateur</span>.<br>2° : <span class='g'>multiplier par un autre nombre pour obtenir l'entier désiré</span>.<br><br><span class='i'>Ex : pour obtenir 20 à partir de 5/2 :<br>On multiplie 5/2 par 2 et on obtient 5.<br>Il ne nous reste plus qu'à multiplier 5 par 4 pour obtenir 20.<br>En tout on a multiplié par 2 puis par 4 donc par 2x4 = <span class='g'>8.</span></span></span>"
+}

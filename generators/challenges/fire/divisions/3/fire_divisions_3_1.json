@@ -1,0 +1,18 @@
+{
+  "timer": 55000,
+  "type": 2,
+  "question": "Tu fais {a} fois le tour de Navadra qui fait {b} km puis tu continues encore {c} km avant de t’arrêter.<br>Quel est le calcul à faire pour calculer la distance parcourue ?",
+  "answer": [
+	  { "determined": true, "choice": "{a} x {b} + {c}" },
+	  { "determined": false, "choice": "{c} x {b} + {a}" },
+	  { "determined": false, "choice": "{a} x {c} + {b}" },
+	  { "determined": false, "choice": "{a} + {b} + {c}" }
+  ],
+  "var": {
+	"a": { "type": "number", "value": "randomInt(2,15)"},
+	"b": { "type": "number", "value": "randomInt(2,15)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Cet énoncé ne te fait pas penser à un calcul de <span class='g'>dividende</span> ?<br><br>Identifie le diviseur, le quotient et le reste et utilise la formule que tu as apprise dans les niveaux précédents.</span>"
+}

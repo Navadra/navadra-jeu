@@ -1,0 +1,29 @@
+{
+  "timer": 50000,
+  "type": 5,
+  "question": "Déplace le point C pour faire de ABC un triangle isocèle.",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "placePoint(C,D)"
+  ],
+  "criteria": [
+	  "(abs(segment1Length - segment2Length) < 0.4) or (abs(segment1Length - segment3Length) < 0.4) or (abs(segment2Length - segment3Length) < 0.4)"
+  ],
+  "type_answer": "multiple",
+  "var": {
+	"A": { "type": "point", "value": ["random(-6,-4)","random(6.5,7)"], "labelDisplay": "top" },
+	"B": { "type": "point", "value": ["random(5,7)","random(2,3)"], "labelDisplay": "right" },
+	"C": { "type": "point", "value": ["random(8,10)","random(-6,-8)"], "labelDisplay": "left", "color": "red", "fixed": false },
+	"D": { "type": "point", "value": ["random(-2,0)","random(-2,-0)"], "visible": false },
+	"triangle1": { "type": "isoTriangle", "expression": "ABD", "visible": false },
+	"segment1": { "type": "segment", "expression": "AB", "labelDisplay": "right", "labelType": "length", "precision": 0.1 },
+	"segment2": { "type": "segment", "expression": "BC", "labelDisplay": "bottom", "labelType": "length", "precision": 0.1 },
+	"segment3": { "type": "segment", "expression": "CA", "labelDisplay": "left", "labelType": "length", "precision": 0.1 },
+	"angle1": { "type": "angle", "expression": "ABC",  "labelDisplay": true, "labelType": "value"},
+	"angle2": { "type": "angle", "expression": "BCA",  "labelDisplay": true, "labelType": "value"},
+	"angle3": { "type": "angle", "expression": "CAB",  "labelDisplay": true, "labelType": "value"}
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Dans un triangle isocèle, 2 côtés sont de même longueur.</span></span>"
+}

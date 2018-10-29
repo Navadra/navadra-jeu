@@ -1,0 +1,17 @@
+{
+  "timer": 75000,
+  "type": 2,
+  "question": "Ton ami Ebbister a {level} niveaux de plus que toi, il connaissait {spells1} sorts la semaine dernière et en connait maintenant {spells2}.<br>Quelle est la question qui nécessite un calcul pour répondre ?",
+  "answer": [
+	  { "determined": false, "choice": "Combien de sorts a maintenant Ebbister ?" },
+	  { "determined": false, "choice": "Combien de sorts avait Ebbister la semaine dernière ?" },
+	  { "determined": true, "choice": "Combien de sorts Ebbister a-t-il appris cette semaine ?" },
+	  { "determined": false, "choice": "Combien de niveaux de plus que toi a Ebbister ?" }
+  ],
+  "var": {
+	"level": { "type": "number", "value": "randomInt(2,15)" },
+	"spells1": { "type": "number", "value": "randomInt(7,12)" },
+	"spells2": { "type": "number", "value": "randomInt(12,16)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Si tu fais attention, tu te rends compte que la seule donnée qui ne figure pas dans l'énoncé est « <span class='g'>le nombre de sorts qu'Ebbister a appris cette semaine</span> ».</span>"
+}

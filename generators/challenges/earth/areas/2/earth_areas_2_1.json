@@ -1,0 +1,31 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Quelle est l'aire de ce carré ?<br>{input1} cm ²",
+  "view": {
+  	  "geometry": [-20, 10, 20, -10]
+  },
+  "answer": [
+	  "seg2Length*seg2Length"
+  ],
+   "criteria": [
+	  "{input1} == seg2Length*seg2Length"
+  ],
+  "type_answer": "single",
+  "var": {
+	"ordA": { "type": "number", "value": "random(7,8)" },
+	"absA": { "type": "number", "value": "random(-7,-1)" },
+	"A": { "type": "point", "value": ["absA","ordA"], "labelDisplay": "top" },
+	"ordB": { "type": "number", "value": "random(6,7)" },
+	"absB": { "type": "number", "value": "random(1,7)", "conditions": ["round(sqrt((ordB-ordA)^2 + (absB-absA)^2)) <= 10"] },
+	"B": { "type": "point", "value": ["absB","ordB"], "labelDisplay": "top" },
+	"C": { "type": "point", "value": ["random(6,7)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"D": { "type": "point", "value": ["random(-7,-6)","random(-6,-7)"], "labelDisplay": "bottom" },
+	"square1": { "type": "square", "expression": "ABCD", "labelDisplay": "center", "labelType": "perimeter", "visible": false},
+	"seg1": { "type": "segment", "expression": "AB" },
+	"seg2": { "type": "segment", "expression": "BC", "labelDisplay": "right", "labelType": "length" },
+	"seg3": { "type": "segment", "expression": "CD" },
+	"seg4": { "type": "segment", "expression": "DA" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>L'aire d'une figure géométrique s'obtient en calculant sa surface.</span><br><br>Dans le cas d'un carré, son aire se calcule à l'aide de cette formule :<br><br>aire = côté x côté<br><br>Comme tous ses côtés sont égaux, il suffit de connaître un seul des côtés pour en déduire son aire.<br><br><span class='i'>Ex : si le carré a des côtés de 6 cm, son aire sera égale à<br>6 x 6 = 36 cm²</span></span>"
+}

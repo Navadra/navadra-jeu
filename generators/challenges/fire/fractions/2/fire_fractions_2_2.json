@@ -1,0 +1,22 @@
+{
+  "timer": 25000,
+  "type": 1,
+  "question": "Quel est le {choice} de la fraction {numerator}/{denominator} ?<br>{input1}",
+  "answer": [
+	  "focus"
+  ],
+  "criteria": [
+	  "{input1} == focus"
+  ],
+  "type_answer": "single",
+  "var": {
+    "numerator": { "type": "number", "value": "randomInt(2,100)"},
+	"denominator": { "type": "number", "value": "randomInt(2,100)", "conditions": ["gcd(numerator,denominator) == 1"] },
+	"fraction": { "type": "array", "value": ["numerator", "denominator"] },
+	"rand": { "type": "number", "value": "pickRandom([1, 2])"},
+	"possibilities": { "type": "array", "expression": ["numérateur", "dénominateur"] },
+	"choice": { "type": "string", "value": "possibilities[rand]"},
+	"focus": { "type": "number", "value": "fraction[rand]"}
+  },
+	"hint" : "<img class='mg2 ib l20' src='/webroot/img/challenges/fractionsHint1.png'/><span class='ib mg2 l75 align_middle'>Pour te souvenir quel nombre est le numérateur et quel nombre est le dénominateur, utilise ce <span class='g'>moyen mnémotechnique</span> :<br>Le <span class='g'>numérateur</span> commence comme <span class='g'>\"Nuage\"</span> donc il est en haut.<br>A toi de jouer !</span>"
+}

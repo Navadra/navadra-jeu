@@ -1,0 +1,16 @@
+{
+  "timer": 30000,
+  "type": 2,
+  "question": "Un de tes sorts inflige normalement {x} dégâts mais pour ce tour-ci, il infligera {y}% de ses dégâts normaux.<br>Combien le sort inflige-t-il de dégâts ?",
+  "answer": [
+	  { "determined": false, "choice": "{x} x 100" },
+	  { "determined": false, "choice": "{y} x 100" },
+	  { "determined": true, "choice": "{x} x {y} / 100" },
+	  { "determined": false, "choice": "{x} + {y}" }
+  ],
+  "var": {
+	"x": { "type": "number", "value": "randomInt(100,300)" },
+	"y": { "type": "number", "value": "randomInt(2,200)", "conditions": ["abs(y-x) > 30"] }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Un pourcentage peut aussi s'écrire sous forme de fraction avec 100 au dénominateur</span>.<br><br>Donc pour calculer, mettons 32% d'un nombre, il suffit de <span class='g'>multiplier ce nombre par 32/100</span>.</span>"
+}

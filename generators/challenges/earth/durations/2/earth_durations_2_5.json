@@ -1,0 +1,21 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Garddoch prévoyait d'aller marcher pendant {x} heures.<br>Finalement, il revient au campement {y} min avant.<br>Combien de temps a-t-il vraiment marché ?<br>{input1} h {input2} min<br><span class='i'>Quelqu'un lui aurait-il dit qu'on avait avancé le goûter ?</span>",
+  "answer": [
+	  "hour",
+	  "min"
+  ],
+   "criteria": [
+	  "{input1} == hour",
+	  "{input2} == min"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "randomInt(2,6)" },
+	"y": { "type": "number", "value": "5*randomInt(3,24)", "conditions": ["y != x"] },
+	"min": { "type": "number", "value": "mod(x*60 - y, 60)" },
+	"hour": { "type": "number", "value": "floor((x*60 - y)/60)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu connais la durée prévue par Garddoch pour sa marche et à combien de temps de la fin il a finalement arrêté.<br><br>Pour calculer son temps de marche, il suffit donc de calculer :<br><span class='g'>« durée prévue » - « durée restante abandonnée »<br></span>Enfin, il faut penser à <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

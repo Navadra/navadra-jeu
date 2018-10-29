@@ -1,0 +1,28 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Quel est le défi où Taealle a eu <span class='g'>le moins</span> de bonnes réponses ?",
+  "view": {
+  	  "diagram": "spider",
+	  "title": "Nombre de bonnes réponses par défi pour Taealle"
+  },
+  "answer": [
+	  { "if": "serie1[1] == answer", "choice": "Défi n°1" },
+	  { "if": "serie1[2] == answer", "choice": "Défi n°2" },
+	  { "if": "serie1[3] == answer", "choice": "Défi n°3" }
+  ],
+  "var": {
+	"serieValues": { "type": "array", "value": [1,2,4] },
+	"serie1": { "type": "array", "value": "shuffle(serieValues)" },
+	"serie1Name": { "type": "string", "expression": "Bonnes réponses de Taealle" },
+	"challenge1": { "type": "string", "expression": "défi n°1" },
+	"challenge2": { "type": "string", "expression": "défi n°2" },
+	"challenge3": { "type": "string", "expression": "défi n°3" },
+	"legend": { "type": "array", "value": ["challenge1", "challenge2", "challenge3"] },
+	"series": { "type": "table", "value": ["serie1"] },
+	"seriesName": { "type": "table", "value": ["serie1Name"] },
+	"seriesOption": { "type": "options", "expression": "radar", "draggableX": false, "draggableY": false, "dragMinY": 0, "minPointLength": 1, "pointPlacement": "on", "showTooltip": false },
+	"answer": { "type": "number", "value": "min(serie1)" }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/radarsHint1.png' /><span class='mh2 mg2 l95 ib'>Sur ce type de représentation en radar, <span class='g'>plus les points sont éloignés du centre de la figure, plus leur valeur est élevée</span>.<br>Pour <span class='g'>connaitre précisément leur valeur</span>, il faut regarder les <span class='g'>graduations de l'axe vertical</span>.<br><br><span class='i'>Ainsi, sur cet exemple Taealle a eu 2 bonnes réponses au défi n°1, 1 bonne réponse au défi n°2 et 4 bonnes réponses au défi n°3.<br>Elle a donc eu le plus de bonnes réponses au défi n°3 et le moins de bonnes réponses au défi n°2.</span></span>"
+}

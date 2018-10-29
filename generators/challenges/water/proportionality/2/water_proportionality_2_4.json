@@ -1,0 +1,18 @@
+{
+  "timer": 55000,
+  "type": 1,
+  "question": "Chez le boucher, Mélissa a acheté {z} € un rôti de bœuf de {y} kg. Quel est le prix au kilo du rôti de bœuf ?<br>{input1} €/kg",
+  "answer": [
+	  "x"
+  ],
+   "criteria": [
+	  "{input1} == x"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "pickRandom([10,20,25,30])" },
+	"y": { "type": "number", "value": "randomInt(2,6)" },
+	"z": { "type": "number", "value": "x*y" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Mettons qu'un morceau de rôti de bœuf pesant 5 kg coûte 150€.<br><br>Vu que 5 kg valent 150€ et qu'on souhaite <span class='g'>connaître le prix pour 1 kg </span>(5 fois moins), il suffit de <span class='g'>diviser le coût du rôti par 5</span> : 150/5 = <span class='g'>25€/kg</span>.</span>"
+}

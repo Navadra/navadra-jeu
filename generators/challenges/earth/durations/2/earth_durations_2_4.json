@@ -1,0 +1,21 @@
+{
+  "timer": 65000,
+  "type": 1,
+  "question": "Dwensa prévoyait de mettre {x} min pour atteindre la plage en courant.<br>Finalement, elle met {y} s de moins.<br>Combien de temps lui a-t-il fallu pour atteindre la plage ?<br>{input1} min {input2} s<br><span class='i'>Je la suspecte d'avoir rencontré un monstre en chemin pour courir si vite !</span>",
+  "answer": [
+	  "min",
+	  "sec"
+  ],
+   "criteria": [
+	  "{input1} == min",
+	  "{input2} == sec"
+  ],
+  "type_answer": "single",
+  "var": {
+	"x": { "type": "number", "value": "5*randomInt(3,12)" },
+	"y": { "type": "number", "value": "5*randomInt(3,24)", "conditions": ["y != x"] },
+	"sec": { "type": "number", "value": "mod(x*60 - y, 60)" },
+	"min": { "type": "number", "value": "floor((x*60 - y)/60)" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span><br><br>Pour cette question, tu connais la durée prévue par Dwensa pour atteindre la plage en courant et l'avance qu'elle a finalement eu.<br><br>Pour calculer le temps qu'il lui a fallu pour atteindre la plage, il suffit donc de calculer :<br><span class='g'>« durée prévue » - « avance »<br></span>Enfin, il faut penser à <span class='g'>convertir le résultat dans l'unité désirée</span>.</span>"
+}

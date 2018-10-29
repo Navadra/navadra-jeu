@@ -1,0 +1,16 @@
+{
+  "timer": 45000,
+  "type": 2,
+  "question": "Haleham et toi partez du même endroit en territoire Shakor.<br>Haleham avance {speed} fois moins vite que toi.<br>Quand tu auras parcouru {distance} km, quelle distance aura parcouru Haleham ?",
+  "answer": [
+	  { "determined": false, "choice": "{speed} / {distance}" },
+	  { "determined": true, "choice": "{distance} / {speed}" },
+	  { "determined": false, "choice": "{speed} - {distance}" },
+	  { "determined": false, "choice": "{distance} - {speed}" }
+  ],
+  "var": {
+	"speed": { "type": "number", "value": "randomInt(2,5)" },
+	"distance": { "type": "number", "value": "randomInt(5,20)" }
+  },
+	"hint" : "<span class='mg2 l95 ib'><span class='g'>Mettons qu'Haleham avance 2 fois moins vite que toi</span>, ça veut dire que quand tu marches 2 km, lui n'aura parcouru qu'1 km. Et que quand tu auras parcouru 6 km, il n'en aura parcouru que 3 km.<br><br>Bref, pendant la même durée Haleham aura toujours parcouru 2 fois moins de distance que toi donc <span class='g'>ta distance divisée par 2 !</span></span>"
+}

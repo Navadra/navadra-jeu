@@ -1,0 +1,27 @@
+{
+  "timer": 45000,
+  "type": 5,
+  "question": "Déplace le point A pour que son abscisse soit égale à {x}.<br>Tolérance de 0,05 sur le positionnement.",
+  "view": {
+  	  "geometry": [-2, 1, 2, -1],
+	  "grid": false,
+	  "axis": true
+  },
+  "answer": [
+	  "placePoint(A,D)"
+  ],
+  "criteria": [
+	  "abs(segment1Length) < 0.06"
+  ],
+  "type_answer": "single",
+  "var": {
+	"B": { "type": "point", "value": [-2,0], "visible": false },
+	"C": { "type": "point", "value": [2,0], "visible": false },
+	"axis": { "type": "segment", "expression": "BC", "visible": false},
+	"A": { "type": "glider", "expression": "BC", "labelDisplay": "top", "color": "red", "fixed": false, "magnetic": false },
+	"x": { "type": "number", "value": "round(random(-1.8,1.9),1)" },
+	"D": { "type": "point", "value": ["x",0], "labelDisplay": "top", "visible": false },
+	"segment1": { "type": "segment", "expression": "AD", "labelDisplay": "top", "labelType": "length", "visible": false, "precision": 0.01 }
+  },
+	"hint" : "<img class='ib l60 mg20 md20' src='/webroot/img/challenges/graphsHint1.png' /><span class='mg2 l95 ib'><span class='g'>L'axe des abscisses est l'axe horizontal </span>(en bleu) tandis que <span class='g'>l'axe des ordonnées est l'axe vertical </span>(en rouge).<br>On appelle <span class='g'>coordonnées d'un point le couple « abscisses-ordonnées » de ce point</span>.<br><br><span class='i'>Ex :<br>le point A a pour abscisse 1,6.<br>Le point A a pour ordonnée 0.<br>Les coordonnées de A sont (1,6 ; 0).</span></span>"
+}

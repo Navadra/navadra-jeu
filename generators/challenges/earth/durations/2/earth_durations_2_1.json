@@ -1,0 +1,23 @@
+{
+  "timer": 45000,
+  "type": 1,
+  "question": "{x} {baseLength} = {input1} {convertedLength}",
+  "answer": [
+	  "y"
+  ],
+   "criteria": [
+	  "{input1} == y"
+  ],
+  "type_answer": "single",
+  "var": {
+	"lengths": { "type": "array", "expression": ["ms", "s", "min", "h"] },
+	"basePower": { "type": "number", "value": "randomInt(2, 5)" },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "basePower-1" },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(1,4)" },
+	"xToy": { "type": "number", "value": "x*( (basePower==1)/1000 +(basePower==2)*1+(basePower==3)*60+(basePower==4)*3600 )" },
+	"y": { "type": "number", "value": "xToy*( (convertedPower==1)*1000+(convertedPower==2)*1+(convertedPower==3)/60+(convertedPower==4)/3600 )" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

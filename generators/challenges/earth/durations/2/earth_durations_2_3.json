@@ -1,0 +1,27 @@
+{
+  "timer": 65000,
+  "type": 3,
+  "question": "Sélectionne 2 durées qui sont égales.",
+  "answer": [
+	  { "determined": true, "choice": "{x} {xUnit}" },
+      { "determined": true, "choice": "{y} {yUnit}" },
+	  { "determined": false, "choice": "{w} {wUnit}" },
+	  { "determined": false, "choice": "{z} {zUnit}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["ms", "s", "min", "h", "jours", "mois", "années"] },
+	"basePower": { "type": "number", "value": "randomInt(3, 8)", "conditions": ["basePower!=6"] },
+	"baseLength": { "type": "string", "value": "lengths[basePower]" },
+	"convertedPower": { "type": "number", "value": "basePower-1" },
+	"convertedLength": { "type": "string", "value": "lengths[convertedPower]" },
+	"x": { "type": "number", "value": "randomInt(2,6)" },
+	"xUnit": { "type": "number", "value": "lengths[basePower]" },
+	"y": { "type": "number", "value": "x*( (basePower==2)*1000 +(basePower==3)*60+(basePower==4)*60+(basePower==5)*24+(basePower==7)*12 )" },
+	"yUnit": { "type": "number", "value": "lengths[convertedPower]" },
+	"w": { "type": "number", "value": "x * 10" },
+	"wUnit": { "type": "number", "value": "lengths[basePower]" },
+	"z": { "type": "number", "value": "y/10" },
+	"zUnit": { "type": "number", "value": "lengths[convertedPower]" }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/durationsHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

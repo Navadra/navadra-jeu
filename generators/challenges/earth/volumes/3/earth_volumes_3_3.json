@@ -1,0 +1,37 @@
+{
+  "timer": 65000,
+  "type": 2,
+  "question": "Quel est le plus petit volume ?",
+  "answer": [
+	  { "if": "a*10^baseA == min(allLengths)", "choice": "{a} {unitA}" },
+      { "if": "b*10^baseB == min(allLengths)", "choice": "{b} {unitB}" },
+	  { "if": "c*10^baseC == min(allLengths)", "choice": "{c} {unitC}" },
+	  { "if": "d*10^baseD == min(allLengths)", "choice": "{d} {unitD}" },
+	  { "if": "e*10^baseE == min(allLengths)", "choice": "{e} {unitE}" },
+	  { "if": "f*10^baseF == min(allLengths)", "choice": "{f} {unitF}" }
+  ],
+  "var": {
+	"lengths": { "type": "array", "expression": ["mL", "cL", "dL", "L", "daL", "hL", "m3"] },
+	"randoms": { "type": "array", "value": ["randomInt(2,10)", "randomInt(2,10)", "randomInt(2,10)", "randomInt(2,10)", "randomInt(2,10)", "randomInt(2,10)"], "conditions": "different(randoms)" },
+	"baseA": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitA": { "type": "string", "value": "lengths[baseA]" },
+	"a": { "type": "number", "value": "pickRandom([1,10,100])*randoms[1]" },
+	"baseB": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitB": { "type": "string", "value": "lengths[baseB]" },
+	"b": { "type": "number", "value": "pickRandom([1,10,100])*randoms[2]", "conditions": ["b*10^baseB!=a*10^baseA"] },
+	"baseC": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitC": { "type": "string", "value": "lengths[baseC]" },
+	"c": { "type": "number", "value": "pickRandom([1,10,100])*randoms[3]", "conditions": ["c*10^baseC!=a*10^baseA","c!=b*10^baseB"] },
+	"baseD": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitD": { "type": "string", "value": "lengths[baseD]" },
+	"d": { "type": "number", "value": "pickRandom([1,10,100])*randoms[4]", "conditions": ["d*10^baseD!=a*10^baseA","d!=b*10^baseB","d!=c*10^baseC"] },
+	"baseE": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitE": { "type": "string", "value": "lengths[baseE]" },
+	"e": { "type": "number", "value": "pickRandom([1,10,100])*randoms[5]", "conditions": ["e*10^baseE!=a*10^baseA","e*10^baseE!=b*10^baseB","e*10^baseE!=c*10^baseC","e*10^baseE!=d*10^baseD"] },
+	"baseF": { "type": "number", "value": "pickRandom([1,2,4,7])" },
+	"unitF": { "type": "string", "value": "lengths[baseF]" },
+	"f": { "type": "number", "value": "pickRandom([1,10,100])*randoms[6]", "conditions": ["f*10^baseF!=a*10^baseA","f*10^baseF!=b*10^baseB","f*10^baseF!=c*10^baseC","f*10^baseF!=d*10^baseD","f*10^baseF!=e*10^baseE"] },
+	"allLengths": { "type": "array", "value": ["a*10^baseA", "b*10^baseB", "c*10^baseC", "d*10^baseD", "e*10^baseE", "f*10^baseF"] }
+  },
+	"hint" : "<img class='ib l80 mg10 md10' src='/webroot/img/challenges/volumesHint1.png' /><span class='mh2 mg2 l95 ib'><span class='g'>Utilise le rappel ci-dessus pour venir à bout de ces questions.</span></span>"
+}

@@ -1,0 +1,23 @@
+{
+  "timer": 40000,
+  "type": 1,
+  "question": "Combien vaut □ ?<br>{input1}",
+  "view": {
+  	   "euclideanDivision": "(e,a,b,c)"
+  },
+  "answer": [
+	  "d"
+  ],
+  "criteria": [
+	  "{input1} == d"
+  ],
+  "type_answer": "single",
+  "var": {
+    "a": { "type": "number", "value": "randomInt(2,10)"},
+	"b": { "type": "number", "value": "randomInt(2,10)", "conditions": ["b!=a"] },
+	"c": { "type": "number", "value": "randomInt(1,a-1)", "conditions": ["c!=b"] },
+	"d": { "type": "number", "value": "a*b + c" },
+	"e": { "type": "string", "expression": "□" }
+  },
+	"hint" : "<span class='mg2 l95 ib'>Pour trouver le <span class='g'>dividende d'une division, </span>utilise la formule suivante :<br>Dividende = <span class='g'>diviseur x quotient + reste</span><br><br><span class='i'>Exemple : si le diviseur est 6, le quotient 3 et le reste 5 alors :<br>Dividende = 6x3 + 5 = 18 + 5 = <span class='g'>23</span></span></span>"
+}
