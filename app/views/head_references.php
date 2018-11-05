@@ -1,32 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+  <title>β - Navadra</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/webroot/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/webroot/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/webroot/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/webroot/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/webroot/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/webroot/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/webroot/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/webroot/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/webroot/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/webroot/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/webroot/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/webroot/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/webroot/favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" href="/webroot/favicon/favicon.png"/>
-  <link rel="manifest" href="/webroot/favicon/manifest.json">
-
-  <title>β - Navadra</title>
-
+  <link rel="shortcut icon" href="/webroot/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
   <!-- Feuilles de styles jQuery -->
   <link rel="stylesheet" href="/vendor/jquery-ui/jquery-ui.css?nvd_r=xxx"/>
@@ -58,12 +41,6 @@
 	<!-- fixedTableRC -->
   <link rel="stylesheet" href="/vendor/meetselva/css/fixed_table_rc.css"/>
 
-  <!-- Tablesorter
-  Library to add the possibilty of sorting tables. Doc : https://github.com/christianbach/tablesorter
-  So far, not usefull
-  <script src="/vendor/tablesorter/jquery.tablesorter.min.js?nvd_r=xxx"></script>
-  -->
-
   <!-- JSXGraph
   <script language="javascript" type="text/javascript" src="/vendor/jsxgraph/src/loadjsxgraph.js?nvd_r=xxx"></script>
   -->
@@ -83,32 +60,8 @@
   <script language="javascript" type="text/javascript" src="/vendor/Highcharts/js/modules/drilldown.js?nvd_r=xxx"></script>
 
 
-  <?php $server = $_SERVER['SERVER_NAME'];
-  //ONLY FOR ONLINE SERVER
-  if($server != "localhost1"){ ?>
-    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-    for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
-    mixpanel.init("c8e37f4493d75b03cd0c1b3c22880d49");</script><!-- end Mixpanel -->
-
-
-  <?php } else { //ONLY FOR LOCAL SERVER?>
-  <!-- Bug when trying to connect
-  <script src='https://cdn.slaask.com/chat.js'></script>
-  <script>
-      _slaask.init('0346f664252c4f2878ac2c0e28ee7fad');
-  </script>
-    -->
-
-  <?php } ?>
-
-  <!-- Captures d'écran
-  Library that can reconstitute the active page based on its HMTL and CSS code to take a screenshot but occasionnaly generates bugs -->
-  <script type="text/javascript" src="/vendor/html2Canvas/html2canvas.js?nvd_r=xxx"></script>
-
-
-
+  <?php $server = $_SERVER['SERVER_NAME']; ?>
 </head>
-
 <body>
 
 <?php if(isset($_SESSION["joueur"])){

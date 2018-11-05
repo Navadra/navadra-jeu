@@ -4,7 +4,6 @@
     	<li><a href="#general">Général</a></li>
     	<li><a href="#challenges">Défis</a></li>
     	<li><a href="#achievements">Trophées</a></li>
-      <li><a href="#sponsoring">Parrainage</a></li>
 			<?php
 			if($modeAdmin) echo '<li><a href="#admin">Commandes Admin</a></li>';
 			if($modeTeacher) echo '<li><a href="#teacher">Commandes Prof</a></li>';
@@ -188,6 +187,7 @@
     </div>
   </div>
 
+	<?php /*
   <div id="sponsoring">
         <?php
 				if($joueur->admin() && $joueur->id() == $joueur_profil->id()){
@@ -267,22 +267,9 @@
 					<div id="invitees_sentence" class="ib l23 p5 pfun g"><?= $invitees_sentence; ?></div>
 				</div>
 			<?php } ?>
-  </div>
+  </div> */ ?>
 
-	<?php	if($modeAdmin){ ?>
-	<div id="admin">
-  	<div class="ib l100 mh2 p5 g pfun mb6">Commandes Admin</div>
-		<div class="ib l100">
-			<a href="/app/controllers/admin.php"><div class='actionGraph g p2'>Interface Admin</div></a>
-		</div>
-		<div class="ib l100 mh4">
-			<a href="/app/controllers/dashboard.php"><div class='actionGraph g p2'>Dashboard</div></a>
-    </div>
-		<div class="ib l100 mh4">
-			<a href="/app/controllers/colleges.php"><div class='actionGraph g p2'>Liste collèges</div></a>
-    </div>
-	</div>
-	<?php } if($modeTeacher){ ?>
+	<?php if($modeTeacher){ ?>
 	<div id="teacher">
 		<div class="ib l100 mh2 p5 g pfun mb2">Commandes Prof</div>
 		<div class="ib l100 mh2 g p2">
@@ -298,6 +285,16 @@
 		<div class="ib l100 mh2">
 			<a class="ib l17" href="/app/controllers/students_progress.php"><div class='actionGraph g p2'>Suivi de mes élèves</div></a>
 		</div>
+	</div>
+	<?php }	if($modeAdmin){ ?>
+	<div id="admin">
+  	<div class="ib l100 mh2 p5 g pfun mb6">Commandes Admin</div>
+		<div class="ib l100">
+			<a href="/app/controllers/admin.php"><div class='actionGraph g p2'>Interface Admin</div></a>
+		</div>
+		<div class="ib l100 mh4">
+			<a href="/app/controllers/colleges.php"><div class='actionGraph g p2'>Ajouter un collège</div></a>
+    </div>
 	</div>
 	<?php } elseif($modeStudent) {
 	echo('<div id="classroom">');

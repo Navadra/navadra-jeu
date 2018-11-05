@@ -28,30 +28,24 @@
       <label>Tu es en :</label>
     </div>
     <div id="classe" class="input">
-			<?php if( isset($classroom) || (isset($signUpViaWebsite) && $signUpViaWebsite != "t") || $_POST["classe"] != "Prof"){ ?>
       <input type="radio" name="classe" id="6" value="6°"<?php if($_POST["classe"]=="6°"){echo 'checked="checked"';}?>><label for="6">6°</label>
       <input type="radio" name="classe" id="5" value="5°"<?php if($_POST["classe"]=="5°"){echo 'checked="checked"';}?>><label for="5">5°</label>
       <input type="radio" name="classe" id="4" value="4°"<?php if($_POST["classe"]=="4°"){echo 'checked="checked"';}?>><label for="4">4°</label>
       <input type="radio" name="classe" id="3" value="3°"<?php if($_POST["classe"]=="3°"){echo 'checked="checked"';}?>><label for="3">3°</label>
-      <input type="radio" name="classe" id="other" value="Autre"<?php if($_POST["classe"]=="Autre"){echo 'checked="checked"';}?>><label for="other">Autre</label>
-			<?php } else { ?>
 			<input type="radio" name="classe" id="teacher" value="Prof"<?php if($_POST["classe"]=="Prof"){echo 'checked="checked"';}?>><label for="teacher">Prof</label>
-			<?php } ?>
     </div>
     <?php if(isset($msg["classe"])){echo '<span class="msg_erreur">'.$msg["classe"].'</span>';}?>
+	</p>
+  <p>
+      <label class="label">Code Prof :</label>
+      <input class="champ input" autocomplete="off" type="text" title="Demandez le à votre webmaster." name="code_prof" value="<?= htmlspecialchars($_POST["code_prof"]); ?>"/>
+      <?php if(isset($msg["code_prof"])){echo '<span class="msg_erreur">'.$msg["code_prof"].'</span>';}?>
 	</p>
   <p>
       <label class="label">Email :</label>
       <input class="champ input" autocomplete="off" type="text" title="Au format adresse email classique (sans espaces)." name="email" value="<?= htmlspecialchars($_POST["email"]); ?>"/>
       <?php if(isset($msg["email"])){echo '<span class="msg_erreur">'.$msg["email"].'</span>';}?>
 	</p>
-	<p>
-    <input type="checkbox" name="noEmail" id="noEmail" checked="checked"><label for="noEmail">J'ai une adresse email</label>
-  </p>
-	<!--
-	<p>
-    <input type="checkbox" name="noProfEmail" id="noProfEmail" checked="checked"><label for="noProfEmail">Je n'exerce pas dans le public</label>
-  </p> -->
 
   <p>
     <label class="label">Code classe :</label>
@@ -193,19 +187,12 @@
 
 <div id="info_input"></div>
 
-<!--div class="hiddenSmall fond l50 mh4">
-	<span class="ib l10"><img class="l90" src="/webroot/img/icones/warning.png"></span>
-	<span class="ib l85 ph1 pb1">Nous nous excusons mais Navadra est victime de son succès. Ces derniers jours, <span class='g'>le nombre d'utilisateurs a explosé et cela engendre de nombreux ralentissements serveurs</span>.<br>Nous travaillons activement à la résolution de ce problème en visant un <span class='g'>retour à la normale d'ici la fin de semaine</span>. Désolé pour le dérangement...</span>
-</div-->
-
 <!-- Dialog de confirmation -->
 <div id="confirm_question_secrete" title="Tu es sûr(e) ?" class="cache"></div>
 <div id="missing_info" title="Champ(s) manquant(s)">Promis, on a essayé de mettre le moins de champs à remplir possible.<br>En revanche, on a vraiment besoin que tu remplisses tous ceux là !</div>
 <div id="missing_class" title="Et ta classe ?">On dirait que tu as oublié de renseigner ta classe. Tu peux remédier à ça s'il te plait ?</div>
 <div id="missing_sex" title="Garçon ou Fille ?">On dirait que tu as oublié de renseigner si t'étais un garçon ou une fille. Tu peux remédier à ça s'il te plait ?</div>
 <div id="wrong_info" title="Champ(s) incorrect(s)">Il y a au moins un champ qui ne respecte pas le bon format (on te l'a entouré en rouge).<br>Tu peux le modifier s'il te plait ?</div>
-<!--
-<div id="noProfEmailInfo" title="Demande de compte prof"><a href="mailto:team@navadra.com?subject=Demande de passage en compte prof&body=Bonjour,%0A%0AJ'enseigne dans l'établissement XXX et souhaiterais bénéficier des avantages d'un compte Prof.%0A%0AJ'ai créé un compte joueur avec l'email xxx@xxx.fr.%0A%0APouvez-vous le passer en compte Prof ?%0A%0AMerci d'avance."><span class="g">Cliquez ici pour nous envoyer une demande par email.</span></a><br>En attendant, vous pouvez <a href="<?= $rootServer; ?>/app/controllers/inscription.php"><span class="g">vous inscrire ici.</span><a></div> -->
 
 <script src="/webroot/js/utils/formValidation.js?nvd_r=xxx"></script>
 <script src="/webroot/js/inscription.js?nvd_r=xxx"></script>

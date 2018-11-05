@@ -28,7 +28,7 @@ if( isset($_SERVER['SERVER_NAME'])) $server = $_SERVER['SERVER_NAME'];
 
 /* JSON LOAD DEACTIVATED ON WINDOWS */
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-    echo '...';
+    //echo '...';
 } 
 else {
 // ******************** START JSON LOAD ONLY ON LINUX
@@ -81,9 +81,9 @@ else {
   // ******************** END JSON LOAD */
 }
 
-$db_RO = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'navadra', 'MOT_DE_PASSE_A_CHANGER');
+$db_RO = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur phpMyAdmin', 'VOTRE MOT DE PASSE');
 $db_RO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-$db_RW = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'navadra', 'MOT_DE_PASSE_A_CHANGER');
+$db_RW = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur phpMyAdmin', 'VOTRE MOT DE PASSE');
 $db_RW->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 session_start();

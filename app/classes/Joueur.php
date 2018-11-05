@@ -725,6 +725,7 @@ class Joueur implements JsonSerializable
 
 	//Fonctions envoi d'email
 	public function send_email($template, $from, $subject, $to, $params) {
+		/*
     $server_add = "";
     $server = "";
 
@@ -783,11 +784,12 @@ class Joueur implements JsonSerializable
 			$response = $mj->post(Resources::$Email, array('body' => $body));
 			//$response->success() && var_dump($response->getData());
 		}
+		*/
 	}
 
 	//Fonctions utiles pour le côté "jeu"
 	public function admin(){
-		if($_SERVER['SERVER_NAME'] == "localhost1" || $_SERVER['SERVER_ADDR'] == "127.0.0.1" || $this->id() == 47 || $this->id() == 48 || $this->id() == 49){
+		if($this->classe() == "Prof"){
 			return true;
 		} else {
 			return false;

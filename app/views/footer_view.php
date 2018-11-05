@@ -254,10 +254,5 @@ if($joueur->bulles_daide_actives() == "oui" && $joueur->tuto() == "fini" && $jou
     <script src="/webroot/js/bulles_daide.js?nvd_r=xxx"></script>
 
 <?php } */ ?>
-
-<?php // Google Analytics
-  include_once("analyticstracking.php")
-?>
-
 </body>
 </html>

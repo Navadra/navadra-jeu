@@ -27,12 +27,6 @@ if (isset($_POST["pseudo"])) {
       "college" => ""
   ));
 
-  $email_on = strcmp( $_POST["noEmail"], "on") == 0;
-  if ($email_on) {
-    error_log("OK : " . $email_on);
-  } else {
-    error_log("KO : " . $email_on);
-  }
   //On effectue les contrôles sur les données utilisateur
   $ok = 0;
   $msg = array();
@@ -55,11 +49,16 @@ if (isset($_POST["pseudo"])) {
     $ok++;
     $msg["classe"] = "En quelle classe es-tu ?";
   }
-  if ( !$email_on && !$joueur->emailValide($joueur->email())) {
+  if ($joueur->classe() == "Prof" && $_POST["code_prof"] != "bissectrice") {
+    $ok++;
+    $msg["code_prof"] = "Le code Prof n'est pas valide.";
+  }
+  /*
+  if (!$joueur->emailValide($joueur->email())) {
     $ok++;
     $msg["email"] = "Cette adresse email n'a pas l'air bonne :(";
-  }
-  elseif (! $email_on && $manager->exists($joueur->email())) {
+  }*/
+  elseif ($manager->exists($joueur->email())) {
     $ok++;
     if(isset($_GET["id"])){
       $msg["pseudo"] = "Il existe déjà un compte avec ton adresse email, essaie de te connecter !";
@@ -72,11 +71,7 @@ if (isset($_POST["pseudo"])) {
                 $parametersForm = "?".$_SERVER["QUERY_STRING"];
                 $codeSponsor = $_POST["codeSponsor"];
                 $codeClassroom = $_POST["codeClassroom"];
-    if ($email_on) {
-      $checkedNoEmail = "checked='checked'";
-    } else {
       $checkedNoEmail = "";
-    }
     include_once("header.php");
     include_once("inscription_view.php");
     include_once("footer_deco_view.php");
@@ -118,12 +113,12 @@ if (isset($_POST["pseudo"])) {
     if ($joueur->classe() == "Prof") {
       //$joueur->send_email("84518", "Navadra", "Nouveau Prof inscrit : " . $joueur->email(), "espritdenavadra@navadra.com", $params = '{ "Email": "' . $joueur->email() . '", "Pseudo": "' . $joueur->pseudo() . '" }');
     }
-    //Give a title Beta testeur to the player
+    /*Give a title Beta testeur to the player
     $title = new Title(array(
         "player_id" => $joueur->id(),
         "name" => "Bêta-testeur"
     ));
-    $titles_manager->add($title);
+    $titles_manager->add($title);*/
     header("Location:../../index.php");
   }
 } else {
@@ -185,6 +180,7 @@ if (isset($_POST["pseudo"])) {
   $_POST["sexe"] = "";
   $_POST["avatar_entier"] = "/webroot/img/avatars/fille_1_blond_bleu_occ.png";
   $_POST["avatar_tete"] = "/webroot/img/avatars/tete_fille_1_blond_bleu_occ.png";
+  $_POST["code_prof"] = "";
   $checkedNoEmail = "";
   include_once("header.php");
   include_once("inscription_view.php");

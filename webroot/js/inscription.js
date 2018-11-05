@@ -4,20 +4,20 @@ $("#sexe").buttonset();
 
 $("#classe").buttonset();
 
-$("#noEmail").button();
+$("#no").button();
 
-//$("#noProfEmail").button().prop("checked", false).button("refresh");
+//$("#noProf").button().prop("checked", false).button("refresh");
 
-$("#noEmail").on("click", function(event){
+$("#no").on("click", function(event){
 	event.preventDefault();
-	if($("input[name=email]").parent("p").is(":visible")){
-		$("#noEmail").prop("checked", true).button("refresh");
-		$("label[for='noEmail']").html("<span class=\"ui-button-text\">J'ai une adresse email</span>");
-		hide_clip($("input[name=email]").parent("p"));
+	if($("input[name=]").parent("p").is(":visible")){
+		$("#no").prop("checked", true).button("refresh");
+		$("label[for='no']").html("<span class=\"ui-button-text\">J'ai une adresse </span>");
+		hide_clip($("input[name=]").parent("p"));
 	} else {
-		$("#noEmail").prop("checked", false).button("refresh");
-		$("label[for='noEmail']").html("<span class=\"ui-button-text\">Je n'ai pas d'adresse email !</span>");
-		display_clip($("input[name=email]").parent("p"));
+		$("#no").prop("checked", false).button("refresh");
+		$("label[for='no']").html("<span class=\"ui-button-text\">Je n'ai pas d'adresse  !</span>");
+		display_clip($("input[name=]").parent("p"));
 	}
 });
 
@@ -30,16 +30,10 @@ $("#closeConfirmationWindow").on("click", function(){
 })
 
 /*
-$("#noProfEmail").on("click", function(event){
+$("#noProf").on("click", function(event){
 	event.preventDefault();
-	$("#noProfEmailInfo").dialog("open");
+	$("#noProfInfo").dialog("open");
 }); */
-
-
-if(window.location.search.match(/id=/) != null){ //Arrive on the page with an email given in argument
-	$("label[for='noEmail']").hide();
-	$("input[name=email]").parent("p").hide();
-}
 
 $("#noCode").button();
 
@@ -84,7 +78,7 @@ if(sexe == ""){
 	$(".case_coul").attr("title", "Il faudrait déjà savoir si tu es un gars ou une fille !");
 }
 
-$("#confirm_question_secrete").html("Tu n'as pas renseigné d'adresse email valide, on te propose donc de répondre à une question secrète pour pouvoir retrouver ton mot de passe si tu l'oublies. <br />Le plus sûr serait quand même de renseigner une adresse email mais on te laisse choisir.");
+$("#confirm_question_secrete").html("Tu n'as pas renseigné d'adresse  valide, on te propose donc de répondre à une question secrète pour pouvoir retrouver ton mot de passe si tu l'oublies. <br />Le plus sûr serait quand même de renseigner une adresse  mais on te laisse choisir.");
 $("#confirm_question_secrete").dialog({
 	autoOpen: false,
 }).removeClass("cache");
@@ -107,7 +101,7 @@ $("#info_contact").dialog({
 });
 
 /*
-$("#noProfEmailInfo").dialog({
+$("#noProfInfo").dialog({
 	autoOpen: false,
 }); */
 
@@ -141,6 +135,8 @@ var yeux = 0;
 var peau = 0;
 
 //Détermination des paramètres d'initiation (variables sexe et classe ainsi que l'apparition ou pas de la div question_secrete
+$("input[name=code_prof]").parent("p").hide();
+$("input[name=email]").parent("p").hide();
 if($("#fille").attr("checked") == "checked")
 	{var sexe = "fille";}
 else if($("#gars").attr("checked") == "checked")
@@ -155,22 +151,22 @@ else if($("#4").attr("checked") == "checked")
 	{var classe = "4°";}
 else if($("#3").attr("checked") == "checked")
 	{var classe = "3°";}
-else if($("#other").attr("checked") == "checked")
-	{var classe = "Autre";}
-	else if($("#teacher").attr("checked") == "checked")
-		{var classe = "Prof";}
+else if($("#teacher").attr("checked") == "checked"){
+	var classe = "Prof";
+	$("input[name=code_prof]").parent("p").show();
+}
 else
 	{var classe = "";}
 if(classe == "Prof"){
-	$("#noEmail").prop("checked", false).button("refresh");
-	$("label[for='noEmail']").hide();
+	$("#no").prop("checked", false).button("refresh");
+	$("label[for='no']").hide();
 	$("#noCode").prop("checked", false).button("refresh");
 	$("label[for='noCode']").hide();
 } else if(classe != "Prof"){
-	//$("label[for='noProfEmail']").hide();
+	//$("label[for='noProf']").hide();
 }
-if($("#noEmail").prop("checked")){
-	$("input[name=email]").parent("p").hide();
+if($("#no").prop("checked")){
+	$("input[name=]").parent("p").hide();
 }
 $("input[name=codeClassroom]").parent("p").hide();
 
@@ -443,14 +439,14 @@ function code_valide(objet){
 	}
 }
 
-function email_valide(objet){
+function _valide(objet){
 	valeur_champ = objet.val();
 	if(classe != "Prof") {
-		var ok = regexEmail(valeur_champ, true);
+		var ok = regex(valeur_champ, true);
 	} else {
-		var ok = regexEmail(valeur_champ, false);
+		var ok = regex(valeur_champ, false);
 	}
-	if(ok !== true && $("input[name=email]").is(':visible'))
+	if(ok !== true && $("input[name=]").is(':visible'))
 	{
 		objet.attr("title",ok);
 		erreur_saisie(objet);
@@ -463,38 +459,39 @@ function email_valide(objet){
 	}
 }
 
-function emails_differents(objet1, objet2){
-	email1 = objet1.val();
-	email2 = objet2.val();
-	if(email1 != "" && email2 != "" && email1 == email2)
+/*
+function s_differents(objet1, objet2){
+	1 = objet1.val();
+	2 = objet2.val();
+	if(1 != "" && 2 != "" && 1 == 2)
 	{
 		erreur_saisie(objet1);
 		erreur_saisie(objet2);
-		objet1.attr("title","Les 2 adresses emails doivent être différentes !");
-		objet2.attr("title","Les 2 adresses emails doivent être différentes !");
+		objet1.attr("title","Les 2 adresses s doivent être différentes !");
+		objet2.attr("title","Les 2 adresses s doivent être différentes !");
 		return false;
 	}
 	else
 	{
 		enlever_erreur(objet1);
 		enlever_erreur(objet2);
-		objet1.attr("title","Au format adresse email classique.");
-		objet2.attr("title","Au format adresse email classique. Facultatif pour l'instant : tu auras 15 jours pour la renseigner.");
+		objet1.attr("title","Au format adresse  classique.");
+		objet2.attr("title","Au format adresse  classique. Facultatif pour l'instant : tu auras 15 jours pour la renseigner.");
 		return true;
 	}
 }
 
-function emailsIdentical(objet1, objet2){
-	email1 = objet1.val().toLowerCase();
-	email2 = objet2.val().toLowerCase();
-	if(email1 != email2 )	{
+function sIdentical(objet1, objet2){
+	1 = objet1.val().toLowerCase();
+	2 = objet2.val().toLowerCase();
+	if(1 != 2 )	{
 		erreur_saisie(objet1);
 		return false;
 	}	else {
 		enlever_erreur(objet1);
 		return true;
 	}
-}
+} */
 
 function rep_secrete_valide(objet){
 	valeur_champ = objet.val();
@@ -548,40 +545,47 @@ $("input[name=mdp]").on("keyup",function(){
 	mdp_valide($(this));
 });
 
-$("input[name=email]").on("keyup",function(){
+/*
+$("input[name=]").on("keyup",function(){
 	var key = event.which || event.keyCode;
 	//Tab Key
 	if (key != 9){
-		email_valide($(this))
+		_valide($(this))
 	}
-});
+}); */
 
 $("input[name=codeClassroom]").on("keyup",function(){
 	code_valide($(this))
 });
 
-$("input[name=confirmEmail]").on("keyup",function(event){
+$("input[name=confirm]").on("keyup",function(event){
 	var key = event.which || event.keyCode;
 	//Tab Key
 	if (key != 9){
-		emailsIdentical($(this), $("input[name=email]"));
+		sIdentical($(this), $("input[name=]"));
 	}
 });
 
-$(".confirmEmails").on("click",function(event){
-	var ok = emailsIdentical($("input[name=confirmEmail]"), $("input[name=email]"));
+/*
+$(".confirms").on("click",function(event){
+	var ok = sIdentical($("input[name=confirm]"), $("input[name=]"));
 	if(ok != 0){
 		hide_clip($("#confirmationWindow"));
 		hide_clip($("#info_input"));
 		$("#warningBlur").hide();
 		showPage2();
 	}
-});
+}); */
 
 
 //Déclencheur lorsque l'utilisateur choisi sa classe (pour s'assurer qu'il l'a remplie)
 $("input[name=classe]").on("click",function(){
 	classe = $(this).val();
+	if(classe == "Prof"){
+		$("input[name=code_prof]").parent("p").show();
+	} else {
+		$("input[name=code_prof]").parent("p").hide();
+	}
 });
 
 $("#partie2").hide();
@@ -591,7 +595,7 @@ $(".precedent").on("click", function(){
 	$("#partie1").show();
 });
 
-//Controle de tous les champs lorsque l'utilisateur clique sur "Suivant" et affichage question secrète si pas d'email
+//Controle de tous les champs lorsque l'utilisateur clique sur "Suivant" et affichage question secrète si pas d'
 $(".suivant").on("click", function(){
 	nextStep();
 });
@@ -669,18 +673,15 @@ function nextStep(){
 			ok = 0;
 		} else if (!mdp_valide($("input[name=mdp]"))) {
 			ok = 0;
-		} else if (!email_valide($("input[name=email]"))) {
-			ok = 0;
 		} else if (!code_valide($("input[name=codeClassroom]"))) {
 			ok = 0;
-		} else if (!radio_choisi("classe")) {
+		} else if (classe == "") {
 			ok = 0;
 		}
 		if(ok !=0) {
-			confirmEmail();
+			confirm();
 		}	else if( $("input[name=pseudo]").val() == ""
 				|| $("input[name=mdp]").val() == ""
-				|| ($("input[name=email]").val() == "" && !$('#noEmail').is(':checked'))
 				|| ($("input[name=codeClassroom]").val() == "" && !$('#noCode').is(':checked')) )	{
 			$("#missing_info").dialog("open");
 		}	else if (!radio_choisi("classe"))	{
@@ -708,16 +709,16 @@ function sendReminder(){
 	$.ajax({
 			url: '/app/controllers/ajax_disconnected.php',
 			type :'POST',
-			data: 'sendReminder=' + $("#mobileDisplay input[name=emailReminder]").val(),
+			data: 'sendReminder=' + $("#mobileDisplay input[name=Reminder]").val(),
 			dataType: 'html',
 			success: function(result, statut){
-				if(result == "emailSent"){
+				if(result == "Sent"){
 					$("#loading").hide();
-					$("#confirmReminder").removeClass("rouge vert").addClass("vert").html("Email envoyé !");
+					$("#confirmReminder").removeClass("rouge vert").addClass("vert").html(" envoyé !");
 					$(".sendReminder").hide();
-				} else if(result == "wrongEmail"){
+				} else if(result == "wrong"){
 					$("#loading").hide();
-					$("#confirmReminder").removeClass("rouge vert").addClass("rouge").html("Désolé mais cet email n'est pas valide.");
+					$("#confirmReminder").removeClass("rouge vert").addClass("rouge").html("Désolé mais cet  n'est pas valide.");
 				}
 			},
 			error: function(resultat, statut, erreur){
@@ -731,7 +732,7 @@ function sendReminder(){
 
 $(".sendReminder").on("click",function(event){
 	event.preventDefault();
-	if(email_valide($("input[name=email]"))){
+	if(_valide($("input[name=]"))){
 		sendReminder();
 	}
 });
@@ -744,26 +745,29 @@ $(document).on("keydown", function (event) {
 		if($("#partie1").is(":visible") && !$("#confirmationWindow").is(":visible")){
 			$(".suivant:eq(0)").click();
 		} else if($("#confirmationWindow").is(":visible")){
-			$(".confirmEmails:eq(0)").click();
+			$(".confirms:eq(0)").click();
 		}	else if($("#partie2").is(":visible")){
 			$("input[name=valider]").click();
 		}
 	}
 });
 
-function confirmEmail(){
-	$("input[name=email]").val($("input[name=email]").val().toLowerCase());
+function confirm(){
+	showPage2();
+	/*
+	$("input[name=]").val($("input[name=]").val().toLowerCase());
 	if(classe == "Prof") {
-		$("#confirmationWindow span:eq(0)").html("Confirmez votre email :");
-		$("#confirmationWindow input").attr("title", "L'adresse doit correspondre à l'email que vous venez de renseigner.");
+		$("#confirmationWindow span:eq(0)").html("Confirmez votre  :");
+		$("#confirmationWindow input").attr("title", "L'adresse doit correspondre à l' que vous venez de renseigner.");
 	}
-	if( !$("input[name=email]").parent("p").is(":visible") ){
+	if( !$("input[name=]").parent("p").is(":visible") ){
 			showPage2();
 	} else {
 		$("#confirmationWindow").show();
 		$("#warningBlur").show();
 		$("#confirmationWindow span:eq(1) input").focus();
 	}
+	*/
 }
 
 function showPage2(){

@@ -16,18 +16,6 @@
 
 <div class="frame_without_background l100 h100">
 
-	<?php if($joueur->departement() == "" || $joueur->college() == ""){
-		echo ('<div class="mg20 l60 texte_centre align_middle">');
-		echo ('<div class="titleNoBack mb2 g">Renseignez d\'abord votre département et votre collège</div>');
-		echo ('</div>');
-		echo ('<img id="showParameters" class="absolu img_120" src="/webroot/img/icones/fleche4.png" />');
-	} elseif($joueur->email_confirme() == 0){
-		$joueur->sendEmailActivationLink();
-		echo ('<div class="mg20 l60 texte_centre align_middle">');
-		echo ('<div class="titleNoBack mb2 g">Un email vient de vous être envoyé pour confirmer votre adresse.<br><br>Une fois votre adresse email confirmée, vous pourrez accéder à l\'interface professeur.</div>');
-		echo ('</div>');
-	} else { ?>
-
   <div class="titleNoBack g">Gérer mes créneaux Navadra</div>
 	<div class="pfun p3 mb1 g">Collège <?= $joueur->college(); ?> (<?= $joueur->departement(); ?>)</div>
 	<div class="l90 centre">
@@ -118,10 +106,6 @@
 		    </div>
 		</div>
 
-		<div class="ib l100 mh2 g p2">
-			Le jeu est illimité pour vos élèves pendant les créneaux que vous avez définis.
-    </div>
-
 	</div>
 
 	<ul id="menuChallenges">
@@ -154,8 +138,6 @@
 	    </ul>
 	  </li>
 	</ul>
-
-	<?php } ?>
 
 </div>
 

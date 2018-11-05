@@ -21,11 +21,6 @@
 		echo ('<div class="titleNoBack mb2 g">Renseignez d\'abord votre département et votre collège</div>');
 		echo ('</div>');
 		echo ('<img id="showParameters" class="absolu img_120" src="/webroot/img/icones/fleche4.png" />');
-	} elseif($joueur->email_confirme() == 0){
-		$joueur->sendEmailActivationLink();
-		echo ('<div class="mg20 l60 texte_centre align_middle">');
-		echo ('<div class="titleNoBack mb2 g">Un email vient de vous être envoyé pour confirmer votre adresse.<br><br>Une fois votre adresse email confirmée, vous pourrez accéder à l\'interface professeur.</div>');
-		echo ('</div>');
 	} else { ?>
 
   <div class="titleNoBack g">Gérer mes classes</div>
