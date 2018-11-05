@@ -307,22 +307,6 @@ if($("#portrait_footer").length){ //Si et seulement si l'utilisateur est connect
 		icone_notif.css("left", x).css("top", y).show();
 		notif.css("left", x).css("top", y + 2).css("width", largeur_notif).show();
 	}
-	/*
-	if($("#feedback").length){
-		function afficher_notif_feedback(icone_notif, notif, feedback){
-			icone_notif.hide().removeClass("cache");
-			notif.hide().removeClass("cache");
-			var pos = feedback.offset();
-			var hauteur_feedback = feedback.height();
-			var hauteur_notif = icone_notif.height();
-			var largeur_feedback = feedback.width();
-			var largeur_notif = icone_notif.width();
-			var x = pos.left + largeur_feedback - 0.4*largeur_notif;
-			var y = pos.top + hauteur_feedback - 0.4*hauteur_notif;
-			icone_notif.css("left", x).css("top", y).show();
-			notif.css("left", x).css("top", y + 4).css("width", largeur_notif).show();
-		}
-	} */
 
 	//NOTIFICATIONS
 	if($("#notif_grimoire").length)//S'il y a des notifications grimoire
@@ -399,16 +383,6 @@ if($("#portrait_footer").length){ //Si et seulement si l'utilisateur est connect
 			$("#fullScreen").html('Presse "F11" pour passer en Plein Ecran').show();
 		}
   });
-
-	/*
-	if($("#feedback").length && $("#notif_ameliorations").length)//S'il y a des notifications d'améliorations
-	{
-		var icone_notif_feedback = $('<img src="/webroot/img/icones/icone_notif.png" id="notif_ameliorations_ico" class="img_30 cache icone_notifications">').appendTo('body').load(function(){
-			$("#notif_ameliorations").css("position", "absolute").css("z-index", "99");
-			icone_notif_feedback.css("position", "absolute").css("z-index", "98");
-			afficher_notif_feedback(icone_notif_feedback, $("#notif_ameliorations"), $("#suggestion"));
-		});
-	} */
 
 }
   if(playerVolumeInterface == 1){

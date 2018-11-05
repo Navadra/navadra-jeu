@@ -51,21 +51,6 @@
 <div id="info_input"></div>
 
 <a class="hiddenSmall blanc mh2" href="/app/controllers/inscription.php" id="sigsnUp"><div class="bouton std">S'inscrire</div></a>
-<!--
-<a class="hiddenSmall blanc mh6" href="/app/controllers/inscription.php" id="sigsnUp"><div class="bouton std">S'inscrire</div></a>
-
-<img alt="" id="logo" class="mh2 centre " src="/webroot/img/logo.png">
--->
-<!--
-<div class="hiddenSmall fond l50 mh2">
-	<span class="ib l10"><img class="l90" src="/webroot/img/icones/bravo.png"></span>
-	<span class="ib l85 ph1 pb1"><span class='g'>Navadra a besoin d'un petit coup de pouce !</span><br>Nous participons à un concours pour gagner 100 000€ de financement pour notre prochaine version.<br><span class='g'><a class="externalLink" href="https://www.facebook.com/gagne100patates/videos/1297736820324570">Pour nous aider il te suffit de liker cette vidéo sur Facebook.</a></span>Merci d'avance !</span>
-</div>
-
--->
-<div style="text-align:center"width="100%">
-  <a class="externalLink" style="margin:0 auto;" href="https://www.navadra.com/collegiens/" ><img src="/webroot/img/v1_big.png" width="40%"></a>
-</div>
 
 
 <script src="/webroot/js/utils/formValidation.js?nvd_r=xxx"></script>

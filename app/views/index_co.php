@@ -13,7 +13,7 @@ if(isset($monstres) && is_array($monstres)){
 <div id="countFights"><?= $countFights; ?></div>
 <?php } ?>
 
-<?php if($joueur->tuto() == "fini" && $codes_manager->rewardObtained($joueur) == 0){ ?>
+<?php if($joueur->tuto() == "fini" && $codes_manager->rewardObtained($joueur) == 0 && true == false){ ?>
 <a href="/app/controllers/profil.php?id=<?= $joueur->id(); ?>&tab=sponsor"><img id="treasureMap" src="/webroot/img/icones/treasureMap.png" /></a>
 <?php } ?>
 
@@ -65,23 +65,6 @@ if(isset($monstres) && is_array($monstres)){
 		if(isset($winLastFight)){echo('<div id="winLastFight" class="cache">'.$winLastFight.'</div>');}
 		if(isset($prestigeLastFight)){echo('<div id="prestigeLastFight" class="cache">'.$prestigeLastFight.'</div>');}
 }
-
-/* KILL THE CHAT WHILE NOT BEING FIXED
-if($joueur->tuto() == "fini" && ($joueur->nb_jours_fin_tuto() > 0) || isset($_SESSION["msg_fin_tuto"]) ) { ?>
-<img id="chatDisplay" src="/webroot/img/icones/chat_bubbles.png" />
-<select name="selectFilter" id="selectFilter">
-        <option value="all" selected="selected">Tous</option>
-        <option value="nearLevels" >Niveaux proches</option>
-        <option value="none" >Aucun</option>
-</select>
-<div id="chatContent" class="bordure gauche corps_scroll"></div>
-<textarea id="message" autocomplete="off" name="message"></textarea>
-
-<audio preload="auto" id="son_dialogue">
-	<source src = "/webroot/sons/dialogue.ogg" type="audio/ogg" />
-	<source src = "/webroot/sons/dialogue.mp3" type="audio/mp3" />
-</audio>
-<?php } */
 
 //Bilan de la saison en cours
 if(isset($podium_saison )) { ?>

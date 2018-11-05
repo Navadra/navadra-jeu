@@ -507,13 +507,13 @@ $(window).load(function(){ //Handle display errors
 		}
 	});
 
-	$('<div id="suggestion" class="bulle_daide_cliquable">Reporter un bug</div>').appendTo("#challenge_borders");
+	/*$('<div id="suggestion" class="bulle_daide_cliquable">Reporter un bug</div>').appendTo("#challenge_borders");
 	$("#suggestion").css("position", "absolute").css("right", "5%").css("top", "-5%").css("width","8%");
 
 	$("#suggestion").on("click", function(){
 		display_clip($("#feedback"));
 		pause = true;
-	});
+	});*/
 
 	$("#feedback").hide();
 

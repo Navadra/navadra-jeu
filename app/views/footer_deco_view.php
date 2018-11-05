@@ -11,9 +11,5 @@
 <!-- Juste pour enlever les rideaux -->
 <script src="/webroot/js/footer.js?nvd_r=xxx"></script>
 
-<?php // Google Analytics
-  include_once("analyticstracking.php") 
-?>
-
 </body>
 </html>

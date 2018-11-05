@@ -111,8 +111,8 @@
 		</div>
 		<div id='validate' class='actionGraph g mh2 p2'>Valider</div>
 		<div class="l100 ib mh2 mb2">
-			<input type="checkbox" id="debugFights" class="ib md2"><label for="debugFights">Débugger combats</label>
-			<input type="checkbox" id="updatePlayer" class="ib md2"><label for="updatePlayer">MAJ portraits joueurs</label>
+			<!-- <input type="checkbox" id="debugFights" class="ib md2"><label for="debugFights">Débugger combats</label> -->
+			<!-- <input type="checkbox" id="updatePlayer" class="ib md2"><label for="updatePlayer">MAJ portraits joueurs</label> -->
 			<input type="checkbox" id="deletePlayer" class="ib"><label for="deletePlayer">Supprimer le joueur</label>
 		</div>
 		<div class="l100 ib vert g centrer p5" id="confirmation"></div>

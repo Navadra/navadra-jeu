@@ -222,17 +222,14 @@ function visual_positionning(){
 		if(landing_tab == "challenges" && imgLoaded==totalImages){
 			$("#tabs_profile").tabs("option", "active", 1);
 			hide_profile_icones();
-		} else if(landing_tab == "sponsor" && imgLoaded==totalImages){
-			$("#tabs_profile").tabs("option", "active", 3);
-			hide_profile_icones();
 		} else if(landing_tab == "admin" && imgLoaded==totalImages){
-			$("#tabs_profile").tabs("option", "active", 4);
+			$("#tabs_profile").tabs("option", "active", 3);
 			hide_profile_icones();
 		} else if(landing_tab == "teacher" && imgLoaded==totalImages){
 				if($("#admin").length){
-					$("#tabs_profile").tabs("option", "active", 5);
-				} else {
 					$("#tabs_profile").tabs("option", "active", 4);
+				} else {
+					$("#tabs_profile").tabs("option", "active", 3);
 				}
 			hide_profile_icones();
 		}
