@@ -29,9 +29,9 @@ $paths[] = get_include_path();
 
 set_include_path(join(PATH_SEPARATOR, $paths));
 
-$db_RO = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur phpMyAdmin', 'VOTRE MOT DE PASSE');
+$db_RO = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur_phpMyAdmin', 'VOTRE_MOT_DE_PASSE');
 $db_RO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-$db_RW = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur phpMyAdmin', 'VOTRE MOT DE PASSE');
+$db_RW = new PDO('mysql:host=localhost;port=3306;dbname=navadra;charset=utf8', 'Utilisateur_phpMyAdmin', 'VOTRE_MOT_DE_PASSE');
 $db_RW->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 session_start();
