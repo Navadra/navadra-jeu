@@ -71,24 +71,28 @@ if(isset($podium_saison )) { ?>
     <div id="bilan_saison" class="fond l70 mh2">
         <img id="fermer_bilan_saison" src="/webroot/img/icones/refuser.png">
         <div class="titre">Bilan Saison <?= $derniere_saison->nom(); ?></div>
+				<?php if(isset($podium_saison[0])) { ?>
         <div class="podium ib l100 mh1">
             <span class="g p9 ib l10 md4 or">1°</span>
             <span class="ib l5"><img class="l100" src="<?= $podium_saison[0]->full_portrait(); ?>"/></span>
             <span class="ib g p4 l30"><?= $podium_saison[0]->pseudo(); ?></span>
             <span class="ib g p2 l20">(<?= $podium_prestige[0]; ?> <img class="img_20" src="/webroot/img/icones/prestige.png"/>)</span>
         </div>
+				<?php } if(isset($podium_saison[1])) { ?>
         <div class="podium ib l100 mh1">
             <span class="g p9 ib l10 md4 argent">2°</span>
             <span class="ib l5"><img class="l100" src="<?= $podium_saison[1]->full_portrait(); ?>"/></span>
             <span class="ib g p4 l30"><?= $podium_saison[1]->pseudo(); ?></span>
             <span class="ib g p2 l20">(<?= $podium_prestige[1]; ?> <img class="img_20" src="/webroot/img/icones/prestige.png"/>)</span>
         </div>
+				<?php } if(isset($podium_saison[2])) { ?>
         <div class="podium ib l100 mh1">
             <span class="g p9 ib l10 md4 bronze">3°</span>
             <span class="ib l5"><img class="l100" src="<?= $podium_saison[2]->full_portrait(); ?>"/></span>
             <span class="ib g p4 l30"><?= $podium_saison[2]->pseudo(); ?></span>
             <span class="ib g p2 l20">(<?= $podium_prestige[2]; ?> <img class="img_20" src="/webroot/img/icones/prestige.png"/>)</span>
         </div>
+				<?php } ?>
         <div class="recompense_saison ib l80 mh4">
             <span class="l100 ib p5 g">Tu finis <?= $derniere_saison->classement_joueur($joueur);?>° sur <?= sizeof(explode(",", $derniere_saison->classement()));?></span>
             <span class="l100 ib p3 mh1"><?=$info_saison[0]; ?></span>

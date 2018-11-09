@@ -293,6 +293,7 @@ function newNotification(){
 
 $(window).load(function(){
 
+	/*
 	//if ($("#chatDisplay").length)	{
 	if(playerTuto == "fini") {
 
@@ -428,11 +429,10 @@ $(window).load(function(){
 		var altPressed = false;
 		$(document).on("keydown", function (event) {
 		  var key = event.which || event.keyCode;
-		  	/* Bug with firefox, to uncomment maybe later
 		  	//Enter + Alt Keys
 			if (key == 13 && altPressed){
 				$("#message").val($("#message").val() + "\n")
-			} */
+			} 
 			//Enter Key
 			if (key == 13 && !altPressed && msg_valide($("#message")) ){
 				event.preventDefault();
@@ -456,11 +456,10 @@ $(window).load(function(){
 				socket.send(JSON.stringify(message));
 				$("#message").val("");
 			}
-			/* Bug with firefox, to uncomment maybe later
 			//Alt Key
 			if (key == 18){
 				altPressed = true;
-			} */
+			}
 		});
 
 		$(document).on("keyup", function (event) {
@@ -471,7 +470,7 @@ $(window).load(function(){
 			}
 		});
 		}
-  }
+	} */
 
   if ($("#lancer_defi").length)
   {

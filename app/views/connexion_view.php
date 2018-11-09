@@ -21,8 +21,8 @@
     </div>
 
     <!-- Boutons pour valider le formulaire -->
-    <a class="gris" href="http://www.navadra.com/"><div class="bouton form_gauche">Retour</div></a>
-    <a href="http://www.navadra.com/"><img class="icone_form_gauche" src="/webroot/img/icones/btn_retour.png"></a>
+    <a class="gris" href="#"><div class="bouton form_gauche">Retour</div></a>
+    <a href="#"><img class="icone_form_gauche" src="/webroot/img/icones/btn_retour.png"></a>
 
     <input class="bouton form_droite connect" type="submit" name="valider" value="C'est parti !" />
     <a href="#"><img class="icone_form_droite connect" src="/webroot/img/icones/play.png"></a>

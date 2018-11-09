@@ -43,7 +43,6 @@
 		    <input type="radio" name="level" id="5°" value="5°"><label for="5°">5°</label>
 		    <input type="radio" name="level" id="4°" value="4°"><label for="4°">4°</label>
 		    <input type="radio" name="level" id="3°" value="3°"><label for="3°">3°</label>
-		    <input type="radio" name="level" id="other" value="Autre"><label for="other">Autre</label>
 			</div>
 
 			<label for="maxStudents" class="g ib md1">Nbre maximum d'élèves :</label>

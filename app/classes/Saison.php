@@ -87,13 +87,33 @@ class Saison
 	public function podium()
     {
 		$classement = explode(",", $this->classement());
-		return array((int) $classement[0], (int) $classement[1], (int) $classement[2]);
+		$podium = array();
+		if(isset($classement[0])){
+			array_push($podium, (int) $classement[0]);
+		}
+		if(isset($classement[1])){
+			array_push($podium, (int) $classement[1]);
+		}
+		if(isset($classement[2])){
+			array_push($podium, (int) $classement[2]);
+		}
+		return $podium;
 	}
 	
 	public function podium_prestige()
     {
-		$prestige_saison = explode(",", $this->prestige());
-		return array((int) $prestige_saison[0], (int) $prestige_saison[1], (int) $prestige_saison[2]);
+			$prestige_saison = explode(",", $this->prestige());
+			$podium = array();
+		if(isset($prestige_saison[0])){
+			array_push($podium, (int) $prestige_saison[0]);
+		}
+		if(isset($prestige_saison[1])){
+			array_push($podium, (int) $prestige_saison[1]);
+		}
+		if(isset($prestige_saison[2])){
+			array_push($podium, (int) $prestige_saison[2]);
+		}
+		return $podium;
 	}
 	
 	public function classement_joueur(Joueur $joueur)
