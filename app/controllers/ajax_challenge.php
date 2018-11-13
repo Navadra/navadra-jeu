@@ -18,12 +18,12 @@ if(isset($_POST["codeChallenge"])) //Get the json file of the desired challenge
 	$challenge_level = $codeChallenge_array[2];
 	$challenge_exercise = $codeChallenge_array[3];
 	
-  if($server == "localhost" || $server == "127.0.0.1"){
+//  if($server == "localhost" || $server == "127.0.0.1"){
     $json = file_get_contents('../../generators/challenges/'.$challenge_category.'/'.$challenge_name.'/'.$challenge_level.'/'.$_POST["codeChallenge"].'.json');
-  }
+/*  }
   else {
     $json = $mem->get($challenge_category.'/'.$challenge_name.'/'.$challenge_level.'/'.$_POST["codeChallenge"].'.json');
-  }
+  }*/
   echo $json;
 }
 
