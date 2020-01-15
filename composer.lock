@@ -25,8 +25,8 @@
                 "guzzle/http": "^3.6",
                 "php": ">=5.3.9",
                 "react/socket": "^0.3 || ^0.4",
-                "symfony/http-foundation": "^2.2|^3.0",
-                "symfony/routing": "^2.2|^3.0"
+                "symfony/http-foundation": "^3.4.35",
+                "symfony/routing": "^3.4.35"
             },
             "type": "library",
             "autoload": {
